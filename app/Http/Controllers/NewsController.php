@@ -12,7 +12,7 @@ class NewsController extends Controller
 
         $all_news = Travel::paginate(10);
 
-        return view('app.news',['all_news'=>$all_news]);
+        return view('App.news',['all_news'=>$all_news]);
     }
     public function allnews(){
 

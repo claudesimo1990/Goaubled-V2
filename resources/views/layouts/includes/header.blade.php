@@ -3,7 +3,7 @@
 ============================-->
 <section id="intro">
 
-    <div class="intro-content mb-5">
+    <div class="intro-content mb-5 mt-0">
         <h2 class="reveal-1"> Rechercher un Voyage </h2>
         @livewire("search-posts")
     </div>
