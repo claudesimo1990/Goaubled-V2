@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Kdion4891\LaravelLivewireForms\ArrayField;
 use Kdion4891\LaravelLivewireForms\Field;
 use Kdion4891\LaravelLivewireForms\FormComponent;
@@ -19,16 +20,20 @@ class LoginForm extends FormComponent
 
     public function success()
     {
-        User::create($this->form_data);
+        if (Auth::attempt($this->form_data)) {
+            return  redirect()->route('accueil');
+        }else{
+            return redirect()->route('login');
+        }
     }
 
     public function saveAndStayResponse()
     {
-        return redirect()->route('users.create');
+        //
     }
 
     public function saveAndGoBackResponse()
     {
-        return redirect()->route('users.index');
+        //
     }
 }

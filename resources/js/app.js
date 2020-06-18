@@ -5,9 +5,6 @@ require('../../node_modules/jquery/dist/jquery.min.js');
 require('../../node_modules/js-datepicker');
 require('../../node_modules/bootstrap-select-country/dist/js/bootstrap-select-country.min.js');
 
-var Turbolinks = require("turbolinks")
-Turbolinks.start();
-
 Vue.component('news', require('./components/newsComponent.vue').default);
 
 const app = new Vue({

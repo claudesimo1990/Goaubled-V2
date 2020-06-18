@@ -27,11 +27,11 @@ Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
 
 Route::get('/facebook/callback', 'facebooklogController@callback');
 
-Route::get('admin', 'Admin\UsersController@index')->middleware('auth')->name('admin');
+//Route::get('admin', 'Admin\UsersController@index')->middleware('auth')->name('admin');
 
-Route::resource('coli', 'ColiController')->only('create','index','show', 'store');
+Route::resource('packs', 'ColiController')->only('create','index','show', 'store');
 
-Route::resource('travel', 'TravelController')->only('create','show', 'update', 'store');
+Route::resource('travels', 'TravelController')->only('create','show', 'update', 'store');
 
 Route::resource('profile', 'ProfileController')->only('index', 'edit','show','destroy');
 

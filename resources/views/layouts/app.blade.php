@@ -21,8 +21,6 @@
     <link href="{{asset('/lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <!-- Main Stylesheet File -->
-    <link href="{{'/css/app.css'}}" rel="stylesheet">
     @livewireStyles
 </head>
 <body id="body">

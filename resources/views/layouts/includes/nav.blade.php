@@ -17,14 +17,14 @@
                             href="{{route('accueil')}}">Accueil</a>
                     </li>
 
-                    <li class="{{ (request()->is('annonces')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}">Voir
+                    <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}">Voir
                             les
                             annonces</a></li>
                     <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a
-                            href="{{route('travel.create')}}">Poster un
+                            href="{{route('travels.create')}}">Poster un
                             voyage</a></li>
                     <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a
-                            href="{{route('coli.create')}}">Expedier un
+                            href="{{route('packs.create')}}">Expedier un
                             colis</a></li>
                     <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{route('register')}}">Inscription</a>
                     </li>
@@ -34,7 +34,7 @@
                     <li class="{{ (request()->is('/')) ? 'menu-active' : '' }}"><a
                             href="{{route('accueil')}}">Accueil</a></li>
 
-                    <li class="{{ (request()->is('annonces')) ? 'menu-active' : '' }}"><a href="{{route('annonces')}}">Voir
+                    <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}">Voir
                             les
                             annonces</a></li>
                     <li class="{{ (request()->is('packs/create')) ? 'menu-active' : '' }}"><a

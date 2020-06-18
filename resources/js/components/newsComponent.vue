@@ -42,11 +42,11 @@
                                             <ul class="timeline">
                                                 <li>
                                                     <a target="_blank" href="#">{{item.vilDepart}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.dateDepart}}</a>
+                                                    <a href="#" class="float-right pr-4">{{item.date_depart}}</a>
                                                 </li>
                                                 <li>
                                                     <a href="#">{{item.vilArrive}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.dateArrive}}</a>
+                                                    <a href="#" class="float-right pr-4">{{item.date_arrive}}</a>
                                                 </li>
                                             </ul>
                                             <hr>
@@ -83,11 +83,11 @@
                                             <ul class="timeline">
                                                 <li>
                                                     <a target="_blank" href="#">{{item.vilDepart}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.dateDepart}}</a>
+                                                    <a href="#" class="float-right pr-4">{{item.date_depart}}</a>
                                                 </li>
                                                 <li>
                                                     <a href="#">{{item.vilArrive}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.dateArrive}}</a>
+                                                    <a href="#" class="float-right pr-4">{{item.date_arrive}}</a>
                                                 </li>
                                             </ul>
                                             <hr>

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Coli extends Model
@@ -50,7 +51,7 @@ class Coli extends Model
         'dateArrive',
         'published_at',
     ];
-
+    protected $appends = ['date_depart','date_arrive'];
 
     public function user()
     {
@@ -67,6 +68,12 @@ class Coli extends Model
         return $this->hasMany(\App\Comment::class);
     }
     public static  function dateFormat($date){
-        return \Carbon\Carbon::parse($date)->format('d/m/Y');
+        return \Carbon\Carbon::parse($date)->format('d.m.Y');
+    }
+    public function getDateDepartAttribute($value){
+        return Carbon::parse($value)->format('d.m.Y H:i');
+    }
+    public function getDateArriveAttribute($value){
+        return Carbon::parse($value)->format('d.m.Y H:i');
     }
 }

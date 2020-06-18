@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\User;
-use Kdion4891\LaravelLivewireForms\ArrayField;
+use Illuminate\Support\Facades\Hash;
 use Kdion4891\LaravelLivewireForms\Field;
 use Kdion4891\LaravelLivewireForms\FormComponent;
 
@@ -21,7 +21,12 @@ class RegisterForm extends FormComponent
 
     public function success()
     {
-        User::create($this->form_data);
+        $data = $this->form_data;
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 
     public function saveAndStayResponse()
@@ -31,6 +36,6 @@ class RegisterForm extends FormComponent
 
     public function saveAndGoBackResponse()
     {
-        return redirect()->route('users.index');
+        return redirect()->route('login');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Travel extends Model
@@ -56,6 +57,8 @@ class Travel extends Model
         return $this.self::CREATED_AT;
     }
 
+    protected $appends = ['date_depart','date_arrive'];
+
     public function user()
     {
         return $this->belongsTo(\App\User::class);
@@ -71,6 +74,12 @@ class Travel extends Model
         return $this->hasMany(\App\Comment::class);
     }
     public static function dateFormat($date){
-        return \Carbon\Carbon::parse($date)->format('d/m/Y');
+        return Carbon::parse($date)->format('d.m.Y H:i');
+    }
+    public function getDateDepartAttribute($value){
+        return Carbon::parse($value)->format('d.m.Y H:i');
+    }
+    public function getDateArriveAttribute($value){
+        return Carbon::parse($value)->format('d.m.Y H:i');
     }
 }
