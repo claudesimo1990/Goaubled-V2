@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
              TravelTableSeeder::class,
+             AdminTableSeeder::class,
              ColiTableSeeder::class,
             MessageTableSeeder::class,
         ]);

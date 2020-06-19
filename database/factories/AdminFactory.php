@@ -4,13 +4,12 @@
 
 use App\Admin;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Hash;
 
 $factory->define(Admin::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'avatar' => $faker->word,
-        'avatar_original' => $faker->word,
-        'password' => $faker->password,
+        'email' => 'superadmin@admin.com',
+        'password' => '$2y$10$gBSyzwffVCN/nmls9eQZd.egmGQcFfv4hPGyqjeahUR7G5nqyt6ke', //password
     ];
 });
