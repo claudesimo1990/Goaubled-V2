@@ -2,12 +2,9 @@
 
 Route::get('/','AppController@index')->name('accueil');
 Route::get('/news','NewsController@index')->name('news.index');
-Route::get('/contact-user/{user}','ContactController@index')->name('Contact.index');
+Route::livewire('/contact-user/{user}', 'contact-page')->name('Contact.index');
 Route::post('/contact/user/{user}','ProfileController@contactUser')->name('Contact.user');
 Route::get('/reservation/{action}/{annonce}/{user_id}','MessageController@show')->name('reservation');
-//Route::resource('/news', 'NewsController');
-
-
 
 Route::group(['middleware' => ['auth']], function () {
 

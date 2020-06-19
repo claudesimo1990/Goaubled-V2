@@ -16,7 +16,9 @@
                 @forelse($latest_news as $news)
                     <div class="col-lg-6">
                         <div class="box wow fadeInLeft">
-                            <div class="icon"><i class="fa fa-user-circle"></i></div>
+                            <div class="icon">
+                                <img src="{{asset('img/avatar-post.jpg')}}" alt="avatar" class="avatar">
+                            </div>
                             <h4 class="title"><a href="">{{$news->vilDepart}} &#8658; {{$news->vilArrive}}</a></h4>
                             <p class="description">
                                 {{Str::limit(Str::title($news->content), 50)}}
@@ -74,7 +76,7 @@
     <!--==========================
       Clients Section
     ============================-->
-    <section id="clients" class="wow fadeInUp mb-5">
+    <section id="clients" class="wow fadeInUp mb-5" style="background-color:#f8f8f8">
         <div class="container">
             <div class="section-header">
                 <h2>Nos Partenaires</h2>
