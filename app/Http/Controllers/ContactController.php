@@ -33,6 +33,6 @@ class ContactController extends Controller
      */
     public function showUserPacks(User $user,Coli $travel)
     {
-        return view('app.bookingPage');
+        return view('app.packBookingPage',['user' => $user,'pack' => $travel]);
     }
 }
