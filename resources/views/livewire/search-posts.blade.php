@@ -20,7 +20,7 @@
                 @if(count($results) > 0)
                     <div class="list-group col-lg-12 mt-1 item-box">
                         @forelse($results as $item)
-                            <a href="{{route('reservation',['action' => 'travel','annonce'=> $item->id,'user_id' => $item->User_id])}}" class="list-group-item list-group-item-action item-list">
+                            <a href="{{$item->id}}" class="list-group-item list-group-item-action item-list">
                                 <div class="row">
                                     <div class="col-md-3"><strong>{{ $item->vilDepart }}</strong></div>
                                     <div class="col-md-3"><strong>{{ $item->vilArrive }}</strong></div>
