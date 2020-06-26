@@ -21,6 +21,8 @@
     <link href="{{asset('/lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- Main Stylesheet File -->
+    <link href="{{'/css/app.css'}}" rel="stylesheet">
     @livewireStyles
 </head>
 <body id="body">
@@ -37,7 +39,7 @@
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 <!-- JavaScript Libraries -->
-<script src="{{asset("/js/app.js")}}"></script>
+<script  src="{{asset("/js/app.js")}}"></script>
 <script src="{{asset('/lib/jquery/jquery-migrate.min.js')}}"></script>
 <script src="{{asset('/lib/easing/easing.min.js')}}"></script>
 <script src="{{asset('/lib/superfish/hoverIntent.js')}}"></script>
@@ -60,13 +62,31 @@
                 console.log(response);
             }
         });
+    });
+
+    const ratio = .1;
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: ratio
+    };
+    const handleIntersect = function (entries,observer) {
+        entries.forEach(function (entry) {
+            if (entry.intersectionRatio > ratio){
+                entry.target.classList.add('reveal-visible');
+                observer.unobserve(entry.target)
+            }
+        })
+    };
+    const observer = new IntersectionObserver(handleIntersect, options);
+    document.querySelectorAll('[class*="reveal-"]').forEach(function (r) {
+        observer.observe(r);
     })
 
 </script>
-@livewireScripts
 @stack('scripts')
-
 @include('flashy::message')
+@livewireScripts
 
 </body>
 </html>

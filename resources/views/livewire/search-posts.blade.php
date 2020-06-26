@@ -24,7 +24,7 @@
                                 <div class="row">
                                     <div class="col-md-3"><strong>{{ $item->vilDepart }}</strong></div>
                                     <div class="col-md-3"><strong>{{ $item->vilArrive }}</strong></div>
-                                    <div class="col-md-3"><strong>{{ $item->dateFormat($item->createdAt) }}</strong>
+                                    <div class="col-md-3"><strong>{{ $item->date_depart }}</strong>
                                     </div>
                                 </div>
                             </a>

@@ -10,16 +10,37 @@
                 <div class="row">
                     <div class="col-md-3 mt-3 cathergorie">
                         <h3 class="my-4 reveal-2">Affiner votre recherche</h3>
-                        <div class="list-group">
-                            <a href="" wire:click.prevent="$emit('newsFilterEvent','travel')" class="list-group-item">Voyages</a>
-                            <a href="" wire:click.prevent="sortNews('pack')" class="list-group-item">Colis</a>
-                            <a href="" wire:click.prevent="showAllNews('liste d annonces')" class="list-group-item">toutes
-                                les annonces</a>
+                        <div class="list-group search-box rounded">
+                            <div class="col-sm-12">
+                                <div class="form-check border-bottom mb-3">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="allnews"
+                                           value="all"
+                                           wire:model.lazy="all" checked>
+                                    <label class="form-check-label" for="allnews">
+                                        Toutes les annonces
+                                    </label>
+                                </div>
+                                <div class="form-check border-bottom mb-3">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="Voyages"
+                                           value="travel"
+                                           wire:model.lazy="travels">
+                                    <label class="form-check-label" for="Voyages">
+                                        Voyages
+                                    </label>
+                                </div>
+                                <div class="form-check border-bottom mb-3">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="Colis"
+                                           wire:model.lazy="colis" value="coli">
+                                    <label class="form-check-label" for="Colis">
+                                        Colis
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        @foreach($news as $item)
-                            @if($item['categorie_id'] == '2')
+                        @forelse($allnews as $news)
+                            @if($news['categorie_id'] == '2')
                                 <div class="container py-3">
                                     <div class="card runde-ecke">
                                         <div class="row shadow">
@@ -28,7 +49,7 @@
                                                     <img src="{{asset('/img/avatar.jpg')}}"
                                                          class="testimonial-img rund" alt="">
                                                     <div
-                                                        class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{$item['name']}}
+                                                        class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{$news['name']}}
                                                     </div>
                                                 </a>
                                                 <div
@@ -47,28 +68,29 @@
                                             <div class="col-md-9">
                                                 <ul class="timeline">
                                                     <li>
-                                                        <a target="_blank" href="#">{{$item['vilDepart']}}</a>
+                                                        <a target="_blank" href="#">{{$news['vilDepart']}}</a>
                                                         <a href="#"
-                                                           class="float-right pr-4">{{\App\Travel::dateFormat($item['dateDepart'])}}</a>
+                                                           class="float-right pr-4">{{ $news['date_depart'] }}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">{{$item['vilArrive']}}</a>
+                                                        <a href="#">{{$news['vilArrive']}}</a>
                                                         <a href="#"
-                                                           class="float-right pr-4">{{\App\Travel::dateFormat($item['dateArrive'])}}</a>
+                                                           class="float-right pr-4">{{$news['date_arrive']}}</a>
                                                     </li>
                                                 </ul>
                                                 <hr>
                                                 <div class="notice notice-warning">
-                                                    <strong>Kilo disponibles:</strong> {{$item['kiloAvalable']}} Kg
-                                                    <span class="float-right kilo-price">{{$item['prixKilo']}} €</span>
+                                                    <strong>Kilo disponibles:</strong> {{$news['kiloAvalable']}} Kg
+                                                    <span
+                                                        class="float-right kilo-price">{{$news['prixKilo']}} €</span>
                                                 </div>
                                                 <div class="notice notice-warning">
                                                     <strong>Message : </strong>
-                                                    <p>{{$item['content']}}</p>
+                                                    <p>{{$news['content']}}</p>
                                                 </div>
                                                 <div class="notice notice-success text-right">
                                                     <button
-                                                        wire:click.prevent="contactUser('travel',{{$item['id']}},{{$item['User_id']}})"
+                                                        wire:click.prevent="contactUser('travel',{{$news['id']}},{{$news['User_id']}})"
                                                         class="btn btn-primary btn-lg btn-recherche">Contactez le
                                                         voyageur
                                                     </button>
@@ -80,43 +102,55 @@
                             @else
                                 <div class="container py-3">
                                     <div class="card runde-ecke">
-                                        <div class="row shadow">
+                                        <div class="row">
                                             <div class="col-md-3">
                                                 <a href="#" wire:click.prevent="showProfile($news->User_id)">
-                                                    <img src="{{asset('/img/pack.jpeg')}}"
+                                                    <img src="{{asset('/img/avatar.jpg')}}"
                                                          class="testimonial-img rund" alt="">
                                                     <div
-                                                        class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{$item['name']}}
+                                                        class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{$news['name']}}
                                                     </div>
                                                 </a>
+                                                <div
+                                                    class="notice justify-center text-center notice-success stars">
+                                                    <p class="strong">Bewertung</p>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <p class="">Membre verifié <span
+                                                            class="fa fa-star verify"></span>
+                                                    </p>
+                                                </div>
                                             </div>
                                             <div class="col-md-9">
                                                 <ul class="timeline">
                                                     <li>
-                                                        <a target="_blank" href="#">{{$item['vilDepart']}}</a>
+                                                        <a target="_blank" href="#">{{$news['vilDepart']}}</a>
                                                         <a href="#"
-                                                           class="float-right pr-4">{{\App\Travel::dateFormat($item['dateDepart'])}}</a>
+                                                           class="float-right pr-4">{{ $news['date_depart'] }}</a>
                                                     </li>
                                                     <li>
-                                                        <a href="#">{{$item['vilArrive']}}</a>
+                                                        <a href="#">{{$news['vilArrive']}}</a>
                                                         <a href="#"
-                                                           class="float-right pr-4">{{\App\Travel::dateFormat($item['dateArrive'])}}</a>
+                                                           class="float-right pr-4">{{ $news['date_arrive'] }}</a>
                                                     </li>
                                                 </ul>
                                                 <hr>
                                                 <div class="notice notice-warning">
-                                                    <strong>Poids du Packet :</strong> {{ '30' }} Kg
-                                                    <span class="float-right kilo-price">{{ '10' }}€ </span>
+                                                    <strong>Kilo disponibles:</strong> {{$news['kiloAvalable']}} Kg
+                                                    <span class="float-right kilo-price">{{$news['prixKilo']}} €</span>
                                                 </div>
                                                 <div class="notice notice-warning">
                                                     <strong>Message : </strong>
-                                                    <p>{{$item['content']}}</p>
+                                                    <p>{{$news['content']}}</p>
                                                 </div>
                                                 <div class="notice notice-success text-right">
                                                     <button
-                                                        wire:click="contactUser('coli',{{$item['id']}},{{$item['User_id']}})"
-                                                        class="btn btn-primary btn-lg btn-recherche">Contactez
-                                                        l'expediteur
+                                                        wire:click.prevent="contactUser('travel',{{$news['id']}},{{$news['User_id']}})"
+                                                        class="btn btn-primary btn-lg btn-recherche">Contactez le
+                                                        voyageur
                                                     </button>
                                                 </div>
                                             </div>
@@ -124,7 +158,9 @@
                                     </div>
                                 </div>
                             @endif
-                        @endforeach
+                        @empty
+                            <h1>hallo les gars</h1>
+                        @endforelse
                     </div>
                 </div>
             </div>

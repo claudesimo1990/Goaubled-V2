@@ -84,9 +84,9 @@
     })
 
 </script>
-@livewireScripts
 @stack('scripts')
 @include('flashy::message')
+@livewireScripts
 
 </body>
 </html>

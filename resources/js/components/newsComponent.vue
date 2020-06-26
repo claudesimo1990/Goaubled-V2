@@ -9,10 +9,32 @@
             <div class="row">
                 <div class="col-md-3 mt-3 cathergorie">
                     <h3 class="my-4">Affiner votre recherche</h3>
-                    <div class="list-group">
-                        <a href="#" @click.prevent="sortNews('travel')" class="list-group-item">Voyages</a>
-                        <a href="#" @click.prevent="sortNews('pack')" class="list-group-item">Colis</a>
-                        <a href="#" @click.prevent="showAllNews()" class="list-group-item">toutes les annonces</a>
+                    <div class="list-group search-box rounded">
+                        <div class="col-sm-12">
+                            <div class="form-check border-bottom mb-3" @click="showAllNews()">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="allnews"
+                                       value="all"
+                                       checked>
+                                <label class="form-check-label" for="allnews">
+                                    Toutes les annonces
+                                </label>
+                            </div>
+                            <div class="form-check border-bottom mb-3" @click="sortNews('travel')">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="Voyages"
+                                       value="travel"
+                                       wire:model.lazy="travels">
+                                <label class="form-check-label" for="Voyages">
+                                    Voyages
+                                </label>
+                            </div>
+                            <div class="form-check border-bottom mb-3" @click="sortNews('pack')">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="Colis"
+                                       value="coli">
+                                <label class="form-check-label" for="Colis">
+                                    Colis
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-9">
@@ -59,7 +81,8 @@
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a href="#"  @click.prevent="contactUser(item.User_id)" class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez le
+                                                <a :href="item.id"
+                                                   class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez le
                                                     voyageur</a>
                                             </div>
                                         </div>
@@ -100,7 +123,9 @@
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a href="#" @click="contactUser(item.User_id)" class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez l'expediteur</a>
+                                                <a :href="item.id"
+                                                   class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez
+                                                    l'expediteur</a>
                                             </div>
                                         </div>
                                     </div>
@@ -154,21 +179,36 @@
                     this.title = "Annonces de packets";
                 }
             },
-            showAllNews: function() {
+            showAllNews: function () {
                 this.title = "Listes d' annonces";
                 this.pack.show = true;
                 this.travel.show = true;
             },
-            contactUser: function (user_id) {
-                axios.post('/contact/user/'+ user_id,{'id': user_id}).then((response) => {
-                    window.location.href = response.data;
-                }).catch((error) => {
+
+            contactExpediteur: function (user_id, pack_id) {
+
+                axios.post('/reservation/packs/' + user_id + '/' + pack_id)
+                    .then((response) => {
+                        window.location.href = response.data;
+                    }).catch((error) => {
+
+                });
+            },
+
+            contactVoyageur: function (user_id, travel_id) {
+                axios.post('/reservation/travels/' + user_id + '/' + travel_id, {
+                    'userId': user_id,
+                    'travelId': travel_id
+                })
+                    .then((response) => {
+                        window.location.href = response.data;
+                    }).catch((error) => {
 
                 });
 
             },
             showProfile: function (user_id) {
-                axios.post('/profile/user/'+ user_id,{'id': user_id}).then((response) => {
+                axios.post('/profile/user/' + user_id, {'id': user_id}).then((response) => {
                     window.location.href = response.data;
                 }).catch((error) => {
 

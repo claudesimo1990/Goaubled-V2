@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Coli;
 use App\Travel;
-use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -14,21 +13,23 @@ class NewsController extends Controller
 
         return view('App.news',['all_news'=>$all_news]);
     }
-    public function allnews(){
 
-        $allnews = [];
+    public function allnews()
+    {
 
-        $travs = Travel::paginate(20);
-        $packs = Coli::paginate(20);
+        $collection = collect(Travel::all());
+        $merge = $collection->merge(Coli::all())
+            ->sortBy('dateDepart')
+            ->shuffle()
+            ->toArray();
 
-        foreach ($travs as $item){
-           array_push($allnews,$item);
-        }
-        foreach ($packs as $item){
-            array_push($allnews,$item);
-        }
-        shuffle($allnews);
+        return $merge;
+    }
 
-        return $allnews;
+    public function travelsredirect()
+    {
+
+        return view('travels.book');
+
     }
 }

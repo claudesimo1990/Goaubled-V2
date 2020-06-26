@@ -19,8 +19,8 @@ class Travel extends Model
         'categorie_id',
         'vilDepart',
         'vilArrive',
-        'dateDepart',
-        'dateArrive',
+        'date_depart',
+        'date_arrive',
         'content',
         'kiloAvalable',
         'prixKilo',
@@ -48,8 +48,8 @@ class Travel extends Model
      * @var array
      */
     protected $dates = [
-        'dateDepart',
-        'dateArrive',
+        'date_depart',
+        'date_arrive',
         'published_at',
     ];
 
@@ -57,7 +57,7 @@ class Travel extends Model
         return $this.self::CREATED_AT;
     }
 
-    protected $appends = ['date_depart','date_arrive'];
+    protected $appends = ['date_depart','date_arrive','id'];
 
     public function user()
     {
@@ -73,13 +73,14 @@ class Travel extends Model
     {
         return $this->hasMany(\App\Comment::class);
     }
-    public static function dateFormat($date){
-        return Carbon::parse($date)->format('d.m.Y H:i');
+    public function getDateDepartAttribute(){
+        return Carbon::parse($this->attributes['date_depart'])->format('d.m.Y H:i');
     }
-    public function getDateDepartAttribute($value){
-        return Carbon::parse($value)->format('d.m.Y H:i');
+    public function getDateArriveAttribute(){
+        return Carbon::parse($this->attributes['date_arrive'])->format('d.m.Y H:i');
     }
-    public function getDateArriveAttribute($value){
-        return Carbon::parse($value)->format('d.m.Y H:i');
+    public function getIdAttribute () {
+
+        return route('travels.reservation',['user' => $this->attributes['User_id'] , 'travel' => $this->attributes['id'] ]);
     }
 }

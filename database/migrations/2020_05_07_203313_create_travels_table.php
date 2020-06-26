@@ -21,8 +21,8 @@ class CreateTravelsTable extends Migration
             $table->string('categorie_id')->default(1);
             $table->string('vilDepart');
             $table->string('vilArrive');
-            $table->dateTime('dateDepart');
-            $table->dateTime('dateArrive');
+            $table->dateTime('date_depart');
+            $table->dateTime('date_arrive');
             $table->longText('content');
             $table->integer('kiloAvalable');
             $table->integer('prixKilo');

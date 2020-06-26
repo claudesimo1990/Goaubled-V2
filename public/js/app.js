@@ -1908,6 +1908,35 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+var _methods;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2038,7 +2067,7 @@ __webpack_require__.r(__webpack_exports__);
       title: "Listes d'annonces"
     };
   },
-  methods: {
+  methods: (_methods = {
     contactVoyageur: function contactVoyageur(userid) {
       var _this = this;
 
@@ -2069,21 +2098,25 @@ __webpack_require__.r(__webpack_exports__);
       this.pack.show = true;
       this.travel.show = true;
     },
-    contactUser: function contactUser(user_id) {
-      axios.post('/contact/user/' + user_id, {
-        'id': user_id
-      }).then(function (response) {
-        window.location.href = response.data;
-      })["catch"](function (error) {});
-    },
-    showProfile: function showProfile(user_id) {
-      axios.post('/profile/user/' + user_id, {
-        'id': user_id
-      }).then(function (response) {
+    contactExpediteur: function contactExpediteur(user_id, pack_id) {
+      axios.post('/reservation/packs/' + user_id + '/' + pack_id).then(function (response) {
         window.location.href = response.data;
       })["catch"](function (error) {});
     }
-  },
+  }, _defineProperty(_methods, "contactVoyageur", function contactVoyageur(user_id, travel_id) {
+    axios.post('/reservation/travels/' + user_id + '/' + travel_id, {
+      'userId': user_id,
+      'travelId': travel_id
+    }).then(function (response) {
+      window.location.href = response.data;
+    })["catch"](function (error) {});
+  }), _defineProperty(_methods, "showProfile", function showProfile(user_id) {
+    axios.post('/profile/user/' + user_id, {
+      'id': user_id
+    }).then(function (response) {
+      window.location.href = response.data;
+    })["catch"](function (error) {});
+  }), _methods),
   computed: {
     datefns: function datefns(dateString) {
       var dateString = '17-09-2013 10:08',
@@ -38174,51 +38207,118 @@ var render = function() {
             _vm._v("Affiner votre recherche")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "list-group" }, [
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.sortNews("travel")
+          _c("div", { staticClass: "list-group search-box rounded" }, [
+            _c("div", { staticClass: "col-sm-12" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check border-bottom mb-3",
+                  on: {
+                    click: function($event) {
+                      return _vm.showAllNews()
+                    }
                   }
-                }
-              },
-              [_vm._v("Voyages")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.sortNews("pack")
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "gridRadios",
+                      id: "allnews",
+                      value: "all",
+                      checked: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "allnews" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Toutes les annonces\n                            "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-check border-bottom mb-3",
+                  on: {
+                    click: function($event) {
+                      return _vm.sortNews("travel")
+                    }
                   }
-                }
-              },
-              [_vm._v("Colis")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item",
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showAllNews()
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "gridRadios",
+                      id: "Voyages",
+                      value: "travel",
+                      "wire:model.lazy": "travels"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "Voyages" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Voyages\n                            "
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "form-check border-bottom mb-3",
+                  on: {
+                    click: function($event) {
+                      return _vm.sortNews("pack")
+                    }
                   }
-                }
-              },
-              [_vm._v("toutes les annonces")]
-            )
+                },
+                [
+                  _c("input", {
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "gridRadios",
+                      id: "Colis",
+                      value: "coli"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "form-check-label",
+                      attrs: { for: "Colis" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                Colis\n                            "
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -38356,13 +38456,7 @@ var render = function() {
                                     {
                                       staticClass:
                                         "btn btn-primary btn-lg btn-recherche contact-btn",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.contactUser(item.User_id)
-                                        }
-                                      }
+                                      attrs: { href: item.id }
                                     },
                                     [
                                       _vm._v(
@@ -38505,14 +38599,13 @@ var render = function() {
                                     {
                                       staticClass:
                                         "btn btn-primary btn-lg btn-recherche contact-btn",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.contactUser(item.User_id)
-                                        }
-                                      }
+                                      attrs: { href: item.id }
                                     },
-                                    [_vm._v("Contactez l'expediteur")]
+                                    [
+                                      _vm._v(
+                                        "Contactez\n                                                l'expediteur"
+                                      )
+                                    ]
                                   )
                                 ]
                               )

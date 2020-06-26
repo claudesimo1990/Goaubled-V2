@@ -203,6 +203,7 @@ h6 {
     height: 40px;
     border-radius: 50%;
     margin-top: 8px !important;
+    margin-left: 12px;
 
 }
 
@@ -1903,4 +1904,184 @@ ul.timeline > li:before {
     background-color: #8BC73D;
     color: white;
     text-align: center;
+}
+.bg-poster{
+    background-color: rgb(247, 241, 227);
+}
+
+.form-control-feedback{
+    right: 15px;
+}
+
+.form-control-feedback {
+    width: 40px;
+    height: 40px;
+    line-height: 40px !important;
+    top: 0;
+}
+span.error {
+    color: red;
+    text-align: center;
+    padding-left: 7px;
+}
+/* START RESERVER UN VOYAGE */
+h3{
+    color: #fff;
+    text-align: center;
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+.headline-text{
+    color: #0c2e8a;
+    font-weight: 700;
+    font-size: 36px;
+    font-family: Raleway,sans-serif;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    margin-top: 1em;
+}
+.bi-check2-circle{
+    color: #8bc73d;
+}
+.hr-sepace{
+
+}
+.shadow {
+    -webkit-box-shadow: 3px 3px 5px 3px #ccc;
+    -moz-box-shadow:    3px 3px 5px 3px #ccc;
+    box-shadow:         3px 3px 5px 3px #ccc;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    float: left;
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    width: .9em;
+    font-size: 2vw;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}
+
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 75%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+.step-heure{
+    float: left;
+    margin-left: -150px;
+}
+.timeline p{
+    margin-bottom: 0;
+}
+.travel-detail{
+    background-color: #8bc73d;
+    color: #fff;
+}
+.reservation-form{
+    margin-left: 1.6em;
+    padding-bottom: 2em;
+}
+.reservation-form .form-group{
+    margin-top: 2em;
+}
+
+.btn-reserve{
+    background-color: #0c2e8a;
+    color: #fff;
+}
+.voyageur-textarea{
+    margin-bottom: 1em;
+}
+.btn-contact-reserve{
+    color: #8bc73d;
+    background-color: #fff;
+}
+
+/* END RESERVER UN VOYAGE */
+
+
+/* StART PROPOSER UN COLIS */
+
+.colis-img{
+    width: 9em;
+}
+.colis-description{
+    margin-left: 1.5em;
+}
+.description-row{
+    margin-bottom: 1em;
+    margin-top: 2em!important;
+}
+.detail-sub{
+    margin-left: 12.5em;
+}
+.reservation-component{
+    margin-bottom: 170px !important;
+}
+.search-box{
+    background-color: white;
+    padding: 10px 10px;
+    color: $quigo;
+    font-size:18px;
 }
