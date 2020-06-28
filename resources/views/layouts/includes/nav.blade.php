@@ -19,7 +19,7 @@
                     <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}">Voir les annonces</a></li>
                     <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}">Poster un voyage</a></li>
                     <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}">Expedier un colis</a></li>
-                    <li class="ml-3 user__bild"><img src="{{ asset('/img/logo.png') }}" class="user__bild"></li>
+                    <li class="ml-3 user__bild"><img src="{{Auth::user()->avatar ? asset(Auth::user()->avatar) :  asset('/img/logo.png') }}" class="user__bild"></li>
                     <li class="nav-item dropdown {{ (request()->is('home')) ? 'menu-active' : '' }}">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -37,7 +37,7 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ url('/profile/'.Auth::user()->name) }}">Messages<i class="float-right fa fa-envelope" aria-hidden="true"></i></a>
+                               href="{{ route('messages.index') }}">Messages<i class="float-right fa fa-envelope" aria-hidden="true"></i></a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

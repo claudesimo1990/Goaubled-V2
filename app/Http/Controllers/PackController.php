@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Coli;
 use App\pack;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class PackController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -20,7 +22,7 @@ class PackController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -30,8 +32,8 @@ class PackController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -41,8 +43,8 @@ class PackController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\pack  $pack
-     * @return \Illuminate\Http\Response
+     * @param pack $pack
+     * @return Response
      */
     public function show(pack $pack)
     {
@@ -52,8 +54,8 @@ class PackController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\pack  $pack
-     * @return \Illuminate\Http\Response
+     * @param pack $pack
+     * @return Response
      */
     public function edit(pack $pack)
     {
@@ -63,11 +65,11 @@ class PackController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\pack  $pack
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param pack $pack
+     * @return Response
      */
-    public function update(Request $request, pack $pack)
+    public function update(Request $request, Coli $pack)
     {
         //
     }
@@ -75,8 +77,8 @@ class PackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\pack  $pack
-     * @return \Illuminate\Http\Response
+     * @param pack $pack
+     * @return Response
      */
     public function destroy(pack $pack)
     {

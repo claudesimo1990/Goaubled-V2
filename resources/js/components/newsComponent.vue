@@ -45,8 +45,8 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="showProfile(item.User_id)">
-                                                <img src="/img/avatar.jpg"
-                                                     class="testimonial-img rund" alt="">
+                                                <img :src="item.user_avatar ? item.user_avatar : '/img/avatar.jpg' "
+                                                     class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
                                             </a>
@@ -81,7 +81,7 @@
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a :href="item.id"
+                                                <a :href="item.has_courrier"
                                                    class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez le
                                                     voyageur</a>
                                             </div>
@@ -96,8 +96,8 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="contactUser(item.User_id)">
-                                                <img src="/img/pack.jpeg"
-                                                     class="testimonial-img rund" alt="">
+                                                <img :src="item.user_avatar ?  item.user_avatar : '/img/pack.jpeg' "
+                                                     class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
                                             </a>
@@ -123,7 +123,7 @@
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a :href="item.id"
+                                                <a :href="item.has_courrier"
                                                    class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez
                                                     l'expediteur</a>
                                             </div>

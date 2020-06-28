@@ -32,17 +32,9 @@ class MessageController extends Controller
      * @param Request $request
      * @return Factory|\Illuminate\View\View
      */
-    public function show($action,$id,$annonce)
+    public function show(Request $request)
     {
-        $data = null;
-        $user = User::find($id);
-
-        if ($action == 'travel'){
-            $data = Travel::where('id',$annonce)->get();
-        }else{
-            $data = Coli::where('id',$annonce)->get();
-        }
-        return view('message.show',compact('data','user'));
+        dd($request);
     }
 
     /**

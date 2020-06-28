@@ -71,10 +71,11 @@ class TravelCreate extends Component
 
         Travel::create([
             'name' => Auth::user()->name,
-            'User_id' => Auth::id(),
+            'user_id' => Auth::id(),
             'categorie_id' => 2,
             'hasCourrier' => 1,
             'prixCourrier' => 0,
+            'user_avatar' => Auth::user()->avatar,
             'vilDepart' => $this->vilDepart,
             'vilArrive' => $this->vilArrive,
             'date_depart' => $this->date_depart,

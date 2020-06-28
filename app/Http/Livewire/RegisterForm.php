@@ -14,6 +14,7 @@ class RegisterForm extends FormComponent
         return [
             Field::make('Name')->input()->rules('required'),
             Field::make('Email')->input('email')->rules(['required', 'email', 'unique:users,email']),
+            Field::make('Avatar')->file()->rules(['required']),
             Field::make('Password')->input('password')->rules(['required', 'min:8', 'confirmed']),
             Field::make('Confirm Password', 'password_confirmation')->input('password'),
         ];
@@ -22,9 +23,12 @@ class RegisterForm extends FormComponent
     public function success()
     {
         $data = $this->form_data;
+        $file = $data['avatar'][0]['file'];
+
         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'avatar' => "storage/$file",
             'password' => Hash::make($data['password']),
         ]);
     }

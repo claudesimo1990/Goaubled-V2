@@ -14,7 +14,7 @@ class Coli extends Model
      */
     protected $fillable = [
         'name',
-        'User_id',
+        'userId',
         'categorie_id',
         'vilDepart',
         'vilArrive',
@@ -35,8 +35,7 @@ class Coli extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'User_id' => 'integer',
+        'UserId',
         'isCourrier' => 'boolean',
         'isvalise' => 'boolean',
     ];
@@ -78,6 +77,6 @@ class Coli extends Model
     }
     public function getIdAttribute () {
 
-        return route('packs.reservation',['user' => $this->attributes['User_id'] , 'pack' => $this->attributes['id'] ]);
+        return route('packs.reservation',['user' => $this->attributes['user_id'] , 'coli' => $this->attributes['id'] ]);
     }
 }

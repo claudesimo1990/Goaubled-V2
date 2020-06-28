@@ -15,12 +15,13 @@ class Travel extends Model
      */
     protected $fillable = [
         'name',
-        'User_id',
+        'user_id',
         'categorie_id',
         'vilDepart',
         'vilArrive',
         'date_depart',
         'date_arrive',
+        'user_avatar',
         'content',
         'kiloAvalable',
         'prixKilo',
@@ -38,7 +39,7 @@ class Travel extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'User_id' => 'integer',
+        'userId' => 'integer',
         'hasCourrier' => 'boolean',
     ];
 
@@ -57,7 +58,7 @@ class Travel extends Model
         return $this.self::CREATED_AT;
     }
 
-    protected $appends = ['date_depart','date_arrive','id'];
+    protected $appends = ['date_depart','date_arrive','has_courrier'];
 
     public function user()
     {
@@ -79,8 +80,8 @@ class Travel extends Model
     public function getDateArriveAttribute(){
         return Carbon::parse($this->attributes['date_arrive'])->format('d.m.Y H:i');
     }
-    public function getIdAttribute () {
+    public function getHasCourrierAttribute () {
 
-        return route('travels.reservation',['user' => $this->attributes['User_id'] , 'travel' => $this->attributes['id'] ]);
+        return route('travels.reservation',['user' => $this->attributes['user_id'] , 'travel' => $this->attributes['id'] ]);
     }
 }

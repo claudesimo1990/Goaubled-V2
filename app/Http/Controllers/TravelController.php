@@ -7,13 +7,15 @@ use App\Http\Requests\TravelStoreRequest;
 use App\Jobs\SyncMedia;
 use App\Mail\ReviewNotification;
 use App\Travel;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class TravelController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -24,9 +26,9 @@ class TravelController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Travel $travel
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Travel $travel
+     * @return Factory|\Illuminate\View\View
      */
     public function update(Request $request, Travel $travel)
     {
@@ -34,8 +36,8 @@ class TravelController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\TravelStoreRequest $request
-     * @return \Illuminate\Http\Response
+     * @param TravelStoreRequest $request
+     * @return RedirectResponse
      */
     public function store(TravelStoreRequest $request)
     {

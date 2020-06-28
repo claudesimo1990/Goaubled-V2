@@ -16,10 +16,11 @@ class CreateColisTable extends Migration
         Schema::create('colis', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->unsignedBigInteger('User_id');
-            $table->foreign('User_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('categorie_id');
             $table->string('vilDepart');
+            $table->string('user_avatar')->nullable();
             $table->string('vilArrive');
             $table->dateTime('date_depart');
             $table->dateTime('date_arrive');

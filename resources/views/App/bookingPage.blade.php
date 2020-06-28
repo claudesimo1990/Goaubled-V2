@@ -3,6 +3,6 @@
 
 @section('content')
 
-    @livewire('travels-reservation',['travel' => $travel, 'user' => $user])
+    <travel-booking :user="{{$user}}" :travel="{{$travel}}" :log_user="{{$log_user}}"></travel-booking>
 
 @stop

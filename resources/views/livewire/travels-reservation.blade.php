@@ -96,13 +96,20 @@
                                     class="btn btn-primary">contacter le voyageur
                             </button>
                             <div id="reserver" class="collapse">
-                                <div class="form-group">
-                                    <label for="email">Votre message:  {{$message}}</label>
-                                    <textarea type="textarea" class="form-control voyageur-textarea" id="message"
-                                              name="message" wire:model.lazy="message"></textarea>
-                                    <button class="btn btn-primary" type="submit">envoyer</button>
+                                <form  wire:submit.prevent="submit" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="email">Combien de Kilos ? :</label>
+                                        <input wire:model="book" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Votre message:</label>
+                                        <textarea wire:model="message" type="textarea"
+                                                  class="form-control voyageur-textarea"></textarea>
+                                        <button class="btn btn-primary" type="submit">envoyer</button>
 
-                                </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

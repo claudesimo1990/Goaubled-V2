@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Livewire;
+use Livewire\Component;
 
 use App\Travel;
 use App\User;
-use Livewire\Component;
 
 class TravelsReservation extends Component
 {
     public $user;
     public $travel;
-
     public $allKilos;
     public $message;
     public $book;
@@ -20,11 +19,16 @@ class TravelsReservation extends Component
         $this->travel = $travel;
         $this->user = $user;
         $this->allKilos = $travel->kiloAvalable;
+        $this->book = '';
 
+    }
+
+    public function submit() {
+        dd('hallo');
     }
 
     public function render()
     {
-        return view('livewire.travels-reservation');
+        return view('livewire.travels-reservation',['book' => $this->book]);
     }
 }
