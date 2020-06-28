@@ -1,6 +1,6 @@
 require('./bootstrap');
 const Vue = require('vue');
-import Notifications from 'vue-notification'
+import Notifications from 'vue-notification';
 Vue.use(Notifications);
 
 require('../../node_modules/jquery/dist/jquery.min.js');
