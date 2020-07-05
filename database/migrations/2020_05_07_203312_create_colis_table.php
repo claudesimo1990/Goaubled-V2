@@ -22,14 +22,12 @@ class CreateColisTable extends Migration
             $table->string('vilDepart');
             $table->string('user_avatar')->nullable();
             $table->string('vilArrive');
-            $table->dateTime('date_depart');
-            $table->dateTime('date_arrive');
+            $table->dateTime('dateDepart');
             $table->longText('content');
             $table->integer('kilo');
             $table->integer('prix');
-            $table->boolean('isCourrier');
-            $table->boolean('isvalise');
-            $table->string('photo');
+            $table->longText('photo');
+            $table->string('path')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

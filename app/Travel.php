@@ -58,7 +58,7 @@ class Travel extends Model
         return $this.self::CREATED_AT;
     }
 
-    protected $appends = ['date_depart','date_arrive','has_courrier'];
+    protected $appends = ['date_depart','date_arrive','Path'];
 
     public function user()
     {
@@ -80,7 +80,7 @@ class Travel extends Model
     public function getDateArriveAttribute(){
         return Carbon::parse($this->attributes['date_arrive'])->format('d.m.Y H:i');
     }
-    public function getHasCourrierAttribute () {
+    public function getPathAttribute () {
 
         return route('travels.reservation',['user' => $this->attributes['user_id'] , 'travel' => $this->attributes['id'] ]);
     }

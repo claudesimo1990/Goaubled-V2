@@ -27,7 +27,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ url('/profile/'.Auth::user()->name) }}"> Profile <i class="fa fa-wrench float-right" aria-hidden="true"></i>
+                               href="{{ route('profile.show',['user' =>Auth::id() ]) }}"> Profile <i class="fa fa-wrench float-right" aria-hidden="true"></i>
                             </a>
 
                             <div class="dropdown-divider"></div>

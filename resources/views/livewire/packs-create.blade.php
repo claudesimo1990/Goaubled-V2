@@ -2,128 +2,135 @@
     <section id="about" class="mb-5">
         <div class="row">
             <div class="col-lg-12 text-center mb-2">
-                <h2 class="quigo-title">Poster votre coli</h2>
+                <h2 class="quigo-title">Que souhaitez-vous envoyer ?</h2>
             </div>
         </div>
-        <div class="row" style="margin-left: 12px;margin-right: 12px;">
-            <div class="col-sm-12 col-md-12 col-lg-8 mx-auto bg-poster">
+        <div class="row">
+            <div class="container">
 
-                <form wire:submit.prevent="submit" method="post">
-                    <div class="form-row">
-                        <div class="col-md-7 my-3">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto bg-poster">
 
-                            <div class="input-group">
-                                <input wire:model="vilDepart" type="text" class="form-control border-right-0"
-                                       id="exampleInputdepart"
-                                       aria-describedby="departHelp" placeholder="Départ de *">
-                                <span class="input-group-append bg-white border-left-0">
+                        <form class="needs-validation" novalidate>
+                            <div class="form-row">
+                                <div class="col-md-4 my-3">
+
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-right-0" id="exampleInputdepart"
+                                               aria-describedby="departHelp" placeholder="Départ de *">
+                                    <span class="input-group-append bg-white border-left-0">
                                         <span class="input-group-text bg-transparent">
-                                          <i class="fas fa-plane-departure"></i>
-                                        </span>
-                                    </span>
-                            </div>
-                            @error('vilDepart') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div class="col-md-5 my-3">
-
-                            <div class="input-group">
-                                <input wire:model='date_depart' class="form-control border-right-0"
-                                       type="datetime-local" placeholder="Dates de voyage *"
-                                       value="2011-08-19T13:45:00" id="example-datetime-local-input">
-                            </div>
-                            @error('date_depart') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-7 my-3">
-
-                            <div class="input-group">
-                                <input wire:model='vilArrive' type="text" class="form-control border-right-0"
-                                       id="exampleInputdepart"
-                                       aria-describedby="departHelp" placeholder="Arrivée à *">
-                                <span class="input-group-append bg-white border-left-0">
-                                        <span class="input-group-text bg-transparent">
-                                          <i class="fas fa-plane-arrival"></i>
-                                        </span>
-                                    </span>
-                            </div>
-                            @error('vilArrive') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-
-                        <div class="col-md-5 my-3">
-
-                            <div class="input-group">
-                                <input wire:model='date_arrive' class="form-control border-right-0" id="picker"
-                                       type="datetime-local" aria-describedby="departHelp"
-                                       placeholder="Dates de voyage *"
-                                       value="2011-08-19T13:45:00" id="example-datetime-local-input">
-                            </div>
-                            @error('date_arrive') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-                    </div>
-                    <div class="form-row my-2">
-                        <div class="col-md-6 mb-3">
-                            <div class="input-group">
-                                <input wire:model='compagnie' class="form-control border-right-0" id="picker"
-                                       aria-describedby="departHelp" placeholder="Compagnie aerienne*">
-                            </div>
-                            @error('compagnie') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <div class="custom-file">
-                                    <input wire:model='photoBielletAvion' type="file" class="custom-file-input"
-                                           id="inputGroupFile02">
-                                    <label class="custom-file-label" for="inputGroupFile02">Inserer une ou plusieurs fotos du coli
-                                       </label>
-                                </div>
-                            </div>
-                            @error('photoBielletAvion') <span class="error">{{ $message }}</span> @enderror
-                        </div>
-
-                    </div>
-                    <div class="form-row my-2">
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <input wire:model='kiloAvalable' type="text" class="form-control border-right-0"
-                                       id="exampleInputdepart"
-                                       aria-describedby="departHelp" placeholder="poids du coli*">
-                                <span class="input-group-append bg-white border-left-0">
-                                        <span class="input-group-text bg-transparent">
-                                          <i class="fas fa-weight"></i>
+                                                 <i class="fas fa-plane-departure"></i>
                                         </span>
                                      </span>
-                            </div>
-                            @error('kiloAvalable') <span class="error">{{ $message }}</span> @enderror
-                        </div>
+                                    </div>
+                                    <small id="departHelp" class="form-text text-muted">Veuillez saisir une ville de
+                                        départ.</small>
+                                </div>
 
-                        <div class="col-md-6">
+                                <div class="col-md-4 my-3">
 
-                            <div class="input-group">
-                                <input wire:model='prixKilo' type="text" class="form-control border-right-0"
-                                       id="exampleInputdepart"
-                                       aria-describedby="departHelp" placeholder="Somme a payer*">
-                                <span class="input-group-append bg-white border-left-0">
-                                        <span class="input-group-text bg-transparent">
-                                            <i class="fas fa-euro-sign"></i>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-right-0" id="exampleInputdepart"
+                                               aria-describedby="departHelp" placeholder="Arrivée à *">
+                                        <span class="input-group-append bg-white border-left-0">
+                                          <span class="input-group-text bg-transparent">
+                                            <i class="fas fa-plane-arrival"></i>
+                                          </span>
                                         </span>
-                                    </span>
+
+                                    </div>
+                                    <small id="departHelp" class="form-text text-muted">Veuillez saisir une ville
+                                        d'Arrivée .</small>
+                                </div>
+
+                                <div class="col-md-4 my-3">
+
+                                    <div class="input-group">
+                                        <input class="form-control border-right-0" id="picker"
+                                               aria-describedby="departHelp" placeholder="Dates a expedier*">
+                                        <span class="input-group-prepend bg-white border-left-0">
+                                          <button class="input-group-text" type="button" id="toggle">
+                                            <i class="fas fa-calendar-alt"></i>
+                                          </button>
+                                        </span>
+
+                                    </div>
+
+                                </div>
                             </div>
-                            @error('prixKilo') <span class="error">{{ $message }}</span> @enderror
-                        </div>
+                            <div class="form-row my-2">
+                                <div class="col-md-2 mb-3">
+                                    <label for="exampleInputEmail1">Quantite</label>
+                                    <div class="input-group">
+                                        <input class="form-control border-right-0" id="picker" type="number"
+                                               aria-describedby="departHelp" min="1" max="6" placeholder="1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Nom de l'Object</label>
+                                    <div class="input-group">
+                                        <input class="form-control border-right-0" id="picker" type="text"
+                                               aria-describedby="departHelp" placeholder="Telephone, Enveloppe...">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1">Poids(kg)</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-right-0" id="exampleInputdepart"
+                                               min="1" max="46" aria-describedby="departHelp"
+                                               placeholder="Nombre de Kilo*">
+                                        <span class="input-group-append bg-white border-left-0">
+                                          <span class="input-group-text bg-transparent">
+                                            <i class="fas fa-weight"></i>
+                                          </span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-row my-2">
+
+                                <div class="col-md-2">
+                                    <label for="exampleInputEmail1">Prix/KG</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control border-right-0" id="exampleInputdepart"
+                                               type="number" min="5" max="8" aria-describedby="departHelp"
+                                               placeholder="7">
+                                        <span class="input-group-append bg-white border-left-0">
+                                          <span class="input-group-text bg-transparent">
+                                            <i class="fas fa-euro-sign"></i>
+                                          </span>
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="form-group  mr-5">
+                                        <label for="exampleFormControlFile1">Veillez telecharger la Photo de l object a
+                                            envoyer</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                               accept="image/png, image/jpeg">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <button class="btn btn-recherche btn-lg text-white my-5 mt-2 " type="submit">Valider</button>
+                        </form>
+
                     </div>
-                    <div class="form-group my-2">
-                        <label class="font-weight-bold" for="exampleFormControlTextarea1">Voulez vous ecrire
-                            autre chose sur votre coli?</label>
-                        <textarea wire:model='content' class="form-control" id="exampleFormControlTextarea1"
-                                  rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary my-2 btn-recherche">Poster</button>
-                </form>
+
+
+                </div>
 
             </div>
-
         </div>
     </section>
 </div>

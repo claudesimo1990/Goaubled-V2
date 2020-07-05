@@ -7,8 +7,12 @@ use App\Http\Requests\ProfileStoreRequest;
 use App\Jobs\SyncMedia;
 use App\Mail\ReviewNotification;
 use App\Profile;
+use App\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 /**
  * Class ProfileController
@@ -17,8 +21,8 @@ use Illuminate\Support\Facades\Mail;
 class ProfileController extends Controller
 {
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Factory|View
      */
     public function create(Request $request)
     {
@@ -28,9 +32,9 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Profile $profile
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Profile $profile
+     * @return Factory|View
      */
     public function update(Request $request, Profile $profile)
     {
@@ -38,29 +42,17 @@ class ProfileController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Profile $profile
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     * @return string
      */
-    public function show(Request $request, Profile $profile)
+    public function show(User $user)
     {
-        return route('Contact.index',['user' => $profile]);
-    }
-
-    public function contactUser(Request $request)
-    {
-        return route('Contact.index',['user' => $request->get('id')]);
-    }
-
-    public function showprofile(Request $request)
-    {
-        //dd($request->all());
-        return route('profile.show',['profile' => $request->get('id')]);
+        return view('App.profile',compact('user'));
     }
 
     /**
-     * @param \App\Http\Requests\ProfileStoreRequest $request
-     * @return \Illuminate\Http\Response
+     * @param ProfileStoreRequest $request
+     * @return RedirectResponse
      */
     public function store(ProfileStoreRequest $request)
     {

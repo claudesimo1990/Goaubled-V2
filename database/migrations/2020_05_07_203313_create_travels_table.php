@@ -31,6 +31,7 @@ class CreateTravelsTable extends Migration
             $table->integer('prixCourrier');
             $table->string('compagnie');
             $table->string('photoBielletAvion');
+            $table->string('path')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

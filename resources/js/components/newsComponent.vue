@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div v-for="(item,index) in allnews">
+                    <div v-for="item in allnews" :key="item.id">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
@@ -81,7 +81,7 @@
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a :href="item.has_courrier"
+                                                <a :href="item.Path"
                                                    class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez le
                                                     voyageur</a>
                                             </div>
@@ -123,7 +123,7 @@
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a :href="item.has_courrier"
+                                                <a :href="item.path"
                                                    class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez
                                                     l'expediteur</a>
                                             </div>

@@ -14,12 +14,13 @@ Route::group(['middleware' => ['auth']], function () {Route::get('/contact/{user
 });
 
 Route::livewire('travels/create','travel-create')->name('travels.create')->middleware('auth');
-Route::livewire('packs/create','packs-create')->name('packs.create');
+Route::livewire('packs/create','coli-form')->name('packs.create');
 Route::livewire('messages','chat-message')->name('messages.index');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile/{user}', 'ProfileController@show')->name('profile.show');
 
 Route::get('/google', 'Auth\LoginController@redirectToProvider')->name('redirect');
 

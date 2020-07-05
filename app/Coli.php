@@ -50,7 +50,7 @@ class Coli extends Model
         'dateArrive',
         'published_at',
     ];
-    protected $appends = ['date_depart','date_arrive','id'];
+    protected $appends = ['date_depart','date_arrive','path'];
 
     public function user()
     {
@@ -75,7 +75,7 @@ class Coli extends Model
     public function getDateArriveAttribute($value){
         return Carbon::parse($value)->format('d.m.Y H:i');
     }
-    public function getIdAttribute () {
+    public function getPathAttribute () {
 
         return route('packs.reservation',['user' => $this->attributes['user_id'] , 'coli' => $this->attributes['id'] ]);
     }

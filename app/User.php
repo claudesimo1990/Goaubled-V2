@@ -2,14 +2,14 @@
 
 namespace App;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-
-class User extends Model implements Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use AuthenticableTrait;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

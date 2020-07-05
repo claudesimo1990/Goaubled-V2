@@ -40,9 +40,6 @@
 
 <!-- JavaScript Libraries -->
 <script  src="{{asset("/js/app.js")}}"></script>
-<script src="{{asset('/lib/jquery/jquery-migrate.min.js')}}"></script>
-<script src="{{asset('/lib/easing/easing.min.js')}}"></script>
-<script src="{{asset('/lib/superfish/hoverIntent.js')}}"></script>
 <script src="{{asset('/lib/superfish/superfish.min.js')}}"></script>
 <script src="{{asset('/lib/wow/wow.min.js')}}"></script>
 <script src="{{asset('/lib/owlcarousel/owl.carousel.min.js')}}"></script>
