@@ -7123,7 +7123,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nul.timeline[data-v-7e65462f] {\n    list-style-type: none;\n    position: relative;\n}\nul.timeline[data-v-7e65462f]:before {\n    content: ' ';\n    background: #d4d9df;\n    display: inline-block;\n    position: absolute;\n    left: 29px;\n    width: 2px;\n    height: 100%;\n    z-index: 400;\n}\nul.timeline > li[data-v-7e65462f] {\n    margin: 20px 0;\n    padding-left: 20px;\n}\nul.timeline > li[data-v-7e65462f]:before {\n    content: ' ';\n    background: white;\n    display: inline-block;\n    position: absolute;\n    border-radius: 50%;\n    border: 3px solid #8BC73D;\n    left: 20px;\n    width: 20px;\n    height: 20px;\n    z-index: 400;\n}\n.stars[data-v-7e65462f] {\n    width: 96% !important;\n    height: 40% !important;\n}\n.kilo-price[data-v-7e65462f] {\n    font-size: 17px;\n    font-weight: bold;\n    padding-top: 12px;\n    height: 50px;\n    width: 50px;\n    text-align: center;\n    background-color: #8bc73d;\n    color: white;\n    border-radius: 50%;\n    display: inline-block;\n    margin-top: -15px;\n}\n.contact-btn[data-v-7e65462f]{\n    margin-bottom: 36px !important;\n}\n", ""]);
+exports.push([module.i, "\nul.timeline[data-v-7e65462f] {\n    list-style-type: none;\n    position: relative;\n}\nul.timeline[data-v-7e65462f]:before {\n    content: ' ';\n    background: #d4d9df;\n    display: inline-block;\n    position: absolute;\n    left: 29px;\n    width: 2px;\n    height: 100%;\n    z-index: 400;\n}\nul.timeline > li[data-v-7e65462f] {\n    margin: 20px 0;\n    padding-left: 20px;\n}\nul.timeline > li[data-v-7e65462f]:before {\n    content: ' ';\n    background: white;\n    display: inline-block;\n    position: absolute;\n    border-radius: 50%;\n    border: 3px solid #8BC73D;\n    left: 20px;\n    width: 20px;\n    height: 20px;\n    z-index: 400;\n}\n.stars[data-v-7e65462f] {\n    width: 96% !important;\n    height: 40% !important;\n}\n.kilo-price[data-v-7e65462f] {\n    font-size: 17px;\n    font-weight: bold;\n    padding-top: 12px;\n    height: 50px;\n    width: 50px;\n    text-align: center;\n    background-color: #8bc73d;\n    color: white;\n    border-radius: 50%;\n    display: inline-block;\n        margin-top: -7px;\n}\n.contact-btn[data-v-7e65462f]{\n    margin-bottom: 36px !important;\n}\n.packs[data-v-7e65462f]{\n    background-color: #0c2e8a !important;\n}\n.pack-price[data-v-7e65462f]{\n    background-color: #0c2e8a !important;\n}\n", ""]);
 
 // exports
 
@@ -39446,7 +39446,10 @@ var render = function() {
                                   _vm._v(" " + _vm._s(item.kilo) + " Kg "),
                                   _c(
                                     "span",
-                                    { staticClass: "float-right kilo-price" },
+                                    {
+                                      staticClass:
+                                        "float-right kilo-price pack-price"
+                                    },
                                     [_vm._v(_vm._s(item.prix) + "€")]
                                   )
                                 ]
@@ -39473,7 +39476,7 @@ var render = function() {
                                     "a",
                                     {
                                       staticClass:
-                                        "btn btn-primary btn-lg btn-recherche contact-btn",
+                                        "btn btn-primary btn-lg btn-recherche contact-btn packs",
                                       attrs: { href: item.path }
                                     },
                                     [

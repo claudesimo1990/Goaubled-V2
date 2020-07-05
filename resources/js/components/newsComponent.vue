@@ -116,7 +116,7 @@
                                             <hr>
                                             <div class="notice notice-warning">
                                                 <strong>Poids du Packet :</strong> {{item.kilo}} Kg <span
-                                                class="float-right kilo-price">{{item.prix}}€</span>
+                                                class="float-right kilo-price pack-price">{{item.prix}}€</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
@@ -124,7 +124,7 @@
                                             </div>
                                             <div class="notice notice-success text-right">
                                                 <a :href="item.path"
-                                                   class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez
+                                                   class="btn btn-primary btn-lg btn-recherche contact-btn packs">Contactez
                                                     l'expediteur</a>
                                             </div>
                                         </div>
@@ -284,9 +284,15 @@
         color: white;
         border-radius: 50%;
         display: inline-block;
-        margin-top: -15px;
+            margin-top: -7px;
     }
     .contact-btn{
         margin-bottom: 36px !important;
+    }
+    .packs{
+        background-color: #0c2e8a !important;
+    }
+    .pack-price{
+        background-color: #0c2e8a !important;
     }
 </style>
