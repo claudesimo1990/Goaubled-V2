@@ -14,7 +14,7 @@ Route::group(['middleware' => ['auth']], function () {Route::get('/contact/{user
 });
 
 Route::livewire('travels/create','travel-create')->name('travels.create')->middleware('auth');
-Route::livewire('packs/create','coli-form')->name('packs.create');
+Route::livewire('packs/create','coli-form')->name('packs.create')->middleware('auth');
 Route::livewire('messages','chat-message')->name('messages.index');
 
 Auth::routes(['verify' => true]);
