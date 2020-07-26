@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\User;
+use App\Mail\welcome_email;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Kdion4891\LaravelLivewireForms\Field;
 use Kdion4891\LaravelLivewireForms\FormComponent;
 
@@ -25,12 +27,14 @@ class RegisterForm extends FormComponent
         $data = $this->form_data;
         $file = $data['avatar'][0]['file'];
 
-        User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'avatar' => "storage/$file",
             'password' => Hash::make($data['password']),
         ]);
+
+        Mail::to($user->email)->send(new welcome_email($user));
     }
 
     public function saveAndStayResponse()

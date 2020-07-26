@@ -71,6 +71,9 @@
             return {
 
             }
+        },
+        mounted: function() {
+            
         }
 
 

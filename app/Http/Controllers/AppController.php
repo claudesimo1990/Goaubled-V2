@@ -15,9 +15,6 @@ class AppController extends Controller
     public function index(){
 
         $latest_news = Travel::limit(4)->get();
-        //$user = User::find(1);
-        //$event = new PresentEvent($user);
-       // event();
         return view('App.accueil',compact('latest_news'));
     }
     public function annonces() {

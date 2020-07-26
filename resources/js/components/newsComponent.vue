@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div v-for="item in allnews" :key="item.id">
+                    <div v-for="item in allnews" :key="item.id + item.name">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
@@ -124,7 +124,7 @@
                                             </div>
                                             <div class="notice notice-success text-right">
                                                 <a :href="item.path"
-                                                   class="btn btn-primary btn-lg btn-recherche contact-btn packs">Contactez
+                                                   class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez
                                                     l'expediteur</a>
                                             </div>
                                         </div>
@@ -290,9 +290,6 @@
         margin-bottom: 36px !important;
     }
     .packs{
-        background-color: #0c2e8a !important;
-    }
-    .pack-price{
-        background-color: #0c2e8a !important;
+        background-color:  #8bc73d !important;
     }
 </style>

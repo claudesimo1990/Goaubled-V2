@@ -7,20 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ReviewNotification extends Mailable
+class welcome_email extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $coli;
-
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($coli)
+    public function __construct($data)
     {
-        $this->coli = $coli;
+        $this->data = $data;
     }
 
     /**
@@ -30,6 +29,6 @@ class ReviewNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->markdown('emails.welcome_email');
     }
 }
