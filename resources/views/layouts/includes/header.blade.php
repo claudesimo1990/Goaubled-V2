@@ -9,7 +9,7 @@
     </div>
 
     <div class="owl-carousel" id="intro-carousel">
-        <div class="item" style="background-image: url('img/3446010.jpg');"></div>
+        <div class="item" style="background-image: url('img/28892.jpg');"></div>
     </div>
 
 </section><!-- #intro -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Coli;
 use App\User;
 use App\Travel;
 use App\Message;
@@ -13,8 +14,12 @@ use Illuminate\Support\Facades\Auth;
 class AppController extends Controller
 {
     public function index(){
+        
+        $travels = Travel::latest()->limit(2)->get();
+        $colis = Coli::latest()->limit(2)->get();
 
-        $latest_news = Travel::limit(4)->get();
+        $latest_news = $travels->concat($colis);
+        
         return view('App.accueil',compact('latest_news'));
     }
     public function annonces() {
