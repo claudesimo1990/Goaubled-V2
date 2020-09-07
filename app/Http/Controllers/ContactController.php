@@ -27,7 +27,7 @@ class ContactController extends Controller
      */
     public function showUserTravels(User $user,Travel $travel)
     {
-        return view('app.bookingPage',['user' => $user,'travel' => $travel,'log_user' => Auth::user()->id]);
+        return view('App.bookingPage',['user' => $user,'travel' => $travel,'log_user' => Auth::user()->id]);
     }
 
     /**
@@ -37,7 +37,7 @@ class ContactController extends Controller
      */
     public function showUserPacks(User $user,Coli $coli)
     {
-        return view('app.packBookingPage',['user' => $user,'pack' => $coli]);
+        return view('App.packBookingPage',['user' => $user,'pack' => $coli]);
     }
 
     /**
