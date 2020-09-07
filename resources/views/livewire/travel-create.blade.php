@@ -76,7 +76,7 @@
                                     <input wire:model='photoBielletAvion' type="file" class="custom-file-input"
                                            id="inputGroupFile02">
                                     <label class="custom-file-label" for="inputGroupFile02">Inserer votre billet
-                                        d'Avion</label>
+                                        d'Avion ... IMG, JPG, PNG</label>
                                 </div>
                             </div>
                             @error('photoBielletAvion') <span class="error">{{ $message }}</span> @enderror
@@ -115,11 +115,11 @@
                     </div>
                     <div class="form-group my-2">
                         <label class="font-weight-bold" for="exampleFormControlTextarea1">Voulez vous ecrire
-                            autre chose sur votre voyager?</label>
+                            autre chose sur votre voyage?</label>
                         <textarea wire:model='content' class="form-control" id="exampleFormControlTextarea1"
                                   rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary my-2 btn-recherche">Poster</button>
+                    <button type="submit" class="btn btn-primary my-2 btn-recherche">Poster votre voyage</button>
                 </form>
 
             </div>

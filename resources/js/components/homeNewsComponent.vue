@@ -11,7 +11,7 @@
                             <div class="frontside">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <div class="mt-2"><img class="user--news--avatar" :src="item.user_avatar" alt="card image" width="100" height="100"></div>
+                                        <div class="mt-2"><img class="user--news--avatar" :src="'storage/UsersAvatars/' + item.user_avatar" alt="card image" width="100" height="100"></div>
                                         <div class="card-title text-uppercase font-weight-bold">{{ item.vilDepart }}<i class="fas fa-long-arrow-alt-right px-1"></i>{{ item.vilArrive }}</div>
                                         <div class="my-4 d-flex flex-column">
                                             <div class="my-2 card-text mt-0">Date de Depart: <span>{{ item.date_depart }}</span></div>

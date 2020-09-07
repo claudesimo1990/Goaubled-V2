@@ -51,6 +51,11 @@ class PacksCreate extends Component
 
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */    
+    /**
+     * submit
+     *
+     * @return void
      */
     public function submit()
     {
@@ -85,7 +90,12 @@ class PacksCreate extends Component
         flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');
         return redirect('/news');
     }
-
+    
+    /**
+     * render
+     *
+     * @return void
+     */
     public function render()
     {
         return view('livewire.packs-create');

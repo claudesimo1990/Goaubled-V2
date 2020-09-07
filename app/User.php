@@ -2,10 +2,15 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Coli;
+use App\Travel;
+use App\Comment;
+use App\Profile;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -49,29 +54,64 @@ class User extends Authenticatable implements MustVerifyEmail
      * The attributes that should be mutated to dates.
      *
      * @var array
+     */    
+    /**
+     * dates
+     *
+     * @var array
      */
     protected $dates = [
         'email_verified_at',
     ];
 
-
+    
+    /**
+     * profile
+     *
+     * @return void
+     */
     public function profile()
     {
         return $this->hasOne(\App\Profile::class);
     }
-
+    
+    /**
+     * colis
+     *
+     * @return void
+     */
     public function colis()
     {
         return $this->hasMany(\App\Coli::class);
     }
-
+    
+    /**
+     * travels
+     *
+     * @return void
+     */
     public function travels()
     {
         return $this->hasMany(\App\Travel::class);
     }
-
+    
+    /**
+     * comments
+     *
+     * @return void
+     */
     public function comments()
     {
         return $this->hasMany(\App\Comment::class);
+    }
+    
+    /**
+     * getAvatarAttribute
+     *
+     * @return void
+     */
+    public function getAvatarPathAttribute()
+    {
+        return Storage::disk('public');
     }
 }

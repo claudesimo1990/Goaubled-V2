@@ -45,7 +45,7 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="showProfile(item.User_id)">
-                                                <img :src="item.user_avatar ? item.user_avatar : '/img/avatar.jpg' "
+                                                <img :src="item.user_avatar ? 'storage/UsersAvatars/' + item.user_avatar : '/img/avatar.jpg' "
                                                      class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
@@ -58,6 +58,9 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <p class="">Membre verifié <span class="fa fa-star verify"></span></p>
+                                            </div>
+                                            <div class="icon--card">
+                                                <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
                                             </div>
                                         </div>
                                         <div class="col-md-9">
@@ -96,11 +99,23 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="contactUser(item.User_id)">
-                                                <img :src="item.user_avatar ?  item.user_avatar : '/img/pack.jpeg' "
+                                                <img :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
                                                      class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
                                             </a>
+                                            <div class="notice justify-center text-center notice-success stars">
+                                                <p class="strong">Bewertung</p>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <p class="">Membre verifié <span class="fa fa-star verify"></span></p>
+                                            </div>
+                                            <div class="icon--card">
+                                                <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
+                                            </div>
                                         </div>
                                         <div class="col-md-9">
                                             <ul class="timeline">
@@ -286,10 +301,15 @@
         display: inline-block;
             margin-top: -7px;
     }
-    .contact-btn{
+    .contact-btn {
         margin-bottom: 36px !important;
     }
-    .packs{
+    .packs {
         background-color:  #8bc73d !important;
+    }
+    .icon--card {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
     }
 </style>

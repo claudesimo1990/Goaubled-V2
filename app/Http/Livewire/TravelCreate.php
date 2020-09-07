@@ -3,10 +3,12 @@
 namespace App\Http\Livewire;
 
 use App\Travel;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use MercurySeries\Flashy\Flashy;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic;
 
 /**
  * Class TravelCreate
@@ -69,6 +71,10 @@ class TravelCreate extends Component
             'photoBielletAvion' => 'required',
         ]);
 
+        $filename = md5($this->vilDepart . $this->vilArrive).'.jpg';
+        $img = ImageManagerStatic::make($this->photoBielletAvion)->encode('jpg');
+        Storage::disk('public')->put('FlysTicket/'.$filename, $img);
+
         Travel::create([
             'name' => Auth::user()->name,
             'user_id' => Auth::id(),
@@ -84,7 +90,7 @@ class TravelCreate extends Component
             'kiloAvalable' => $this->kiloAvalable,
             'prixKilo' => $this->prixKilo,
             'compagnie' => $this->compagnie,
-            'photoBielletAvion' => $this->photoBielletAvion,
+            'photoBielletAvion' => $filename,
         ]);
 
         flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');

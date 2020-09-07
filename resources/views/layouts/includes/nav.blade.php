@@ -20,7 +20,7 @@
                 <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}"><i class="fas fa-road mr-1"></i>Proposer un trajet</a></li>
                 <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}"><i class="fas fa-people-carry mr-1"></i>Expedier un colis</a></li>
 
-                    <li class="ml-3 user__bild"><img src="{{Auth::user()->avatar ? asset(Auth::user()->avatar) :  asset('/img/logo.png') }}" class="user__bild"></li>
+                    <li class="ml-3 user__bild"><img src="{{Auth::user()->avatar ? asset('storage/UsersAvatars/'.Auth::user()->avatar) :  asset('/img/logo.png') }}" class="user__bild"></li>
                     <li class="nav-item dropdown {{ (request()->is('home')) ? 'menu-active' : '' }}">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -103,9 +103,7 @@
               <a class="dark-grey-text" href="#!">FAQ</a>
             </p>
             <p>
-              <a class="dark-grey-text" (click)="goComent()">Comment ca marche ?</a>
-  
-  
+              <a class="dark-grey-text" href="#">Comment ca marche ?</a>
             </p>
     
           </div>
@@ -116,16 +114,14 @@
             <h6 class="text-uppercase font-weight-bold">Informations</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="dark-grey-text" href="#!">Charte de confidential</a>
+              <a class="dark-grey-text" href="#">Charte de confidential</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">conditions generales d'utilisation</a>
+              <a class="dark-grey-text" href="#">conditions generales d'utilisation</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">Contacts</a>
-            </p>
-        
-    
+              <a class="dark-grey-text" href="#">Contacts</a>
+            </p>  
           </div>
           <!-- Grid column -->
           <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
@@ -152,7 +148,8 @@
   
     <!-- Copyright -->
     <div class="footer-copyright text-center text-black py-3">© 2020 Copyright:
-        <a class="dark-grey-text" href="{{ route('accueil') }}">goaubled.com</a>
+        <a class="dark-grey-text" href="{{ route('accueil') }}">goaubled.com</a> | 
+        <a class="dark-grey-text" href="#">Impressum</a> | <a class="dark-grey-text" href="#">AGB</a>
     </div>
     <!-- Copyright -->
   

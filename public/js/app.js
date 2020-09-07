@@ -2467,6 +2467,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -7296,7 +7311,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nul.timeline[data-v-7e65462f] {\n    list-style-type: none;\n    position: relative;\n}\nul.timeline[data-v-7e65462f]:before {\n    content: ' ';\n    background: #d4d9df;\n    display: inline-block;\n    position: absolute;\n    left: 29px;\n    width: 2px;\n    height: 100%;\n    z-index: 400;\n}\nul.timeline > li[data-v-7e65462f] {\n    margin: 20px 0;\n    padding-left: 20px;\n}\nul.timeline > li[data-v-7e65462f]:before {\n    content: ' ';\n    background: white;\n    display: inline-block;\n    position: absolute;\n    border-radius: 50%;\n    border: 3px solid #8BC73D;\n    left: 20px;\n    width: 20px;\n    height: 20px;\n    z-index: 400;\n}\n.stars[data-v-7e65462f] {\n    width: 96% !important;\n    height: 40% !important;\n}\n.kilo-price[data-v-7e65462f] {\n    font-size: 17px;\n    font-weight: bold;\n    padding-top: 12px;\n    height: 50px;\n    width: 50px;\n    text-align: center;\n    background-color: #8bc73d;\n    color: white;\n    border-radius: 50%;\n    display: inline-block;\n        margin-top: -7px;\n}\n.contact-btn[data-v-7e65462f]{\n    margin-bottom: 36px !important;\n}\n.packs[data-v-7e65462f]{\n    background-color:  #8bc73d !important;\n}\n", ""]);
+exports.push([module.i, "\nul.timeline[data-v-7e65462f] {\n    list-style-type: none;\n    position: relative;\n}\nul.timeline[data-v-7e65462f]:before {\n    content: ' ';\n    background: #d4d9df;\n    display: inline-block;\n    position: absolute;\n    left: 29px;\n    width: 2px;\n    height: 100%;\n    z-index: 400;\n}\nul.timeline > li[data-v-7e65462f] {\n    margin: 20px 0;\n    padding-left: 20px;\n}\nul.timeline > li[data-v-7e65462f]:before {\n    content: ' ';\n    background: white;\n    display: inline-block;\n    position: absolute;\n    border-radius: 50%;\n    border: 3px solid #8BC73D;\n    left: 20px;\n    width: 20px;\n    height: 20px;\n    z-index: 400;\n}\n.stars[data-v-7e65462f] {\n    width: 96% !important;\n    height: 40% !important;\n}\n.kilo-price[data-v-7e65462f] {\n    font-size: 17px;\n    font-weight: bold;\n    padding-top: 12px;\n    height: 50px;\n    width: 50px;\n    text-align: center;\n    background-color: #8bc73d;\n    color: white;\n    border-radius: 50%;\n    display: inline-block;\n        margin-top: -7px;\n}\n.contact-btn[data-v-7e65462f] {\n    margin-bottom: 36px !important;\n}\n.packs[data-v-7e65462f] {\n    background-color:  #8bc73d !important;\n}\n.icon--card[data-v-7e65462f] {\n    position: absolute;\n    bottom: 10px;\n    left: 0;\n}\n", ""]);
 
 // exports
 
@@ -39323,7 +39338,9 @@ var render = function() {
                                   _c("img", {
                                     staticClass: "user--news--avatar",
                                     attrs: {
-                                      src: item.user_avatar,
+                                      src:
+                                        "storage/UsersAvatars/" +
+                                        item.user_avatar,
                                       alt: "card image",
                                       width: "100",
                                       height: "100"
@@ -39900,7 +39917,8 @@ var render = function() {
                                       "testimonial-img rund user_bild",
                                     attrs: {
                                       src: item.user_avatar
-                                        ? item.user_avatar
+                                        ? "storage/UsersAvatars/" +
+                                          item.user_avatar
                                         : "/img/avatar.jpg",
                                       alt: ""
                                     }
@@ -39922,7 +39940,22 @@ var render = function() {
                                 ]
                               ),
                               _vm._v(" "),
-                              _vm._m(0, true)
+                              _vm._m(0, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "icon--card" }, [
+                                _c("img", {
+                                  staticClass: "mt-2",
+                                  attrs: {
+                                    src:
+                                      item.categorie_id == 1
+                                        ? "/img/cube-outline.svg"
+                                        : "/img/icons8-airport-100.png",
+                                    alt: "SVG mit img Tag laden",
+                                    width: "50",
+                                    height: "50"
+                                  }
+                                })
+                              ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-9" }, [
@@ -40053,7 +40086,8 @@ var render = function() {
                                       "testimonial-img rund user_bild",
                                     attrs: {
                                       src: item.user_avatar
-                                        ? item.user_avatar
+                                        ? "storage/UsersAvatars/" +
+                                          item.user_avatar
                                         : "/img/pack.jpeg",
                                       alt: ""
                                     }
@@ -40073,7 +40107,24 @@ var render = function() {
                                     ]
                                   )
                                 ]
-                              )
+                              ),
+                              _vm._v(" "),
+                              _vm._m(1, true),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "icon--card" }, [
+                                _c("img", {
+                                  staticClass: "mt-2",
+                                  attrs: {
+                                    src:
+                                      item.categorie_id == 1
+                                        ? "/img/cube-outline.svg"
+                                        : "/img/icons8-airport-100.png",
+                                    alt: "SVG mit img Tag laden",
+                                    width: "50",
+                                    height: "50"
+                                  }
+                                })
+                              ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-9" }, [
@@ -40178,6 +40229,33 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "notice justify-center text-center notice-success stars" },
+      [
+        _c("p", { staticClass: "strong" }, [_vm._v("Bewertung")]),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star checked" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star checked" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star checked" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "fa fa-star" }),
+        _vm._v(" "),
+        _c("p", {}, [
+          _vm._v("Membre verifié "),
+          _c("span", { staticClass: "fa fa-star verify" })
+        ])
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
