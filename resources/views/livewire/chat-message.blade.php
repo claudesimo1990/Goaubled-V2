@@ -17,7 +17,11 @@
                                 <li class="active itemclass" wire:click="findUser({{$user->id}})">
                                     <div class="d-flex bd-highlight">
                                         <div class="img_cont">
-                                            <img src="{{$user->avatar}}" class="rounded-circle user_img">
+                                            @if (Auth::user()->avatar_original)
+                                                <img src="{{Auth::user()->avatar_original}}" class="rounded-circle user_img">
+                                            @else
+                                                <img src="{{Auth::user()->avatar ? asset('storage/UsersAvatars/'.Auth::user()->avatar) :  asset('/img/logo.png') }}" class="rounded-circle user_img">
+                                            @endif
                                             <span class="online_icon"></span>
                                         </div>
                                         <div class="user_info">
@@ -41,8 +45,7 @@
                     <div class="card-header msg_head">
                         <div class="d-flex bd-highlight">
                             <div class="img_cont">
-                                <img src="{{$fromUser['avatar']}}"
-                                     class="rounded-circle user_img">
+                                <img src="{{$fromUser['avatar']}}"class="rounded-circle user_img">
                                 <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
@@ -65,8 +68,7 @@
                             @if($message->user_id != $logUser->id)
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="{{$logUser->avatar}}"
-                                         class="rounded-circle user_img_msg">
+                                    <img src="{{$logUser->avatar}}" class="rounded-circle user_img_msg">
                                 </div>
                                 <div class="msg_cotainer">
                                     <div class="text-message">{{$message->content}}</div>
