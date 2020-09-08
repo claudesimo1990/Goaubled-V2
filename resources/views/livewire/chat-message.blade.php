@@ -45,7 +45,7 @@
                     <div class="card-header msg_head">
                         <div class="d-flex bd-highlight">
                             <div class="img_cont">
-                                <img src="{{asset('storage/UsersAvatars/' . $fromUser['avatar']}}"class="rounded-circle user_img">
+                                <img src="{{$fromUser['avatar']}}"class="rounded-circle user_img">
                                 <span class="online_icon"></span>
                             </div>
                             <div class="user_info">
@@ -68,7 +68,7 @@
                             @if($message->user_id != $logUser->id)
                             <div class="d-flex justify-content-start mb-4">
                                 <div class="img_cont_msg">
-                                    <img src="{{asset('storage/UsersAvatars/' . $logUser->avatar}}" class="rounded-circle user_img_msg">
+                                    <img src="{{$logUser->avatar}}" class="rounded-circle user_img_msg">
                                 </div>
                                 <div class="msg_cotainer">
                                     <div class="text-message">{{$message->content}}</div>
@@ -82,7 +82,7 @@
                                     <span class="msg_time_send">8:55 AM, Today</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="{{asset('storage/UsersAvatars/' . $fromUser['avatar']}}"
+                                    <img src="{{$fromUser['avatar']}}"
                                         class="rounded-circle user_img_msg">
                                 </div>
                             </div>
