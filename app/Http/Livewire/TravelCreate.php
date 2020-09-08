@@ -82,6 +82,7 @@ class TravelCreate extends Component
             'hasCourrier' => 1,
             'prixCourrier' => 0,
             'user_avatar' => Auth::user()->avatar,
+            'user_avatar_original' => Auth::user()->avatar_original,
             'vilDepart' => $this->vilDepart,
             'vilArrive' => $this->vilArrive,
             'date_depart' => $this->date_depart,

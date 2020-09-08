@@ -26,7 +26,7 @@ class PackController extends Controller
      */
     public function create()
     {
-        return view('App.packs.create');
+        return view('App.packsCreate');
     }
 
     /**

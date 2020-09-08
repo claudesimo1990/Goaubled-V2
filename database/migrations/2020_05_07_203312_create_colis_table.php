@@ -21,12 +21,15 @@ class CreateColisTable extends Migration
             $table->string('categorie_id');
             $table->string('vilDepart');
             $table->string('user_avatar')->nullable();
+            $table->string('user_avatar_original')->nullable();
             $table->string('vilArrive');
             $table->dateTime('dateDepart');
             $table->longText('content');
             $table->integer('kilo');
             $table->integer('prix');
-            $table->longText('photo');
+            $table->integer('quantity');
+            $table->longText('photo')->nullable();
+            $table->string('nameColi');
             $table->string('path')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();

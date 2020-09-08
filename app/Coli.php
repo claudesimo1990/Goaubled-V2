@@ -14,12 +14,16 @@ class Coli extends Model
      */
     protected $fillable = [
         'name',
-        'userId',
+        'user_id',
         'categorie_id',
+        'user_avatar',
+        'user_avatar_original',
         'vilDepart',
         'vilArrive',
         'dateDepart',
         'dateArrive',
+        'quantity',
+        'nameColi',
         'content',
         'kilo',
         'prix',

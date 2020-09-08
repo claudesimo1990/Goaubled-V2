@@ -21,6 +21,7 @@ class CreateTravelsTable extends Migration
             $table->string('categorie_id')->default(1);
             $table->string('vilDepart');
             $table->string('user_avatar')->nullable();
+            $table->string('user_avatar_original')->nullable();
             $table->string('vilArrive');
             $table->dateTime('date_depart');
             $table->dateTime('date_arrive');

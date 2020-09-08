@@ -1,10 +1,6 @@
-<div style="background-color: #f7f1e3;color:#8bc73d ">
+<div>
     <div class="card-body">
         <div class="row text-center">
-            <div class="social-btn col-md mb-5">
-                <a href="{{route('facebook')}}" class="btn btn-primary"><i class="fab fa-facebook"></i>Facebook</a>
-                <a href="{{route('redirect')}}" class="btn btn-danger"><i class="fab fa-google"></i>Google</a>
-            </div>
             @foreach($fields as $field)
                     <div class="col-md-12">
                         @if($field->view)

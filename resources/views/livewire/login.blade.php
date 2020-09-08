@@ -35,8 +35,8 @@
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">se connecter</button>
               <a class="d-block text-center mt-2" href="{{ route('register') }}">S'inscrire</a>
               <hr class="my-4">
-              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i>S'inscrire avec Google</button>
-              <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i>S'inscrire avec Facebook</button>
+              <a class="btn btn-lg btn-google btn-block text-uppercase" href="{{route('google')}}"><i class="fab fa-google mr-2"></i>S'inscrire avec Google</a>
+              <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{ route('facebook') }}"><i class="fab fa-facebook-f mr-2"></i>S'inscrire avec Facebook</a>
             </form>
           </div>
         </div>

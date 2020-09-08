@@ -76,17 +76,10 @@ class LoginController extends Controller
             auth()->login($existingUser, true);
             flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
         } else {
-            // create a new user
-            $newUser = new User;
-            $newUser->name = $user->name;
-            $newUser->email = $user->email;
-            $newUser->google_id = $user->id;
-            $newUser->avatar = $user->avatar;
-            $newUser->avatar_original = $user->avatar_original;
-            $newUser->save();
+            $newUser = User::create(['name' => $user->name, 'email' => $user->email, 'avatar' => $user->avatar, 'google_id' => $user->id, 'avatar_original' => $user->avatar_original]);
             auth()->login($newUser, true);
         }
         flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
-        return redirect()->to('/home');
+        return redirect()->route('accueil');
     }
 }

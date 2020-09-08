@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Coli;
 use App\Travel;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use MercurySeries\Flashy\Flashy;
+use Illuminate\Support\Facades\Auth;
 
 class PacksCreate extends Component
 {
@@ -23,7 +24,7 @@ class PacksCreate extends Component
     /**
      * @var
      */
-    public $date_depart;
+    public $dateDepart;
     /**
      * @var
      */
@@ -35,7 +36,7 @@ class PacksCreate extends Component
     /**
      * @var
      */
-    public $kiloAvalable;
+    public $kilo;
     /**
      * @var
      */
@@ -47,7 +48,28 @@ class PacksCreate extends Component
     /**
      * @var
      */
-    public $prixKilo;
+    public $prix;
+    
+    /**
+     * quantity
+     *
+     * @var mixed
+     */
+    public $quantity;
+    
+    /**
+     * photo
+     *
+     * @var mixed
+     */
+    public $photo;
+    
+    /**
+     * nameColi
+     *
+     * @var mixed
+     */
+    public $nameColi;
 
     /**
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -62,29 +84,31 @@ class PacksCreate extends Component
         $this->validate([
             'vilDepart' => 'required',
             'vilArrive' => 'required',
-            'date_depart' => 'required',
-            'date_arrive' => 'required',
-            'kiloAvalable' => 'required',
-            'prixKilo' => 'required',
-            'compagnie' => 'required',
-            'photoBielletAvion' => 'required',
+            'dateDepart' => 'required',
+            'quantity' => 'required',
+            'nameColi' => 'required',
+            'kilo' => 'required',
+            'prix' => 'required',
+            'content' => 'required',
         ]);
 
-        Travel::create([
+        Coli::create([
             'name' => Auth::user()->name,
-            'User_id' => Auth::id(),
-            'categorie_id' => 2,
+            'nameColi' => $this->nameColi, 
+            'user_id' => Auth::user()->id,
+            'user_avatar' => Auth::user()->avatar,
+            'user_avatar_original' => Auth::user()->avatar_original,
+            'categorie_id' => 1,
             'hasCourrier' => 1,
             'prixCourrier' => 0,
             'vilDepart' => $this->vilDepart,
             'vilArrive' => $this->vilArrive,
-            'date_depart' => $this->date_depart,
-            'date_arrive' => $this->date_arrive,
+            'dateDepart' => $this->dateDepart,
             'content' => $this->content,
-            'kiloAvalable' => $this->kiloAvalable,
-            'prixKilo' => $this->prixKilo,
-            'compagnie' => $this->compagnie,
-            'photoBielletAvion' => $this->photoBielletAvion,
+            'kilo' => $this->kilo,
+            'prix' => $this->prix,
+            'quantity' => $this->quantity,
+            'photo' => $this->photo,
         ]);
 
         flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');

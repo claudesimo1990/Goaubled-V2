@@ -2140,6 +2140,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["news", "background"],
   data: function data() {
@@ -2327,6 +2330,10 @@ var _methods;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -39335,17 +39342,27 @@ var render = function() {
                               { staticClass: "card-body text-center" },
                               [
                                 _c("div", { staticClass: "mt-2" }, [
-                                  _c("img", {
-                                    staticClass: "user--news--avatar",
-                                    attrs: {
-                                      src:
-                                        "storage/UsersAvatars/" +
-                                        item.user_avatar,
-                                      alt: "card image",
-                                      width: "100",
-                                      height: "100"
-                                    }
-                                  })
+                                  item.user_avatar_original != null
+                                    ? _c("img", {
+                                        staticClass: "user--news--avatar",
+                                        attrs: {
+                                          src: item.user_avatar_original,
+                                          alt: "card image",
+                                          width: "100",
+                                          height: "100"
+                                        }
+                                      })
+                                    : _c("img", {
+                                        staticClass: "user--news--avatar",
+                                        attrs: {
+                                          src:
+                                            "storage/UsersAvatars/" +
+                                            item.user_avatar,
+                                          alt: "card image",
+                                          width: "100",
+                                          height: "100"
+                                        }
+                                      })
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -39881,346 +39898,376 @@ var render = function() {
           "div",
           { staticClass: "col-md-9" },
           _vm._l(_vm.allnews, function(item) {
-            return _c("div", { key: item.id + item.name }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.travel.show,
-                      expression: "travel.show"
-                    }
-                  ]
-                },
-                [
-                  item.categorie_id == 2
-                    ? _c("div", { staticClass: "container py-3" }, [
-                        _c("div", { staticClass: "card runde-ecke" }, [
-                          _c("div", { staticClass: "row shadow" }, [
-                            _c("div", { staticClass: "col-md-3" }, [
-                              _c(
-                                "a",
-                                {
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.showProfile(item.User_id)
+            return _c(
+              "div",
+              {
+                key: item.id + item.user_avatar + item.name + item.date_depart
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.travel.show,
+                        expression: "travel.show"
+                      }
+                    ]
+                  },
+                  [
+                    item.categorie_id == 2
+                      ? _c("div", { staticClass: "container py-3" }, [
+                          _c("div", { staticClass: "card runde-ecke" }, [
+                            _c("div", { staticClass: "row shadow" }, [
+                              _c("div", { staticClass: "col-md-3" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.showProfile(item.User_id)
+                                      }
                                     }
-                                  }
-                                },
-                                [
-                                  _c("img", {
-                                    staticClass:
-                                      "testimonial-img rund user_bild",
-                                    attrs: {
-                                      src: item.user_avatar
-                                        ? "storage/UsersAvatars/" +
-                                          item.user_avatar
-                                        : "/img/avatar.jpg",
-                                      alt: ""
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "font-italic font-weight-bold pl-5 mt-0 pb-2"
-                                    },
-                                    [
-                                      _vm._v(
-                                        _vm._s(item.name) +
-                                          "\n                                            "
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(0, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "icon--card" }, [
-                                _c("img", {
-                                  staticClass: "mt-2",
-                                  attrs: {
-                                    src:
-                                      item.categorie_id == 1
-                                        ? "/img/cube-outline.svg"
-                                        : "/img/icons8-airport-100.png",
-                                    alt: "SVG mit img Tag laden",
-                                    width: "50",
-                                    height: "50"
-                                  }
-                                })
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-md-9" }, [
-                              _c("ul", { staticClass: "timeline" }, [
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    { attrs: { target: "_blank", href: "#" } },
-                                    [_vm._v(_vm._s(item.vilDepart))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "float-right pr-4",
-                                      attrs: { href: "#" }
-                                    },
-                                    [_vm._v(_vm._s(item.date_depart))]
-                                  )
-                                ]),
+                                  },
+                                  [
+                                    _vm.user_avatar_original != null
+                                      ? _c("img", {
+                                          staticClass:
+                                            "testimonial-img rund user_bild",
+                                          attrs: {
+                                            src: item.user_avatar_original,
+                                            alt: ""
+                                          }
+                                        })
+                                      : _c("img", {
+                                          staticClass:
+                                            "testimonial-img rund user_bild",
+                                          attrs: {
+                                            src: item.user_avatar
+                                              ? "storage/UsersAvatars/" +
+                                                item.user_avatar
+                                              : "/img/pack.jpeg",
+                                            alt: ""
+                                          }
+                                        }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "font-italic font-weight-bold pl-5 mt-0 pb-2"
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(item.name) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("li", [
-                                  _c("a", { attrs: { href: "#" } }, [
-                                    _vm._v(_vm._s(item.vilArrive))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "float-right pr-4",
-                                      attrs: { href: "#" }
-                                    },
-                                    [_vm._v(_vm._s(item.date_arrive))]
-                                  )
+                                _vm._m(0, true),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "icon--card" }, [
+                                  _c("img", {
+                                    staticClass: "mt-2",
+                                    attrs: {
+                                      src:
+                                        item.categorie_id == 1
+                                          ? "/img/cube-outline.svg"
+                                          : "/img/icons8-airport-100.png",
+                                      alt: "SVG mit img Tag laden",
+                                      width: "50",
+                                      height: "50"
+                                    }
+                                  })
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("hr"),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "notice notice-warning" },
-                                [
-                                  _c("strong", [_vm._v("Kilo disponibles :")]),
-                                  _vm._v(
-                                    " " + _vm._s(item.kiloAvalable) + " Kg "
-                                  ),
-                                  _c(
-                                    "span",
-                                    { staticClass: "float-right kilo-price" },
-                                    [_vm._v(_vm._s(item.prixKilo) + "€")]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "notice notice-warning" },
-                                [
-                                  _c("strong", [_vm._v("Message : ")]),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _c("ul", { staticClass: "timeline" }, [
+                                  _c("li", [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { target: "_blank", href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(item.vilDepart))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "float-right pr-4",
+                                        attrs: { href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(item.date_depart))]
+                                    )
+                                  ]),
                                   _vm._v(" "),
-                                  _c("p", [_vm._v(_vm._s(item.content))])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "notice notice-success text-right"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary btn-lg btn-recherche contact-btn",
-                                      attrs: { href: item.Path }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "Contactez le\n                                                voyageur"
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
+                                  _c("li", [
+                                    _c("a", { attrs: { href: "#" } }, [
+                                      _vm._v(_vm._s(item.vilArrive))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "float-right pr-4",
+                                        attrs: { href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(item.date_arrive))]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("hr"),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "notice notice-warning" },
+                                  [
+                                    _c("strong", [
+                                      _vm._v("Kilo disponibles :")
+                                    ]),
+                                    _vm._v(
+                                      " " + _vm._s(item.kiloAvalable) + " Kg "
+                                    ),
+                                    _c(
+                                      "span",
+                                      { staticClass: "float-right kilo-price" },
+                                      [_vm._v(_vm._s(item.prixKilo) + "€")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "notice notice-warning" },
+                                  [
+                                    _c("strong", [_vm._v("Message : ")]),
+                                    _vm._v(" "),
+                                    _c("p", [_vm._v(_vm._s(item.content))])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "notice notice-success text-right"
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn btn-primary btn-lg btn-recherche contact-btn",
+                                        attrs: { href: item.Path }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Contactez le\n                                                voyageur"
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
                             ])
                           ])
                         ])
-                      ])
-                    : _vm._e()
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.pack.show,
-                      expression: "pack.show"
-                    }
+                      : _vm._e()
                   ]
-                },
-                [
-                  item.categorie_id == 1
-                    ? _c("div", { staticClass: "container py-3" }, [
-                        _c("div", { staticClass: "card runde-ecke" }, [
-                          _c("div", { staticClass: "row shadow" }, [
-                            _c("div", { staticClass: "col-md-3" }, [
-                              _c(
-                                "a",
-                                {
-                                  attrs: { href: "#" },
-                                  on: {
-                                    click: function($event) {
-                                      $event.preventDefault()
-                                      return _vm.contactUser(item.User_id)
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.pack.show,
+                        expression: "pack.show"
+                      }
+                    ]
+                  },
+                  [
+                    item.categorie_id == 1
+                      ? _c("div", { staticClass: "container py-3" }, [
+                          _c("div", { staticClass: "card runde-ecke" }, [
+                            _c("div", { staticClass: "row shadow" }, [
+                              _c("div", { staticClass: "col-md-3" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: { href: "#" },
+                                    on: {
+                                      click: function($event) {
+                                        $event.preventDefault()
+                                        return _vm.contactUser(item.User_id)
+                                      }
                                     }
-                                  }
-                                },
-                                [
-                                  _c("img", {
-                                    staticClass:
-                                      "testimonial-img rund user_bild",
-                                    attrs: {
-                                      src: item.user_avatar
-                                        ? "storage/UsersAvatars/" +
-                                          item.user_avatar
-                                        : "/img/pack.jpeg",
-                                      alt: ""
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "font-italic font-weight-bold pl-5 mt-0 pb-2"
-                                    },
-                                    [
-                                      _vm._v(
-                                        _vm._s(item.name) +
-                                          "\n                                            "
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _vm._m(1, true),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "icon--card" }, [
-                                _c("img", {
-                                  staticClass: "mt-2",
-                                  attrs: {
-                                    src:
-                                      item.categorie_id == 1
-                                        ? "/img/cube-outline.svg"
-                                        : "/img/icons8-airport-100.png",
-                                    alt: "SVG mit img Tag laden",
-                                    width: "50",
-                                    height: "50"
-                                  }
-                                })
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-md-9" }, [
-                              _c("ul", { staticClass: "timeline" }, [
-                                _c("li", [
-                                  _c(
-                                    "a",
-                                    { attrs: { target: "_blank", href: "#" } },
-                                    [_vm._v(_vm._s(item.vilDepart))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "float-right pr-4",
-                                      attrs: { href: "#" }
-                                    },
-                                    [_vm._v(_vm._s(item.date_depart))]
-                                  )
-                                ]),
+                                  },
+                                  [
+                                    item.user_avatar_original != null
+                                      ? _c("img", {
+                                          staticClass:
+                                            "testimonial-img rund user_bild",
+                                          attrs: {
+                                            src: item.user_avatar_original,
+                                            alt: ""
+                                          }
+                                        })
+                                      : _c("img", {
+                                          staticClass:
+                                            "testimonial-img rund user_bild",
+                                          attrs: {
+                                            src: item.user_avatar
+                                              ? "storage/UsersAvatars/" +
+                                                item.user_avatar
+                                              : "/img/pack.jpeg",
+                                            alt: ""
+                                          }
+                                        }),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass:
+                                          "font-italic font-weight-bold pl-5 mt-0 pb-2"
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(item.name) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                ),
                                 _vm._v(" "),
-                                _c("li", [
-                                  _c("a", { attrs: { href: "#" } }, [
-                                    _vm._v(_vm._s(item.vilArrive))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "float-right pr-4",
-                                      attrs: { href: "#" }
-                                    },
-                                    [_vm._v(_vm._s(item.date_arrive))]
-                                  )
+                                _vm._m(1, true),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "icon--card" }, [
+                                  _c("img", {
+                                    staticClass: "mt-2",
+                                    attrs: {
+                                      src:
+                                        item.categorie_id == 1
+                                          ? "/img/cube-outline.svg"
+                                          : "/img/icons8-airport-100.png",
+                                      alt: "SVG mit img Tag laden",
+                                      width: "50",
+                                      height: "50"
+                                    }
+                                  })
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("hr"),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "notice notice-warning" },
-                                [
-                                  _c("strong", [_vm._v("Poids du Packet :")]),
-                                  _vm._v(" " + _vm._s(item.kilo) + " Kg "),
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "float-right kilo-price pack-price"
-                                    },
-                                    [_vm._v(_vm._s(item.prix) + "€")]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "notice notice-warning" },
-                                [
-                                  _c("strong", [_vm._v("Message : ")]),
+                              _c("div", { staticClass: "col-md-9" }, [
+                                _c("ul", { staticClass: "timeline" }, [
+                                  _c("li", [
+                                    _c(
+                                      "a",
+                                      {
+                                        attrs: { target: "_blank", href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(item.vilDepart))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "float-right pr-4",
+                                        attrs: { href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(item.date_depart))]
+                                    )
+                                  ]),
                                   _vm._v(" "),
-                                  _c("p", [_vm._v(_vm._s(item.content))])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "notice notice-success text-right"
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass:
-                                        "btn btn-primary btn-lg btn-recherche contact-btn",
-                                      attrs: { href: item.path }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "Contactez\n                                                l'expediteur"
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
+                                  _c("li", [
+                                    _c("a", { attrs: { href: "#" } }, [
+                                      _vm._v(_vm._s(item.vilArrive))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass: "float-right pr-4",
+                                        attrs: { href: "#" }
+                                      },
+                                      [_vm._v(_vm._s(item.date_arrive))]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("hr"),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "notice notice-warning" },
+                                  [
+                                    _c("strong", [_vm._v("Poids du Packet :")]),
+                                    _vm._v(" " + _vm._s(item.kilo) + " Kg "),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "float-right kilo-price pack-price"
+                                      },
+                                      [_vm._v(_vm._s(item.prix) + "€")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "notice notice-warning" },
+                                  [
+                                    _c("strong", [_vm._v("Message : ")]),
+                                    _vm._v(" "),
+                                    _c("p", [_vm._v(_vm._s(item.content))])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "notice notice-success text-right"
+                                  },
+                                  [
+                                    _c(
+                                      "a",
+                                      {
+                                        staticClass:
+                                          "btn btn-primary btn-lg btn-recherche contact-btn",
+                                        attrs: { href: item.path }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "Contactez\n                                                l'expediteur"
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ])
                             ])
                           ])
                         ])
-                      ])
-                    : _vm._e()
-                ]
-              )
-            ])
+                      : _vm._e()
+                  ]
+                )
+              ]
+            )
           }),
           0
         )

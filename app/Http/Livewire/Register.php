@@ -64,7 +64,7 @@ class Register extends Component
     {
         $validatedDate = $this->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,$this->id,id',
             'avatar' => 'required|image|max:1024',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required|min:6'
@@ -75,10 +75,10 @@ class Register extends Component
         $img = ImageManagerStatic::make($this->avatar)->encode('jpg');
         Storage::disk('public')->put('UsersAvatars/'.$filename, $img);
 
-        User::create(['name' => $this->name, 'email' => $this->email, 'avatar' => $filename, 'password' => $this->password]);
-        session()->flash('message', 'vous etes bien enregistrer.');
-
-        return redirect()->route('login');
+        $newUser = User::create(['name' => $this->name, 'email' => $this->email, 'avatar' => $filename, 'password' => $this->password]);
+        auth()->login($newUser, true);
+        flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
+        return redirect()->route('accueil');
 
     }
 }

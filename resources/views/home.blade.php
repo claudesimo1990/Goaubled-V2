@@ -49,7 +49,7 @@
                                             <td>
                                                 <strong>Nombres de Posts
                                                     : </strong><span
-                                                    class="profil-info">{{ Auth::user()->hasTravels()->count() }}</span>
+                                                    class="profil-info">{{ Auth::user()->travels()->count() }}</span>
                                             </td>
                                         </tr>
                                         <tr>

@@ -27,7 +27,6 @@ class ColiForm extends FormComponent
     {
         $req = $this->form_data;
 
-        //dd($req);
         $coli = new Coli();
         $coli->name = Auth::user()->name;
         $coli->User_id = Auth::id();
@@ -42,6 +41,7 @@ class ColiForm extends FormComponent
         $coli->photo = json_encode($req['fotos']);
 
         $coli->save();
+
         flashy()->success('votre Coli a ete bien enregistrer');
     }
 

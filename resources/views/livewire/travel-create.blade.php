@@ -86,7 +86,7 @@
                     <div class="form-row my-2">
                         <div class="col-md-6">
                             <div class="input-group">
-                                <input wire:model='kiloAvalable' type="text" class="form-control border-right-0"
+                                <input wire:model='kiloAvalable' type="number" class="form-control border-right-0"
                                        id="exampleInputdepart"
                                        aria-describedby="departHelp" placeholder="Nombre de Kilo disponibble*">
                                 <span class="input-group-append bg-white border-left-0">
@@ -101,7 +101,7 @@
                         <div class="col-md-6">
 
                             <div class="input-group">
-                                <input wire:model='prixKilo' type="text" class="form-control border-right-0"
+                                <input wire:model='prixKilo' type="number" class="form-control border-right-0"
                                        id="exampleInputdepart"
                                        aria-describedby="departHelp" placeholder="Prix/Kg*">
                                 <span class="input-group-append bg-white border-left-0">

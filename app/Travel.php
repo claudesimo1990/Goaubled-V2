@@ -22,6 +22,7 @@ class Travel extends Model
         'date_depart',
         'date_arrive',
         'user_avatar',
+        'user_avatar_original',
         'content',
         'kiloAvalable',
         'prixKilo',

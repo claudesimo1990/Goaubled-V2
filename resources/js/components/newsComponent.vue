@@ -38,14 +38,16 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div v-for="item in allnews" :key="item.id + item.name">
+                    <div v-for="item in allnews" :key="item.id + item.user_avatar + item.name + item.date_depart">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="showProfile(item.User_id)">
-                                                <img :src="item.user_avatar ? 'storage/UsersAvatars/' + item.user_avatar : '/img/avatar.jpg' "
+                                                <img v-if="user_avatar_original != null" :src="item.user_avatar_original" 
+                                                     class="testimonial-img rund user_bild" alt="">
+                                                     <img v-else :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
                                                      class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
@@ -99,7 +101,9 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="contactUser(item.User_id)">
-                                                <img :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
+                                                <img v-if="item.user_avatar_original != null" :src="item.user_avatar_original" 
+                                                     class="testimonial-img rund user_bild" alt="">
+                                                     <img v-else :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
                                                      class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
