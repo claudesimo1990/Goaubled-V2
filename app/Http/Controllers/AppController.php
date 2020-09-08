@@ -16,7 +16,7 @@ class AppController extends Controller
     public function index(){
         
         $travels = Travel::latest()->limit(2)->get();
-        $colis = Coli::latest()->limit(2)->get();
+        $colis = Coli::latest()->limit(1)->get();
 
         $latest_news = $travels->concat($colis);
         
