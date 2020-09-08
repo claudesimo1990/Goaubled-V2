@@ -2143,6 +2143,82 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["news", "background"],
   data: function data() {
@@ -7261,7 +7337,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card-logo {\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n}\n.user--news--avatar {\n  border-radius: 50%;\n}", ""]);
+exports.push([module.i, ".card-logo {\n  position: absolute;\n  top: 0;\n  left: 0;\n  border-radius: 50%;\n}\n.user--news--avatar {\n  border-radius: 50%;\n}\n.title__annonce {\n  color: #0c2e8a;\n}", ""]);
 
 // exports
 
@@ -39372,12 +39448,18 @@ var render = function() {
                                       "card-title text-uppercase font-weight-bold"
                                   },
                                   [
-                                    _vm._v(_vm._s(item.vilDepart)),
+                                    _vm._v(
+                                      "\n                                        " +
+                                        _vm._s(item.vilDepart)
+                                    ),
                                     _c("i", {
                                       staticClass:
                                         "fas fa-long-arrow-alt-right px-1"
                                     }),
-                                    _vm._v(_vm._s(item.vilArrive))
+                                    _vm._v(
+                                      _vm._s(item.vilArrive) +
+                                        "\n                                    "
+                                    )
                                   ]
                                 ),
                                 _vm._v(" "),
@@ -39389,7 +39471,9 @@ var render = function() {
                                       "div",
                                       { staticClass: "my-2 card-text mt-0" },
                                       [
-                                        _vm._v("Date de Depart: "),
+                                        _vm._v(
+                                          "\n                                            Date de Depart:\n                                            "
+                                        ),
                                         _c("span", [
                                           _vm._v(_vm._s(item.date_depart))
                                         ])
@@ -39407,10 +39491,13 @@ var render = function() {
                                           "div",
                                           { staticClass: "my-2 card-text" },
                                           [
-                                            _vm._v("Total Kilo:"),
+                                            _vm._v(
+                                              "\n                                                Total Kilo:"
+                                            ),
                                             _c("span", [
                                               _vm._v(
-                                                " " + _vm._s(item.kiloAvalable)
+                                                "\n                                                    " +
+                                                  _vm._s(item.kiloAvalable)
                                               )
                                             ])
                                           ]
@@ -39423,7 +39510,7 @@ var render = function() {
                                           },
                                           [
                                             _vm._v(
-                                              "Prix/Kg: " +
+                                              "\n                                                Prix/Kg: " +
                                                 _vm._s(item.prixKilo)
                                             ),
                                             _c("i", {
@@ -39484,8 +39571,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "section-header" }, [
-      _c("h2", { staticClass: "text-center text-white" }, [
-        _vm._v("Les dernieres annonces")
+      _c("h2", { staticClass: "text-center title__annonce" }, [
+        _vm._v("\n                Les dernieres annonces\n            ")
       ])
     ])
   }
