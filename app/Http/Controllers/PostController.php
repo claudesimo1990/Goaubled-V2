@@ -113,3 +113,4 @@ class postController extends Controller
         return response()->json($posts, 200);
     }
 }
+
