@@ -11,7 +11,7 @@ use MercurySeries\Flashy\Flashy;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 
-class PostController extends Controller
+class postController extends Controller
 {
     public function ColiForm()
     {
