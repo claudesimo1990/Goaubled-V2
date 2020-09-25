@@ -7,8 +7,9 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-12 justify-content-center">
                     <div class="">
-                        <img class="avatar"
-                             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStl-KWsV0KVxQug2HoR6e3lx6UUSD4KAqyDbevILtDVDvs0YK1xA&s">
+                        <div class="user-bild-home">
+                            <vue-letter-avatar class="user-bild" :name="owner.name !== undefined ? owner.name : 'Ramdom' " size='90' :rounded=true />
+                        </div>
                     </div>
                     <div class="user-infos">
                         <strong>Name:</strong> <span>{{owner.name}}</span><br>

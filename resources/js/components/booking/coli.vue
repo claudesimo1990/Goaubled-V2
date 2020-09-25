@@ -6,10 +6,9 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-12 justify-content-center">
                     <div class="">
-                        <img v-if="owner.avatar_original != null" :src="owner.avatar_original" 
-                            class="avatar" alt="">
-                        <img v-else :src="owner.avatar ?  'storage/UsersAvatars/' + owner.avatar : '/img/pack.jpeg' "
-                            class="avatar" alt="">
+                        <div class="user-bild-home">
+                            <vue-letter-avatar class="user-bild" :name="owner.name !== undefined ? owner.name : 'Ramdom' " size='90' :rounded=true />
+                        </div>
                     </div>
                     <div class="user-infos">
                         <strong>Name:</strong> <span>{{owner.name}}</span><br>
