@@ -45,11 +45,10 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="showProfile(item.user.User_id)">
-                                                <img v-if="item.user.avatar_original != null" :src="item.user.avatar_original" 
-                                                     class="testimonial-img rund user_bild" alt="">
-                                                     <img v-else :src="item.user.user_avatar ?  'storage/UsersAvatars/' + item.user.user_avatar : '/img/pack.jpeg' "
-                                                     class="testimonial-img rund user_bild" alt="">
-                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
+                                                <div class="user-bild">
+                                                    <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
+                                                </div>
+                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name}}
                                                 </div>
                                             </a>
                                             <div class="notice justify-center text-center notice-success stars">
@@ -100,13 +99,12 @@
                             <div class="container py-3" v-if="item.categorie_id == 1">
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 pb-5">
                                             <a href="#" @click.prevent="contactUser(item.User_id)">
-                                                <img v-if="item.user.avatar_original != null" :src="item.user.avatar_original" 
-                                                     class="testimonial-img rund user_bild" alt="">
-                                                     <img v-else :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
-                                                     class="testimonial-img rund user_bild" alt="">
-                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
+                                                <div class="user-bild">
+                                                    <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
+                                                </div>
+                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name}}
                                                 </div>
                                             </a>
                                             <div class="notice justify-center text-center notice-success stars">

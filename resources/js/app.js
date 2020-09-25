@@ -5,7 +5,9 @@ import Notifications from 'vue-notification';
 import VCalendar from  'v-calendar';
 import bootstrapVue  from 'bootstrap-vue';
 import VueTyperPlugin from 'vue-typer'
+import VueLetterAvatar from 'vue-letter-avatar';
 
+Vue.use(VueLetterAvatar);
 Vue.use(Notifications);
 Vue.use(bootstrapVue);
 Vue.use(VueTyperPlugin);

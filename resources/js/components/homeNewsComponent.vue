@@ -22,28 +22,9 @@
                                 <div class="card">
                                     <div class="card card-body text-center w-100" Style="height: 100%">
                                         <div class="mt-2">
-                                            <img
-                                                v-if="
-                                                    item.user.avatar_original !=
-                                                        null
-                                                "
-                                                class="user--news--avatar"
-                                                :src="item.user.avatar_original"
-                                                alt="card image"
-                                                width="100"
-                                                height="100"
-                                            />
-                                            <img
-                                                v-else
-                                                class="user--news--avatar"
-                                                :src="
-                                                    'storage/UsersAvatars/' +
-                                                        item.user_avatar
-                                                "
-                                                alt="card image"
-                                                width="100"
-                                                height="100"
-                                            />
+                                        <div class="user-bild-home">
+                                            <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='90' :rounded=true />
+                                        </div>
                                         </div>
                                         <div class="card-title text-uppercase font-weight-bold mt-3">
                                             <span class="post__info">{{ item.from }}</span> <i class="fas fa-long-arrow-alt-right px-1"></i> <span class="post__info">{{ item.to }}</span>
@@ -148,5 +129,10 @@ export default {
     font-weight: 700;
     font-size: 14px;
     outline: none;
+}
+.username{
+    font-size: 14px;
+    font-weight: bold;
+    margin: 4px;
 }
 </style>

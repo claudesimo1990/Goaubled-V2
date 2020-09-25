@@ -24,7 +24,7 @@
                             }'
                         ></vc-date-picker>
                     </b-input-group>
-
+                    
                     <b-button class="btn-recherche" variant="primary" @click="search">rechercher</b-button>
                 </b-form>
                 </div>
@@ -49,7 +49,7 @@
                     <b-col class="text-gray-700 font-weight-bold"><span class="mx-1">{{ item.from }}</span></b-col>
                     <b-col class="text-gray-700 font-weight-bold"><span class="mx-1">{{ item.dateFrom }}</span></b-col>
                     <b-col class="text-gray-700 font-weight-bold"><span class="mx-1">{{ item.to }}</span></b-col>
-                    <b-col class="text-gray-700 font-weight-bold"><b-button class="btn-recherche float-right">reserver</b-button></b-col>
+                    <b-col class="text-gray-700 font-weight-bold"> <a :href="item.Path" class="btn btn-recherche text-white px-3 float-right">reserver</a></b-col>
                 </b-row>
             </b-list-group-item>
         </b-list-group>
