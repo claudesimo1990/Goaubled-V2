@@ -48,7 +48,7 @@
                                                 <div class="user-bild">
                                                     <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
                                                 </div>
-                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name}}
+                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}
                                                 </div>
                                             </a>
                                             <div class="notice justify-center text-center notice-success stars">
@@ -58,8 +58,9 @@
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
-                                                <p class="">Membre verifié <span class="fa fa-star verify"></span></p>
-                                                <span class="vorHumanns">{{ item.created_at }}</span>
+                                                <p class="">Membre verifié <span class="fa fa-star verify"></span> <br><br>
+                                                    <span class="vorHumanns">{{ item.created_at }}</span>
+                                                </p>
                                             </div>
                                             <div class="icon--card">
                                                 <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
@@ -104,7 +105,7 @@
                                                 <div class="user-bild">
                                                     <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
                                                 </div>
-                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name}}
+                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}
                                                 </div>
                                             </a>
                                             <div class="notice justify-center text-center notice-success stars">
