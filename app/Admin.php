@@ -2,38 +2,21 @@
 
 namespace App;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'avatar',
-        'avatar_original',
-        'password',
-    ];
+    use Notifiable;
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-    ];
+        protected $guard = 'admin';
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-    ];
+        protected $fillable = [
+            'name', 'email', 'password',
+        ];
+
+        protected $hidden = [
+            'password', 'remember_token',
+        ];
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Admin;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -40,6 +42,13 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:writer');
+    }
+
+    public function showAdminRegisterForm()
+    {
+        return view('admin.auth.register', ['url' => 'admin']);
     }
 
     /**
@@ -72,5 +81,22 @@ class RegisterController extends Controller
         ]);
 
         return $user;
+    }
+
+    protected function createAdmin(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'email|required',
+            'password' => 'required',
+        ]);
+
+        $admin = Admin::create([
+
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/admin');
     }
 }

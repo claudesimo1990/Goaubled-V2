@@ -1,7 +1,30 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
+
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
 @import "variables";
+
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 @import "custom";
+
+.vue-typer 
+{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 20px;
+
+    .custom.char 
+    {
+        color: #0c2e8a;
+        background-color: transparent;
+    }
+
+}
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}

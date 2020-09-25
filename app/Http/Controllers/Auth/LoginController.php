@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Redirect;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -38,14 +40,19 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
+        $this->middleware('guest:writer')->except('logout');
     }
+
     public function redirectTo(){
-        if (Auth::user()->usertype == 'admin'){
-            return route('admin');
-        }else{
-            return route('home');
-        }
+        
+        return route('home');
+    }
+
+    public function showAdminLoginForm()
+    {
+        return view('admin.auth.login', ['url' => 'admin']);
     }
     /**
      * Redirect the user to the Google authentication page.

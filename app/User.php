@@ -114,4 +114,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return Storage::disk('public');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\User');
+    }
 }

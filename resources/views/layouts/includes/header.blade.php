@@ -3,9 +3,8 @@
 ============================-->
 <section id="intro">
 
-    <div class="intro-content mb-5 mt-0">
-        <h2 class="reveal-1"> Rechercher un Voyage </h2>
-        @livewire("search-posts")
+    <div class="intro-content mt-0">
+        <search-component></search-component>
     </div>
 
     <div class="owl-carousel" id="intro-carousel">

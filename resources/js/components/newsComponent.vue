@@ -38,16 +38,16 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div v-for="item in allnews" :key="item.id + item.user_avatar + item.name + item.date_depart">
+                    <div v-for="item in posts" :key="item.id">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
                                         <div class="col-md-3">
-                                            <a href="#" @click.prevent="showProfile(item.User_id)">
-                                                <img v-if="user_avatar_original != null" :src="item.user_avatar_original" 
+                                            <a href="#" @click.prevent="showProfile(item.user.User_id)">
+                                                <img v-if="item.user.avatar_original != null" :src="item.user.avatar_original" 
                                                      class="testimonial-img rund user_bild" alt="">
-                                                     <img v-else :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
+                                                     <img v-else :src="item.user.user_avatar ?  'storage/UsersAvatars/' + item.user.user_avatar : '/img/pack.jpeg' "
                                                      class="testimonial-img rund user_bild" alt="">
                                                 <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.name}}
                                                 </div>
@@ -60,6 +60,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <p class="">Membre verifié <span class="fa fa-star verify"></span></p>
+                                                <span class="vorHumanns">{{ item.created_at }}</span>
                                             </div>
                                             <div class="icon--card">
                                                 <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
@@ -68,27 +69,27 @@
                                         <div class="col-md-9">
                                             <ul class="timeline">
                                                 <li>
-                                                    <a target="_blank" href="#">{{item.vilDepart}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.date_depart}}</a>
+                                                    <a target="_blank" href="#">{{item.from}}</a>
+                                                    <a href="#" class="float-right pr-4">{{item.dateFrom}}</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">{{item.vilArrive}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.date_arrive}}</a>
+                                                    <a href="#">{{item.to}}</a>
+                                                    <a href="#" class="float-right pr-4">{{item.dateTo}}</a>
                                                 </li>
                                             </ul>
                                             <hr>
                                             <div class="notice notice-warning">
-                                                <strong>Kilo disponibles :</strong> {{item.kiloAvalable}} Kg <span
-                                                class="float-right kilo-price">{{item.prixKilo}}€</span>
+                                                <strong>Kilo disponibles :</strong> {{item.kilo}} Kg <span
+                                                class="float-right kilo-price">{{item.prix}}€</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a :href="item.Path"
-                                                   class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez le
-                                                    voyageur</a>
+                                                <a :href="item.Path" class="btn btn-primary btn-lg btn-recherche contact-btn">
+                                                   Contactez le voyageur
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +102,7 @@
                                     <div class="row shadow">
                                         <div class="col-md-3">
                                             <a href="#" @click.prevent="contactUser(item.User_id)">
-                                                <img v-if="item.user_avatar_original != null" :src="item.user_avatar_original" 
+                                                <img v-if="item.user.avatar_original != null" :src="item.user.avatar_original" 
                                                      class="testimonial-img rund user_bild" alt="">
                                                      <img v-else :src="item.user_avatar ?  'storage/UsersAvatars/' + item.user_avatar : '/img/pack.jpeg' "
                                                      class="testimonial-img rund user_bild" alt="">
@@ -116,6 +117,7 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                                 <p class="">Membre verifié <span class="fa fa-star verify"></span></p>
+                                                <span class="vorHumanns">{{ item.created_at }}</span>
                                             </div>
                                             <div class="icon--card">
                                                 <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
@@ -124,27 +126,27 @@
                                         <div class="col-md-9">
                                             <ul class="timeline">
                                                 <li>
-                                                    <a target="_blank" href="#">{{item.vilDepart}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.date_depart}}</a>
+                                                    <a target="_blank" href="#">{{ item.to }}</a>
+                                                    <a href="#" class="float-right pr-4">{{ item.dateFrom }}</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">{{item.vilArrive}}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.date_arrive}}</a>
+                                                    <a href="#">{{item.to}}</a>
+                                                    <a href="#" class="float-right pr-4">{{ item.dateTo }}</a>
                                                 </li>
                                             </ul>
                                             <hr>
                                             <div class="notice notice-warning">
-                                                <strong>Poids du Packet :</strong> {{item.kilo}} Kg <span
-                                                class="float-right kilo-price pack-price">{{item.prix}}€</span>
+                                                <strong>Poids du Packet :</strong> {{ item.kilo }} Kg <span
+                                                class="float-right kilo-price pack-price">{{ item.prix }}€</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
                                                 <p>{{item.content}}</p>
                                             </div>
                                             <div class="notice notice-success text-right">
-                                                <a :href="item.path"
-                                                   class="btn btn-primary btn-lg btn-recherche contact-btn">Contactez
-                                                    l'expediteur</a>
+                                                <a :href="item.Path" class="btn btn-primary btn-lg btn-recherche contact-btn">
+                                                   Contactez l'expediteur
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -159,11 +161,13 @@
 </template>
 <script>
     export default {
+        props: ['news'],
         data: function () {
+
             return {
                 messages: [],
                 text: null,
-                allnews: [],
+                posts: [],
                 pack: {
                     show: true
                 },
@@ -245,11 +249,7 @@
             }
         },
         mounted() {
-            axios.get('api/api/allnews').then((response) => {
-                this.allnews = response.data;
-            }).catch((error) => {
-                console.log(error)
-            })
+           this.posts = this.news;
         },
     }
 </script>
@@ -316,4 +316,8 @@
         bottom: 10px;
         left: 0;
     }
+    span.vorHumanns {
+    font-weight: bold;
+    color: gray;
+}
 </style>

@@ -1,50 +1,94 @@
-{{-- resources/views/admin/dashboard.blade.php --}}
+@extends('admin.layout')
 
-@extends('adminlte::page')
+@section('admin_title','Accueil')
 
-@section('title', 'Dashboard')
+@section('stats')
+    <!-- Content Row -->
+    <div class="row">
 
-@section('content_header')
-    <h1>Utilisateurs</h1>
-@stop
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-@section('content')
-    <table class="table table-bordered bg-white">
-        <thead>
-        <tr>
-            <th class="text-center">nom</th>
-            <th class="text-center">Email</th>
-            <th class="text-center">Date d'incription</th>
-            <th class="text-center">confirmer ?</th>
-        </tr>
-        </thead>
-        <tbody>
-        @forelse($users as $user)
-            <tr>
-                <td class="text-center">{{$user->name}}</td>
-                <td class="text-center">{{$user->email}}</td>
-                <td class="text-center">{{$user->created_at}}</td>
-                <td class="text-center">{{$user->email_verified_at ? 'oui':'non'}}</td>
-                <td class="text-right">
-                    <span href="" class="btn btn-success">update</span>
-                    <span class="btn btn-danger">delete</span>
-                    <span class="btn btn-warning">speren</span>
-                </td>
-            </tr>
-        @empty
-            <p class="bg-red">tabelle empty</p>
-        @endforelse
-        </tbody>
-    </table>
-    <div class="paginate text-center pb-5">
-        {!! $users->render() !!}
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks</div>
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                  </div>
+                  <div class="col">
+                    <div class="progress progress-sm mr-2">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pending Requests Card Example -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-comments fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-@stop
+@endsection
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
+@section('admin_content')
 
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop
+<div>
+  <h1>Bienvenue sur le Dashboard</h1>
+</div>
+
+@endsection
