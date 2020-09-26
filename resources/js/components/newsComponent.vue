@@ -316,7 +316,10 @@
         left: 0;
     }
     span.vorHumanns {
-    font-weight: bold;
-    color: gray;
+        font-weight: bold;
+        color: gray;
+        position: absolute;
+        bottom: 25px;
+        left: 54px;
 }
 </style>
