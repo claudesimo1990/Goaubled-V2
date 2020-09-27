@@ -77,6 +77,7 @@ class Register extends Component
 
         $newUser = User::create(['name' => $this->name, 'email' => $this->email, 'avatar' => $filename, 'password' => $this->password]);
         auth()->login($newUser, true);
+        
         flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
         return redirect()->route('accueil');
 

@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small blue-grey lighten-5">
+<footer class="page-footer font-small blue-grey lighten-5" style="width: 100%">
 
     <div class="footer-banner">
         <div class="container">
@@ -17,23 +17,23 @@
               <div class="col-md-6 col-lg-7 text-center text-md-right footer__social-media">
       
                 <!-- Facebook -->
-                <a href="#" class="fb-ic">
+                <a href="#" class="footer--link fb-ic">
                   <i class="fab fa-facebook-f white-text mr-4"> </i>
                 </a>
                 <!-- Twitter -->
-                <a href="#" class="tw-ic">
+                <a href="#" class="footer--link tw-ic">
                   <i class="fab fa-twitter white-text mr-4"> </i>
                 </a>
                 <!-- Google +-->
-                <a href="#" class="gplus-ic">
+                <a href="#" class="footer--link gplus-ic">
                   <i class="fab fa-google-plus-g white-text mr-4"> </i>
                 </a>
                 <!--Linkedin -->
-                <a href="#" class="li-ic">
+                <a href="#" class="footer--link li-ic">
                   <i class="fab fa-linkedin-in white-text mr-4"> </i>
                 </a>
                 <!--Instagram-->
-                <a href="#" class="ins-ic">
+                <a href="#" class="footer--link ins-ic">
                   <i class="fab fa-instagram white-text"> </i>
                 </a>
       
@@ -72,16 +72,16 @@
             <h6 class="text-uppercase font-weight-bold">Menu</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="dark-grey-text" href="#!">Colis</a>
+              <a class="footer--link dark-grey-text" href="#!">Colis</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">Voyages</a>
+              <a class="footer--link dark-grey-text" href="#!">Voyages</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">Transporter</a>
+              <a class="footer--link dark-grey-text" href="#!">Transporter</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">Envoyer</a>
+              <a class="footer--link dark-grey-text" href="#!">Envoyer</a>
             </p>
     
           </div>
@@ -94,16 +94,16 @@
             <h6 class="text-uppercase font-weight-bold">A Propos de nous</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="dark-grey-text" href="#!">Qui sommes nous</a>
+              <a class="footer--link dark-grey-text" href="#!">Qui sommes nous</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">Principes</a>
+              <a class="footer--link dark-grey-text" href="#!">Principes</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#!">FAQ</a>
+              <a class="footer--link dark-grey-text" href="#!">FAQ</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#">Comment ca marche ?</a>
+              <a class="footer--link dark-grey-text" href="#">Comment ca marche ?</a>
             </p>
     
           </div>
@@ -114,31 +114,15 @@
             <h6 class="text-uppercase font-weight-bold">Informations</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="dark-grey-text" href="#">Charte de confidential</a>
+              <a class="footer--link dark-grey-text" href="#">Charte de confidential</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#">conditions generales d'utilisation</a>
+              <a class="footer--link dark-grey-text" href="#">conditions generales d'utilisation</a>
             </p>
             <p>
-              <a class="dark-grey-text" href="#">Contacts</a>
+              <a class="footer--link dark-grey-text" href="#">Contacts</a>
             </p>  
           </div>
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
-    
-            <!-- Links -->
-            <h6 class="text-uppercase font-weight-bold">newsletter</h6>
-            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-            <p class="text-muted">voulez vous souscrire a notre newsletter anneulle ?</p>
-            <form class="form-inline">
-              <input class="form-control bg-light form-control-sm w-100" type="text" placeholder="Search"
-                aria-label="Search">
-            
-            </form>
-        
-    
-          </div>
-          <!-- Grid column -->
     
         </div>
         <!-- Grid row -->

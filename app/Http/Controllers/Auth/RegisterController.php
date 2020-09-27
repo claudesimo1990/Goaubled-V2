@@ -3,28 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManagerStatic;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
     use RegistersUsers;
 
     /**
@@ -34,6 +24,12 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+
+    public function redirectTo()
+    {
+        return route('news.index');
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -42,13 +38,6 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-        $this->middleware('guest:admin');
-        $this->middleware('guest:writer');
-    }
-
-    public function showAdminRegisterForm()
-    {
-        return view('admin.auth.register', ['url' => 'admin']);
     }
 
     /**
@@ -61,6 +50,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'avatar' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -74,29 +64,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $filename = md5($data['email']).'.jpg';
+
+        $img = ImageManagerStatic::make($data['avatar'])->encode('jpg');
+
+        Storage::disk('public')->put('UsersAvatars/'.$filename, $img);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'avatar' => $filename,
+            'password' => Hash::make($data['password'])
         ]);
 
-        return $user;
-    }
-
-    protected function createAdmin(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'email|required',
-            'password' => 'required',
-        ]);
-
-        $admin = Admin::create([
-
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-        ]);
-        return redirect()->intended('login/admin');
+        flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
     }
 }
