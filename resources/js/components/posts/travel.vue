@@ -183,6 +183,7 @@ export default {
               formData.append('dateTo',  this.date2);
               formData.append('kilo',  this.travel.kilo);
               formData.append('prix',  this.travel.prix);
+              formData.append('content',  this.travel.content);
 
             axios.post('/travel-form', formData , config)
             .then(function (response) {

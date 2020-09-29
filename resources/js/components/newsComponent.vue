@@ -44,15 +44,12 @@
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
                                         <div class="col-md-3">
-                                            <a href="#" @click.prevent="showProfile(item.user.User_id)">
                                                 <div class="user-bild">
                                                     <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
                                                 </div>
-                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}
-                                                </div>
-                                            </a>
+                                            <b class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}</b>
                                             <div class="notice justify-center text-center notice-success stars">
-                                                <p class="strong">Bewertung</p>
+                                                <p class="strong">VOTES</p>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -84,7 +81,9 @@
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
-                                                <p>{{item.content}}</p>
+                                                <div class="text-break overflow-auto text-muted bg-white rounded mb-4 mt-1 px-2">
+                                                    {{item.content}}
+                                                </div>
                                             </div>
                                             <div class="notice notice-success text-right">
                                                 <a :href="item.Path" class="btn btn-primary btn-lg btn-recherche contact-btn">
@@ -101,15 +100,12 @@
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
                                         <div class="col-md-3 pb-5">
-                                            <a href="#" @click.prevent="contactUser(item.User_id)">
-                                                <div class="user-bild">
-                                                    <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
-                                                </div>
-                                                <div class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}
-                                                </div>
-                                            </a>
+                                            <div class="user-bild">
+                                                <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
+                                            </div>
+                                            <b class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}</b>
                                             <div class="notice justify-center text-center notice-success stars">
-                                                <p class="strong">Bewertung</p>
+                                                <p class="strong">VOTES</p>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
                                                 <span class="fa fa-star checked"></span>
@@ -135,12 +131,14 @@
                                             </ul>
                                             <hr>
                                             <div class="notice notice-warning">
-                                                <strong>Poids du Packet :</strong> {{ item.kilo }} Kg <span
+                                                <strong>Poids du Coli :</strong> {{ item.kilo }} Kg <span
                                                 class="float-right kilo-price pack-price">{{ item.prix }}€</span>
                                             </div>
-                                            <div class="notice notice-warning">
+                                            <div class="notice notice-warning border-4">
                                                 <strong>Message : </strong>
-                                                <p>{{item.content}}</p>
+                                                <div class="text-break overflow-auto text-muted bg-white rounded mb-4 mt-1 px-2">
+                                                    {{item.content}}
+                                                </div>
                                             </div>
                                             <div class="notice notice-success text-right">
                                                 <a :href="item.Path" class="btn btn-primary btn-lg btn-recherche contact-btn">
@@ -321,5 +319,9 @@
         position: absolute;
         bottom: 25px;
         left: 54px;
+}
+.text-content {
+    padding: 18px;
+    margin: 14px;
 }
 </style>

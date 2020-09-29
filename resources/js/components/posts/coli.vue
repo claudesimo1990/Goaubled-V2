@@ -22,7 +22,7 @@
                                             </span>
                                         </span>
                                     </div>
-                                    <small v-if="errors.from" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
+                                    <small v-if="errors.from" id="departHelp" class="form-text text-muted error" v-html="errors != undefined ? errors.from[0] : ''"></small>
                                 </div>
                                 <div class="col-md-4 my-3">
                                     <div class="input-group">
@@ -162,10 +162,10 @@ export default {
               formData.append('dateFrom',  this.date1);
               formData.append('kilo',  this.coli.kilo);
               formData.append('prix',  this.coli.prix);
+              formData.append('content',  this.coli.content);
 
             axios.post('/coli-form', formData , config)
             .then(function (response) {
-
                 window.location = response.data.redirect;
             })
             .catch(function (error) {
@@ -182,7 +182,7 @@ export default {
     {
         'coli.dateFrom': function(val) 
         {
-            this.date1 = moment().format('DD.MM.YYYY');
+            this.date1 = moment(val).format('DD.MM.YYYY');
         }
     }
     
