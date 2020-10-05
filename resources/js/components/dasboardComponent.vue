@@ -1,68 +1,38 @@
 <template>
-    <section id="about" class="pb-5" style="background-color: #f7f1e3">
-        <div class="container">
-        <div class="row profile">
-            <div class="col-md-3">
-                <div class="profile-sidebar">
-                    <!-- SIDEBAR USERPIC -->
-                    <div class="profile-userpic">
-                        <img
-                            src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg"
-                            class="img-responsive" alt="">
-                    </div>
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            {{user.name}}
-                        </div>
-                        <div class="profile-usertitle-job">
-                            {{user.email}}
-                        </div>
-                    </div>
-                    <!-- END SIDEBAR USER TITLE -->
-                    <!-- SIDEBAR BUTTONS -->
-                    <div class="profile-userbuttons">
-                        <button type="button" class="btn btn-success btn-sm">Follow</button>
-                        <button type="button" class="btn btn-danger btn-sm">Message</button>
-                    </div>
-                    <!-- END SIDEBAR BUTTONS -->
-                    <!-- SIDEBAR MENU -->
-                    <div class="profile-usermenu">
-                        <ul class="nav liste-item">
-                            <li class="active">
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-home"></i>
-                                    Overview </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                    Account Settings </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="glyphicon glyphicon-ok"></i>
-                                    Tasks </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- END MENU -->
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="profile-content">
-                    Some user related content goes here...
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
+    <div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li><a href="charts.html" class=""><i class="lnr lnr-envelope"></i> <span>Messagerie</span></a></li>
+						<li>
+							<a href="#expeditions" data-toggle="collapse" class="collapsed"><i class="lnr lnr-exit"></i> <span>Mes Expeditions</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="expeditions" class="collapse ">
+								<ul class="nav">
+									<li><a href="mesExpeditionEnCours.html" class="">Mes expéditions en cours</a></li>
+									<li><a href="mesExpeditionEffectuer.html" class="">Mes expéditions effectuées</a></li>
+									<li><a href="mesAnnoncesExpedition.html" class="">Mes annonces en cours</a></li>
+									<li><a href="page-lockscreen.html" class="">Vue sur les dépenses</a></li>
+									<li><a href="page-lockscreen.html" class="">Expédier un colis</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="#trajets" data-toggle="collapse" class="collapsed"><i class="lnr lnr-location"></i> <span>Mes Trajets</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="trajets" class="collapse ">
+								<ul class="nav">
+									<li><a href="page-profile.html" class="">Mes Trajets en cours</a></li>
+									<li><a href="page-login.html" class="">Nombre de Trajets effectués</a></li>
+									<li><a href="page-lockscreen.html" class="">Mes annonces en cours</a></li>
+									<li><a href="page-lockscreen.html" class="">Vue sur les gains</a></li>
+									<li><a href="page-lockscreen.html" class="">Ajouter un Trajet</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
 </template>
 <script>
     export default {
@@ -80,122 +50,3 @@
     }
 
 </script>
-<style lang="scss">
-    /* Profile container */
-    .profile {
-        margin: 20px 0;
-    }
-
-    /* Profile sidebar */
-    .profile-sidebar {
-        padding: 20px 0 10px 0;
-        background: #fff;
-    }
-
-    .profile-userpic img {
-        float: none;
-        margin: 0 auto;
-        width: 50%;
-        height: 50%;
-        -webkit-border-radius: 50% !important;
-        -moz-border-radius: 50% !important;
-        border-radius: 50% !important;
-    }
-
-    .profile-usertitle {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .profile-usertitle-name {
-        color: #5a7391;
-        font-size: 16px;
-        font-weight: 600;
-        margin-bottom: 7px;
-    }
-
-    .profile-usertitle-job {
-        text-transform: uppercase;
-        color: #5b9bd1;
-        font-size: 12px;
-        font-weight: 600;
-        margin-bottom: 15px;
-    }
-
-    .profile-userbuttons {
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    .profile-userbuttons .btn {
-        text-transform: uppercase;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 6px 15px;
-        margin-right: 5px;
-    }
-
-    .profile-userbuttons .btn:last-child {
-        margin-right: 0px;
-    }
-
-    .profile-usermenu {
-        margin-top: 30px;
-
-        ul.nav {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            justify-content: space-between;
-            padding-left: 0;
-            margin-bottom: 0px;
-            list-style: none;
-
-            li {
-                margin: 10px;
-            }
-        }
-    }
-
-    .profile-usermenu ul li {
-        border-bottom: 1px solid #f0f4f7;
-    }
-
-    .profile-usermenu ul li:last-child {
-        border-bottom: none;
-    }
-
-    .profile-usermenu ul li a {
-        color: #93a3b5;
-        font-size: 14px;
-        font-weight: 400;
-    }
-
-    .profile-usermenu ul li a i {
-        margin-right: 8px;
-        font-size: 14px;
-    }
-
-    .profile-usermenu ul li a:hover {
-        background-color: #fafcfd;
-        color: #5b9bd1;
-    }
-
-    .profile-usermenu ul li.active {
-        border-bottom: none;
-    }
-
-    .profile-usermenu ul li.active a {
-        color: #5b9bd1;
-        background-color: #f6f9fb;
-        border-left: 2px solid #5b9bd1;
-        margin-left: -2px;
-    }
-
-    /* Profile Content */
-    .profile-content {
-        padding: 20px;
-        background: #fff;
-        min-height: 460px;
-    }
-</style>
