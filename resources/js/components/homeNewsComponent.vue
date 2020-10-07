@@ -22,17 +22,16 @@
                         />
                     </b-card-text>
                     <b-card-text class="text-center">
-                        <vue-letter-avatar class="card-user-logo" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='90' :rounded=true />
+                        <vue-letter-avatar class="card-user-logo" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='60' :rounded=true />
                     </b-card-text>
-                    <b-card-text class="text-start">
-                        <strong class="text-start text-wrap text-uppercase font-weight-bold">{{ item.from }} <i class="fas fa-long-arrow-alt-right px-1"></i> {{ item.to }}</strong>
-                    </b-card-text>
-                    <b-card-text class="text-start">
-                        <p class="text-start text-capitalize">Total Kilo : {{ item.kilo }}</p>
-                    </b-card-text>
-                    <b-card-text class="text-start">
-                        <p class="text-start text-capitalize">Prix/Kg :  {{ item.prix }} <i class="fas fa-euro-sign pl-1"></i></p>
-                    </b-card-text>
+                    <div class="">
+                        <h5 class="text-nowrap"><b-badge variant="info">{{ item.from }}</b-badge><b-icon class="mx-1" icon="arrow-right-circle-fill" variant="info" aria-hidden="true"></b-icon><b-badge variant="info">{{ item.to }}</b-badge></h5>
+                        <hr>
+                        <p>Kilos Disponibles : <span class="float-right font-weight-bold"><h5><b-badge variant="secondary">{{ item.kilo }}</b-badge></h5></span></p>
+                        <p>Prix du Kilo : <span class="float-right font-weight-bold"><h5><b-badge variant="secondary">{{ item.prix }}<i data-v-4e9a6efe="" class="fas fa-euro-sign pl-1"></i></b-badge></h5></span></p>
+                        <hr>
+                        <h5 class="text-center"><b-badge variant="secondary">{{ item.compagnie }}</b-badge></h5>
+                    </div>
                     <template v-slot:footer>
                         <small class="text-muted">{{ item.created_at }}</small>
                     </template>

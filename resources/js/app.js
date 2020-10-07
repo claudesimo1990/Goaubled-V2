@@ -1,16 +1,22 @@
 require('./bootstrap');
 const Vue = require('vue');
+const Vuex = require('vuex');
 
 import Notifications from 'vue-notification';
 import VCalendar from  'v-calendar';
-import bootstrapVue  from 'bootstrap-vue';
+import {BootstrapVue, BootstrapVueIcons}  from 'bootstrap-vue';
 import VueTyperPlugin from 'vue-typer'
 import VueLetterAvatar from 'vue-letter-avatar';
+import module from './store/store'
 
 Vue.use(VueLetterAvatar);
 Vue.use(Notifications);
-Vue.use(bootstrapVue);
+Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons)
 Vue.use(VueTyperPlugin);
+Vue.use(Vuex)
+
+window.Store = new Vuex.Store(module)
 
 // Use v-calendar & v-date-picker components
 Vue.use(VCalendar, {

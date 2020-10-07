@@ -79,28 +79,28 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 border">
-                            <p>Kilos Disponibles : <span class="text-white font-weight-bold">{{ post.kilo }}</span></p>
-                            <p>Prix du Kilo : <span class="text-white font-weight-bold">{{ post.prix }}</span></p>
-                            <p>Compagnie : <span class="text-white font-weight-bold">{{ post.compagnie }}</span></p>
+                        <div class="col-md-3 border pt-2 bg-white text-uppercase font-weight-bold rounded shadow-lg" style="color:#0c2e8a">
+                            <p>Kilos Disponibles : <span class="float-right font-weight-bold"><h5><b-badge variant="info">{{ getKilos }}</b-badge></h5></span></p>
+                            <p>Prix du Kilo : <span class="float-right font-weight-bold"><h5><b-badge variant="info">{{ post.prix }}<i data-v-4e9a6efe="" class="fas fa-euro-sign pl-1"></i></b-badge></h5></span></p>
+                            <hr>
+                            <div data-v-7e65462f="" class="icon--card"><img data-v-7e65462f="" src="/img/icons8-airport-100.png" alt="SVG mit img Tag laden" width="50" height="50" class="mt-2"></div> <h5 class="text-center"><b-badge variant="info">{{ post.compagnie }}</b-badge></h5>
                         </div>
                     </div>
                     <div class="row ">
                         <div class="col-md-6 reservation-form">
-                            <button class="btn btn-reserve" type="submit">je reserve</button>
-                            <button class="btn btn-primary btn-contact-reserve" data-toggle="collapse" data-target="#reserver">contacter le voyageur</button>
+                            <b-button type="submit">je reserve</b-button>
+                            <b-button variant="success" data-toggle="collapse" data-target="#reserver">contacter le voyageur</b-button>
                             <div id="reserver" class="collapse">
-                                <form  wire:submit.prevent="submit" method="post">
+                                <form  @submit.prevent="booking">
                                     <div class="form-group">
                                         <label for="email">Combien de Kilos ? :</label>
-                                        <input wire:model="book" type="text" class="form-control">
+                                        <input v-model="form.kilo" type="text" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Votre message:</label>
-                                        <textarea wire:model="message" type="textarea"
+                                        <textarea v-model="form.message" type="textarea"
                                                   class="form-control voyageur-textarea"></textarea>
-                                        <button class="btn btn-primary" type="submit">envoyer</button>
-
+                                        <b-button variant="info" type="submit">envoyer</b-button>
                                     </div>
                                 </form>
                             </div>
@@ -119,8 +119,26 @@ export default {
     props: ['post', 'owner'],
     data: function() {
         return {
-
+            form: {
+                kilo: 0,
+                message: ''
+            }
         }
+    },
+    computed: {
+        getKilos: function() {
+            return Store.getters.getKilos;
+        }
+    },
+    methods: {
+        booking: function() {
+            if(this.form.kilo > 0) { Store.dispatch('bookKilo', this.form.kilo);}
+        }
+    },
+    mounted() {
+       Store.dispatch('setKilos', this.post.kilo).then(() => {
+
+       });
     }
 
 }
