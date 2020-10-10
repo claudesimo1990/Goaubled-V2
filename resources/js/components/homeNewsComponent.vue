@@ -1,5 +1,5 @@
 <template>
-    <section id="services" :style="{ 'background-color': background }" v-if="lastNews.length > 0">
+    <section id="services" class="home-news-section" v-if="lastNews.length > 0">
         <div class="container">
             <div class="section-header">
                 <h2 class="text-center title__annonce">
@@ -24,16 +24,19 @@
                     <b-card-text class="text-center">
                         <vue-letter-avatar class="card-user-logo" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='60' :rounded=true />
                     </b-card-text>
-                    <div class="">
-                        <h5 class="text-nowrap"><b-badge variant="info">{{ item.from }}</b-badge><b-icon class="mx-1" icon="arrow-right-circle-fill" variant="info" aria-hidden="true"></b-icon><b-badge variant="info">{{ item.to }}</b-badge></h5>
+                    <div>
+                        <h5 class="text-nowrap home-post-title"><b-badge variant="secondary">{{ item.from }}</b-badge><b-icon class="mx-1" icon="arrow-right-circle-fill" variant="info" aria-hidden="true"></b-icon><b-badge variant="secondary">{{ item.to }}</b-badge></h5>
+                        <p>Depart: <span class="float-right font-weight-bold">{{ item.dateFrom }}</span></p>
+                        <p>Arrivee: <span class="float-right font-weight-bold">{{ item.dateTo }}</span></p>
                         <hr>
                         <p>Kilos Disponibles : <span class="float-right font-weight-bold"><h5><b-badge variant="secondary">{{ item.kilo }}</b-badge></h5></span></p>
                         <p>Prix du Kilo : <span class="float-right font-weight-bold"><h5><b-badge variant="secondary">{{ item.prix }}<i data-v-4e9a6efe="" class="fas fa-euro-sign pl-1"></i></b-badge></h5></span></p>
-                        <hr>
-                        <h5 class="text-center"><b-badge variant="secondary">{{ item.compagnie }}</b-badge></h5>
+                    </div>
+                    <div class="text-center">
+                        <b-link :href="item.Path" class="btn btn-secondary btn-block">reserver</b-link>
                     </div>
                     <template v-slot:footer>
-                        <small class="text-muted">{{ item.created_at }}</small>
+                        <small class="text-muted">{{ item.created_at }}</small> 
                     </template>
                 </b-card>
             </b-card-group>
@@ -43,7 +46,7 @@
 
 <script>
 export default {
-    props: ["news", "background"],
+    props: ["news"],
     data: function() {
         return {
             lastNews: []
@@ -61,10 +64,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card-user-logo {
-    width: 90px;
-    height: 90px;
-    border-radius: 100%;
-    background: rgb(139 199 61) !important;
-}
+    @import "./../../sass/_variables.scss";
+
+    .home-news-section {
+        background-color: $gray-300;
+    }
+    
+    .card-user-logo {
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        background: rgb(139 199 61) !important;
+    }
+    .home-post-title {
+        text-align: center;
+    }
 </style>

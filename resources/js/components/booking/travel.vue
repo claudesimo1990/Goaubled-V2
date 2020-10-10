@@ -79,11 +79,13 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-md-3 border pt-2 bg-white text-uppercase font-weight-bold rounded shadow-lg" style="color:#0c2e8a">
+                        <div class="col-md-3 border pt-2 bg-white text-uppercase font-weight-bold rounded" style="color:#0c2e8a">
                             <p>Kilos Disponibles : <span class="float-right font-weight-bold"><h5><b-badge variant="info">{{ getKilos }}</b-badge></h5></span></p>
-                            <p>Prix du Kilo : <span class="float-right font-weight-bold"><h5><b-badge variant="info">{{ post.prix }}<i data-v-4e9a6efe="" class="fas fa-euro-sign pl-1"></i></b-badge></h5></span></p>
+                            <p>Prix du Kilo : <span class="float-right font-weight-bold"><h5><b-badge variant="info">{{ post.prix }}<i class="fas fa-euro-sign pl-1"></i></b-badge></h5></span></p>
                             <hr>
-                            <div data-v-7e65462f="" class="icon--card"><img data-v-7e65462f="" src="/img/icons8-airport-100.png" alt="SVG mit img Tag laden" width="50" height="50" class="mt-2"></div> <h5 class="text-center"><b-badge variant="info">{{ post.compagnie }}</b-badge></h5>
+                            <h5 class="text-center">
+                                <b-badge variant="info">{{ post.compagnie }}</b-badge>
+                            </h5>
                         </div>
                     </div>
                     <div class="row ">

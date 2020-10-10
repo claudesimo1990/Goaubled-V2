@@ -12,7 +12,6 @@
     <!-- Favicons -->
     <link href="{{asset('/img/logo.png')}}" rel="icon">
     <link href="{{asset('/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
-    <!-- Bootstrap CSS File -->
     <!-- Libraries CSS Files -->
     <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/animate/animate.min.css')}}" rel="stylesheet">
@@ -29,9 +28,11 @@
 
 @include("layouts/includes/topbar")
 @include("layouts/includes/nav")
+
 <main id="app">
     @yield('content')
 </main>
+
 <!-- #footer -->
 @include('layouts.includes.footer')
 <!-- #footer -->
@@ -52,15 +53,7 @@
     Dropzone.autoDiscover = false;
 
     $(document).ready(function () {
-        $("#id_dropzone").dropzone({
-            maxFiles: 2000,
-            url: "/ajax_file_upload_handler/",
-            success: function (file, response) {
-                console.log(response);
-            }
-        });
-    });
-
+        
     const ratio = .1;
     const options = {
         root: null,

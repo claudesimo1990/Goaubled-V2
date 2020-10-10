@@ -49,7 +49,7 @@
                   <label for="file-upload" class="custom-file-upload">
                     <i class="fas fa-cloud-upload-alt mr-2"></i>Choissiser une photo de profile
                   </label>
-                  <input class="form-control" id="file-upload" type="file"/>
+                  <input class="form-control" id="file-upload" name="avatar" type="file"/>
                 </div>
                 @error('avatar')<span class="error small mr-4">{{ $message }}</span>@enderror
               </div>

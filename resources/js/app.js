@@ -37,6 +37,8 @@ Vue.component('booking-travel-component', require('./components/booking/travel.v
 Vue.component('booking-coli-component', require('./components/booking/coli.vue').default);
 Vue.component('search-component', require('./components/search/search.vue').default);
 Vue.component('results-component', require('./components/search/results.vue').default);
+Vue.component('how-work', require('./components/home/howWork.vue').default);
+Vue.component('profile-component', require('./components/profile/profile.vue').default);
 
 const app = new Vue({
     el: '#app',
