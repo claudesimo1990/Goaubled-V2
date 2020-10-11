@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <div v-for="item in posts" :key="item.id">
+                    <div v-for="item in laravelData.data" :key="item.id">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
@@ -151,6 +151,12 @@
                             </div>
                         </div>
                     </div>
+                   <div class="row mt-4 py-2 px-4">
+                        <pagination :data="laravelData" :size="large" :align="right" @pagination-change-page="getResults">
+                            <span slot="prev-nav">&lt; Previous</span>
+                            <span slot="next-nav">Next &gt;</span>
+                   </pagination>
+                   </div>
                 </div>
             </div>
         </div>
@@ -158,10 +164,9 @@
 </template>
 <script>
     export default {
-        props: ['news'],
         data: function () {
-
             return {
+                laravelData: {},
                 messages: [],
                 text: null,
                 posts: [],
@@ -175,19 +180,6 @@
             }
         },
         methods: {
-            contactVoyageur: function (userid) {
-                axios.get("/contact/"+userid, {
-                    body: this.postBody
-                }).then(response => {
-                    window.location.replace = "/contact/" + userid;
-                })
-                    .catch(e => {
-                        this.errors.push(e)
-                    })
-            },
-            save: function () {
-                this.messages.push(this.text);
-            },
             sortNews: function(cat) {
                 if (cat === 'travel') {
                     this.pack.show = false;
@@ -204,49 +196,17 @@
                 this.pack.show = true;
                 this.travel.show = true;
             },
-
-            contactExpediteur: function (user_id, pack_id) {
-
-                axios.post('/reservation/packs/' + user_id + '/' + pack_id)
-                    .then((response) => {
-                        window.location.href = response.data;
-                    }).catch((error) => {
-
-                });
-            },
-
-            contactVoyageur: function (user_id, travel_id) {
-                axios.post('/reservation/travels/' + user_id + '/' + travel_id, {
-                    'userId': user_id,
-                    'travelId': travel_id
-                })
-                    .then((response) => {
-                        window.location.href = response.data;
-                    }).catch((error) => {
-
-                });
-
-            },
-            showProfile: function (user_id) {
-                axios.post('/profile/user/' + user_id, {'id': user_id}).then((response) => {
-                    window.location.href = response.data;
-                }).catch((error) => {
-
-                });
-            }
-        },
-        computed: {
-            datefns: function (dateString) {
-                var dateString = '17-09-2013 10:08',
-                    dateTimeParts = dateString.split(' '),
-                    timeParts = dateTimeParts[1].split(':'),
-                    dateParts = dateTimeParts[0].split('-'),
-                    date;
-                date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
+            // Our method to GET results from a Laravel endpoint
+            getResults(page = 1) {
+                axios.get('api/listeNews?page=' + page)
+                    .then(response => {
+                        this.laravelData = response.data;
+                    });
             }
         },
         mounted() {
-           this.posts = this.news;
+            // Fetch initial results
+		    this.getResults();
         },
     }
 </script>

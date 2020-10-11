@@ -92,10 +92,15 @@ class postController extends Controller
         return ['redirect' => route('news.index')];
     }
 
+    public function index()
+    {
+        return view('App.news');
+    }
+
     public function listeNews()
     {
-        $posts = Post::with('user')->latest()->get();
-        return view('App.news',['posts'=> $posts]);
+        $posts = Post::with('user')->paginate(3);
+        return response()->json($posts, 200);
     }
 
     public function bookingPost(Post $post, User $user)

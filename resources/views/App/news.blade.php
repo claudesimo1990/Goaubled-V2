@@ -1,5 +1,5 @@
 @extends("layouts/master")
 
 @section('content')
-    <news :news="{{ $posts }}"></news>
+    <news></news>
 @endsection

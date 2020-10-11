@@ -90,8 +90,8 @@
                     </div>
                     <div class="row ">
                         <div class="col-md-6 reservation-form">
-                            <b-button type="submit">je reserve</b-button>
-                            <b-button variant="success" data-toggle="collapse" data-target="#reserver">contacter le voyageur</b-button>
+                            <b-button data-toggle="collapse" data-target="#reserver">je reserve</b-button>
+                            <b-button @click.prevent="contact"  variant="success">contacter le voyageur</b-button>
                             <div id="reserver" class="collapse">
                                 <form  @submit.prevent="booking">
                                     <div class="form-group">
@@ -113,14 +113,16 @@
             </div>
         </div>
     </section>
+    <chat></chat>
 </div>
 </template>
 
 <script>
 export default {
-    props: ['post', 'owner'],
+    props: ['post', 'owner', 'currentUser'],
     data: function() {
         return {
+            setisActiveChat: true,
             form: {
                 kilo: 0,
                 message: ''
@@ -130,17 +132,24 @@ export default {
     computed: {
         getKilos: function() {
             return Store.getters.getKilos;
+        },
+        getisActiveChat: function() {
+            return Store.getters.getisActiveChat;
         }
     },
     methods: {
         booking: function() {
             if(this.form.kilo > 0) { Store.dispatch('bookKilo', this.form.kilo);}
+        },
+        contact: function() {
+            Store.dispatch('setisActiveChat', !this.getisActiveChat);
         }
     },
     mounted() {
-       Store.dispatch('setKilos', this.post.kilo).then(() => {
-
-       });
+       Store.dispatch('setKilos', this.post.kilo);
+       Store.dispatch('setCurrentUser', this.currentUser);
+       Store.dispatch('setPostUser', this.owner);
+       Store.dispatch('setisActiveChat', true);
     }
 
 }

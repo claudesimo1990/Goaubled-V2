@@ -18,7 +18,7 @@ class AppController extends Controller
     }
     public function annonces() {
 
-        $all_news = travel::paginate(10);
+        $all_news = travel::paginate(5);
 
         return view('App.annonces',compact('all_news'));
     }

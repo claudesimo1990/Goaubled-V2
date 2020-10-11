@@ -17,7 +17,7 @@ Route::get('post/{post}/{user}','postController@bookingPost')->name('post.bookin
 
 Route::get('travel-form','postController@travelForm')->name('travels.create')->middleware('auth');
 Route::post('travel-form','postController@createTravel')->name('post.travels.create');
-Route::get('/news','postController@listeNews')->name('news.index');
+Route::get('/news','postController@index')->name('news.index');
 
 Route::livewire('messages','chat-message')->name('messages.index');
 

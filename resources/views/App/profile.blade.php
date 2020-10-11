@@ -3,6 +3,6 @@
 
 @section('content')
 
-    <dasboard-component :user="{{$user}}"></dasboard-component>
+    <profile-component></profile-component>
 
 @stop

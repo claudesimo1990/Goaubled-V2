@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="chatbox chatbox22" :class="[isActive ? 'chatbox--tray' : '']">
-                <div @click.prevent="addClass()" class="chatbox__title">
-                    <h5><a href="">Chat avec {{user.name}}</a></h5>
+            <div class="chatbox chatbox22" :class="[getisActiveChat ? 'chatbox--tray' : '']">
+                <div class="chatbox__title">
+                    <h5><a href="">Chat avec {{getPostUser.name}}</a></h5>
                     <button class="chatbox__title__close">
                     <span>
                         <svg viewBox="0 0 12 12" width="12px" height="12px">
@@ -74,7 +74,6 @@
 </template>
 <script>
     export default {
-        props: ['user','log_user'],
         data: () => {
             return {
                 isActive: true,
@@ -86,13 +85,24 @@
                 this.isActive = !this.isActive;
             },
             getAll: function () {
-                axios.post('getAllmessageWidth',{'from':this.user.id,'loguser':this.loguser.id
+                axios.post('getAllmessageWidth',{'from':this.user.id,'loguser':this.getCurrentUser.id
                 }).then(response => {
 
                     console.log(response);
                 }).catch(error => {
                     console.log(error);
                 });
+            }
+        },
+        computed: {
+            getCurrentUser: function() {
+                return Store.getters.getCurrentUser;
+            },
+            getPostUser: function() {
+                return Store.getters.getPostUser;
+            },
+            getisActiveChat: function() {
+                return Store.getters.getisActiveChat;
             }
         },
         mounted() {
@@ -122,7 +132,10 @@
     }
 
     .chatbox--tray {
-        bottom: -350px;
+        display: none;
+        transition: opacity 1s ease-out;
+        opacity: 0;
+
     }
 
     .chatbox--closed {

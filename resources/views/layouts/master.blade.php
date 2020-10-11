@@ -13,6 +13,7 @@
     <link href="{{asset('/img/logo.png')}}" rel="icon">
     <link href="{{asset('/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
     <!-- Libraries CSS Files -->
+     <!-- Custom styles for this template -->
     <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/animate/animate.min.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
@@ -21,8 +22,11 @@
     <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- Main Stylesheet File -->
+    <link href="{{'/css/profile/style.css'}}" rel="stylesheet">
+    <link href="{{'/css/profile/main.css'}}" rel="stylesheet">
+    <link href="{{'/css/profile/demo.css'}}" rel="stylesheet">
+    <link href="{{'/css/simple-sidebar.css'}}" rel="stylesheet">
     <link href="{{'/css/app.css'}}" rel="stylesheet">
-    @livewireStyles
 </head>
 <body id="body">
 

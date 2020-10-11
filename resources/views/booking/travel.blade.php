@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-    <booking-travel-component :post="{{ $post }}" :owner="{{ $user }}"></booking-travel-component>
+    <booking-travel-component 
+        :post="{{ $post }}" 
+        :owner="{{ $user }}" 
+        :current-user="{{ auth()->user() }}"
+    />
 @endsection
