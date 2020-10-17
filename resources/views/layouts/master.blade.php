@@ -23,9 +23,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- Main Stylesheet File -->
     <link href="{{'/css/profile/style.css'}}" rel="stylesheet">
-    <link href="{{'/css/profile/main.css'}}" rel="stylesheet">
-    <link href="{{'/css/profile/demo.css'}}" rel="stylesheet">
-    <link href="{{'/css/simple-sidebar.css'}}" rel="stylesheet">
     <link href="{{'/css/app.css'}}" rel="stylesheet">
 </head>
 <body id="body">
