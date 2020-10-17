@@ -3,7 +3,7 @@
   <div class="container">
       <div class="section-header">
         <h2 class="text-center">
-            Quelques Destinations preferes de nos utilisateurs
+            Quelques Destinations preferes <br> de nos utilisateurs
         </h2>
     </div>
     <div id="myCarousel" class="carousel slide carousel-fade mt-4" data-ride="carousel">
