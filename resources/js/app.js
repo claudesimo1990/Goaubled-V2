@@ -28,6 +28,10 @@ Vue.use(VCalendar, {
   componentPrefix: 'vc'
 });
 
+$('#myCarousel').carousel({
+  interval: 3000,
+})
+
 // Global register
 Vue.component('news', require('./components/newsComponent.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
@@ -43,6 +47,10 @@ Vue.component('booking-coli-component', require('./components/booking/coli.vue')
 Vue.component('search-component', require('./components/search/search.vue').default);
 Vue.component('results-component', require('./components/search/results.vue').default);
 Vue.component('how-work', require('./components/home/howWork.vue').default);
+Vue.component('about', require('./components/home/about.vue').default);
+Vue.component('teams', require('./components/home/teams.vue').default);
+Vue.component('destinations', require('./components/home/destinations.vue').default);
+Vue.component('content', require('./components/home/content.vue').default);
 Vue.component('profile-component', require('./components/profile/profile.vue').default);
 
 const app = new Vue({

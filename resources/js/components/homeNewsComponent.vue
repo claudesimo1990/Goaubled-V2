@@ -67,7 +67,10 @@ export default {
     @import "./../../sass/_variables.scss";
 
     .home-news-section {
-        background-color: $gray-300;
+        background-color: $gray-50;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 30px;
     }
     
     .card-user-logo {
