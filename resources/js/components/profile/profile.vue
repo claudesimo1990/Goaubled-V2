@@ -1,14 +1,14 @@
 <template>
 <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark profile-sidebar" id="sidenavAccordion">
+    <div id="layoutSidenav_nav profile-sidebar">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="index.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <b-link :to="{ name: 'home' }" class="nav-link" @click="setTitle('Dashboard')">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Dashboard
-                    </a>
+                    </b-link>
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -61,100 +61,19 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Tables
                     </a>
+                    <b-link :to="{ name: 'chat' }" class="nav-link" @click="setTitle('chat')">
+                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                        Chats
+                    </b-link>
                 </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
             </div>
         </nav>
     </div>
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Dashboard</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-                <div class="row">
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Primary Card</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Warning Card</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">Success Card</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">Danger Card</div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="#">View Details</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-6">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area mr-1"></i>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-bar mr-1"></i>
-                                Bar Chart Example
-                            </div>
-                            <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table mr-1"></i>
-                        DataTable Example
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Salary</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                    </div>
+                <div class="content w-100">
+                    <router-view></router-view>
                 </div>
             </div>
         </main>
@@ -167,7 +86,13 @@ export default {
 
     data() {
         return {
-            users: null
+            users: null,
+            title: 'Dashboard'
+        }
+    },
+    computed: {
+        getTitle: function() {
+            return this.title;
         }
     },
     mounted() {
@@ -182,12 +107,23 @@ export default {
        .leaving((user) => {
            this.users.splice(this.users.indexof(user),1);
        })
+    },
+    methods: {
+        setTitle(val) {
+            this.title = val;
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
   @import "./../../../sass/_variables.scss";
-  
+  #layoutSidenav #layoutSidenav_nav {
+    z-index: 0 !important;
+}
+.sb-sidenav-dark {
+    background-color: #2c3e50 !important;
+    color: $white !important;
+}
 </style>
 
 <!--
