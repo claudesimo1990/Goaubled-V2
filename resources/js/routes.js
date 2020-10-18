@@ -1,12 +1,11 @@
 import home from './components/profile/pages/home.vue';
-import messagerie from './components/profile/pages/messages.vue';
+import chat from './components/profile/pages/chat.vue';
 import progressColis from './components/profile/pages/expedictions/progressColis.vue';
 import colisPostDone from './components/profile/pages/expedictions/colisPostDone.vue';
 import travelPostDone from './components/profile/pages/expedictions/travelPostDone.vue';
 
 export default {
     baseUrl: window.location,
-    mode: 'history',
     routes: [
         {
             path: '/',
@@ -14,9 +13,9 @@ export default {
             component: home
         },
         {
-            path: '/messageries',
-            name: 'messageries',
-            component: messagerie
+            path: '/chat',
+            name: 'chat',
+            component: chat
         },      
         {
             path: '/progressColis',
