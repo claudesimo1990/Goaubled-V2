@@ -41,7 +41,7 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('messages.index') }}">Messages<i class="float-right fa fa-envelope" aria-hidden="true"></i></a>
+                               href="{{ route('message') }}">Messages<i class="float-right fa fa-envelope" aria-hidden="true"></i></a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

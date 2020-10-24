@@ -12,24 +12,13 @@ class Message extends Model
      * @var array
      */
     protected $fillable = [
-        'User_id',
-        'addressTo',
-        'content',
+        'from',
+        'to',
+        'text',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'id' => 'integer',
-        'User_id' => 'integer',
-    ];
-
-
-    public function user()
+    public function fromContact()
     {
-        return $this->belongsTo(\App\User::class);
+        return $this->hasOne(User::class, 'id', 'from');
     }
 }

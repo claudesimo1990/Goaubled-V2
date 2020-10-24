@@ -19,7 +19,10 @@ Route::get('travel-form','postController@travelForm')->name('travels.create')->m
 Route::post('travel-form','postController@createTravel')->name('post.travels.create');
 Route::get('/news','postController@index')->name('news.index');
 
-Route::livewire('messages','chat-message')->name('messages.index');
+Route::get('/message', 'ContactController@getChat')->name('message')->middleware('auth');
+Route::get('/contacts', 'ContactController@get');
+Route::get('/conversation/{id}', 'ContactController@getMessagesFor');
+Route::post('/conversation/send', 'ContactController@send');
 
 Auth::routes(['verify' => true]);
 
