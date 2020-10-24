@@ -136,7 +136,7 @@
 </template>
 <script>
     import Vue from 'vue';
-    import chat_box from './chatComponent.vue';
+    import chat_box from './chat/chat.vue';
 
     export default {
         components: {

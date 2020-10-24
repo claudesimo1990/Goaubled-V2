@@ -33,7 +33,7 @@
         "js-datepicker": "^5.16.0",
         "laravel-echo": "^1.8.1",
         "laravel-vue-pagination": "^2.3.1",
-        "moment": "^2.29.0",
+        "moment": "^2.29.1",
         "pusher-js": "^5.1.1",
         "save": "^2.4.0",
         "v-calendar": "^1.0.8",

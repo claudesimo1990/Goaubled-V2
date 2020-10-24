@@ -3,6 +3,8 @@
 
 @section('content')
 
-    <profile-component></profile-component>
+    <profile-component 
+    :current-user="{{ auth()->user() }}"
+    ></profile-component>
 
 @stop

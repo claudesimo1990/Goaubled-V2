@@ -61,10 +61,6 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Tables
                     </a>
-                    <b-link :to="{ name: 'chat' }" class="nav-link" @click="setTitle('chat')">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Chats
-                    </b-link>
                 </div>
             </div>
         </nav>
@@ -84,16 +80,27 @@
 <script>
 export default {
 
+    props: ['currentUser'],
+
     data() {
         return {
+            currentUser: {},
             users: null,
-            title: 'Dashboard'
+            title: 'Dashboard',
+            msg: 'hallo les gens'
         }
     },
     computed: {
+        getCurrentUser: function() {
+            return Store.getters.getCurrentUser;
+        },
         getTitle: function() {
             return this.title;
         }
+    },
+    created() {
+        Store.dispatch('setCurrentUser', this.currentUser);
+
     },
     mounted() {
 

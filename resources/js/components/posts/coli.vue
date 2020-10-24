@@ -63,13 +63,8 @@
                                     <label for="exampleInputEmail1">Poids(kg)</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control border-right-0" id="exampleInputdepart"
-                                               min="1" max="46" aria-describedby="departHelp"
-                                               placeholder="Nombre de Kilo*" v-model="coli.kilo">
-                                        <span class="input-group-append bg-white border-left-0">
-                                          <span class="input-group-text bg-transparent">
-                                            <i class="fas fa-weight"></i>
-                                          </span>
-                                        </span>
+                                        min="1" max="46" aria-describedby="departHelp"
+                                        placeholder="Nombre de Kilo*" v-model="coli.kilo">
                                     </div>
                                     <small v-if="errors.kilo" id="departHelp" class="form-text text-muted error" v-html="errors.kilo[0]"></small>
                                 </div>
@@ -79,23 +74,20 @@
                                     <label for="exampleInputEmail1">Prix/KG</label>
                                     <div class="input-group">
                                         <input type="number" class="form-control border-right-0" id="exampleInputdepart"
-                                               min="5" max="8" aria-describedby="departHelp"
-                                               placeholder="7" v-model="coli.prix">
-                                        <span class="input-group-append bg-white border-left-0">
-                                          <span class="input-group-text bg-transparent">
-                                            <i class="fas fa-euro-sign"></i>
-                                          </span>
-                                        </span>
-
+                                        min="5" max="8"
+                                        placeholder="7" v-model="coli.prix">
                                     </div>
                                     <small v-if="errors.prix" id="departHelp" class="form-text text-muted error" v-html="errors.prix[0]"></small>
                                 </div>
-                                <div class="col-md-8">
-                                    <div class="form-group  mr-5">
-                                        <label for="exampleFormControlFile1">Veillez telecharger la Photo de l object a
-                                            envoyer</label>
-                                        <input type="file" class="form-control-file" id="file" ref="file" v-on:change="onImageChange"
-                                               accept="image/png, image/jpeg">
+                                <div class="col-md-8 mt-4">
+                                    <div class="form-group mr-5">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input"
+                                                id="inputGroupFile02" ref="file" v-on:change="onImageChange">
+                                            <label class="custom-file-label" for="inputGroupFile02">Inserer une photo
+                                                du coli 
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +95,8 @@
                                 <label class="font-weight-bold" for="exampleFormControlTextarea1">Voulez vous ecrire
                                     autre chose sur votre voyage?</label>
                                 <textarea v-model='coli.content' class="form-control" id="exampleFormControlTextarea1"
-                                          rows="3"></textarea>
+                                          rows="3">
+                                    </textarea>
                             </div>
                             <small v-if="errors.content" id="departHelp" class="form-text text-muted error" v-html="errors.content[0]"></small>
                             <button class="btn btn-recherche btn-lg text-white my-2 mt-2" type="submit">poster votre annonce</button>
