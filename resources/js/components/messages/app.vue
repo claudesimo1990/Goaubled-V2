@@ -46,11 +46,17 @@ mounted() {
     Echo.private(`messages.${this.user.id}`)
         .listen('NewMessage', (e) => {
             this.hanleIncoming(e.message);
+        })
+
+        .notification((notification) => {
+            console.log(notification);
         });
+
     axios.get('/contacts')
         .then((response) => {
             this.contacts = response.data;
         });
+        
 },
 methods: {
     startConversationWith(contact) {

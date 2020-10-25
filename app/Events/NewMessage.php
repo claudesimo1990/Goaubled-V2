@@ -2,7 +2,9 @@
 
 namespace App\Events;
 
+use App\User;
 use App\Message;
+use App\Notifications\newNotify;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;
@@ -16,15 +18,17 @@ class NewMessage implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $user;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Message $message)
+    public function __construct(Message $message, User $user)
     {
         $this->message = $message;
+        $this->user = $user;
     }
 
     /**
@@ -39,6 +43,7 @@ class NewMessage implements ShouldBroadcast
 
     public function broadcastWith()
     {
+        
         $this->message->load('fromContact');
 
         return ["message" => $this->message];

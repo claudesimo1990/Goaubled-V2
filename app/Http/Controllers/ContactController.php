@@ -68,7 +68,9 @@ class ContactController extends Controller
             'text' => $request->text
         ]);
 
-        broadcast(new NewMessage($message));
+        $to = User::find($request->contact_id);
+
+        broadcast(new NewMessage($message,$to));
 
         return response()->json($message);
     }
