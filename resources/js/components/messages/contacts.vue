@@ -4,12 +4,10 @@
             <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'active': contact == selected }" class="contact">
                 <div class="wrap">
                     <span class="contact-status busy"></span>
-                    <span class="contact-status busy"></span>
                     <img v-if="contact.avatar_original" :src="contact.avatar_original" :alt="contact.name">
                     <img v-else :src="'storage/UsersAvatars/'+ contact.avatar" :alt="contact.name">
                     <div class="meta">
-                        <p class="name">{{ contact.name }}</p>
-                        <p class="preview"><span v-if="contact.unread">{{ contact.unread }}</span></p>
+                        <p class="name">{{ contact.name }}  <b-badge  v-if="contact.unread" href="#" class="mx-4" variant="info">{{ contact.unread }}</b-badge></p>
                     </div>
                 </div>
             </li>
@@ -32,7 +30,6 @@ export default {
         },
         methods: {
             selectContact(contact) {
-                console.log(contact);
                 this.selected = contact;
                 Store.dispatch('selectContact', contact);
                 this.$emit('selected', contact);
