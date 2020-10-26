@@ -1,5 +1,6 @@
 <template>
     <div id="frame">
+      <notifications group="foo" classes="notifications" />
         <div id="sidepanel">
            <user></user>
             <search></search>
@@ -18,6 +19,7 @@ import user from './user';
 import search from './search';
 import contacts from './contacts';
 import conversation from './conversation';
+import Notify from 'vue-notify-me';
 
 export default {
 
@@ -26,7 +28,8 @@ export default {
         user,
         search,
         contacts,
-        conversation
+        conversation,
+        'notify-me': Notify
     },
     props: {
     user: {
@@ -38,7 +41,12 @@ data() {
     return {
         selectedContact: null,
         messages: [],
-        contacts: []
+        contacts: [],
+         bus: '',
+        data: {
+            title: 'The pygmy team :)',
+            text: 'this is my notification'
+        }
     };
 },
 mounted() {
@@ -49,7 +57,11 @@ mounted() {
         })
 
         .notification((notification) => {
-            console.log(notification);
+              this.$notify({
+                group: 'foo',
+                title: 'Goaubled!',
+                text: notification.message
+            });
         });
 
     axios.get('/contacts')
@@ -748,5 +760,11 @@ methods: {
 }
 #frame .content .message-input .wrap button:focus {
   outline: none;
+}
+.notifications{
+    background-color: #8bc73d !important;
+    color: white !important;
+    padding: 10px;
+    text-align: justify;
 }
 </style>
