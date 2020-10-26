@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Message;
 use App\Events\NewMessage;
+use App\Notifications\newNotify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -70,7 +71,9 @@ class ContactController extends Controller
 
         $to = User::find($request->contact_id);
 
-        broadcast(new NewMessage($message,$to));
+        broadcast(new NewMessage($message))->toOthers();
+
+        $to->notify(new newNotify($to));
 
         return response()->json($message);
     }

@@ -18,8 +18,7 @@
     import MessagesFeed from './MessagesFeed';
     import MessageComposer from './MessageComposer';
 
-    export default 
-        {
+    export default {
         props: {
             contact: {
                 type: Object,

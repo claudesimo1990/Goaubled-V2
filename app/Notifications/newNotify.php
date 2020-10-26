@@ -72,8 +72,7 @@ class newNotify extends Notification
     public function toBroadcast($notifiable)
     {
         return new BroadcastMessage([
-            'user_id' => $this->user->id,
-            'message' => 'new meesage',
+            'message' => "vous avez recue un nouveau message de " .$this->user->name,
         ]);
     }
 }
