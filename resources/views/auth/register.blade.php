@@ -9,7 +9,18 @@
             <h5 class="text-center quigo-title">Inscription</h5>
             <form class="form-signin" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
               @csrf
-              
+              <div class="row mb-4">
+                <div class="col-md-6">
+                  <div class="picture-container">
+                      <div class="picture mb-2">
+                          <img src="{{ asset('/img/avatar.jpg') }}" class="picture-src" id="wizardPicturePreview" title="">
+                          <input type="file" name="avatar" id="wizard-picture" class="">
+                      </div>
+                      @error('avatar')<span class="error small mr-4">{{ $message }}</span>@enderror
+                       <h6 class="">choississez une photo de profile</h6>
+                  </div>
+              </div>
+              </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-label-group">
@@ -43,17 +54,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-12">
-                  <label for="file-upload" class="custom-file-upload">
-                    <i class="fas fa-cloud-upload-alt mr-2 py-3 mx-4 px-2"></i>Choissiser une photo de profile
-                  </label>
-                  <input class="form-control" id="file-upload" name="avatar" type="file">
-                </div>
-                @error('avatar')<span class="error small mr-4">{{ $message }}</span>@enderror
-              </div>
-
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">s'enregistrer</button>
               <h5><a class="d-block text-center mt-2" href="{{ route('login') }}">se connecter</a></h5>
 
