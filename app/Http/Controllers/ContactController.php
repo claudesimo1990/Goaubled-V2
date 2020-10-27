@@ -73,7 +73,7 @@ class ContactController extends Controller
 
         broadcast(new NewMessage($message))->toOthers();
 
-        $to->notify(new newNotify($to));
+        $to->notify(new newNotify(auth()->user()));
 
         return response()->json($message);
     }

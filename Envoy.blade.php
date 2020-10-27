@@ -1,4 +1,4 @@
-@servers(['web' => ['quigo@142.93.173.204']]])
+@servers(['web' => ['quigo@142.93.173.204']])
 
 @task('deploy', ['on' => 'web'])
    cd /var/www/html
