@@ -69,6 +69,8 @@ class ContactController extends Controller
             'text' => $request->text
         ]);
 
+        // notify
+        
         $to = User::find($request->contact_id);
 
         broadcast(new NewMessage($message))->toOthers();
