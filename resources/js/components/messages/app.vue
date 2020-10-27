@@ -1,6 +1,5 @@
 <template>
     <div id="frame">
-      <notifications group="foo" classes="notifications" />
         <div id="sidepanel">
            <user></user>
             <search></search>
@@ -19,7 +18,6 @@ import user from './user';
 import search from './search';
 import contacts from './contacts';
 import conversation from './conversation';
-import Notify from 'vue-notify-me';
 
 export default {
 
@@ -28,8 +26,7 @@ export default {
         user,
         search,
         contacts,
-        conversation,
-        'notify-me': Notify
+        conversation
     },
     props: {
     user: {
@@ -41,13 +38,8 @@ data() {
     return {
         selectedContact: null,
         messages: [],
-        contacts: [],
-         bus: '',
-        data: {
-            title: 'The pygmy team :)',
-            text: 'this is my notification'
-        }
-    };
+        contacts: []
+      };
 },
 mounted() {
     Store.dispatch('authUser',this.user);
@@ -57,11 +49,12 @@ mounted() {
         })
 
         .notification((notification) => {
-              this.$notify({
-                group: 'foo',
-                title: 'Goaubled!',
-                text: notification.message
-            });
+              let instance = app.$toast.open({
+                message: notification.message,
+                type: 'info',
+                position: 'top-right',
+                duration: 5000
+              });
         });
 
     axios.get('/contacts')

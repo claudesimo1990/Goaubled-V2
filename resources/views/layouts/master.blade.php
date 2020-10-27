@@ -26,19 +26,19 @@
     <link href="{{'/css/app.css'}}" rel="stylesheet">
 </head>
 <body id="body">
+    <div id="app">
+        @include("layouts/includes/topbar")
+        @include("layouts/includes/nav")
 
-@include("layouts/includes/topbar")
-@include("layouts/includes/nav")
+        <main>
+            @yield('content')
+        </main>
 
-<main id="app">
-    @yield('content')
-</main>
-
-<!-- #footer -->
-@include('layouts.includes.footer')
-<!-- #footer -->
-
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- #footer -->
+        @include('layouts.includes.footer')
+        <!-- #footer -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    </div>
 
 <!-- JavaScript Libraries -->
 <script  src="{{asset("/js/app.js")}}"></script>
@@ -93,5 +93,6 @@ function readURL(input) {
 </script>
 @stack('scripts')
 @include('flashy::message')
+    
 </body>
 </html>
