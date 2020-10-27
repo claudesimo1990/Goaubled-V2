@@ -10,6 +10,10 @@ import {BootstrapVue, BootstrapVueIcons}  from 'bootstrap-vue';
 import VueTyperPlugin from 'vue-typer'
 import VueLetterAvatar from 'vue-letter-avatar';
 import module from './store/store';
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-default.css';
+ 
+Vue.use(VueToast);
 
 Vue.use(VueLetterAvatar);
 Vue.use(Notifications);
@@ -32,7 +36,6 @@ $('#myCarousel').carousel({
 // Global register
 Vue.component('news', require('./components/newsComponent.vue').default);
 Vue.component('pagination', require('laravel-vue-pagination'));
-Vue.component('test-component', require('./components/testComponent.vue').default);
 Vue.component('home-news-component', require('./components/homeNewsComponent.vue').default);
 Vue.component('how-it-works-component', require('./components/howItWorksComponent.vue').default);
 Vue.component('coli-component', require('./components/posts/coli.vue').default);
@@ -45,10 +48,18 @@ Vue.component('how-work', require('./components/home/howWork.vue').default);
 Vue.component('about', require('./components/home/about.vue').default);
 Vue.component('teams', require('./components/home/teams.vue').default);
 Vue.component('destinations', require('./components/home/destinations.vue').default);
-Vue.component('content', require('./components/home/content.vue').default);
 Vue.component('profile-component', require('./components/profile/profile.vue').default);
 Vue.component('app-component', require('./components/messages/app.vue').default);
+Vue.component('notification', require('./components/home/notifications.vue').default);
 
-const app = new Vue({
+window.app = new Vue({
     el: '#app',
+    data() {
+      return {
+        count: 0
+      }
+    },
+    methods: {
+      
+    }
 });

@@ -51,13 +51,7 @@
                             </form>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <b-button variant="primary">
-                                Notifications <b-badge variant="light">{{ count(auth()->user()->unreadNotifications) }}</b-badge>
-                            </b-button>
-                        </a>
-                      </li>
+                    <notification :notifications="{{ count(auth()->user()->unreadNotifications) }}"></notification>
                 @endguest
             </ul>
         </nav>
