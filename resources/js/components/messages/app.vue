@@ -49,18 +49,22 @@ mounted() {
         })
 
         .notification((notification) => {
-              let instance = app.$toast.open({
-                message: notification.message,
-                type: 'info',
-                position: 'top-right',
-                duration: 5000
-              });
-        });
+          Store.dispatch('addNotification', notification.notifification);
 
-    axios.get('/contacts')
-        .then((response) => {
-            this.contacts = response.data;
-        });
+              Notification.requestPermission( permission => {
+                if (! ('Notification' in window)) {
+              alert('Web Notification is not supported');
+              return;
+            }
+              let notification = new Notification('New post alert!', {
+                body: Notification.message
+              });
+            });
+          })
+          axios.get('/contacts')
+              .then((response) => {
+                  this.contacts = response.data;
+              });
         
 },
 methods: {
