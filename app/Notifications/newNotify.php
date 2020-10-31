@@ -12,16 +12,16 @@ class newNotify extends Notification
 {
     use Queueable;
 
-    public $user;
+    public $notifification;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($notifification)
     {
-        $this->user = $user;
+        $this->notifification = $notifification;
     }
 
     /**
@@ -58,8 +58,8 @@ class newNotify extends Notification
     public function toArray($notifiable)
     {
         return [
-            'user_id' => $this->user->id,
-            'message' => 'new meesage',
+            'user_id' => $notifiable->id,
+            'message' => "nouveau message de " . $notifiable->name,
         ];
     }
 
@@ -72,7 +72,7 @@ class newNotify extends Notification
     public function toBroadcast($notifiable)
     {
         return new BroadcastMessage([
-            'message' => "vous avez recue un nouveau message de " .$this->user->name,
+            'notifification' => $this->notifification,
         ]);
     }
 }

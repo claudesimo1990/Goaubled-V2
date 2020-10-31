@@ -19,6 +19,7 @@
                 <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}"><i class="fas fa-search mr-1"></i>Voir les annonces</a></li>
                 <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}"><i class="fas fa-road mr-1"></i>Proposer un trajet</a></li>
                 <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}"><i class="fas fa-people-carry mr-1"></i>Expedier un colis</a></li>
+                <notification :unreadnotifications="{{ auth()->user()->unreadNotifications }}"></notification>
                 @if (Auth::user()->avatar_original)
                 <li class="ml-3 user__bild"><img src="{{Auth::user()->avatar_original}}" class="user__bild"></li>
                 @else
@@ -51,7 +52,6 @@
                             </form>
                         </div>
                     </li>
-                    <notification :notifications="{{ count(auth()->user()->unreadNotifications) }}"></notification>
                 @endguest
             </ul>
         </nav>

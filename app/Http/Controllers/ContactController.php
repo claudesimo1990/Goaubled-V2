@@ -70,12 +70,11 @@ class ContactController extends Controller
         ]);
 
         // notify
-        
         $to = User::find($request->contact_id);
 
         broadcast(new NewMessage($message))->toOthers();
 
-        $to->notify(new newNotify(auth()->user()));
+        $to->notify(new newNotify(auth()->user()->unreadNotifications->last()));
 
         return response()->json($message);
     }

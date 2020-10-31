@@ -26,6 +26,9 @@ Route::post('/conversation/send', 'ContactController@send');
 
 Auth::routes(['verify' => true]);
 
+//notifications
+Route::post('resetAllunreadNotifications', 'NotificationsController@update')->middleware('auth');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.show');
 

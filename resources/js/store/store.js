@@ -9,7 +9,8 @@ export default {
         postUser: {},
         isActiveChat: true,
         selectContact: {},
-        authUser: {}
+        authUser: {},
+        notifications: []
         
       },
       mutations: {
@@ -35,29 +36,41 @@ export default {
           },
           authUser (state, payload) {
             state.authUser = payload;
+          },
+          setNotifications (state, payload) {
+            state.notifications = payload;
+          },
+          addNotification (state, payload) {
+            state.notifications.push(payload);
           }
       },
       actions: {
         setKilos(context, payload) {
-            context.commit('setKilos', payload)
+            context.commit('setKilos', payload);
         },
         selectContact(context, payload) {
-            context.commit('selectContact', payload)
+            context.commit('selectContact', payload);
         },
         contact(context, payload) {
-            context.commit('contact', payload)
+            context.commit('contact', payload);
         },
         setisActiveChat(context, payload) {
-            context.commit('setisActiveChat', payload)
+            context.commit('setisActiveChat', payload);
         },
         bookKilo(context, payload) {
-            context.commit('bookKilo', payload)
+            context.commit('bookKilo', payload);
         },
         setNews(context, payload) {
-          context.commit('setNews', payload)
+          context.commit('setNews', payload);
         },
         authUser(context, payload) {
-          context.commit('authUser', payload)
+          context.commit('authUser', payload);
+        },
+        setNotifications(context, payload) {
+          context.commit('setNotifications', payload);
+        },
+        addNotification(context, payload) {
+          context.commit('addNotification', payload);
         }
       },
       getters: {
@@ -78,6 +91,9 @@ export default {
           }, 
           getisActiveChat(state) {
             return state.isActiveChat;
+          },
+          getNotifications(state) {
+            return state.notifications;
           } 
       }
 }
