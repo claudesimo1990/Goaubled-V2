@@ -42,7 +42,7 @@ data: function() {
                     // faut faire quelquechose a ce niveau
                 })
                 .catch(function (error) {
-                    //
+                    console.log(error);
                 });
         }
     }
