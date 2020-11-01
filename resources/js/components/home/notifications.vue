@@ -1,5 +1,5 @@
 <template>
-    <li class="nav-item dropdown" @click.prevent="updateNotification">
+    <li class="nav-item dropdown" @click="updateNotification">
         <a class="nav-link" href="#">
             <i class="fa fa-bell icon-notif"></i>
             <span class="dot" v-html="Object.keys(notifications).length"></span>
@@ -9,7 +9,7 @@
             <span class="caret"></span>
         </a>
         <div class="dropdown-menu notification-content" aria-labelledby="navbarDropdown">
-            <div class="text-wrap border px-1" v-for="item in notifications" :key="item.id" v-html="item.data.message"></div>
+            <div class="text-wrap border px-1" v-if="notifications.length > 0"v-for="item in notifications" :key="item.id" v-html="item.data.message"></div>
         </div>
     </li>
 </template>
@@ -42,7 +42,7 @@ data: function() {
                     // faut faire quelquechose a ce niveau
                 })
                 .catch(function (error) {
-                    //
+                    console.log(error);
                 });
         }
     }

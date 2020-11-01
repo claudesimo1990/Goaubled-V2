@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/','AppController@index')->name('accueil');
+Route::get('/howItWork','AppController@howItWork')->name('howItWork');
 
 Route::post('/getAllmessageWidth','MessageController@show')->name('messages.show');
 Route::post('/contact/user/{user}','ProfileController@contactUser')->name('Contact.user');
