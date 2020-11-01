@@ -58,7 +58,7 @@
               <a class="footer--link dark-grey-text" href="#!">FAQ</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#">Comment ca marche ?</a>
+              <a class="footer--link dark-grey-text" href="{{ route('howItWork') }}">Comment ca marche ?</a>
             </p>
     
           </div>

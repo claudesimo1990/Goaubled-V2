@@ -45,6 +45,7 @@ Vue.component('booking-coli-component', require('./components/booking/coli.vue')
 Vue.component('search-component', require('./components/search/search.vue').default);
 Vue.component('results-component', require('./components/search/results.vue').default);
 Vue.component('how-work', require('./components/home/howWork.vue').default);
+Vue.component('how-it-work', require('./components/pages/howItWork.vue').default);
 Vue.component('about', require('./components/home/about.vue').default);
 Vue.component('teams', require('./components/home/teams.vue').default);
 Vue.component('destinations', require('./components/home/destinations.vue').default);

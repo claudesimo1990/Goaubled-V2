@@ -22,4 +22,8 @@ class AppController extends Controller
 
         return view('App.annonces',compact('all_news'));
     }
+    public function howItWork(){
+
+        return view('pages.howItWork');
+    }
 }
