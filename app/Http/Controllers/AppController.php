@@ -26,5 +26,4 @@ class AppController extends Controller
 
         return view('pages.howItWork');
     }
-   
 }
