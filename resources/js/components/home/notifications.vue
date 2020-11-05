@@ -49,7 +49,7 @@ data: function() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dot {
     height: 20px;
     width: 20px;

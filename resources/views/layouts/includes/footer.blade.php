@@ -2,10 +2,10 @@
 <footer class="page-footer font-small lighten-5" style="width: 100%; background: darkslategray; color: white">
   
     <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left mt-3">
+    <div class="container-fluid text-center text-md-left">
   
         <!-- Grid row -->
-        <div class="row mt-3 dark-grey-text">
+        <div class="row dark-grey-text">
     
           <!-- Grid column -->
           <div class="col-md-3 col-lg-4 col-xl-3 mb-4 pt-3">

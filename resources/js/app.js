@@ -2,19 +2,21 @@ require('./bootstrap');
 const Vue = require('vue');
 const Vuex = require('vuex');
 
-window.moment = require('moment'); 
-
 import Notifications from 'vue-notification';
 import VCalendar from  'v-calendar';
 import {BootstrapVue, BootstrapVueIcons}  from 'bootstrap-vue';
 import VueTyperPlugin from 'vue-typer'
 import VueLetterAvatar from 'vue-letter-avatar';
+import VueRouter from "vue-router";
+import routes from '../js/routes';
 import module from './store/store';
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
+
+window.moment = require('moment'); 
  
 Vue.use(VueToast);
-
+Vue.use(VueRouter);
 Vue.use(VueLetterAvatar);
 Vue.use(Notifications);
 Vue.use(BootstrapVue);
@@ -22,9 +24,10 @@ Vue.use(BootstrapVueIcons)
 Vue.use(VueTyperPlugin);
 Vue.use(Vuex);
 
-window.Store = new Vuex.Store(module)
+window.Store = new Vuex.Store(module);
 
-// Use v-calendar & v-date-picker components
+const Router = new VueRouter(routes);
+
 Vue.use(VCalendar, {
   componentPrefix: 'vc'
 });
@@ -52,15 +55,9 @@ Vue.component('destinations', require('./components/home/destinations.vue').defa
 Vue.component('profile-component', require('./components/profile/profile.vue').default);
 Vue.component('app-component', require('./components/messages/app.vue').default);
 Vue.component('notification', require('./components/home/notifications.vue').default);
+Vue.component('testimonials', require('./components/home/testimonials.vue').default);
 
 window.app = new Vue({
     el: '#app',
-    data() {
-      return {
-        count: 0
-      }
-    },
-    methods: {
-      
-    }
+    router: Router,
 });

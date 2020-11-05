@@ -4,8 +4,8 @@ import colisPostDone from './components/profile/pages/expedictions/colisPostDone
 import travelPostDone from './components/profile/pages/expedictions/travelPostDone.vue';
 
 export default {
+    mode: 'history',
     baseUrl: window.location,
-    mode:history,
     routes: [
         {
             path: '/',

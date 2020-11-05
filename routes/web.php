@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\welcome_email;
+
 Route::get('/','AppController@index')->name('accueil');
 Route::get('/howItWork','AppController@howItWork')->name('howItWork');
 
@@ -38,3 +42,5 @@ Route::get('/google', 'Auth\LoginController@redirectToProvider')->name('google')
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
+
+//Route::get('/{any}', 'profileController@index')->where('any', '.*');
