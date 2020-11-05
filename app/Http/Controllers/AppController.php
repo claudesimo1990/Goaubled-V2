@@ -26,8 +26,5 @@ class AppController extends Controller
 
         return view('pages.howItWork');
     }
-    public function how(){
-
-        return view('pages.howItWork');
-    }
+   
 }
