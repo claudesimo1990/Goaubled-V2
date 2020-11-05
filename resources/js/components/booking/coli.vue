@@ -104,8 +104,8 @@
 
                     <div class="row ">
                         <div class="col-md-6 reservation-form">
-                            <button class="btn btn-reserve" type="submit">je me propose</button>
-                            <button class="btn btn-primary btn-contact-reserve" data-toggle="collapse" data-target="#reserver">contacter l'expéditeur</button>
+                            <button class="btn btn-reserve"  data-toggle="collapse" data-target="#reserver" type="submit">je me propose</button>
+                            <button @click="startConversationWith" class="btn btn-primary btn-contact-reserve">contacter l'expéditeur</button>
 
                             <div id="reserver" class="collapse">
                                 <div class="form-group">
@@ -122,18 +122,59 @@
             </div>
         </div>
     </section>
+    <contact-user :user="owner" :current="currentUser" :messages="messages" @new="saveNewMessage(message)" :path="path"></contact-user>
 </div>
 </template>
 
 <script>
+
+import contactUser from "./contact";
+
 export default {
-    props: ['post', 'owner'],
+    
+    props: ['post', 'owner', 'currentUser', 'path'],
+
+    components: {contactUser},
+
     data: function() {
         return {
-
+            setisActiveChat: true,
+            messages: [],
+            form: {
+                kilo: 0,
+                message: '',
+            }
         }
+    },
+    computed: {
+        getKilos: function() {
+            return Store.getters.getKilos;
+        },
+        getisActiveChat: function() {
+            return Store.getters.getisActiveChat;
+        }
+    },
+    methods: {
+        booking: function() {
+            if(this.form.kilo > 0) { Store.dispatch('bookKilo', this.form.kilo);}
+        },
+        startConversationWith() {
+            if(this.owner.id == this.currentUser.id){
+                return;
+            }
+            Store.dispatch('setisActiveChat', !this.getisActiveChat);
+            axios.get(`/conversation/${this.owner.id}`)
+                .then((response) => {
+                this.messages = response.data;
+            })
+        },
+        saveNewMessage(message) {
+            this.messages.push(message);
+        },
+    },
+    mounted() {
+       Store.dispatch('setisActiveChat', true);
     }
-
 }
 </script>
 

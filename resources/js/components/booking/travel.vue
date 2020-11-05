@@ -91,7 +91,7 @@
                     <div class="row ">
                         <div class="col-md-6 reservation-form">
                             <b-button data-toggle="collapse" data-target="#reserver">je reserve</b-button>
-                            <b-button @click.prevent="contact"  variant="success">contacter le voyageur</b-button>
+                            <b-button @click.prevent="startConversationWith"  variant="success">contacter le voyageur</b-button>
                             <div id="reserver" class="collapse">
                                 <form  @submit.prevent="booking">
                                     <div class="form-group">
@@ -113,19 +113,27 @@
             </div>
         </div>
     </section>
-    <chat></chat>
+    <contact-user :user="owner" :current="currentUser" :messages="messages" @new="saveNewMessage(message)" :path="path"></contact-user>
 </div>
 </template>
 
 <script>
+
+import contactUser from "./contact";
+
 export default {
-    props: ['post', 'owner', 'currentUser'],
+
+    props: ['post', 'owner', 'currentUser', 'path'],
+
+    components: {contactUser},
+
     data: function() {
         return {
             setisActiveChat: true,
+            messages: [],
             form: {
                 kilo: 0,
-                message: ''
+                message: '',
             }
         }
     },
@@ -141,14 +149,18 @@ export default {
         booking: function() {
             if(this.form.kilo > 0) { Store.dispatch('bookKilo', this.form.kilo);}
         },
-        contact: function() {
+        startConversationWith() {
             Store.dispatch('setisActiveChat', !this.getisActiveChat);
-        }
+            axios.get(`/conversation/${this.owner.id}`)
+                .then((response) => {
+                this.messages = response.data;
+            })
+        },
+        saveNewMessage(message) {
+            this.messages.push(message);
+        },
     },
     mounted() {
-       Store.dispatch('setKilos', this.post.kilo);
-       Store.dispatch('setCurrentUser', this.currentUser);
-       Store.dispatch('setPostUser', this.owner);
        Store.dispatch('setisActiveChat', true);
     }
 

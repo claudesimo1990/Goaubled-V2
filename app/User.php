@@ -14,6 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -117,5 +118,15 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany('App\User');
+    }
+
+    /**
+     * The channels the user receives notification broadcasts on.
+     *
+     * @return string
+     */
+    public function receivesBroadcastNotificationsOn()
+    {
+        return 'messages.'.$this->id;
     }
 }

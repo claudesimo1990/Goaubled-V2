@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\notifications;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class NotificationsController extends Controller
 {
@@ -67,9 +68,9 @@ class NotificationsController extends Controller
      * @param  \App\notifications  $notifications
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, notifications $notifications)
+    public function update()
     {
-        //
+        auth()->user()->unreadNotifications()->update(['read_at' => now()]);
     }
 
     /**

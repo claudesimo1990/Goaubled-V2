@@ -4,21 +4,24 @@ const Vue = require('vue');
 export default {
     state: {
         kilos: 0,
-        news: {},
-        currentUser: {},
+        messages: {},
+        contact: {},
         postUser: {},
-        isActiveChat: true
+        isActiveChat: true,
+        selectContact: {},
+        authUser: {},
+        notifications: []
         
       },
       mutations: {
         setKilos (state, payload) {
           state.kilos = payload;
         },
-        setPostUser (state, payload) {
-          state.postUser = payload;
+        contact (state, payload) {
+          state.contact = payload;
         },
-        setCurrentUser (state, payload) {
-          state.currentUser = payload;
+        selectContact (state, payload) {
+          state.selectContact = payload;
         },
         setisActiveChat (state, payload) {
           state.isActiveChat = payload;
@@ -28,51 +31,69 @@ export default {
               state.kilos = (state.kilos - payload);
             }
           },
-          setNews (state) {
-            axios.get('/api/listeNews')
-            .then(function (response) {
-              Vue.set(state.news,'', response.data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+          messages (state, payload) {
+            state.messages = payload;
+          },
+          authUser (state, payload) {
+            state.authUser = payload;
+          },
+          setNotifications (state, payload) {
+            state.notifications = payload;
+          },
+          addNotification (state, payload) {
+            state.notifications.push(payload);
           }
       },
       actions: {
         setKilos(context, payload) {
-            context.commit('setKilos', payload)
+            context.commit('setKilos', payload);
         },
-        setCurrentUser(context, payload) {
-            context.commit('setCurrentUser', payload)
+        selectContact(context, payload) {
+            context.commit('selectContact', payload);
         },
-        setPostUser(context, payload) {
-            context.commit('setPostUser', payload)
+        contact(context, payload) {
+            context.commit('contact', payload);
         },
         setisActiveChat(context, payload) {
-            context.commit('setisActiveChat', payload)
+            context.commit('setisActiveChat', payload);
         },
         bookKilo(context, payload) {
-            context.commit('bookKilo', payload)
+            context.commit('bookKilo', payload);
         },
         setNews(context, payload) {
-          context.commit('setNews', payload)
-      }
+          context.commit('setNews', payload);
+        },
+        authUser(context, payload) {
+          context.commit('authUser', payload);
+        },
+        setNotifications(context, payload) {
+          context.commit('setNotifications', payload);
+        },
+        addNotification(context, payload) {
+          context.commit('addNotification', payload);
+        }
       },
       getters: {
           getKilos(state) {
               return state.kilos;
           },
-          getNews(state) {
-            return state.news;
+          messages(state) {
+            return state.messages;
+          },
+          authUser(state) {
+            return state.authUser;
           }, 
-          getCurrentUser(state) {
-            return state.currentUser;
+          selectContact(state) {
+            return state.selectContact;
           }, 
-          getPostUser(state) {
-            return state.postUser;
+          contact(state) {
+            return state.contact;
           }, 
           getisActiveChat(state) {
             return state.isActiveChat;
+          },
+          getNotifications(state) {
+            return state.notifications;
           } 
       }
 }

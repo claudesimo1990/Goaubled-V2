@@ -14,16 +14,11 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('to');
-            $table->string('post_id');
-            $table->string('from_name');
-            $table->string('from_email');
-            $table->integer('book_kilo')->nullable();
-            $table->longText('content');
-            $table->boolean('unread')->default(false);
+            $table->increments('id');
+            $table->integer('from')->unsigned();
+            $table->integer('to')->unsigned();
+            $table->boolean('read')->default(false);
+            $table->text('text');
             $table->timestamps();
         });
     }

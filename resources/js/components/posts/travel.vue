@@ -146,7 +146,6 @@ export default {
                 dateFrom: '',
                 dateTo: '',
                 quantity: '',
-                coliName: '',
                 kilo: '',
                 prix: '',
                 photoBielletAvion: '',
@@ -176,7 +175,6 @@ export default {
 
               formData.append('photoBielletAvion',  this.file);
               formData.append('compagnie',  this.travel.compagnie);
-              formData.append('colis_name',  this.travel.coliName);
               formData.append('from',  this.travel.from);
               formData.append('to',  this.travel.to);
               formData.append('dateFrom',  this.date1);

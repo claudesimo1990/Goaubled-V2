@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Coli;
-use App\Message;
-use App\Travel;
 use App\User;
-use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Contracts\View\Factory;
+use App\Message;
+use App\Events\NewMessage;
+use App\Notifications\newNotify;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 /**
  * Class ContactController
@@ -20,58 +17,70 @@ use Illuminate\View\View;
 class ContactController extends Controller
 {
 
-    /**
-     * @param User $user
-     * @param Travel $travel
-     * @return Factory|View {user}/{pack}
-     */
-    public function showUserTravels(User $user,Travel $travel)
+    public function get()
     {
-        return view('App.bookingPage',['user' => $user,'travel' => $travel,'log_user' => Auth::user()->id]);
+        // get all users except the authenticated one
+        $contacts = User::where('id', '!=', auth()->id())->get();
+
+        // get a collection of items where sender_id is the user who sent us a message
+        // and messages_count is the number of unread messages we have from him
+        $unreadIds = Message::select(\DB::raw('`from` as sender_id, count(`from`) as messages_count'))
+            ->where('to', auth()->id())
+            ->where('read', false)
+            ->groupBy('from')
+            ->get();
+
+        // add an unread key to each contact with the count of unread messages
+        $contacts = $contacts->map(function($contact) use ($unreadIds) {
+            $contactUnread = $unreadIds->where('sender_id', $contact->id)->first();
+
+            $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
+
+            return $contact;
+        });
+
+
+        return response()->json($contacts);
     }
 
-    /**
-     * @param User $user
-     * @param Coli $coli
-     * @return Factory|View
-     */
-    public function showUserPacks(User $user,Coli $coli)
+    public function getMessagesFor($id)
     {
-        return view('App.packBookingPage',['user' => $user,'pack' => $coli]);
+        // mark all messages with the selected contact as read
+        Message::where('from', $id)->where('to', auth()->id())->update(['read' => true]);
+
+        // get all messages between the authenticated user and the selected user
+        $messages = Message::where(function($q) use ($id) {
+            $q->where('from', auth()->id());
+            $q->where('to', $id);
+        })->orWhere(function($q) use ($id) {
+            $q->where('from', $id);
+            $q->where('to', auth()->id());
+        })
+        ->get();
+
+        return response()->json($messages);
     }
 
-    /**
-     * @param Request $request
-     * @param User $to
-     * @param User $from
-     * @return ResponseFactory|Response
-     */
-    public function sendMessage(Request $request,User $to,User $from)
+    public function send(Request $request)
     {
-        // validate
-        $validateData = $request->validate([
-            'book_kilo' => ['required'],
-            'message' => ['required'],
+        $message = Message::create([
+            'from' => auth()->id(),
+            'to' => $request->contact_id,
+            'text' => $request->text
         ]);
 
+        // notify
+        $to = User::find($request->contact_id);
 
-        $message = new Message();
+        broadcast(new NewMessage($message))->toOthers();
 
-        $message->user_id = $from->id;
-        $message->from_name = $from->name;
-        $message->from_email = $from->email;
-        $message->from_email = $from->email;
-        $message->post_id = $request->post_id;
-        $message->to = $to->id;
-        $message->book_kilo = $request->book_kilo;
-        $message->content = $request->message;
+        $to->notify(new newNotify(auth()->user()->unreadNotifications->last()));
 
-        $message->save();
+        return response()->json($message);
+    }
 
-        return response('success', 200)
-            ->header('Content-Type', 'Application/json');
-
-
-
+    public function getChat()
+    {
+        return view('messages.chat');
     }
 }

@@ -2,67 +2,53 @@
 
 namespace App\Http\Controllers;
 
-use App\Coli;
-use App\Events\Newmessage;
-use App\Http\Requests\MessageStoreRequest;
-use App\Jobs\SyncMedia;
-use App\Mail\ReviewNotification;
 use App\Message;
-use App\Travel;
-use App\User;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class MessageController extends Controller
+class messageController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return Factory|\Illuminate\View\View
-     */
-    public function create(Request $request)
-    {
-        $messages = Message::all();
+   public function fetchMessages($user_id)
+   {
+       $my_id = Auth::id();
 
-        return view('message.create');
-    }
+       $messages = Message::where(function($query) use ($user_id, $my_id) {
 
-    /**
-     * @param Request $request
-     * @return Factory|\Illuminate\View\View
-     */
-    public function show(Request $request)
-    {
-        dd($request);
-    }
+        $query->where('from',$my_id)->where('to', $user_id);
 
-    /**
-     * @param Request $request
-     * @param \App\Message $message
-     * @return Factory|\Illuminate\View\View
-     */
-    public function update(Request $request, Message $message)
-    {
-        return view('message.create', compact('profile'));
-    }
+       })->orWhere(function($query) use ($user_id, $my_id) {
 
-    /**
-     * @param MessageStoreRequest $request
-     * @return RedirectResponse
-     */
-    public function store(MessageStoreRequest $request)
-    {
-        $message = Message::create($request->all());
+        $query->where('from',$user_id)->where('to', $my_id);
 
-        Mail::to($message->author)->send(new ReviewNotification($message));
+       })->get();
 
-        SyncMedia::dispatch($message);
 
-        event(new Newmessage($message));
+   }
 
-        $request->session()->flash('message.name', $message->name);
+   public function fetchPostMessages($user_id,$post_id)
+   {
+       $my_id = Auth::id();
 
-        return redirect()->route('message.index');
-    }
+       $messages = Message::where(function($query) use ($user_id, $my_id) {
+
+        $query->where('from',$my_id)->where('to', $user_id);
+
+       })->orWhere(function($query) use ($user_id, $my_id) {
+
+        $query->where('from',$user_id)->where('to', $my_id);
+
+       })->where(function($query) use ($post_id) {
+
+        $query->where('post_id',$post_id);
+
+       })->get();
+
+
+   }
+
+   public function storeMessage(Request $request)
+   {
+       dd($request);
+   }
 }

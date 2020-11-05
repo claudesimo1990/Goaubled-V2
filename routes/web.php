@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\welcome_email;
+
 Route::get('/','AppController@index')->name('accueil');
+Route::get('/howItWork','AppController@howItWork')->name('howItWork');
 
 Route::post('/getAllmessageWidth','MessageController@show')->name('messages.show');
 Route::post('/contact/user/{user}','ProfileController@contactUser')->name('Contact.user');
@@ -19,9 +24,15 @@ Route::get('travel-form','postController@travelForm')->name('travels.create')->m
 Route::post('travel-form','postController@createTravel')->name('post.travels.create');
 Route::get('/news','postController@index')->name('news.index');
 
-Route::livewire('messages','chat-message')->name('messages.index');
+Route::get('/message', 'ContactController@getChat')->name('message')->middleware('auth');
+Route::get('/contacts', 'ContactController@get');
+Route::get('/conversation/{id}', 'ContactController@getMessagesFor');
+Route::post('/conversation/send', 'ContactController@send');
 
 Auth::routes(['verify' => true]);
+
+//notifications
+Route::post('resetAllunreadNotifications', 'NotificationsController@update')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.show');
@@ -31,3 +42,5 @@ Route::get('/google', 'Auth\LoginController@redirectToProvider')->name('google')
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
+
+//Route::get('/{any}', 'profileController@index')->where('any', '.*');
