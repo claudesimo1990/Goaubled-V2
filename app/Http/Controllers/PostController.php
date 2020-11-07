@@ -122,7 +122,7 @@ class postController extends Controller
 
     public function booking(Request $request)
     {
-       Mail::to('claudesimo1990@gmail.com')->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
+       Mail::to($request->get('owner')['email'])->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
         // check for failures
         if (Mail::failures()) {
             return response('error', 500);

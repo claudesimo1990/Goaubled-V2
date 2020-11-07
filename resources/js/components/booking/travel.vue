@@ -160,9 +160,14 @@ export default {
             this.messages.push(message);
         },
         bookingKilo() {
-            if (this.form.kilo < this.getKilos) {
+            if (this.form.kilo > this.getKilos) {
 
-                this.booking = true;
+                Vue.$toast.warning('le nombre de kilo disponible est inferieur a votre demande.', {
+                    position: 'top-right'
+                });
+                return; 
+            }
+            this.booking = true;
 
                 axios.post(`/booking/${this.post.id}/${this.owner.id}`,
                 {
@@ -176,9 +181,11 @@ export default {
                         position: 'top-right'
                     });
                     this.booking = false;
+                }).catch(() => {
+                    Vue.$toast.warning('Ups une erreur est survenue lors de la soumission, veuillez verifier votre addresse email.', {
+                        position: 'top-right'
+                    });
                 })
-                
-            }
         },
         updatePost(kilos) {
             axios.post(`/post/${this.post.id}/${this.owner.id}`,
