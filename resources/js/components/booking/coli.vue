@@ -66,23 +66,21 @@
                     <h3> Details du Colis</h3>
 
                     <ul class="timeline offset-md-2">
-                        <span class="step-heure">26-03-19 15:00</span>
+                        <span class="step-heure" v-html="post.dateFrom"></span>
                         <li>
-                            <p>ServiceStore DB - S-Bahnhof Berlin Frankfurter Allee, Berlin</p>
-                            <span>Douala (Cameroun)</span>
+                            <p v-html="post.from"></p>
                         </li>
 
-                        <span class="step-heure">26-03-19 15:00</span>
+                        <span class="step-heure" v-html="post.dateTo"></span>
                         <li>
-                            <p>ServiceStore DB - S-Bahnhof Berlin Frankfurter Allee, Berlin</p>
-                            <span>Douala (Cameroun)</span>
+                            <p v-html="post.to"></p>
                         </li>
                     </ul>
 
                     <div class="row">
                         <div class="col-md-12 detail-sub">
-                            <p>Poid: <span>89kg</span></p>
-                            <p>Tarif: <span>20 Euro</span></p>
+                            <h5>Poids : <b-badge variant="info" v-html="post.kilo+ ' kg'"></b-badge></h5>
+                            <h5>Tarif: <b-badge variant="info" v-html="post.prix + ' Euro'"></b-badge></h5> 
                         </div>
                     </div>
 
@@ -93,15 +91,9 @@
                         </div>
 
                         <div class="col-md-9 colis-description">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. </p>
+                            <p v-html="post.content"></p>
                         </div>
                     </div>
-
-
                     <div class="row ">
                         <div class="col-md-6 reservation-form">
                             <button class="btn btn-reserve"  data-toggle="collapse" data-target="#reserver" type="submit">je me propose</button>

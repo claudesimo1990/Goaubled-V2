@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\post;
 use App\User;
+use App\Mail\BookingMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use MercurySeries\Flashy\Flashy;
@@ -116,6 +118,22 @@ class postController extends Controller
     {
         $posts = Post::all();
         return response()->json($posts, 200);
+    }
+
+    public function booking(Request $request)
+    {
+       Mail::to('claudesimo1990@gmail.com')->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
+        // check for failures
+        if (Mail::failures()) {
+            return response('error', 500);
+        } else {
+            return response('success', 200);
+        }
+    }
+
+    public function bookingConfirm()
+    {
+        return view('booking.confirmation');
     }
 }
 

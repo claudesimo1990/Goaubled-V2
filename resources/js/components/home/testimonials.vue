@@ -6,9 +6,9 @@
                     Que disent nos utilisateurs
                 </h2>
             </div>
-            <div class="card col-md-12 mt-2 testimonials">
+            <div class="card col-md-12 mt-2 mb-5 testimonials">
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="100000">
-                    <div class="w-100 carousel-inner mb-5" role="listbox">
+                    <div class="w-100 carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <div class="bg"></div>
                             <div class="row">
@@ -16,12 +16,11 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="#" alt="" class="rounded-circle img-fluid">
+                                                <img src="/img/25.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                             <h2>Micheal Smith</h2>
-                                                <small>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</small>
-                                                <small class="smallest mute">- willi</small>
+                                                <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -30,12 +29,11 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="#" alt="" class="rounded-circle img-fluid">
+                                                <img src="/img/53.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                                 <h2>Helena Doe</h2>
-                                                <small>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</small>
-                                                <small class="smallest mute">- willi</small>
+                                                <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -49,12 +47,11 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="#" alt="" class="rounded-circle img-fluid">
+                                                <img src="/img/54.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                             <h2>John Doe</h2>
-                                                <small>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</small>
-                                                <small class="smallest mute">- willi</small>
+                                                <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -63,28 +60,26 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="#" alt="" class="rounded-circle img-fluid">
+                                                <img src="/img/55.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                             <h2>Helena Doe</h2>
-                                                <small>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</small>
-                                                <small class="smallest mute">- willi</small>
+                                                <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div>   
                     </div>
-                    <a class="carousel-control-prev next-button" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next next-button" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="mb-5">
+                        <a class="carousel-control-prev next-button" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"><i class="fas fa-chevron-left"></i></span>
+                        </a>
+                        <a class="carousel-control-next next-button" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"><i class="fas fa-chevron-right"></i></span>
+                        </a>
+                    </div>
                 </div>
             </div> 
         </div>

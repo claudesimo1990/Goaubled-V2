@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Mail\welcome_email;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -70,13 +71,17 @@ class RegisterController extends Controller
 
         Storage::disk('public')->put('UsersAvatars/'.$filename, $img);
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'avatar' => $filename,
             'password' => Hash::make($data['password'])
         ]);
 
+        Mail::to('claudesimo1990@gmail.com')->send(new welcome_email($user));
+
         flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
+
+        return $user;
     }
 }
