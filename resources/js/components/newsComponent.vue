@@ -2,12 +2,12 @@
     <section id="about" class="pb-5">
         <div class="container py-4">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
                     <h2 class="quigo-title">{{title}}</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 mt-3 cathergorie">
+                <div class="col-xs-12 col-sm-12 col-md-3 mt-3 cathergorie">
                     <h3 class="my-4">Affiner votre recherche</h3>
                     <div class="list-group search-box rounded">
                         <div class="col-sm-12">
@@ -37,33 +37,45 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-md-9 col-lg-9">
                     <div v-for="item in laravelData.data" :key="item.id">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
-                                        <div class="col-md-3">
+                                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                            <div class="border my-2 px-2 rounded">
                                                 <div class="user-bild">
                                                     <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
                                                 </div>
-                                            <b class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}</b>
-                                            <div class="notice justify-center text-center notice-success stars">
-                                                <p class="strong">VOTES</p>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <p class="">Membre verifié <span class="fa fa-star verify"></span> <br><br>
+                                                <div class="mb-2 mt-2">
+                                                    <p class="font-weight-bold font-italic text-center">{{item.user.name.substring(0,10)+".."}}</p>
+                                                </div>
+                                                <div class="notice justify-center text-center notice-success stars">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="strong">VOTES :</div>
+                                                        <div>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex justify-content-between"> 
+                                                        <span>Membre verifié</span>
+                                                        <span class="fa fa-star verify mr-2"></span>
+                                                    </div>
                                                     <span class="vorHumanns">{{ item.created_at }}</span>
-                                                </p>
+                                                </div>
                                             </div>
                                             <div class="icon--card">
                                                 <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
                                             </div>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                             <ul class="timeline">
                                                 <li>
                                                     <a target="_blank" href="#">{{item.from}}</a>
@@ -77,7 +89,7 @@
                                             <hr>
                                             <div class="notice notice-warning">
                                                 <strong>Kilo disponibles :</strong> {{item.kilo}} Kg <span
-                                                class="float-right kilo-price">{{item.prix}}€</span>
+                                                class="float-right kilo-price">{{item.prix}} €</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
@@ -99,20 +111,33 @@
                             <div class="container py-3" v-if="item.categorie_id == 1">
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
-                                        <div class="col-md-3 pb-5">
-                                            <div class="user-bild">
-                                                <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
-                                            </div>
-                                            <b class="font-italic font-weight-bold pl-5 mt-0 pb-2">{{item.user.name.substring(0,10)+".."}}</b>
-                                            <div class="notice justify-center text-center notice-success stars">
-                                                <p class="strong">VOTES</p>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star checked"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <p class="">Membre verifié <span class="fa fa-star verify"></span></p>
-                                                <span class="vorHumanns">{{ item.created_at }}</span>
+                                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pb-5">
+                                            <div class="border my-2 px-2 rounded">
+                                                <div class="user-bild">
+                                                    <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
+                                                </div>
+                                                <div class="mb-2 mt-2">
+                                                    <p class="font-weight-bold font-italic text-center">{{item.user.name.substring(0,10)+".."}}</p>
+                                                </div>
+                                                <div class="notice justify-center text-center notice-success stars">
+                                                    <div class="d-flex justify-content-between">
+                                                        <div class="strong">VOTES :</div>
+                                                        <div>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star checked"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex justify-content-between"> 
+                                                        <span>Membre verifié</span>
+                                                        <span class="fa fa-star verify mr-2"></span>
+                                                    </div>
+                                                    <span class="vorHumanns">{{ item.created_at }}</span>
+                                                </div>
                                             </div>
                                             <div class="icon--card">
                                                 <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
@@ -132,7 +157,7 @@
                                             <hr>
                                             <div class="notice notice-warning">
                                                 <strong>Poids du Coli :</strong> {{ item.kilo }} Kg <span
-                                                class="float-right kilo-price pack-price">{{ item.prix }}€</span>
+                                                class="float-right kilo-price pack-price">{{ item.prix }} €</span>
                                             </div>
                                             <div class="notice notice-warning border-4">
                                                 <strong>Message : </strong>
@@ -152,10 +177,10 @@
                         </div>
                     </div>
                    <div class="row mt-4 py-2 px-4">
-                        <pagination :data="laravelData" :size="large" :align="right" @pagination-change-page="getResults">
+                        <pagination :data="laravelData" size="small" align="right" @pagination-change-page="getResults">
                             <span slot="prev-nav">&lt; Previous</span>
                             <span slot="next-nav">Next &gt;</span>
-                   </pagination>
+                        </pagination>
                    </div>
                 </div>
             </div>

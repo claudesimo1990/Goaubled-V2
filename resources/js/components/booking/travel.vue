@@ -2,7 +2,6 @@
     <div>
     <section id="about" class="mb-5 reservation-component">
         <h1 class="text-justify text-center headline-text">Reserver un Voyage </h1>
-
         <div class="container shadow">
             <div class="row">
                 <div class="col-lg-3 col-sm-12 justify-content-center">
@@ -94,21 +93,23 @@
                             <b-button @click.prevent="startConversationWith"  variant="success">contacter le voyageur</b-button>
                             <div id="reserver" class="collapse">
                                 <form  @submit.prevent="booking">
-                                    <div class="form-group">
-                                        <label for="email">Combien de Kilos ? :</label>
-                                        <input v-model="form.kilo" type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Votre message:</label>
-                                        <textarea v-model="form.message" type="textarea"
-                                                  class="form-control voyageur-textarea"></textarea>
-                                        <b-button variant="info" type="submit">envoyer</b-button>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <input v-model="form.kilo" type="text" class="form-control" placeholder="Combien de Kilos ?">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <b-button variant="info" type="submit" @click.prevent="bookingKilo">reserver</b-button>
+                                                <b-spinner v-show="booking" small label="Small Spinner" type="grow"></b-spinner>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -118,7 +119,6 @@
 </template>
 
 <script>
-
 import contactUser from "./contact";
 
 export default {
@@ -131,9 +131,9 @@ export default {
         return {
             setisActiveChat: true,
             messages: [],
+            booking: false,
             form: {
                 kilo: 0,
-                message: '',
             }
         }
     },
@@ -159,9 +159,46 @@ export default {
         saveNewMessage(message) {
             this.messages.push(message);
         },
+        bookingKilo() {
+            if (this.form.kilo < this.getKilos) {
+
+                this.booking = true;
+
+                axios.post(`/booking/${this.post.id}/${this.owner.id}`,
+                {
+                    kilos: this.form.kilo,
+                    owner: this.owner
+
+                }).then((response) => {
+                    Store.dispatch('bookKilo', this.form.kilo);
+                    this.form.kilo = 0;
+                    Vue.$toast.success('votre reservation a ete soumise avec success.', {
+                        position: 'top-right'
+                    });
+                    this.booking = false;
+                })
+                
+            }
+        },
+        updatePost(kilos) {
+            axios.post(`/post/${this.post.id}/${this.owner.id}`,
+            {
+                kilos: this.form.kilo,
+                owner: this.owner
+
+            }).then((response) => {
+                Store.dispatch('bookKilo', this.form.kilo);
+                this.form.kilo = 0;
+                Vue.$toast.success('votre reservation a ete soumise avec success.', {
+                    position: 'top-right'
+                });
+                this.booking = false;
+            })        
+        }
     },
     mounted() {
        Store.dispatch('setisActiveChat', true);
+       Store.dispatch('setKilos', this.post.kilo);
     }
 
 }
