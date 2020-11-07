@@ -102,7 +102,7 @@
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <b-button variant="info" type="submit" @click.prevent="bookingKilo">reserver</b-button>
-                                                <b-spinner v-show="booking" small label="Small Spinner" type="grow"></b-spinner>
+                                                <b-spinner v-show="bookingSpinerShow" small label="Small Spinner" type="grow"></b-spinner>
                                             </div>
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@ export default {
         return {
             setisActiveChat: true,
             messages: [],
-            booking: false,
+            bookingSpinerShow: false,
             form: {
                 kilo: 0,
             }
@@ -167,7 +167,7 @@ export default {
                 });
                 return; 
             }
-            this.booking = true;
+            this.bookingSpinerShow = true;
 
                 axios.post(`/booking/${this.post.id}/${this.owner.id}`,
                 {
@@ -180,27 +180,12 @@ export default {
                     Vue.$toast.success('votre reservation a ete soumise avec success.', {
                         position: 'top-right'
                     });
-                    this.booking = false;
+                    this.bookingSpinerShow = false;
                 }).catch(() => {
                     Vue.$toast.warning('Ups une erreur est survenue lors de la soumission, veuillez verifier votre addresse email.', {
                         position: 'top-right'
                     });
                 })
-        },
-        updatePost(kilos) {
-            axios.post(`/post/${this.post.id}/${this.owner.id}`,
-            {
-                kilos: this.form.kilo,
-                owner: this.owner
-
-            }).then((response) => {
-                Store.dispatch('bookKilo', this.form.kilo);
-                this.form.kilo = 0;
-                Vue.$toast.success('votre reservation a ete soumise avec success.', {
-                    position: 'top-right'
-                });
-                this.booking = false;
-            })        
         }
     },
     mounted() {
