@@ -97,10 +97,8 @@ class postController extends Controller
 
     public function index(Request $request)
     {
-       $key = $request->get('key');
+       $key = !empty($request->get('key')) ? $request->get('key') : 'allNews';
 
-     
-    
         return view('App.news', compact('key'));
     }
 
@@ -143,8 +141,11 @@ class postController extends Controller
             )
         );
        
+<<<<<<< .merge_file_LGrK6i
        Mail::to($request->get('owner')['email'])->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
 
+=======
+>>>>>>> .merge_file_owXD0P
         if (Mail::failures()) {
 
             return response('error', 500);
