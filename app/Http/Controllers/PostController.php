@@ -140,7 +140,7 @@ class postController extends Controller
                 $request->get('kilos')
             )
         );
-        
+
         if (Mail::failures()) {
 
             return response('error', 500);
@@ -161,7 +161,7 @@ class postController extends Controller
 
         if (!is_null($k)) {
             $post->kilo =- $request->get('k');
-            Mail::to('claudesimo1990@gmail.com')->send(new bookingValidate($user, route('accueil')));
+            Mail::to($user->email)->send(new bookingValidate($user, route('accueil')));
         }
         return view('booking.confirmation');
     }
