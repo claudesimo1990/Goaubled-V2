@@ -16,7 +16,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contact/{user}', 'ContactController@profile')->name('contact');
     Route::get('coli-form','postController@coliForm')->name('packs.create');
     Route::post('coli-form','postController@createColi')->name('post.colis.create');
-    Route::get('post/{post}/{user}','postController@bookingPost')->name('post.booking');
+    Route::get('post/{post}/{user}','postController@bookingPost')->name('post.booking')->middleware('verified');
     Route::post('booking/{post}/{user}','postController@booking');
     Route::get('booking-confirmation','postController@bookingConfirm')->name('confirm');
 });

@@ -123,13 +123,13 @@ class postController extends Controller
     public function booking(Request $request)
     {
        Mail::to($request->get('owner')['email'])->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
-<<<<<<< .merge_file_coaJ19
 
-=======
->>>>>>> .merge_file_NbPcwp
         if (Mail::failures()) {
+
             return response('error', 500);
+
         } else {
+
             return response('success', 200);
         }
     }
