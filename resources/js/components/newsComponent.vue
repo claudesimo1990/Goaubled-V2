@@ -21,14 +21,14 @@
                             <div class="form-check border-bottom mb-3" @click="sortNews('travel')">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Voyages"
                                        value="travel"
-                                       v-model="travelsKey"   :checked="sortKey === 'travel'">
+                                       :checked="sortKey === 'travel'">
                                 <label class="form-check-label" for="Voyages">
                                     Voyages
                                 </label>
                             </div>
                             <div class="form-check border-bottom mb-3" @click="sortNews('pack')">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Colis"
-                                       v-model="packsKey"   :checked="sortKey === 'pack'">
+                                       :checked="sortKey === 'pack'">
                                 <label class="form-check-label" for="Colis">
                                     Colis
                                 </label>
@@ -89,8 +89,6 @@
                                             <div class="notice notice-warning">
                                                 <strong>Kilo disponibles :</strong> {{item.kilo}} Kg <span
                                                 class="float-right kilo-price">{{item.prix}} €</span>
-                                                <strong>Kilo disponibles :</strong> {{ item.kilo }} Kg <span
-                                                class="float-right kilo-price">{{item.prix}}€</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
@@ -196,8 +194,6 @@
                 laravelData: {},
                 messages: [],
                 text: null,
-                travelsKey: '',
-                packsKey: '',
                 sortKey: '',
                 posts: [],
                 pack: {
@@ -212,12 +208,13 @@
         watch: {
 
             sortKey: function(val) {
-                if (val === "allNews") {
+
+                if (val == 'allNews') {
                     this.showAllNews();
                     return;
                     
                 }
-                this.sortNews(String(val));
+                this.sortNews(val);
             
             }
 
@@ -235,7 +232,7 @@
                 }
             },
             showAllNews: function () {
-                this.title = "Listes d' annonces";
+                this.title = "Liste d'annonces";
                 this.pack.show = true;
                 this.travel.show = true;
             },
@@ -250,7 +247,7 @@
         mounted() {
             // Fetch initial results
             this.getResults();
-            this.sortKey = this.keyWatch ? this.keyWatch : "allNews";
+            this.sortKey = this.keyWatch !== undefined ? this.keyWatch : 'allNews' ;
         },
     }
 </script>

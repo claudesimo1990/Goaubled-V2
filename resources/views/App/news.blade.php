@@ -2,6 +2,6 @@
 
 @section('content')
 
-<news :key-watch="{{ $key ? $key : "allNews"  }}"></news>
+<news key-watch="{{ $key }}"></news>
 
 @endsection

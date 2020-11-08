@@ -97,10 +97,8 @@ class postController extends Controller
 
     public function index(Request $request)
     {
-       $key = $request->get('key');
+       $key = !empty($request->get('key')) ? $request->get('key') : 'allNews';
 
-     
-    
         return view('App.news', compact('key'));
     }
 
