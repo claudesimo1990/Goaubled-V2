@@ -141,11 +141,8 @@ class postController extends Controller
             )
         );
        
-<<<<<<< .merge_file_LGrK6i
        Mail::to($request->get('owner')['email'])->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
 
-=======
->>>>>>> .merge_file_owXD0P
         if (Mail::failures()) {
 
             return response('error', 500);
