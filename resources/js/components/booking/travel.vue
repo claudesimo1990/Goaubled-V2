@@ -162,7 +162,7 @@ export default {
         bookingKilo() {
             if (this.form.kilo > this.getKilos || this.form.kilo <= 0) {
 
-                Vue.$toast.warning('le nombre de kilo disponible est inferieur a votre demande.', {
+                Vue.$toast.warning('une erreur est survenue.', {
                     position: 'top-right'
                 });
                 return; 
@@ -176,7 +176,6 @@ export default {
                     post: this.post.id
 
                 }).then((response) => {
-                    Store.dispatch('bookKilo', this.form.kilo);
                     this.form.kilo = 0;
                     Vue.$toast.success('votre reservation a ete soumise avec success.', {
                         position: 'top-right'

@@ -89,8 +89,6 @@
                                             <div class="notice notice-warning">
                                                 <strong>Kilo disponibles :</strong> {{item.kilo}} Kg <span
                                                 class="float-right kilo-price">{{item.prix}} €</span>
-                                                <strong>Kilo disponibles :</strong> {{ item.kilo }} Kg <span
-                                                class="float-right kilo-price">{{item.prix}}€</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>

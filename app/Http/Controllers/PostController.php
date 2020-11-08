@@ -157,6 +157,10 @@ class postController extends Controller
     {
         $k = $request->get('k');
 
+        $post->kilo = ($post->kilo - $k) > 0 ? $post->kilo - $k : 0;
+
+        $post->save();
+
         if (!is_null($k)) {
             $post->kilo =- $request->get('k');
             Mail::to('claudesimo1990@gmail.com')->send(new bookingValidate($user, route('accueil')));
