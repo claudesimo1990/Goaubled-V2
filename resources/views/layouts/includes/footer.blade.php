@@ -27,15 +27,15 @@
             <h6 class="text-uppercase font-weight-bold">Menu</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Colis</a>
+              <a class="footer--link dark-grey-text" href="{{route('news.index', ["key" => "pack"]) }}">Colis</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Voyages</a>
+              <a class="footer--link dark-grey-text" href="{{route('news.index', ["key" => "travel"]) }}">Voyages</a>
             </p>
-            <p class="{{ (request()->is('travel')) ? 'menu-active' : '' }}">
+            <p>
               <a class="footer--link dark-grey-text" href="{{route('travels.create')}}">Transporter</a>
             </p>
-            <p class="{{ (request()->is('coli')) ? 'menu-active' : '' }}">
+            <p>
               <a class="footer--link dark-grey-text" href="{{route('packs.create')}}">Envoyer</a>
             </p>
     
@@ -88,7 +88,7 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center text-black py-3">© 2020 Copyright:
         <a class="dark-grey-text" href="{{ route('accueil') }}">goaubled.com</a> | 
-        <a class="dark-grey-text" href="{{ route('impressum') }}">Impressum</a> | <a class="dark-grey-text" href="{{ route('AGB') }}>AGB</a>
+        <a class="dark-grey-text" href="{{ route('impressum') }}">Impressum</a> | <a class="dark-grey-text" href="{{ route('AGB') }}">AGB</a>
     </div>
     <!-- Copyright -->
   

@@ -1,5 +1,7 @@
 @extends("layouts/master")
 
 @section('content')
-    <news></news>
+
+<news :key-watch="{{ $key ? $key : "allNews"  }}"></news>
+
 @endsection
