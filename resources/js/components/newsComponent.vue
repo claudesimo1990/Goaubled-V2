@@ -21,22 +21,14 @@
                             <div class="form-check border-bottom mb-3" @click="sortNews('travel')">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Voyages"
                                        value="travel"
-<<<<<<< .merge_file_LHCtdQ
-                                       v-model="travelsKey"   :checked="sortKey === 'travel'">
-=======
                                        :checked="sortKey === 'travel'">
->>>>>>> .merge_file_v3CnIQ
                                 <label class="form-check-label" for="Voyages">
                                     Voyages
                                 </label>
                             </div>
                             <div class="form-check border-bottom mb-3" @click="sortNews('pack')">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Colis"
-<<<<<<< .merge_file_LHCtdQ
-                                       v-model="packsKey"   :checked="sortKey === 'pack'">
-=======
                                        :checked="sortKey === 'pack'">
->>>>>>> .merge_file_v3CnIQ
                                 <label class="form-check-label" for="Colis">
                                     Colis
                                 </label>
@@ -204,11 +196,6 @@
                 laravelData: {},
                 messages: [],
                 text: null,
-<<<<<<< .merge_file_LHCtdQ
-                travelsKey: '',
-                packsKey: '',
-=======
->>>>>>> .merge_file_v3CnIQ
                 sortKey: '',
                 posts: [],
                 pack: {
@@ -223,21 +210,13 @@
         watch: {
 
             sortKey: function(val) {
-<<<<<<< .merge_file_LHCtdQ
-                if (val === "allNews") {
-=======
 
                 if (val == 'allNews') {
->>>>>>> .merge_file_v3CnIQ
                     this.showAllNews();
                     return;
                     
                 }
-<<<<<<< .merge_file_LHCtdQ
-                this.sortNews(String(val));
-=======
                 this.sortNews(val);
->>>>>>> .merge_file_v3CnIQ
             
             }
 
@@ -270,11 +249,7 @@
         mounted() {
             // Fetch initial results
             this.getResults();
-<<<<<<< .merge_file_LHCtdQ
-            this.sortKey = this.keyWatch ? this.keyWatch : "allNews";
-=======
             this.sortKey = this.keyWatch !== undefined ? this.keyWatch : 'allNews' ;
->>>>>>> .merge_file_v3CnIQ
         },
     }
 </script>
