@@ -172,7 +172,8 @@ export default {
                 axios.post(`/booking/${this.post.id}/${this.owner.id}`,
                 {
                     kilos: this.form.kilo,
-                    owner: this.owner
+                    owner: this.owner,
+                    post: this.post.id
 
                 }).then((response) => {
                     Store.dispatch('bookKilo', this.form.kilo);
@@ -185,6 +186,7 @@ export default {
                     Vue.$toast.warning('Ups une erreur est survenue lors de la soumission, veuillez verifier votre addresse email.', {
                         position: 'top-right'
                     });
+                    this.bookingSpinerShow = false;
                 })
         }
     },

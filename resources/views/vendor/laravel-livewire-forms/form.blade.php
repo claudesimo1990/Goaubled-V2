@@ -1,25 +1,23 @@
 <div>
-    <div class="card-body">
-        <div class="row text-center">
+    <div class="card">
+        <div class="card-body">
             @foreach($fields as $field)
-                    <div class="col-md-12">
-                        @if($field->view)
-                            @include($field->view)
-                        @else
-                            @include('laravel-livewire-forms::fields.' . $field->type)
-                        @endif
-                    </div>
-                @endforeach
-            </div>
+                @if($field->view)
+                    @include($field->view)
+                @else
+                    @include('laravel-livewire-forms::fields.' . $field->type)
+                @endif
+            @endforeach
 
             <div class="row">
                 <div class="col-md offset-md-2">
-                    <button class="btn btn-primary btn-recherche btn-lg"
-                            wire:click="saveAndGoBack">{{ __('Envoyer') }}</button>
+                    <button class="btn btn-primary" wire:click="saveAndStay">{{ __('Save') }}</button>
+                    <button class="btn btn-primary" wire:click="saveAndGoBack">{{ __('Save & Go Back') }}</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 @push('scripts')
     <script>

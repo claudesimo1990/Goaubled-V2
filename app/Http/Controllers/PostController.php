@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\post;
 use App\User;
 use App\Mail\BookingMail;
+use App\Mail\bookingValidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
@@ -122,7 +123,21 @@ class postController extends Controller
 
     public function booking(Request $request)
     {
-       Mail::to($request->get('owner')['email'])->send(new BookingMail(auth()->user(), $request->get('owner'), route('confirm')));
+       Mail::to($request->get('owner')['email'])->send(
+
+           new BookingMail
+           (
+                auth()->user(),
+
+                $request->get('owner'),
+
+                route('confirm',[
+                'user' => auth()->id(),
+                'post' => $request->get('post')]),
+
+                $request->get('kilos')
+            )
+        );
        
         if (Mail::failures()) {
 
@@ -134,8 +149,14 @@ class postController extends Controller
         }
     }
 
-    public function bookingConfirm()
+    public function bookingConfirm(User $user, Post $post, Request $request)
     {
+        $k = $request->get('k');
+
+        if (!is_null($k)) {
+            $post->kilo =- $request->get('k');
+            Mail::to('claudesimo1990@gmail.com')->send(new bookingValidate($user, route('accueil')));
+        }
         return view('booking.confirmation');
     }
 }
