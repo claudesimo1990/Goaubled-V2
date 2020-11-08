@@ -56,6 +56,7 @@ Vue.component('profile-component', require('./components/profile/profile.vue').d
 Vue.component('app-component', require('./components/messages/app.vue').default);
 Vue.component('notification', require('./components/home/notifications.vue').default);
 Vue.component('testimonials', require('./components/home/testimonials.vue').default);
+Vue.component('header-component', require('./components/utilities/header.vue').default);
 
 window.app = new Vue({
     el: '#app',

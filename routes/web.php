@@ -6,6 +6,14 @@ use App\Mail\welcome_email;
 
 Route::get('/','AppController@index')->name('accueil');
 Route::get('/howItWork','AppController@howItWork')->name('howItWork');
+Route::view('/whoAreWe', '/pages/whoAreWe')->name('whoAreWe');
+Route::view('/AGB', '/pages/agb')->name('AGB');
+Route::view('/confidentialityCharter', '/pages/confidentialityCharter')->name('confidentialityCharter');
+Route::view('/contactWe', '/pages/contactWe')->name('contactWe');
+Route::view('/faq', '/pages/faq')->name('faq');
+Route::view('/impressum', '/pages/impressum')->name('impressum');
+Route::view('/principes', '/pages/principes')->name('principes');
+Route::view('/termsOfservice', '/pages/termsOfservice')->name('termsOfservice');
 
 Route::post('/getAllmessageWidth','MessageController@show')->name('messages.show');
 Route::post('/contact/user/{user}','ProfileController@contactUser')->name('Contact.user');

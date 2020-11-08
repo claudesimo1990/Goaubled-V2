@@ -95,9 +95,13 @@ class postController extends Controller
         return ['redirect' => route('news.index')];
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('App.news');
+       $key = $request->get('key');
+
+     
+    
+        return view('App.news', compact('key'));
     }
 
     public function listeNews()
