@@ -104,7 +104,7 @@ class postController extends Controller
 
     public function listeNews()
     {
-        $posts = Post::with('user')->paginate(3);
+        $posts = Post::with('user')->paginate(10);
         return response()->json($posts, 200);
     }
 
