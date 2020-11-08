@@ -27,16 +27,16 @@
             <h6 class="text-uppercase font-weight-bold">Menu</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Colis</a>
+              <a class="footer--link dark-grey-text" href="{{route('news.index', ["key" => "pack"]) }}">Colis</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Voyages</a>
+              <a class="footer--link dark-grey-text" href="{{route('news.index', ["key" => "travel"]) }}">Voyages</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Transporter</a>
+              <a class="footer--link dark-grey-text" href="{{route('travels.create')}}">Transporter</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Envoyer</a>
+              <a class="footer--link dark-grey-text" href="{{route('packs.create')}}">Envoyer</a>
             </p>
     
           </div>
@@ -49,13 +49,13 @@
             <h6 class="text-uppercase font-weight-bold">A Propos de nous</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Qui sommes nous</a>
+              <a class="footer--link dark-grey-text" href="{{ route('whoAreWe') }}">Qui sommes nous</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#!">Principes</a>
+              <a class="footer--link dark-grey-text" href="{{ route('principes') }}">Principes</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#!">FAQ</a>
+              <a class="footer--link dark-grey-text" href="{{ route('faq') }}">FAQ</a>
             </p>
             <p>
               <a class="footer--link dark-grey-text" href="{{ route('howItWork') }}">Comment ca marche ?</a>
@@ -69,13 +69,13 @@
             <h6 class="text-uppercase font-weight-bold">Informations</h6>
             <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
             <p>
-              <a class="footer--link dark-grey-text" href="#">Charte de confidential</a>
+              <a class="footer--link dark-grey-text" href="{{ route('termsOfservice') }}">Charte de confidential</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#">conditions generales d'utilisation</a>
+              <a class="footer--link dark-grey-text" href="{{ route('confidentialityCharter') }}">conditions generales d'utilisation</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="#">Contacts</a>
+              <a class="footer--link dark-grey-text" href="{{ route('contactWe') }}">Contacts</a>
             </p>  
           </div>
     
@@ -88,7 +88,7 @@
     <!-- Copyright -->
     <div class="footer-copyright text-center text-black py-3">© 2020 Copyright:
         <a class="dark-grey-text" href="{{ route('accueil') }}">goaubled.com</a> | 
-        <a class="dark-grey-text" href="#">Impressum</a> | <a class="dark-grey-text" href="#">AGB</a>
+        <a class="dark-grey-text" href="{{ route('impressum') }}">Impressum</a> | <a class="dark-grey-text" href="{{ route('AGB') }}">AGB</a>
     </div>
     <!-- Copyright -->
   

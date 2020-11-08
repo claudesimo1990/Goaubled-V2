@@ -13,8 +13,7 @@
                         <div class="col-sm-12">
                             <div class="form-check border-bottom mb-3" @click="showAllNews()">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="allnews"
-                                       value="all"
-                                       checked>
+                                       value="all"   :checked="sortKey === 'allNews'">
                                 <label class="form-check-label" for="allnews">
                                     Toutes les annonces
                                 </label>
@@ -22,14 +21,14 @@
                             <div class="form-check border-bottom mb-3" @click="sortNews('travel')">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Voyages"
                                        value="travel"
-                                       wire:model.lazy="travels">
+                                       v-model="travelsKey"   :checked="sortKey === 'travel'">
                                 <label class="form-check-label" for="Voyages">
                                     Voyages
                                 </label>
                             </div>
                             <div class="form-check border-bottom mb-3" @click="sortNews('pack')">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Colis"
-                                       value="coli">
+                                       v-model="packsKey"   :checked="sortKey === 'pack'">
                                 <label class="form-check-label" for="Colis">
                                     Colis
                                 </label>
@@ -78,7 +77,7 @@
                                         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                             <ul class="timeline">
                                                 <li>
-                                                    <a target="_blank" href="#">{{item.from}}</a>
+                                                    <a target="_blank" href="#">{{ item.from }}</a>
                                                     <a href="#" class="float-right pr-4">{{item.dateFrom}}</a>
                                                 </li>
                                                 <li>
@@ -90,6 +89,8 @@
                                             <div class="notice notice-warning">
                                                 <strong>Kilo disponibles :</strong> {{item.kilo}} Kg <span
                                                 class="float-right kilo-price">{{item.prix}} €</span>
+                                                <strong>Kilo disponibles :</strong> {{ item.kilo }} Kg <span
+                                                class="float-right kilo-price">{{item.prix}}€</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
@@ -189,11 +190,15 @@
 </template>
 <script>
     export default {
+        props: ["keyWatch"],
         data: function () {
             return {
                 laravelData: {},
                 messages: [],
                 text: null,
+                travelsKey: '',
+                packsKey: '',
+                sortKey: '',
                 posts: [],
                 pack: {
                     show: true
@@ -203,6 +208,19 @@
                 },
                 title: "Listes d'annonces"
             }
+        },
+        watch: {
+
+            sortKey: function(val) {
+                if (val === "allNews") {
+                    this.showAllNews();
+                    return;
+                    
+                }
+                this.sortNews(String(val));
+            
+            }
+
         },
         methods: {
             sortNews: function(cat) {
@@ -231,7 +249,8 @@
         },
         mounted() {
             // Fetch initial results
-		    this.getResults();
+            this.getResults();
+            this.sortKey = this.keyWatch ? this.keyWatch : "allNews";
         },
     }
 </script>
