@@ -160,7 +160,7 @@ export default {
             this.messages.push(message);
         },
         bookingKilo() {
-            if (this.form.kilo > this.getKilos && this.form.kilo > 0) {
+            if (this.form.kilo > this.getKilos || this.form.kilo <= 0) {
 
                 Vue.$toast.warning('le nombre de kilo disponible est inferieur a votre demande.', {
                     position: 'top-right'
