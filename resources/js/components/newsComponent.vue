@@ -46,7 +46,7 @@
                                             <div class="border my-2 px-2 rounded">
                                                 <div class="profile-block">
                                                     <vue-letter-avatar class="user-bild text-center" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
-                                                    <h5 class="text-start px-4"><b-badge variant="dark">{{ item.user.name }}</b-badge></h5>
+                                                    <h5 class="text-start mt-4"><b-badge variant="dark">{{ item.user.name }}</b-badge></h5>
                                                     <div class="notice justify-center text-center notice-success stars">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="strong">VOTES :</div>
@@ -112,7 +112,7 @@
                                             <div class="border my-3 px-2 rounded">
                                                 <div class="profile-block">
                                                     <vue-letter-avatar class="user-bild text-center" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='100' :rounded=true />
-                                                    <h5 class="text-start px-4"><b-badge variant="dark">{{ item.user.name }}</b-badge></h5>
+                                                    <h5 class="text-start mt-4"><b-badge variant="dark">{{ item.user.name }}</b-badge></h5>
                                                     <div class="notice justify-center text-center notice-success stars">
                                                         <div class="d-flex justify-content-between">
                                                             <div class="strong">VOTES :</div>
