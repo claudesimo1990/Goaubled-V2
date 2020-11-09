@@ -1,9 +1,7 @@
-import Axios from 'axios';
-
-const Vue = require('vue');
 export default {
     state: {
         kilos: 0,
+        OverlayShow: false,
         messages: {},
         contact: {},
         postUser: {},
@@ -42,6 +40,9 @@ export default {
           },
           addNotification (state, payload) {
             state.notifications.push(payload);
+          },
+          setOverlayShow (state, payload) {
+            state.OverlayShow = payload;
           }
       },
       actions: {
@@ -71,6 +72,9 @@ export default {
         },
         addNotification(context, payload) {
           context.commit('addNotification', payload);
+        },
+        setOverlayShow(context, payload) {
+          context.commit('setOverlayShow', payload);
         }
       },
       getters: {
@@ -94,6 +98,9 @@ export default {
           },
           getNotifications(state) {
             return state.notifications;
+          }, 
+          getOverlayShow(state) {
+            return state.OverlayShow;
           } 
       }
 }

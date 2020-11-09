@@ -165,5 +165,15 @@ class postController extends Controller
         }
         return view('booking.confirmation');
     }
+
+    public function travels()
+    {
+        return Post::where('categorie_id', 2)->with('user')->paginate(5);
+    }
+
+    public function packs()
+    {
+        return Post::where('categorie_id', 1)->with('user')->paginate(5);
+    }
 }
 

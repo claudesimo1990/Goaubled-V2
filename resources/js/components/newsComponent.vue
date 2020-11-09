@@ -42,23 +42,21 @@
                             <div class="container py-3" v-if="item.categorie_id == 2">
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
-                                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pb-5">
                                             <div class="border my-2 px-2 rounded">
-                                                <div class="user-bild">
-                                                    <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
-                                                </div>
-                                                <div class="mb-2 mt-2">
-                                                    <p class="font-weight-bold font-italic text-center">{{item.user.name.substring(0,10)+".."}}</p>
-                                                </div>
-                                                <div class="notice justify-center text-center notice-success stars">
-                                                    <div class="d-flex justify-content-between">
-                                                        <div class="strong">VOTES :</div>
-                                                        <div>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star"></span>
-                                                            <span class="fa fa-star"></span>
+                                                <div class="profile-block">
+                                                    <vue-letter-avatar class="user-bild text-center" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
+                                                    <h4 class="text-start">{{ item.user.name }}</h4>
+                                                    <div class="notice justify-center text-center notice-success stars">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="strong">VOTES :</div>
+                                                            <div>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -111,22 +109,20 @@
                                 <div class="card runde-ecke">
                                     <div class="row shadow">
                                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pb-5">
-                                            <div class="border my-2 px-2 rounded">
-                                                <div class="user-bild">
-                                                    <vue-letter-avatar class="user-bild" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='80' :rounded=true />
-                                                </div>
-                                                <div class="mb-2 mt-2">
-                                                    <p class="font-weight-bold font-italic text-center">{{item.user.name.substring(0,10)+".."}}</p>
-                                                </div>
-                                                <div class="notice justify-center text-center notice-success stars">
-                                                    <div class="d-flex justify-content-between">
-                                                        <div class="strong">VOTES :</div>
-                                                        <div>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star checked"></span>
-                                                            <span class="fa fa-star"></span>
-                                                            <span class="fa fa-star"></span>
+                                            <div class="border my-3 px-2 rounded">
+                                                <div class="profile-block">
+                                                    <vue-letter-avatar class="user-bild text-center" :name="item.user.name !== undefined ? item.user.name : 'Ramdom' " size='100' :rounded=true />
+                                                    <h4 class="text-start px-4">{{ item.user.name }}</h4>
+                                                    <div class="notice justify-center text-center notice-success stars">
+                                                        <div class="d-flex justify-content-between">
+                                                            <div class="strong">VOTES :</div>
+                                                            <div>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star checked"></span>
+                                                                <span class="fa fa-star"></span>
+                                                                <span class="fa fa-star"></span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -187,69 +183,76 @@
     </section>
 </template>
 <script>
-    export default {
-        props: ["keyWatch"],
-        data: function () {
-            return {
-                laravelData: {},
-                messages: [],
-                text: null,
-                sortKey: '',
-                posts: [],
-                pack: {
-                    show: true
-                },
-                travel: {
-                    show: true
-                },
-                title: "Listes d'annonces"
+export default {
+    props: ["keyWatch"],
+    data: function () {
+        return {
+            laravelData: {},
+            messages: [],
+            text: null,
+            sortKey: '',
+            posts: [],
+            pack: {
+                show: true
+            },
+            travel: {
+                show: true
+            },
+            title: "Listes d'annonces"
+        }
+    },
+    watch: {
+
+        sortKey: function(val) {
+
+            if (val == 'allNews') {
+                this.showAllNews();
+                return;
+                
             }
-        },
-        watch: {
+            this.sortNews(val);
+        
+        }
 
-            sortKey: function(val) {
-
-                if (val == 'allNews') {
-                    this.showAllNews();
-                    return;
-                    
-                }
-                this.sortNews(val);
-            
-            }
-
-        },
-        methods: {
-            sortNews: function(cat) {
-                if (cat === 'travel') {
-                    this.pack.show = false;
-                    this.travel.show = true;
+    },
+    methods: {
+        sortNews: function(cat) {
+            if (cat === 'travel') {
+                Store.dispatch('setOverlayShow', true);
+                axios.get('travels').then((response) => {
+                    this.laravelData = response.data;
                     this.title = "Annonces de voyages";
-                } else if (cat === 'pack') {
-                    this.travel.show = false;
-                    this.pack.show = true;
+                    Store.dispatch('setOverlayShow', false);
+                })
+            } else if (cat === 'pack') {
+                Store.dispatch('setOverlayShow', true);
+                axios.get('packs').then((response) => {
+                    this.laravelData = response.data;
                     this.title = "Annonces de packets";
-                }
-            },
-            showAllNews: function () {
-                this.title = "Liste d'annonces";
-                this.pack.show = true;
-                this.travel.show = true;
-            },
-            // Our method to GET results from a Laravel endpoint
-            getResults(page = 1) {
-                axios.get('api/listeNews?page=' + page)
-                    .then(response => {
-                        this.laravelData = response.data;
-                    });
+                    Store.dispatch('setOverlayShow', false);
+                })
             }
         },
-        mounted() {
-            // Fetch initial results
-            this.getResults();
-            this.sortKey = this.keyWatch !== undefined ? this.keyWatch : 'allNews' ;
+        showAllNews: function () {
+            axios.get('api/listeNews').then((response) => {
+                    this.laravelData = response.data;
+                    this.title = "Liste d'annonces";
+                    Store.dispatch('setOverlayShow', false);
+                })
         },
-    }
+        // Our method to GET results from a Laravel endpoint
+        getResults(page = 1) {
+            axios.get('api/listeNews?page=' + page)
+                .then(response => {
+                    this.laravelData = response.data;
+                });
+        }
+    },
+    mounted() {
+        this.getResults();
+        this.sortKey = this.keyWatch !== undefined ? this.keyWatch : 'allNews' ;
+    },
+}
 </script>
 <style scoped>
     ul.timeline {

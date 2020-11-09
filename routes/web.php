@@ -31,7 +31,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('travel-form','postController@travelForm')->name('travels.create')->middleware('auth');
 Route::post('travel-form','postController@createTravel')->name('post.travels.create');
+
+//news page
 Route::get('/news','postController@index')->name('news.index');
+Route::get('/travels','postController@travels');
+Route::get('/packs','postController@packs');
 
 Route::get('/message', 'ContactController@getChat')->name('message')->middleware('auth');
 Route::get('/contacts', 'ContactController@get');

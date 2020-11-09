@@ -61,4 +61,9 @@ Vue.component('header-component', require('./components/utilities/header.vue').d
 window.app = new Vue({
     el: '#app',
     router: Router,
+    computed: {
+      getShow: function() {
+        return Store.state.OverlayShow;
+      }
+    }
 });
