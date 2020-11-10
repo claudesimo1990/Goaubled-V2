@@ -11,24 +11,26 @@
                     <h3 class="my-4">Affiner votre recherche</h3>
                     <div class="list-group search-box rounded">
                         <div class="col-sm-12">
-                            <div class="form-check border-bottom mb-3" @click="showAllNews()">
+                            <div class="form-check border-bottom mb-3">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="allnews"
-                                       value="all"   :checked="sortKey === 'allNews'">
+                                        @input="showAllNews()"
+                                       :checked="sortKey === 'allNews'">
                                 <label class="form-check-label" for="allnews">
                                     Toutes les annonces
                                 </label>
                             </div>
-                            <div class="form-check border-bottom mb-3" @click="sortNews('travel')">
+                            <div class="form-check border-bottom mb-3">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Voyages"
-                                       value="travel"
+                                       @input="sortNews('travel')"
                                        :checked="sortKey === 'travel'">
                                 <label class="form-check-label" for="Voyages">
                                     Voyages
                                 </label>
                             </div>
-                            <div class="form-check border-bottom mb-3" @click="sortNews('pack')">
+                            <div class="form-check border-bottom mb-3">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="Colis"
-                                       :checked="sortKey === 'pack'">
+                                        @input="sortNews('pack')"
+                                        :checked="sortKey === 'pack'">
                                 <label class="form-check-label" for="Colis">
                                     Colis
                                 </label>
@@ -79,7 +81,7 @@
                                                     <a href="#" class="float-right pr-4">{{item.dateFrom}}</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">{{item.to}}</a>
+                                                    <a href="#">{{ item.to }}</a>
                                                     <a href="#" class="float-right pr-4">{{item.dateTo}}</a>
                                                 </li>
                                             </ul>
@@ -91,7 +93,7 @@
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
                                                 <div class="text-break overflow-auto text-muted bg-white rounded mb-4 mt-1 px-2">
-                                                    {{item.content}}
+                                                    {{ item.content }}
                                                 </div>
                                             </div>
                                             <div class="notice notice-success text-right">
