@@ -1,17 +1,17 @@
 <template>
-    <div id="contacts" class="mt-3">
-        <ul>
-            <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'active': contact == selected }" class="contact">
-                <div class="wrap">
-                    <span class="contact-status busy"></span>
-                    <img v-if="contact.avatar_original" :src="contact.avatar_original" :alt="contact.name">
-                    <img v-else :src="'storage/UsersAvatars/'+ contact.avatar" :alt="contact.name">
-                    <div class="meta">
-                        <p class="name">{{ contact.name }}  <b-badge  v-if="contact.unread" href="#" class="mx-4" variant="info">{{ contact.unread }}</b-badge></p>
-                    </div>
+    <div class="contact-list">
+        <div class="contact" v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'active-contact': contact == selected }">
+            <img v-if="contact.avatar_original" :src="contact.avatar_original" :alt="contact.name">
+            <img v-else :src="'storage/UsersAvatars/'+ contact.avatar" :alt="contact.name">                        <div class="contact-preview">
+                <div class="contact-text">
+                    <h1 class="font-name">{{ contact.name }}</h1>
+                    <p class="font-preview">
+                        Mmh, lecker :) Freu mich!
+                    </p>
                 </div>
-            </li>
-        </ul>
+            </div>
+            <div class="contact-time"><p>17:54</p></div>
+        </div>
     </div>
 </template>
 

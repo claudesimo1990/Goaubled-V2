@@ -78,17 +78,17 @@
                                             <ul class="timeline">
                                                 <li>
                                                     <a target="_blank" href="#">{{ item.from }}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.dateFrom}}</a>
+                                                    <a href="#" class="float-right pr-4">{{ item.dateFrom }}</a>
                                                 </li>
                                                 <li>
                                                     <a href="#">{{ item.to }}</a>
-                                                    <a href="#" class="float-right pr-4">{{item.dateTo}}</a>
+                                                    <a href="#" class="float-right pr-4">{{ item.dateTo }}</a>
                                                 </li>
                                             </ul>
                                             <hr>
                                             <div class="notice notice-warning">
-                                                <strong>Kilo disponibles :</strong> {{item.kilo}} Kg <span
-                                                class="float-right kilo-price">{{item.prix}} €</span>
+                                                <strong>Kilo disponibles :</strong> {{ item.kilo }} Kg <span
+                                                class="float-right kilo-price">{{ item.prix }} €</span>
                                             </div>
                                             <div class="notice notice-warning">
                                                 <strong>Message : </strong>
@@ -153,13 +153,13 @@
                                             </ul>
                                             <hr>
                                             <div class="notice notice-warning">
-                                                <strong>Poids du Coli :</strong> {{ item.kilo }} Kg <span
+                                                <strong>Poids du Coli :</strong> {{ item.kilo }} Kg<span
                                                 class="float-right kilo-price pack-price">{{ item.prix }} €</span>
                                             </div>
                                             <div class="notice notice-warning border-4">
                                                 <strong>Message : </strong>
                                                 <div class="text-break overflow-auto text-muted bg-white rounded mb-4 mt-1 px-2">
-                                                    {{item.content}}
+                                                    {{ item.content }}
                                                 </div>
                                             </div>
                                             <div class="notice notice-success text-right">
@@ -242,7 +242,6 @@ export default {
                     Store.dispatch('setOverlayShow', false);
                 })
         },
-        // Our method to GET results from a Laravel endpoint
         getResults(page = 1) {
             axios.get('api/listeNews?page=' + page)
                 .then(response => {

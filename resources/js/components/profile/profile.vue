@@ -83,13 +83,13 @@
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <router-link class="nav-link text-start text-white" :to="{name: 'home'}"><i class="fa fa-fw fa-link"></i>Messages</router-link>
+          <router-link class="nav-link text-start text-white" :to="{name: 'chat'}"><i class="fa fa-fw fa-link"></i>Messages</router-link>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
-            <i class="fa fa-fw fa-angle-left"></i>
+            <i aria-hidden="true" id="show-contact-information2" class="fa fa-bars fa-lg text-white"></i>
           </a>
         </li>
       </ul>
@@ -97,13 +97,6 @@
   </nav>
   <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
-      </ol>
       <router-view></router-view>
     </div>
   </div>
@@ -113,11 +106,10 @@
 
 <script>
 export default {
-    props: [""],
+    props: ["currentUser"],
 
     data() {
         return {
-            currentUser: {},
             users: null,
             title: "Dashboard",
             msg: "hallo les gens"
@@ -135,6 +127,9 @@ export default {
         setTitle(val) {
             this.title = val;
         }
+    },
+    mounted: function() {
+      this.user = Store.getters.authUser;
     }
 };
 </script>
@@ -240,7 +235,7 @@ body {
 }
 
 #mainNav .navbar-collapse .sidenav-toggler {
-  display: none;
+  display: block;
 }
 
 #mainNav .navbar-collapse .navbar-nav > .nav-item.dropdown > .nav-link {
