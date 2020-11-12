@@ -1,0 +1,187 @@
+{
+    "FAQ": [
+        {
+            "title": "Wechsel",
+            "Fragen": [
+                {
+                    "frage": {
+                        "id": 1,
+                        "frage": "Ist Tierleidfreie Energie auch ökologisch?",
+                        "antwort": "Ja, in den meisten Fällen. Strom, der aus Solaranlagen, Gezeitenkraftwerken und Geothermieanlagen gewonnen wird, ist tierleidfrei. Weder ökologisch noch tierleidfrei ist jedoch Atomenergie, da hier die Frage der Endlagerung nicht geklärt und die Strahlung per Definition nicht ökologisch ist."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 2,
+                        "frage": "Kann jeder wechseln?",
+                        "antwort": "Jeder, der einen eigenen Strom- oder Gasvertrag mit einem Energieversorger hat, kann zu unseren ausschließlich sauberen Energieanbietern wechseln. Das erkennen Sie am einfachsten daran, dass ein Energieversorger regelmäßig Geld von Ihrem Konto abbucht. Ziehen Sie neu in eine Wohnung ein, stehen Strom- bzw. Gaszählernummern auf Ihrem Übergabeprotokoll. Diese können Sie direkt bei einem unserer sauberen Energieanbieter anmelden. Natürlich können Sie auch nur Strom oder nur Gas bei unseren sauberen Energieanbietern bestellen."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 3,
+                        "frage": "Wie funktioniert der Wechsel zu einem sauberen Energieanbieter über wechsel fair?",
+                        "antwort": "Ganz einfach: Sie errechnen über unseren Stromtarifrechner oder unseren Gastarifrechner Ihren jeweiligen Preis und folgen dann dem Anmeldeprozess. Fast alle Daten, die Sie dafür benötigen, finden Sie auf der letzten Jahresrechnung Ihres aktuellen Energieversorgers. Wenn Sie dem Menü gefolgt sind, müssen Sie sich um nichts mehr kümmern. Ihr neuer Versorger kündigt für Sie Ihren alten Energieliefervertrag bei Ihrem bisherigen Energieversorger – zum nächstmöglichen Termin. Gleichzeitig meldet Sie der neue saubere Energieversorger beim örtlichen Netzbetreiber an. Nach der positiven Rückmeldung des Netzbetreibers steht Ihrer Energieversorgung durch den neuen sauberen Energieversorgers nichts mehr im Weg. Sie bekommen das Willkommensschreiben mit den ersten wichtigen Informationen vom sauberen Energieversorger. Der Wechselprozess dauert in der Regel zwischen zwei und sechs Wochen. Sollte es zu unerwarteten Verzögerungen kommen, meldet sich der neue saubere Energieversorger selbstverständlich bei Ihnen."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 4,
+                        "frage": "Was kostet der Wechsel zu einem neuen sauberen Versorger über wechsel fair?",
+                        "antwort": "Der Wechsel an sich kostet nichts. Nur ein paar Minuten Ihrer Zeit. Wir organisieren alles für Sie. Ökostrom / tierleidfreier Strom und Ökogas / tierleidfreies Gas von Ihrem neuen sauberen Energieversorger über Wechsel fair verbessert die Welt."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 5,
+                        "frage": "Wenn ich auf jetzt wechseln geklickt habe, wie schnell werde ich dann Kunde bei dem ökologischen und / oder dem Tierleidfreien Energieversorger?",
+                        "antwort": "Das kommt darauf an, zu welchem Termin Ihr laufender Vertrag mit Ihrem bisherigen Energieversorger kündbar ist. Ihr neuer sauberer Energieversorger kündigt für Sie den Vertrag so bald wie möglich. Dann meldet Sie dieser bei dem lokalen Netzbetreiber an und gibt Ihnen Auskunft über den Liefertermin. In den meisten Fällen dauert der Wechsel etwa 2 bis 6 Wochen. Sollte der frühestmögliche Zeitpunkt Ihrer Belieferung mit sauberer Energie mehr als vier Monate in der Zukunft liegen, so haben beide Vertragspartner das Recht, den Vertrag mit sofortiger Wirkung in Textform zu kündigen. Eine erneute Anmeldung zum möglichen Belieferungszeitpunkt ist natürlich immer noch möglich. Gerne meldet sich Ihr neuer sauberer Energieversorger bei Ihnen."
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Technik und Versorgungssicherheit",
+            "Fragen": [
+                {
+                    "frage": {
+                        "id": 6,
+                        "frage": "Wer garantiert mir, das bei einem Wechsel meine Energie nicht ausfällt?",
+                        "antwort": "Für Ihren Wechsel zum neuen Energieversorger werden keine neuen Leitungen gelegt oder Zähler installiert. In Deutschland ist der örtliche Netzbetreiber gesetzlich verpflichtet, die Versorgung zu jedem Zeitpunkt sicherzustellen."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 7,
+                        "frage": "Wer ist zuständig für technische Störungen?",
+                        "antwort": "Ihr neuer Energie-Versorger hat mit Ihrem lokalen Netzbetreiber einen Vertrag über Nutzung und Service abgeschlossen. Das bedeutet, dass im Fall einer Störung das örtliche Energieversorgungsunternehmen zuständig ist. Natürlich hilft Ihnen der neue Energieversorger gerne, die Störung möglichst schnell zu beheben."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 8,
+                        "frage": "Was passiert, wenn ein Kraftwerk oder eine Anlage ausfällt, von der Ihr neuer Energie-Versorger Energie bezieht?",
+                        "antwort": "Alle Lieferanten Ihres neuen Energieversorgers werden bei Ausfällen ersatzweise Energie aus anderen sauberen Quellen bereitstellen, die den Anforderungen entsprechen."
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Zähler",
+            "Fragen": [
+                {
+                    "frage": {
+                        "id": 9,
+                        "frage": "Wo ist mein Zähler? Wo steht die Zählernummer?",
+                        "antwort": "Sie finden die Zählernummer auf der letzten Stromrechnung Ihres bisherigen Energieversorgers oder auf dem Übergabeprotokoll, das Sie beim Einzug bekommen haben. Wenn Sie die Papiere gerade nicht zur Hand haben, können Sie Ihre Zählernummer direkt von Ihrem Zähler ablesen. Ihr Zähler ist meist im Keller, in Ihrer Wohnung oder im Treppenhaus zu finden. In Mehrfamilienhäusern gibt es oft einen eigenen Zähler-Raum. Ihr Zähler ist mit Ihrer Wohnungsnummer oder Ihrem Namen gekennzeichnet und eindeutig Ihrer Wohneinheit zugeordnet. Die Zählernummer finden Sie entweder unter oder über dem Strichcode. Vor der Zählernummer steht oft „Nr.“ oder „No“ oder „Eigentum“, „Eigentum der Stadtwerke xy“. Bei einem analogen Zähler können Sie die Zählernummer ganz leicht vom Zählerstand unterscheiden. Der Zählerstand besteht aus aneinandergereihten Zahlenrädchen.",
+                        "img": "zaelerstand.png"
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 10,
+                        "frage": "BRAUCHE ICH FÜR ÖKOSTROM ODER ÖKOGAS EINEN NEUEN ZÄHLER?",
+                        "antwort": "Nein, Sie behalten Ihren alten Zähler. Es muss keine neue Technik bei Ihnen installiert werden."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 11,
+                        "frage": "Kann ich auch Ökostrom mit einem Zwei-Tarif-Zähler beziehen?",
+                        "antwort": "Selbstverständlich können Sie auch diesen Zähler nutzen. Dafür gibt es Spezialtarife. Damit nutzen Sie Ökostrom / tierleidfreien Strom nachts oder zu anderen Nebenzeiten zu besonders günstigen Konditionen. Denn bestimmte Abgaben auf den Strompreis werden zu diesen Zeiten nicht erhoben. Wir organisieren Ihren Wechsel zu Ökostrom / tierleidfreiem Strom zu einem günstigen HT/NT-Tarif. Schreiben Sie uns einfach an: <a href='mailto:info@wechsel-fair.de' class='number'>info@wechsel-fair.de</a> oder rufen Sie uns einfach an: <a href='tel:+4922068529695' class='number'>02206 8529695</a>."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 12,
+                        "frage": "Bin ich verpflichtet, bei meinem lokalen Energieversorger Kunde zu werden, weil dieser meinen Strom- und Gaszähler in meiner Wohnung/meinem Haus installiert hat?",
+                        "antwort": "Nein. Netzbetrieb und Versorgung sind in Deutschland seit der Liberalisierung der Strommärkte getrennt. Auch wenn der Netzbetreiber des lokalen Versorgers den Zähler bei Ihnen eingebaut hat, haben Sie immer noch die Wahl und Sie sind zu keinem Vertragsabschluss mit dem lokalen Versorgungsunternehmen verpflichtet."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 13,
+                        "frage": "Wer muss den Zähler ablesen?",
+                        "antwort": "In der Regel wird der Zählerstand weiterhin einmal im Jahr von Ihrem Netzbetreiber abgelesen. Der neue Energieversorger zahlt ihm dafür eine Gebühr."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 14,
+                        "frage": "Wenn der Strom- oder Gaspreis erhöht werden sollte, wer liest dann den Zähler ab?",
+                        "antwort": "Sollte sich der Preis der Energie ändern, muss Ihr Verbrauch zwischen-abgerechnet werden. Dazu wird ein Zählerstand auf Basis Ihres Tages-Durchschnittsverbrauchs berechnet. Natürlich haben Sie auch die Möglichkeit, Ihren Zählerstand selbst abzulesen und Ihrem Energieversorger zu übermitteln."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 15,
+                        "frage": "Wie teile ich meinen Zählerstand mit?",
+                        "antwort": "Das geht am besten telefonisch oder per Mail bei Ihrem Energieversorger. Idealerweise haben Sie Ihre Kundennummer und die Nummer Ihres Zählers zur Hand."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 16,
+                        "frage": "Wann darf mein Zählerstand gesetzt werden?",
+                        "antwort": "Ja, neben Außendienst- und Selbst-Ablesung darf Ihr Netzbetreiber als Eigentümer des Zählers Ihren Zählerstand auch schätzen. Ihr Energieversorger hat darauf keinen Einfluss und kann daher leider auch keinen Hinweis auf die Herkunft des Zählerstandes in die Abrechnung aufnehmen."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 17,
+                        "frage": "Was soll ich machen, wenn ich denke, dass mein Zähler nicht einwandfrei funktioniert?",
+                        "antwort": "Am besten rufen Sie Ihren Energieversorger direkt an. Dieser kann eine Zähler-Überprüfung durch Ihren örtlichen Netzbetreiber organisieren. Wird allerdings kein Defekt festgestellt, erhebt der Netzbetreiber eine Aufwandsentschädigung für die Prüfung in Höhe von 50 Euro bis 400 Euro. Diese Kosten werden Ihnen dann nach der Überprüfung vom Energieversorger in Rechnung gestellt."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 18,
+                        "frage": "An wen muss ich mich wenden, falls der Zähler repariert, gewartet, oder ausgebaut werden muss?",
+                        "antwort": "Für den Ausbau, die Wartung oder für Reparaturen Ihres Zählers ist nach wie vor Ihr lokaler Netzbetreiber zuständig. Er ist gesetzlich für den ordnungsgemäßen Betrieb des Netzes zuständig –unabhängig davon, welche Energie über sein Netz transportiert wird. Ihr Energieversorger hat mit den Netzbetreibern dafür einen Vertrag über Netznutzung und Service abgeschlossen."
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Wohnsituation",
+            "Fragen":
+            [
+                {
+                    "frage": {
+                        "id": 19,
+                        "frage": "Wie funktioniert der Wechsel zu meinem neuen und sauberen Energieversorger, parallel zum Einzugsdatum?",
+                        "antwort": "Zuerst melden Sie sich bitte selbstständig bei dem bisherigen Versorger in Ihrem alten Zuhause ab. Die Anmeldung in Ihrem neuen Zuhause übernimmt Ihr neuer Energieversorger gerne für Sie. Dafür braucht dieser möglichst früh, spätestens aber vier Wochen rückwirkend zum Einzug bzw. zur Wohnungsübergabe die Anmeldung. Klicken Sie dazu im Wechsel-Menü einfach auf: „Ich bin neu eingezogen.“ (Datum, ab dem die Versorgung durch den neuen sauberen Energieversorger erfolgen soll oder bereits erfolgt)."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 20,
+                        "frage": "Was muss ich beachten, wenn es sich bei den neuen Räumlichkeiten um einen Neubau handelt, bzw. sich das Objekt noch im Bau befindet?",
+                        "antwort": "Solange in Ihrem neuen Zuhause noch gebaut wird, werden Strom und Gas üblicherweise vom Bauunternehmer bezahlt. Sind die Bauarbeiten beendet (Wohnungsübergabe) bzw. ist der Zähler zur Haushaltsnutzung eingebaut, muss der Zähler vom Bauunternehmer abgelesen werden. Das ist der Zeitpunkt, an dem Sie sich als zukünftiger Bewohner bei einem Energieversorger Ihrer Wahl anmelden können, gerne natürlich über wechsel fair. Wichtig ist, dass der Bauunternehmer den bisherigen Energieversorger informiert und die bisherige Versorgung abmeldet. Damit der saubere Energieversorger Sie ab Wohnungsübergabe beliefern kann, muss dieser das genaue Datum und Ihre neue Zählernummer wissen. Bitte geben Sie dies bei „Ich bin neu eingezogen“ an. Die Versorgung kann auch bis zu vier Wochen rückwirkend angemeldet werden. Falls Sie in Ihrer alten Wohnung noch einen Vertrag haben, müssen Sie diesen zusätzlich wegen Auszugs kündigen, das können wir leider nicht für Sie erledigen."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 21,
+                        "frage": "Kann ich auch über Wechsel Fair wechseln, wenn ich in einem Mehrfamilienhaus wohne?",
+                        "antwort": "Ja, sicher – wenn Ihre Wohnung einen eigenen Strom- und Gaszähler besitzt. Wird die Strom- oder Gasversorgung in Ihrem Haus zentral verwaltet, müssten alle Mietparteien zu dem gleichen Energieversorger wechseln. Nur über die Zähler ist es möglich, den exakten Verbrauch abzulesen. Also sicher und einfach über wechsel fair wechseln."
+                }
+                },
+                {
+                    "frage": {
+                        "id": 22,
+                        "frage": "Was muss ich bei einem Umzug beachten?",
+                        "antwort": "Nur dem Energieversorger kündigen wegen Auszugs. Und über wechsel fair sicher und einfach einen Tarif auswählen und anschließend in der Dateneingabe auf „Ich bin neu eingezogen.“ klicken. Oder anrufen unter : <a href='tel:+4922068529695' class='number'>02206 8529695</a>."
+                    }
+                },
+                {
+                    "frage": {
+                        "id": 23,
+                        "frage": " Kann ich Energieverträge übernehmen?",
+                        "antwort": "Ja, das ist möglich. Der aktuelle Vertragshalter kann sich dazu beim aktuellen Energieversorger melden und alles weitere klären. Am besten lesen Sie zu dem von Ihnen gewählten Termin den Zählerstand ab, damit der Energieversorger abrechnen kann."
+                    }
+                }
+            ]
+        }
+    ]
+}
