@@ -3,7 +3,7 @@ window.Vue = require('vue');
 const Vuex = require('vuex');
 
 import Notifications from 'vue-notification';
-import VCalendar from  'v-calendar';
+import { Datetime } from 'vue-datetime'
 import {BootstrapVue, BootstrapVueIcons}  from 'bootstrap-vue';
 import VueTyperPlugin from 'vue-typer'
 import VueLetterAvatar from 'vue-letter-avatar';
@@ -12,6 +12,7 @@ import routes from '../js/routes';
 import module from './store/store';
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
+import 'vue-datetime/dist/vue-datetime.css';
 
 window.moment = require('moment'); 
  
@@ -28,9 +29,7 @@ window.Store = new Vuex.Store(module);
 
 const Router = new VueRouter(routes);
 
-Vue.use(VCalendar, {
-  componentPrefix: 'vc'
-});
+Vue.use(Datetime);
 
 $('#myCarousel').carousel({
   interval: 3000,
@@ -57,6 +56,7 @@ Vue.component('app-component', require('./components/messages/app.vue').default)
 Vue.component('notification', require('./components/home/notifications.vue').default);
 Vue.component('testimonials', require('./components/home/testimonials.vue').default);
 Vue.component('header-component', require('./components/utilities/header.vue').default);
+Vue.component('datetime', Datetime);
 
 window.app = new Vue({
     el: '#app',

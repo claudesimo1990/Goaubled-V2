@@ -20,8 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('categorie_id');
             $table->string('from');
             $table->string('to');
-            $table->string('dateFrom');
-            $table->string('dateTo');
+            $table->dateTime('dateFrom');
+            $table->dateTime('dateTo');
             $table->longText('content')->nullable();
             $table->integer('kilo');
             $table->integer('prix');

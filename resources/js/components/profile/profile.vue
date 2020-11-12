@@ -106,10 +106,11 @@
 
 <script>
 export default {
-    props: ["currentUser"],
+    props: [""],
 
     data() {
         return {
+            currentUser: {},
             users: null,
             title: "Dashboard",
             msg: "hallo les gens"
@@ -128,8 +129,8 @@ export default {
             this.title = val;
         }
     },
-    mounted: function() {
-      this.user = Store.getters.authUser;
+    mounted(){
+      
     }
 };
 </script>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\post;
 use App\User;
+use Carbon\Carbon;
+use \Datetime;
 use App\Mail\BookingMail;
 use App\Mail\bookingValidate;
 use Illuminate\Http\Request;
@@ -81,8 +83,8 @@ class postController extends Controller
             'categorie_id' => 2, //travel
             'from' => $request->from,
             'to' => $request->to,
-            'dateFrom' => $request->dateFrom,
-            'dateTo' => $request->dateTo,
+            'dateFrom' => Carbon::parse($request->dateFrom)->format('Y-m-d H:i:s'),
+            'dateTo' => Carbon::parse($request->dateTo)->format('Y-m-d H:i:s'),
             'content' => $request->content,
             'kilo' => $request->kilo,
             'prix' => $request->prix,

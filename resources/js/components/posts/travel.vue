@@ -1,167 +1,186 @@
 <template>
-    <div>
-        <section id="about" class="mb-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-2">
-                    <h2 class="quigo-title">Publiez votre Voyage</h2>
-                </div>
+    <div id="about" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-2">
+                <h2 class="quigo-title">Publiez votre Voyage</h2>
             </div>
-            <div class="row" style="margin-left: 12px;margin-right: 12px;">
-                <div class="col-sm-12 col-md-12 col-lg-8 mx-auto bg-poster">
-                    <form class="needs-validation" v-on:submit.prevent="sendData">
-                        <div class="form-row">
-                            <div class="col-md-6 my-3">
-
-                                <div class="input-group">
-                                    <input v-model="travel.from" type="text" class="form-control border-right-0"
-                                        id="exampleInputdepart"
-                                        aria-describedby="departHelp" placeholder="Départ de *">
-                                    <span class="input-group-append bg-white border-left-0">
-                                            <span class="input-group-text bg-transparent">
-                                            <i class="fas fa-plane-departure"></i>
-                                            </span>
-                                        </span>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 mx-auto pt-2 bg-poster">
+                <ValidationObserver v-slot="{ handleSubmit }">
+                    <form @submit.prevent="handleSubmit(onSubmit)">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="from">Depart de :</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <input type="text" v-model="travel.from" id="from" name="from" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
-                                <small v-if="errors.from" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
-                            </div>
-
-                            <div class="col-md-6 my-3">
-                                <vc-date-picker v-model="travel.dateFrom" :popover="{ placement: 'bottom' }"
-                                    :input-props='{
-                                        placeholder: "Date de depart *",
-                                        readonly: true
-                                    }'
-                                ></vc-date-picker>
-                                <small v-if="errors.dateFrom" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 my-3">
-
-                                <div class="input-group">
-                                    <input v-model='travel.to' type="text" class="form-control border-right-0"
-                                        id="exampleInputdepart"
-                                        aria-describedby="departHelp" placeholder="Arrivée à *">
-                                    <span class="input-group-append bg-white border-left-0">
-                                            <span class="input-group-text bg-transparent">
-                                            <i class="fas fa-plane-arrival"></i>
-                                            </span>
-                                        </span>
-                                </div>
-                                <small v-if="errors.to" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
-                            </div>
-
-                            <div class="col-md-6 my-3">
-                                <vc-date-picker v-model="travel.dateTo" :popover="{ placement: 'bottom' }"
-                                    :input-props='{
-                                        placeholder: "Date d arrivee *",
-                                        readonly: true
-                                    }'
-                                ></vc-date-picker>
-                                <small v-if="errors.dateTo" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
-                            </div>
-                        </div>
-                        <div class="form-row my-2">
-                            <div class="col-md-6 mb-3">
-                                <div class="input-group">
-                                    <input v-model='travel.compagnie' class="form-control border-right-0" id="picker"
-                                        aria-describedby="departHelp" placeholder="Compagnie aerienne*">
-                                </div>
-                                <small v-if="errors.compagnie" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
                             </div>
                             <div class="col-md-6">
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input"
-                                            id="inputGroupFile02" ref="file" v-on:change="onImageChange">
-
-                                        <label class="custom-file-label" for="inputGroupFile02">Inserer votre billet
-                                            d'Avion ... IMG, JPG, PNG</label>
-                                    </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="dateFrom">Date (Date et Heure)</label>
+                                        <validation-provider rules="required" v-slot="{ errors }">
+                                        <datetime
+                                        type="datetime"
+                                        v-model="travel.dateFrom"
+                                        input-class="form-control"
+                                        zone="Europe/Paris"
+                                        :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'}"
+                                        :phrases="{ok: 'Continue', cancel: 'Exit'}"
+                                        :min-datetime="minDate.toString()"
+                                        use24-hour
+                                        auto
+                                        ></datetime>
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
-                                <small v-if="errors.photoBielletAvion" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
                             </div>
-
                         </div>
-                        <div class="form-row my-2">
+                        <div class="row">
                             <div class="col-md-6">
-                                <div class="input-group">
-                                    <input v-model='travel.kilo' type="number" class="form-control border-right-0"
-                                        id="exampleInputdepart"
-                                        aria-describedby="departHelp" placeholder="Nombre de Kilo disponibble*">
-                                        <span class="input-group-append bg-white border-left-0">
-                                            <span class="input-group-text bg-transparent">
-                                                <i class="fas fa-weight"></i>
-                                            </span>
-                                        </span>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="to">Arrive a :</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <input type="text" v-model="travel.to" id="to" name="to" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
-                                <small v-if="errors.kilo" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
                             </div>
-
                             <div class="col-md-6">
-
-                                <div class="input-group">
-                                    <input v-model='travel.prix' type="number" class="form-control border-right-0"
-                                        id="exampleInputdepart"
-                                        aria-describedby="departHelp" placeholder="Prix/Kg*">
-                                    <span class="input-group-append bg-white border-left-0">
-                                            <span class="input-group-text bg-transparent">
-                                                <i class="fas fa-euro-sign"></i>
-                                            </span>
-                                        </span>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="dateTo">Date d'arrivee (Date et Heure)</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <datetime
+                                        type="datetime"
+                                        v-model="travel.dateTo"
+                                        input-class="form-control"
+                                        zone="Europe/Paris"
+                                        :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' }"
+                                        :phrases="{ok: 'Continue', cancel: 'Exit'}"
+                                        :min-datetime="minDate.toString()"
+                                        use24-hour
+                                        auto
+                                        ></datetime>
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
-                                <small v-if="errors.prix" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="compagnie">Companie aerienne</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <input type="text" v-model="travel.compagnie" id="compagnie" name="compagnie" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="photoBielletAvion">Inserer votre billet d'Avion</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <b-form-file id="photoBielletAvion" v-model="travel.photoBielletAvion" class="form-control" v-on:change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="compagnie">Nombre de Kilo disponibble</label>
+                                    <validation-provider rules="required|integer" v-slot="{ errors }">
+                                        <input type="text" v-model="travel.kilo" id="kilo" name="kilo" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="photoBielletAvion">Prix/Kg</label>
+                                    <validation-provider rules="required|numeric" v-slot="{ errors }">
+                                        <input type="text" v-model="travel.prix" id="prix" name="prix" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group my-2">
-                            <label class="font-weight-bold" for="exampleFormControlTextarea1">Voulez vous ecrire
-                                autre chose sur votre voyage?</label>
-                            <textarea v-model='travel.content' class="form-control" id="exampleFormControlTextarea1"
-                                    rows="3"></textarea>
+                            <label class="font-weight-bold" for="exampleFormControlTextarea1">Voulez vous ecrire autre chose sur votre voyage?</label>
+                            <validation-provider rules="required" v-slot="{ errors }">
+                                <textarea v-model='travel.content' class="form-control" id="exampleFormControlTextarea1" rows="3" :class="{ 'is-invalid': errors[0] !== undefined }"></textarea>
+                                <small class="form--error">{{ errors[0] }}</small>
+                            </validation-provider>
                         </div>
-                        <small v-if="errors.content" id="departHelp" class="form-text text-muted error" v-html="errors.from[0]"></small>
-
-                        <button type="submit" class="btn btn-primary my-2 btn-recherche">Poster votre voyage</button>
+                        <div class="form-group">
+                            <button class="btn btn-primary my-2 btn-recherche">Poster votre voyage</button>
+                        </div>
                     </form>
-
-                </div>
-
+                </ValidationObserver>
             </div>
-        </section>
+        </div>
     </div>
 </template>
 
-<script lang='ts'>
+<script>
 
-const moment = require('moment');
+import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
+import { required,integer,numeric } from 'vee-validate/dist/rules';
 
-export default {
-    props: ['csrf_token'],
-    data: function() {
-        return {
-
-            travel: {
-                from: '',
-                to: '',
-                dateFrom: '',
-                dateTo: '',
-                quantity: '',
-                kilo: '',
-                prix: '',
-                photoBielletAvion: '',
-                compagnie: '',
-                content: ''
-            },
-            date1: '',
-            date2: '',
-            'errors': [],
-            'file': ''
+extend('required', {
+  ...required,
+  message: 'ce champs est obligatoire'
+})
+extend('integer', {
+  ...integer,
+  message: 'ce champs est un entier'
+})
+extend('numeric', {
+  ...numeric,
+  message: 'ce champs est numeric'
+})
+  export default {
+    components: {
+        ValidationProvider,
+        ValidationObserver
+    },
+    data() {
+      return {
+        travel: {
+            from: '',
+            to: '',
+            dateFrom: null,
+            dateTo: null,
+            quantity: '',
+            kilo: '',
+            prix: '',
+            photoBielletAvion: null,
+            compagnie: '',
+            content: ''
+        },
+        aktDate: '',
+        minDate: '',
+        file:  ''
+      }
+    },
+    watch: {
+        'travel.dateFrom': function(val) {
+            this.minDate = val;
+        }
+    },
+    computed: {
+        getMinDate: function() {
+            return this.minDate;
         }
     },
     methods: {
-        sendData: function() {
-
-            let config = {
+      onSubmit(evt) {
+          
+          let config = {
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
                     "Access-Control-Allow-Origin": "*",
@@ -177,15 +196,14 @@ export default {
               formData.append('compagnie',  this.travel.compagnie);
               formData.append('from',  this.travel.from);
               formData.append('to',  this.travel.to);
-              formData.append('dateFrom',  this.date1);
-              formData.append('dateTo',  this.date2);
+              formData.append('dateFrom',  this.travel.dateFrom);
+              formData.append('dateTo',  this.travel.dateTo);
               formData.append('kilo',  this.travel.kilo);
               formData.append('prix',  this.travel.prix);
               formData.append('content',  this.travel.content);
 
             axios.post('/travel-form', formData , config)
             .then(function (response) {
-
                 window.location = response.data.redirect;
             })
             .catch(function (error) {
@@ -197,21 +215,16 @@ export default {
         onImageChange(e){
             this.file = e.target.files[0];
       }
+    
     },
-    watch: 
-    {
-        'travel.dateFrom': function(val) 
-        {
-            this.date1 = moment().format('DD.MM.YYYY');
-        },
-        'travel.dateTo': function(val) 
-        {
-            this.date2 = moment().format('DD.MM.YYYY');
-        }
+    mounted() {
+        this.aktDate = moment(new Date).format('DD.MM.YYYY' + ' à ' +  'HH:mm:ss');
+        this.minDate = new Date();
     }
-}
+  }
 </script>
-
-<style>
-
+<style lang="scss" scoped>
+.form--error {
+    color: red;
+}
 </style>

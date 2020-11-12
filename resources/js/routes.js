@@ -4,6 +4,8 @@ import colisPostDone from './components/profile/pages/expedictions/colisPostDone
 import travelPostDone from './components/profile/pages/expedictions/travelPostDone.vue';
 import chat from './components/messages/chat-neu.vue';
 
+const pathname = window.location.pathname;
+
 export default {
     mode: 'history',
     baseUrl: window.location,
@@ -29,7 +31,7 @@ export default {
             component: travelPostDone
         },
         {
-            path: '/profile/1/chat',
+            path: pathname + '/chat',
             name: 'chat',
             component: chat
         },      
