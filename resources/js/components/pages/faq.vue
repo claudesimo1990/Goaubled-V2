@@ -36,7 +36,6 @@
         },
         created() {
             this.fragen = faqs.FAQ;
-            console.log(this.fragen)
         }
     }
 </script>

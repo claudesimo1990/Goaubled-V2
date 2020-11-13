@@ -75,7 +75,7 @@
               <a class="footer--link dark-grey-text" href="{{ route('confidentialityCharter') }}">conditions generales d'utilisation</a>
             </p>
             <p>
-              <a class="footer--link dark-grey-text" href="{{ route('contactWe') }}">Contacts</a>
+              <a class="footer--link dark-grey-text" href="{{ route('contactUs') }}">nous Contactez</a>
             </p>  
           </div>
     

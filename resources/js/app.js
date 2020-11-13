@@ -57,6 +57,7 @@ Vue.component('notification', require('./components/home/notifications.vue').def
 Vue.component('testimonials', require('./components/home/testimonials.vue').default);
 Vue.component('header-component', require('./components/utilities/header.vue').default);
 Vue.component('faq-component', require('./components/pages/faq.vue').default);
+Vue.component('contact-us', require('./components/pages/contact.vue').default);
 Vue.component('datetime', Datetime);
 
 window.app = new Vue({
