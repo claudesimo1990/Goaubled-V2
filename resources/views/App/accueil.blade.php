@@ -8,7 +8,7 @@
 
     <about></about>
 
-    <how-work></how-work>
+    <how-work how-it-work="{{ route('howItWork') }}"></how-work>
 
     <destinations></destinations>
 

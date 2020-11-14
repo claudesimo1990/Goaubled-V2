@@ -37,11 +37,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="offset-6 col-md-6 mb-4">
+                <div class="float-left">
+                    <b-link :href="howItWork" class="btn btn-secondary btn-lg btn-block">lire la suite</b-link>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
 export default {
+    props: ['howItWork']
 
 }
 </script>

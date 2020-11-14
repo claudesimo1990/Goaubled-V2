@@ -20,8 +20,7 @@
             </ul>
             <hr>
             <div class="notice notice-warning">
-                <strong>Poids du Coli :</strong> {{ item.kilo }} Kg<span
-                class="float-right kilo-price pack-price">{{ item.prix }} €</span>
+                <h6>Poids du Coli : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }} €</span></h6>
             </div>
             <div class="notice notice-warning border-4">
                 <strong>Message : </strong>
