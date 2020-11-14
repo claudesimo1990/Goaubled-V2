@@ -4,6 +4,7 @@
 Mr/me {{ $user['name'] }} se propose pour le transpor de votre colis.
 le post choissit pour le transport est : 
 <hr>
+
 ## depart: {{ $post['from'] }}
 ## arrivee: {{ $post['to'] }}
 ## date de depart: {{ $post['dateFrom'] }}
