@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="colisPhoto">Une photo de l'objet</label>
+                                    <label class="font-weight-bold" for="coli.colisPhoto">Une photo de l'objet</label>
                                     <validation-provider rules="required" v-slot="{ errors }">
                                         <b-form-file v-model="coli.colisPhoto" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
                                         <small class="form--error">{{ errors[0] }}</small>
@@ -127,7 +127,7 @@
                 dateTo: null,
                 quantity: '',
                 coliName: '',
-                colisPhoto: '',
+                colisPhoto: null,
                 kilo: '',
                 prix: '',
                 photo: '',
