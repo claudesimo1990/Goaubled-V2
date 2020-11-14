@@ -134,7 +134,8 @@
                 content: ''
             },
         aktDate: '',
-        minDate: ''
+        minDate: '',
+        file:  ''
       }
     },
     watch: {
@@ -162,7 +163,7 @@
 
              let formData = new FormData();
 
-              formData.append('colisPhoto',  this.colisPhoto);
+              formData.append('colisPhoto',  this.file);
               formData.append('colis_name',  this.coli.coliName);
               formData.append('from',  this.coli.from);
               formData.append('to',  this.coli.to);
@@ -182,7 +183,7 @@
             });
         },
         onImageChange(e){
-            this.coli.colisPhoto = e.target.files[0];
+            this.file = e.target.files[0];
       }
     
     },
