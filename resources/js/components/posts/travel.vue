@@ -195,7 +195,7 @@
         },
         onImageChange(e){
             this.file = e.target.files[0];
-      }
+        }
     
     },
     mounted() {

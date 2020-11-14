@@ -69,7 +69,7 @@
 <script>
 
 import contactUser from "./contact";
-import user from '../utilities/cards/user'
+import user from '../utilities/cards/user';
 
 export default {
     
