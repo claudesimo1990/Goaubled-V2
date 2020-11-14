@@ -91,7 +91,7 @@
                                 <div class="form-group">
                                     <label class="font-weight-bold" for="colisPhoto">Une photo de l'objet</label>
                                     <validation-provider rules="required" v-slot="{ errors }">
-                                        <b-form-file id="colisPhoto" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
+                                        <b-form-file v-model="coli.colisPhoto" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
                                         <small class="form--error">{{ errors[0] }}</small>
                                     </validation-provider>
                                 </div>
@@ -119,21 +119,22 @@
   export default {
     data() {
       return {
-        coli: {
-            from: '',
-            to: '',
-            dateFrom: null,
-            dateTo: null,
-            quantity: '',
-            coliName: '',
-            kilo: '',
-            prix: '',
-            photo: '',
-            content: ''
-        },
+        coli: 
+            {
+                from: '',
+                to: '',
+                dateFrom: null,
+                dateTo: null,
+                quantity: '',
+                coliName: '',
+                colisPhoto: '',
+                kilo: '',
+                prix: '',
+                photo: '',
+                content: ''
+            },
         aktDate: '',
-        minDate: '',
-        file:  ''
+        minDate: ''
       }
     },
     watch: {
@@ -161,7 +162,7 @@
 
              let formData = new FormData();
 
-              formData.append('colisPhoto',  this.file);
+              formData.append('colisPhoto',  this.colisPhoto);
               formData.append('colis_name',  this.coli.coliName);
               formData.append('from',  this.coli.from);
               formData.append('to',  this.coli.to);
@@ -180,9 +181,8 @@
                 }
             });
         },
-
         onImageChange(e){
-            this.file = e.target.files[0];
+            this.coli.colisPhoto = e.target.files[0];
       }
     
     },

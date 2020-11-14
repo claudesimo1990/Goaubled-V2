@@ -83,7 +83,7 @@
                                 <div class="form-group">
                                     <label class="font-weight-bold" for="photoBielletAvion">Inserer votre billet d'Avion</label>
                                     <validation-provider rules="required" v-slot="{ errors }">
-                                        <b-form-file id="photoBielletAvion" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
+                                        <b-form-file id="photoBielletAvion" class="form-control" v-model="travel.photoBielletAvion" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
                                         <small class="form--error">{{ errors[0] }}</small>
                                     </validation-provider>
                                 </div>
