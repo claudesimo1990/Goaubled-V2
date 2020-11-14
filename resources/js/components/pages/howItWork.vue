@@ -1,440 +1,46 @@
 <template>
 <div>
-    <!--==========================
-  Intro Section
-============================-->
     <section id="intro" :style="{ backgroundImage: `url('${getImg}')`,  'height':  '400px' }">
         <div class="intro-content mt-0">
             <h2 class="text-center title__annonce pt-2 text-white">{{ getTitle }}</h2>
         </div>
-
-    </section><!-- #intro -->
-    <ul class="nav nav-pills nav-justified mt-1">
-        <li class="nav-item border border-bottom-4 m-1">
-            <a class="nav-link" v-bind:class="{ active: isActive_1, }" @click.prevent="changeImage(0)">Poster un voyage</a>
-        </li>
-        <li class="nav-item border border-bottom-4 m-1">
-            <a class="nav-link" v-bind:class="{ active: isActive_2, }" @click.prevent="changeImage(1)">Envoyer un colis</a>
-        </li>
-        <li class="nav-item border border-bottom-4 m-1">
-            <a class="nav-link" v-bind:class="{ active: isActive_3, }" @click.prevent="changeImage(2)">Chercher un voyage</a>
-        </li>
-
-    </ul>
-    <section style="min-height: 600px;">
-
-        <!-- poster un voyager -->
-        <section v-if="section_1" class="our-blog pt-5 m-0 bg-silver">
-            <div class="container work-process  pb-5 pt-5">
-                <div class="section-header">
-                    <h2 class="text-center title__annonce">Poster Un Voyager!</h2>
-                </div>
-                <!-- ============ step 1 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">01</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right"></div>
-                    </div>
-                </div>
-                <!-- ============ step 2 =========== -->
-                <div class="row">
-
-                    <div class="col-md-5">
-                        <div class="process-point-left"></div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">02</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-r"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ============ step 3 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">03</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right"></div>
-                    </div>
-                </div>
-                <!-- ============ step 4 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-point-left"></div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">04</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-r"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ============ step 3 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">05</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right process-last"></div>
-                    </div>
-                </div>
-                <!-- ============ -->
-            </div>
-        </section>
-
-        <!-- expedier un coli -->
-
-        <section v-if="section_2" class="our-blog p-0 m-0 bg-silver">
-            <div class="container work-process  pb-5 pt-5">
-                <div class="section-header">
-                    <h2 class="text-center title__annonce">Envoyer un colis</h2>
-                </div>
-                <!-- ============ step 1 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">01</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right"></div>
-                    </div>
-                </div>
-                <!-- ============ step 2 =========== -->
-                <div class="row">
-
-                    <div class="col-md-5">
-                        <div class="process-point-left"></div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">02</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-r"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ============ step 3 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">03</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right"></div>
-                    </div>
-                </div>
-                <!-- ============ step 4 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-point-left"></div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">04</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-r"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ============ step 3 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">05</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right process-last"></div>
-                    </div>
-                </div>
-                <!-- ============ -->
-            </div>
-        </section>
-
-        <!-- recherche -->
-        <section v-if="section_3" class="our-blog p-0 m-0 bg-silver">
-            <div class="container work-process  pb-5 pt-5">
-                <div class="section-header">
-                    <h2 class="text-center title__annonce">Rechercher un trajet</h2>
-                </div>
-                <!-- ============ step 1 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">01</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right"></div>
-                    </div>
-                </div>
-                <!-- ============ step 2 =========== -->
-                <div class="row">
-
-                    <div class="col-md-5">
-                        <div class="process-point-left"></div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">02</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-r"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ============ step 3 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">03</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right"></div>
-                    </div>
-                </div>
-                <!-- ============ step 4 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-point-left"></div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">04</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-r"></div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- ============ step 3 =========== -->
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="process-step">
-                                        <p class="m-0 p-0">Step</p>
-                                        <h2 class="m-0 p-0">05</h2>
-                                    </div>
-                                </div>
-                                <div class="col-md-7">
-                                    <h5>What is Lorem Ipsum?</h5>
-                                    <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
-                                </div>
-                            </div>
-                            <div class="process-line-l"></div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-5">
-                        <div class="process-point-right process-last"></div>
-                    </div>
-                </div>
-                <!-- ============ -->
-            </div>
-        </section>
-
     </section>
-
+        <ul class="nav nav-pills nav-justified mt-1">
+            <li class="nav-item border border-bottom-4 m-1">
+                <a class="nav-link" v-bind:class="{ active: isActive_1, }" @click.prevent="changeImage(0)">Poster un voyage</a>
+            </li>
+            <li class="nav-item border border-bottom-4 m-1">
+                <a class="nav-link" v-bind:class="{ active: isActive_2, }" @click.prevent="changeImage(1)">Envoyer un colis</a>
+            </li>
+            <li class="nav-item border border-bottom-4 m-1">
+                <a class="nav-link" v-bind:class="{ active: isActive_3, }" @click.prevent="changeImage(2)">Chercher un voyage</a>
+            </li>
+        </ul>
+    <section style="min-height: 600px;">
+        <transition name="slide-fade">
+            <component :is="currentTabComponent"></component>
+        </transition>
+    </section>
 </div>
 </template>
 
 <script>
+
+import howPostTravel from './howItWork/howPostTravel';
+import findPostTravel from './howItWork/findPostTravel';
+import howPostPack from './howItWork/howPostPack';
+
 export default {
     props: ['title'],
 
+    components: {
+       howPostTravel,
+       findPostTravel,
+       howPostPack,
+    },
     data: function () {
         return {
-
+            current: '',
             images: [
                 '/images/pack-bild-3.jpg',
                 '/images/pack-bild.jpeg',
@@ -444,19 +50,14 @@ export default {
                 "comment poster un voyage ?",
                 "comment envoyer un colis ?",
                 "Comment rechercher un trajet ?"
-
             ],
 
             titel: '',
             replace: '',
-
-            section_1: true,
-            section_2: false,
-            section_3: false,
+            img: '',
             isActive_1: true,
             isActive_2: false,
             isActive_3: false,
-            img: ''
 
         }
     },
@@ -468,8 +69,15 @@ export default {
 
         getTitle: function () {
             return this.titel;
-        }
+        },
+       currentTabComponent() {
+            return this.current;
+       },
 
+    },
+    watch: {
+        current: function(val) {
+        }
     },
     methods: {
         changeImage(index) {
@@ -482,30 +90,19 @@ export default {
                     this.isActive_1 = true;
                     this.isActive_2 = false;
                     this.isActive_3 = false;
-                    this.section_1 = true;
-                    this.section_2 = false;
-                    this.section_3 = false;
-
+                    this.current = howPostTravel;
                     break;
                 case 1:
-
                     this.isActive_1 = false;
                     this.isActive_2 = true;
                     this.isActive_3 = false;
-                    this.section_1 = false;
-                    this.section_2 = true;
-                    this.section_3 = false;
-
+                    this.current = findPostTravel;
                     break;
                 case 2:
-
                     this.isActive_1 = false;
                     this.isActive_2 = false;
                     this.isActive_3 = true;
-                    this.section_1 = false;
-                    this.section_2 = false;
-                    this.section_3 = true;
-
+                    this.current = howPostPack;
                     break;
             }
 
@@ -514,16 +111,9 @@ export default {
     },
 
     mounted() {
-        this.section_1 = true;
-        this.section_2 = false;
-        this.section_3 = false;
-
-        this.isActive_1 = true;
-        this.isActive_2 = false;
-        this.isActive_3 = false;
+        this.current = howPostTravel;
         this.titel = this.titels[0];
         this.img = this.images[0];
-
     },
 
 }
@@ -553,4 +143,11 @@ h1 {
 .nav-item {
     cursor: pointer;
 }
+
+.slide-fade-enter, .slide-fade-leave-to
+ {
+  transform: translateX(10px);
+  opacity: 0;
+}
+
 </style>
