@@ -5,62 +5,7 @@
         <div class="container shadow">
             <div class="row">
                 <div class="col-lg-3 col-sm-12 justify-content-center">
-                    <div class="">
-                        <div class="user-bild-home">
-                            <vue-letter-avatar class="user-bild" :name="owner.name !== undefined ? owner.name : 'Ramdom' " size='90' :rounded=true />
-                        </div>
-                    </div>
-                    <div class="user-infos">
-                        <strong>Name:</strong> <span>{{owner.name}}</span><br>
-                        <strong>Email:</strong> <span>{{owner.email}}</span>
-                    </div>
-                    <hr class="hr-sepace">
-                    <span>
-                        <svg v-if="owner.email_verified_at != null" class="bi bi-check2-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                                d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        <path fill-rule="evenodd"
-                                d="M8 2.5A5.5 5.5 0 1 0 13.5 8a.5.5 0 0 1 1 0 6.5 6.5 0 1 1-3.25-5.63.5.5 0 1 1-.5.865A5.472 5.472 0 0 0 8 2.5z"/>
-                    </svg>
-                        <svg v-else class="bi bi-check2-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg" style="color: red">
-                        <path fill-rule="evenodd"
-                                d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        <path fill-rule="evenodd"
-                                d="M8 2.5A5.5 5.5 0 1 0 13.5 8a.5.5 0 0 1 1 0 6.5 6.5 0 1 1-3.25-5.63.5.5 0 1 1-.5.865A5.472 5.472 0 0 0 8 2.5z"/>
-                    </svg>
-                    Numéro vérifier
-                </span><br>
-
-                    <span>
-                        <svg v-if="owner.email_verified_at != null" class="bi bi-check2-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                                d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        <path fill-rule="evenodd"
-                                d="M8 2.5A5.5 5.5 0 1 0 13.5 8a.5.5 0 0 1 1 0 6.5 6.5 0 1 1-3.25-5.63.5.5 0 1 1-.5.865A5.472 5.472 0 0 0 8 2.5z"/>
-                    </svg>
-                        <svg v-else class="bi bi-check2-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                                    xmlns="http://www.w3.org/2000/svg" style="color: red">
-                        <path fill-rule="evenodd"
-                                d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                        <path fill-rule="evenodd"
-                                d="M8 2.5A5.5 5.5 0 1 0 13.5 8a.5.5 0 0 1 1 0 6.5 6.5 0 1 1-3.25-5.63.5.5 0 1 1-.5.865A5.472 5.472 0 0 0 8 2.5z"/>
-                    </svg>
-                    E-Mail vérifier
-                </span><br>
-                    <div class="starrr" data-rating="0"></div>
-                    <div>
-                        <div class="rating"><input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                            <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input
-                                type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio"
-                                name="rating" value="2" id="2"><label
-                                for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label
-                                for="1">☆</label>
-                        </div>
-                    </div>
-
+                    <user :user="owner"></user>
                 </div>
                 <div class="col-lg-9  col-sm-12 travel-detail">
                     <h3> Details du Colis</h3>
@@ -98,18 +43,21 @@
                         <div class="col-md-6 reservation-form">
                             <button class="btn btn-reserve"  data-toggle="collapse" data-target="#reserver" type="submit">je me propose</button>
                             <button @click="startConversationWith" class="btn btn-primary btn-contact-reserve">contacter l'expéditeur</button>
-
                             <div id="reserver" class="collapse">
                                 <div class="form-group">
-                                    <label for="email">Votre message:</label>
+                                    <label for="email">Choississez le Post</label>
+                                    <b-form-select v-model="selected" :options="options" size="sm"></b-form-select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">avez vous des precisions ? :</label>
                                     <textarea type="textarea" class="form-control voyageur-textarea" id="message"
-                                                name="message"></textarea>
-                                    <button class="btn btn-primary" type="submit">envoyer</button>
+                                      v-model="form.message"  name="message"></textarea>
+                                    <button class="btn btn-reserve" @click.prevent="sendBooking" type="submit">envoyer</button>
+                                    <b-spinner v-show="bookingSpinerShow" small label="Small Spinner" type="grow"></b-spinner>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -121,21 +69,25 @@
 <script>
 
 import contactUser from "./contact";
+import user from '../utilities/cards/user'
 
 export default {
     
-    props: ['post', 'owner', 'currentUser', 'path'],
+    props: ['post', 'owner', 'currentUser', 'path', 'posts'],
 
-    components: {contactUser},
+    components: {contactUser, user},
 
     data: function() {
         return {
             setisActiveChat: true,
+            bookingSpinerShow: false,
+            selected: null,
             messages: [],
             form: {
-                kilo: 0,
-                message: '',
-            }
+                selectedPost: null,
+                message: null,
+            },
+            options: []
         }
     },
     computed: {
@@ -146,12 +98,19 @@ export default {
             return Store.getters.getisActiveChat;
         }
     },
+    watch: {
+        selected: function(value) {
+           this.form.selectedPost =  this.posts.filter(function (post) {
+               return post.id == value;
+           })
+        }
+    },
     methods: {
-        booking: function() {
-            if(this.form.kilo > 0) { Store.dispatch('bookKilo', this.form.kilo);}
-        },
         startConversationWith() {
             if(this.owner.id == this.currentUser.id){
+                Vue.$toast.error('votre ne peut etre effectuer.', {
+                        position: 'top-right'
+                    });
                 return;
             }
             Store.dispatch('setisActiveChat', !this.getisActiveChat);
@@ -163,9 +122,33 @@ export default {
         saveNewMessage(message) {
             this.messages.push(message);
         },
+        sendBooking() {
+            if (this.posts.length > 0 && this.form.selectedPost !== null) {
+              this.bookingSpinerShow = true;
+              axios.post(`/bookingPack/${this.post.id}/${this.owner.id}`,
+              {
+                  post: this.form.selectedPost,
+                  owner: this.owner,
+              })
+                .then((response) => {
+
+                    Vue.$toast.success('votre reservation a ete soumise avec success.', {
+                        position: 'top-right'
+                    });
+
+                    this.form.selectedPost = null;
+                    this.form.message = null;
+                    this.selected = null;
+                    this.bookingSpinerShow = false;
+                })  
+            }
+        }
     },
     mounted() {
        Store.dispatch('setisActiveChat', true);
+       this.posts.forEach(element => {
+           this.options.push({ value: element.id, text: element.from + ' => ' + element.to + ' du ' +  element.dateFrom })
+       });
     }
 }
 </script>

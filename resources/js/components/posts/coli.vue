@@ -1,142 +1,155 @@
 <template>
-     <section id="about" class="mb-5">
+    <div id="about" class="container-fluid">
         <div class="row">
             <div class="col-lg-12 text-center mb-2">
                 <h2 class="quigo-title">Que souhaitez-vous envoyer ?</h2>
             </div>
         </div>
         <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-12 mx-auto bg-poster">
-                        <form class="needs-validation" v-on:submit.prevent="sendData">
-                           <input type="hidden" name="_token" :value="csrf_token">
-                            <div class="form-row">
-                                <div class="col-md-4 my-3">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control border-right-0" id="exampleInputdepart"
-                                               aria-describedby="departHelp" placeholder="Veuillez saisir une ville de départ." v-model="coli.from">
-                                        <span class="input-group-append bg-white border-left-0">
-                                            <span class="input-group-text bg-transparent">
-                                                <i class="fas fa-plane-departure"></i>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <small v-if="errors.from" id="departHelp" class="form-text text-muted error" v-html="errors != undefined ? errors.from[0] : ''"></small>
-                                </div>
-                                <div class="col-md-4 my-3">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control border-right-0" id="exampleInputdepart"
-                                               aria-describedby="departHelp" placeholder="Veuillez saisir une ville d'Arrivée ." v-model="coli.to">
-                                    </div>
-                                    <small v-if="errors.to" id="departHelp" class="form-text text-muted error" v-html="errors.to[0]"></small>
-                                </div>
-                                <div class="col-md-4 my-3">
-                                        <vc-date-picker v-model="coli.dateFrom" :popover="{ placement: 'bottom' }"
-                                        :input-props='{
-
-                                            placeholder: "entrez la date d expedition",
-                                            readonly: true
-                                        }'
-                                        ></vc-date-picker>
-                                    <small v-if="errors.dateFrom" id="departHelp" class="form-text text-muted error" v-html="errors.dateFrom[0]"></small>
+            <div class="col-sm-12 col-md-12 col-lg-8 mx-auto pt-2 bg-poster">
+                <ValidationObserver v-slot="{ handleSubmit }">
+                    <form @submit.prevent="handleSubmit(onSubmit)">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="from">Ville de depart:</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <input type="text" v-model="coli.from" id="from" name="from" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
                             </div>
-                            <div class="form-row my-2">
-                                <div class="col-md-4 mb-3">
-                                    <label for="exampleInputEmail1">Quantite</label>
-                                    <div class="input-group">
-                                        <input class="form-control border-right-0" id="picker" type="number"
-                                               aria-describedby="departHelp" min="1" max="6" placeholder="1" v-model="coli.quantity">
-                                    </div>
-                                    <small v-if="errors.quantity" id="departHelp" class="form-text text-muted error" v-html="errors.quantity[0]"></small>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Nom de l'Object</label>
-                                    <div class="input-group">
-                                        <input class="form-control border-right-0" id="picker" type="text"
-                                               aria-describedby="departHelp" placeholder="Telephone, Enveloppe..." v-model="coli.coliName">
-                                    </div>
-                                    <small v-if="errors.colis_name" id="departHelp" class="form-text text-muted error" v-html="errors.colis_name[0]"></small>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Poids(kg)</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control border-right-0" id="exampleInputdepart"
-                                        min="1" max="46" aria-describedby="departHelp"
-                                        placeholder="Nombre de Kilo*" v-model="coli.kilo">
-                                    </div>
-                                    <small v-if="errors.kilo" id="departHelp" class="form-text text-muted error" v-html="errors.kilo[0]"></small>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="coli.to">Ville d'arrivee:</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <input type="text" v-model="coli.to" id="coli.to" name="coli.to" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
                             </div>
-                            <div class="form-row my-2">
-                                <div class="col-md-4">
-                                    <label for="exampleInputEmail1">Prix/KG</label>
-                                    <div class="input-group">
-                                        <input type="number" class="form-control border-right-0" id="exampleInputdepart"
-                                        min="5" max="8"
-                                        placeholder="7" v-model="coli.prix">
-                                    </div>
-                                    <small v-if="errors.prix" id="departHelp" class="form-text text-muted error" v-html="errors.prix[0]"></small>
-                                </div>
-                                <div class="col-md-8 mt-4">
-                                    <div class="form-group mr-5">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input"
-                                                id="inputGroupFile02" ref="file" v-on:change="onImageChange">
-                                            <label class="custom-file-label" for="inputGroupFile02">Inserer une photo
-                                                du coli 
-                                            </label>
-                                        </div>
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="dateFrom">Date (Date et Heure)</label>
+                                        <validation-provider rules="required" v-slot="{ errors }">
+                                        <datetime
+                                        type="datetime"
+                                        v-model="coli.dateFrom"
+                                        input-class="form-control"
+                                        zone="Europe/Paris"
+                                        :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'}"
+                                        :phrases="{ok: 'Continue', cancel: 'Exit'}"
+                                        :min-datetime="(new Date()).toString()"
+                                        use24-hour
+                                        auto
+                                        ></datetime>
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
                                 </div>
                             </div>
-                            <div class="form-group my-2">
-                                <label class="font-weight-bold" for="exampleFormControlTextarea1">Voulez vous ecrire
-                                    autre chose sur votre voyage?</label>
-                                <textarea v-model='coli.content' class="form-control" id="exampleFormControlTextarea1"
-                                          rows="3">
-                                    </textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="Quantite">Quantite</label>
+                                    <validation-provider rules="required|integer" v-slot="{ errors }">
+                                        <input type="text" v-model="coli.quantity" id="Quantite" name="Quantite" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
                             </div>
-                            <small v-if="errors.content" id="departHelp" class="form-text text-muted error" v-html="errors.content[0]"></small>
-                            <button class="btn btn-recherche btn-lg text-white my-2 mt-2" type="submit">poster votre annonce</button>
-                        </form>
-                    </div>
-                </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="form.coliName">Nom de l'Objet à envoyer</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <input type="text" v-model="coli.coliName" id="form.coliName" name="form.coliName" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="form.kilo">Poids de l'objet</label>
+                                    <validation-provider rules="required|integer" v-slot="{ errors }">
+                                        <input type="text" v-model="coli.kilo" id="form.kilo" name="form.kilo" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="form.prix">Prix/Kg</label>
+                                    <validation-provider rules="required|numeric" v-slot="{ errors }">
+                                        <input type="text" v-model="coli.prix" id="form.prix" name="form.prix" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="colisPhoto">Une photo de l'objet</label>
+                                    <validation-provider rules="required" v-slot="{ errors }">
+                                        <b-form-file id="colisPhoto" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
+                                        <small class="form--error">{{ errors[0] }}</small>
+                                    </validation-provider>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group my-2">
+                            <label class="font-weight-bold" for="form.content">Voulez vous ecrire autre chose sur votre voyage?</label>
+                            <validation-provider rules="required" v-slot="{ errors }">
+                                <textarea v-model='coli.content' class="form-control" id="form.content" rows="3" :class="{ 'is-invalid': errors[0] !== undefined }"></textarea>
+                                <small class="form--error">{{ errors[0] }}</small>
+                            </validation-provider>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary my-2 btn-recherche">Poster votre voyage</button>
+                        </div>
+                    </form>
+                </ValidationObserver>
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
-<script lang="ts">
+<script>
 
-const moment = require('moment');
-
-export default {
-    props: ['csrf_token'],
-    data: function() {
-        return {
-            coli: {
-                from: '',
-                to: '',
-                dateFrom: '',
-                dateTo: '',
-                quantity: '',
-                coliName: '',
-                kilo: '',
-                prix: '',
-                colisPhoto: '',
-                content: ''
-            },
-            date1: '',
-            errors: [],
-            file: ''
+  export default {
+    data() {
+      return {
+        coli: {
+            from: '',
+            to: '',
+            dateFrom: null,
+            dateTo: null,
+            quantity: '',
+            coliName: '',
+            kilo: '',
+            prix: '',
+            photo: '',
+            content: ''
+        },
+        aktDate: '',
+        minDate: '',
+        file:  ''
+      }
+    },
+    watch: {
+        'form.dateFrom': function(val) {
+            this.minDate = val;
+        }
+    },
+    computed: {
+        getMinDate: function() {
+            return this.minDate;
         }
     },
     methods: {
-        sendData: function() {
-
-            let config = {
+      onSubmit(evt) {
+          
+          let config = {
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
                     "Access-Control-Allow-Origin": "*",
@@ -152,7 +165,7 @@ export default {
               formData.append('colis_name',  this.coli.coliName);
               formData.append('from',  this.coli.from);
               formData.append('to',  this.coli.to);
-              formData.append('dateFrom',  this.date1);
+              formData.append('dateFrom',  this.coli.dateFrom);
               formData.append('kilo',  this.coli.kilo);
               formData.append('prix',  this.coli.prix);
               formData.append('content',  this.coli.content);
@@ -167,23 +180,20 @@ export default {
                 }
             });
         },
+
         onImageChange(e){
             this.file = e.target.files[0];
       }
-    },
-    watch: 
-    {
-        'coli.dateFrom': function(val) 
-        {
-            this.date1 = moment(val).format('DD.MM.YYYY');
-        }
-    }
     
-}
+    },
+    mounted() {
+        this.aktDate = moment(new Date).format('DD.MM.YYYY' + ' à ' +  'HH:mm:ss');
+        this.minDate = new Date();
+    }
+  }
 </script>
-
-<style>
-.error{
-    color: red !important;
+<style lang="scss" scoped>
+.form--error {
+    color: red;
 }
 </style>

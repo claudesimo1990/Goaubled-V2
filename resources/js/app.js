@@ -13,6 +13,21 @@ import module from './store/store';
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-datetime/dist/vue-datetime.css';
+import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
+import { required,integer,numeric } from 'vee-validate/dist/rules';
+
+extend('required', {
+  ...required,
+  message: 'ce champs est obligatoire'
+})
+extend('integer', {
+  ...integer,
+  message: 'ce champs est un entier'
+})
+extend('numeric', {
+  ...numeric,
+  message: 'ce champs est numeric'
+})
 
 window.moment = require('moment'); 
  
@@ -59,6 +74,8 @@ Vue.component('header-component', require('./components/utilities/header.vue').d
 Vue.component('faq-component', require('./components/pages/faq.vue').default);
 Vue.component('contact-us', require('./components/pages/contact.vue').default);
 Vue.component('datetime', Datetime);
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
 
 window.app = new Vue({
     el: '#app',

@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\welcome_email;
 
 Route::get('/','AppController@index')->name('accueil');
 Route::get('/howItWork','AppController@howItWork')->name('howItWork');
@@ -24,9 +23,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/contact/{user}', 'ContactController@profile')->name('contact');
     Route::get('coli-form','postController@coliForm')->name('packs.create');
     Route::post('coli-form','postController@createColi')->name('post.colis.create');
+    //travel
     Route::get('post/{post}/{user}','postController@bookingPost')->name('post.booking')->middleware('verified');
     Route::post('booking/{post}/{user}','postController@booking');
     Route::get('booking-confirmation/{user}/{post}','postController@bookingConfirm')->name('confirm');
+    //coli
+    Route::post('bookingPack/{post}/{user}','postController@bookingPack');
 });
 
 Route::get('travel-form','postController@travelForm')->name('travels.create')->middleware('auth');

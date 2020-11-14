@@ -7,6 +7,7 @@ use App\User;
 use Carbon\Carbon;
 use \Datetime;
 use App\Mail\BookingMail;
+use App\Mail\packBooking;
 use App\Mail\bookingValidate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -44,8 +45,8 @@ class postController extends Controller
             'from' => $request->from,
             'to' => $request->to,
             'colis_name' => $request->colis_name,
-            'dateFrom' => $request->dateFrom,
-            'dateTo' => $request->dateFrom,
+            'dateFrom' => Carbon::parse($request->dateFrom)->format('Y-m-d H:i:s'),
+            'dateTo' => Carbon::parse($request->dateFrom)->format('Y-m-d H:i:s'),
             'content' => $request->content,
             'kilo' => $request->kilo,
             'prix' => $request->prix,
@@ -115,6 +116,7 @@ class postController extends Controller
         if($post->categorie_id == 2) {
             return view('booking.travel', ['post' => $post, 'user' => $user]);
         }else if($post->categorie_id == 1) {
+            // posts for current user
             return view('booking.coli', ['post' => $post, 'user' => $user]);  
         }
     }
@@ -153,16 +155,47 @@ class postController extends Controller
         }
     }
 
+    public function bookingPack(Request $request)
+    {
+        Mail::to($request->get('owner')['email'])->send(
+
+            new packBooking
+            (
+                 auth()->user(),
+ 
+                 $request->get('owner'),
+
+                 $request->get('post')[0],
+ 
+                 route('confirm',[
+                 'user' => auth()->id(),
+                 'post' => $request->get('post')[0]['id']])
+             )
+         );
+ 
+         if (Mail::failures()) {
+ 
+             return response('error', 500);
+ 
+         } else {
+ 
+             return response('success', 200);
+         }
+    }
+
     public function bookingConfirm(User $user, Post $post, Request $request)
     {
         $k = $request->get('k');
-
-        $post->kilo = ($post->kilo - $k) > 0 ? $post->kilo - $k : 0;
-
-        $post->save();
+        
+        if($k !== 'pack') {
+            $post->kilo = ($post->kilo - $k) > 0 ? $post->kilo - $k : 0;
+            $post->save();
+        }
 
         if (!is_null($k)) {
-            $post->kilo =- $request->get('k');
+             if($k !== 'pack') {
+                $post->kilo =- $request->get('k');
+             }
             Mail::to($user->email)->send(new bookingValidate($user, route('accueil')));
         }
         return view('booking.confirmation');

@@ -83,7 +83,7 @@
                                 <div class="form-group">
                                     <label class="font-weight-bold" for="photoBielletAvion">Inserer votre billet d'Avion</label>
                                     <validation-provider rules="required" v-slot="{ errors }">
-                                        <b-form-file id="photoBielletAvion" v-model="travel.photoBielletAvion" class="form-control" v-on:change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
+                                        <b-form-file id="photoBielletAvion" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
                                         <small class="form--error">{{ errors[0] }}</small>
                                     </validation-provider>
                                 </div>
@@ -128,26 +128,7 @@
 
 <script>
 
-import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
-import { required,integer,numeric } from 'vee-validate/dist/rules';
-
-extend('required', {
-  ...required,
-  message: 'ce champs est obligatoire'
-})
-extend('integer', {
-  ...integer,
-  message: 'ce champs est un entier'
-})
-extend('numeric', {
-  ...numeric,
-  message: 'ce champs est numeric'
-})
   export default {
-    components: {
-        ValidationProvider,
-        ValidationObserver
-    },
     data() {
       return {
         travel: {
