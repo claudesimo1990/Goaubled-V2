@@ -26,9 +26,9 @@
 
 <script>
 
-import howPostTravel from './howitwork/howPostTravel';
-import findPostTravel from './howitwork/findPostTravel';
-import howPostPack from './howitwork/howPostPack';
+import howPostTravel from './howPostTravel';
+import findPostTravel from './findPostTravel';
+import howPostPack from './howPostPack';
 
 export default {
     props: ['title'],
