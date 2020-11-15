@@ -26,9 +26,9 @@
 
 <script>
 
-import howPostTravel from './howPostTravel';
-import findPostTravel from './findPostTravel';
-import howPostPack from './howPostPack';
+import howPostTravel from './howitwork/howPostTravel';
+import findPostTravel from './howitwork/findPostTravel';
+import howPostPack from './howitwork/howPostPack';
 
 export default {
     props: ['title'],
@@ -120,7 +120,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./../../../sass/_variables.scss";
+@import "./../../sass/_variables.scss";
 
 .header-title {
     color: $quigo-second;
