@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password'])
         ]);
 
-        Mail::to('claudesimo1990@gmail.com')->send(new welcome_email($user));
+        Mail::to($user->email)->send(new welcome_email($user));
 
         flashy()->success('bienvenue sur Goaubled et merci de nous faire confiance');
 
