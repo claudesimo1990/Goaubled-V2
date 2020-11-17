@@ -10,10 +10,10 @@
                 <a class="nav-link" v-bind:class="{ active: isActive_1, }" @click.prevent="changeImage(0)">Poster un voyage</a>
             </li>
             <li class="nav-item border border-bottom-4 m-1">
-                <a class="nav-link" v-bind:class="{ active: isActive_2, }" @click.prevent="changeImage(1)">Envoyer un colis</a>
+                <a class="nav-link" v-bind:class="{ active: isActive_2, }" @click.prevent="changeImage(1)">Chercher un voyage</a>
             </li>
             <li class="nav-item border border-bottom-4 m-1">
-                <a class="nav-link" v-bind:class="{ active: isActive_3, }" @click.prevent="changeImage(2)">Chercher un voyage</a>
+                <a class="nav-link" v-bind:class="{ active: isActive_3, }" @click.prevent="changeImage(2)">Envoyer un colis</a>
             </li>
         </ul>
     <section style="min-height: 600px;">

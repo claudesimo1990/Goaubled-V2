@@ -67,17 +67,5 @@ export default {
         padding-bottom: 20px; 
     }
 }
-.numberCircle {
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    padding: 26px;
-    background: #f6f6f6;
-    border: 2px solid #666;
-    color: #008931;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 800;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
-}
+
 </style>
