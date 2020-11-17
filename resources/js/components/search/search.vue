@@ -17,12 +17,18 @@
                     </b-input-group>
 
                     <b-input-group prepend="" class="mb-2 mr-sm-2 mb-sm-0">
-                        <vc-date-picker v-model="date" :popover="{ placement: 'bottom' }"
-                            :input-props='{
-                                placeholder: "Date de Depart",
-                                readonly: true
-                            }'
-                        ></vc-date-picker>
+                        <datetime
+                        type="datetime"
+                        v-model="date"
+                        input-class="form-control"
+                        zone="Europe/Paris"
+                        placeholder="Date de depart"
+                        :format="{ year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit'}"
+                        :phrases="{ok: 'Continue', cancel: 'Exit'}"
+                        :min-datetime="(new Date()).toString()"
+                        use24-hour
+                        auto
+                        ></datetime>
                     </b-input-group>
                     
                     <b-button class="btn-recherche" variant="primary" @click="search">rechercher</b-button>
