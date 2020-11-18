@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 mt-3 cathergorie">
-                    <h3 class="my-4">Affiner votre recherche</h3>
+                    <h4 class="my-4">Affiner votre recherche</h4>
                     <div class="list-group search-box rounded">
                         <div class="col-sm-12">
                             <div class="form-check border-bottom mb-3">

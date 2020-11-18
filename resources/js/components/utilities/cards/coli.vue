@@ -24,7 +24,7 @@
             </div>
             <div class="notice notice-warning border-4">
                 <strong>Message : </strong>
-                <div class="text-break overflow-auto text-muted bg-white rounded mb-4 mt-1 px-2">
+                <div class="text-break overflow-auto text-muted bg-white border rounded mb-4 mt-1 px-2">
                     {{ item.content }}
                 </div>
             </div>

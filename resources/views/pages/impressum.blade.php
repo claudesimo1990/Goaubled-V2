@@ -2,7 +2,7 @@
 
 @section('content')
 <header-component background-image="/images/pack-bild-3.jpg" title="Impressum"></header-component>
-<div class="mt-5">
+<div class="container my-5">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, molestiae! Beatae voluptates quis quod numquam hic aperiam facere eius ullam, minima omnis optio, et recusandae ipsa suscipit modi iste inventore?
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque corporis asperiores quam animi vel repellat mollitia eius incidunt quae tenetur temporibus ipsam maxime aperiam quo, obcaecati voluptates deleniti sapiente quidem!
     Totam, mollitia fugit! Obcaecati, perspiciatis. Minima tenetur aliquid ut officia omnis repudiandae, corrupti mollitia temporibus dolorem sapiente. Possimus sequi a voluptatem perferendis ratione accusamus laborum, totam quo inventore, quos consequuntur?
