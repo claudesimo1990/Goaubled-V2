@@ -1,17 +1,19 @@
 <template>
-    <div class="contact-list">
-        <div class="contact" v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'active-contact': contact == selected }">
-            <img v-if="contact.avatar_original" :src="contact.avatar_original" :alt="contact.name">
-            <img v-else :src="'storage/UsersAvatars/'+ contact.avatar" :alt="contact.name">                        <div class="contact-preview">
-                <div class="contact-text">
-                    <h1 class="font-name">{{ contact.name }}</h1>
-                    <p class="font-preview">
-                        Mmh, lecker :) Freu mich!
-                    </p>
+    <div id="contacts" class="mt-3">
+        <ul>
+            <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'active': contact == selected }" class="contact">
+                <div class="wrap">
+                    <span class="contact-status busy"></span>
+                    <span class="contact-status busy"></span>
+                    <img v-if="contact.avatar_original" :src="contact.avatar_original" :alt="contact.name">
+                    <img v-else :src="'storage/UsersAvatars/'+ contact.avatar" :alt="contact.name">
+                    <div class="meta">
+                        <p class="name">{{ contact.name }}</p>
+                        <p class="preview"><span v-if="contact.unread">{{ contact.unread }}</span></p>
+                    </div>
                 </div>
-            </div>
-            <div class="contact-time"><p>17:54</p></div>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -30,6 +32,7 @@ export default {
         },
         methods: {
             selectContact(contact) {
+                console.log(contact);
                 this.selected = contact;
                 Store.dispatch('selectContact', contact);
                 this.$emit('selected', contact);
@@ -49,5 +52,4 @@ export default {
 </script>
 
 <style>
-
 </style>
