@@ -18,8 +18,9 @@
     </div>
     <div>
         <div class="d-flex justify-content-between"> 
-            <span>Membre verifié</span>
-            <span class="fa fa-star verify mr-2"></span>
+            <span class="text-success">Membre verifié</span>
+            <span v-if="user.email_verified_at"><i class="fa fa-user-check mr-2 text-success"></i></span>
+            <span v-else><i class="fa fa-user-check mr-2 text-danger"></i></span>
         </div>
         <span class="vorHumanns">{{ postDate }}</span>
     </div>
