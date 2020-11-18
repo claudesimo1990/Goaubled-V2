@@ -5,7 +5,7 @@
         <div class="container shadow">
             <div class="row">
                 <div class="col-lg-3 col-sm-12 justify-content-center">
-                    <user :user="owner"></user>
+                    <userProfile :user="owner"></userProfile>
                 </div>
                 <div class="col-lg-9  col-sm-12 travel-detail">
                     <h3> Details du Colis</h3>
@@ -69,13 +69,13 @@
 <script>
 
 import contactUser from "./contact";
-import user from '../utilities/cards/user';
+import userProfile from './../utilities/cards/user';
 
 export default {
     
     props: ['post', 'owner', 'currentUser', 'path', 'posts'],
 
-    components: {contactUser, user},
+    components: {contactUser, userProfile},
 
     data: function() {
         return {
