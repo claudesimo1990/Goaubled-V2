@@ -5,7 +5,7 @@
         <h5 class="text-start mt-2"><b-badge variant="Light">{{ user.name }}</b-badge></h5>
         <div class="notice justify-center text-center notice-success stars">
             <div class="d-flex justify-content-between">
-                <div class="strong">VOTES :</div>
+                <div class="strong">Votes :</div>
                 <div>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
