@@ -20,7 +20,7 @@
                 </ul>
                 <hr>
                 <div class="notice notice-warning">
-                    <h6>Kilo disponibles : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }} €</span></h6>
+                    <h6>Kilo disponibles : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
                 </div>
                 <div class="notice notice-warning mt-1">
                     <strong>Message : </strong>

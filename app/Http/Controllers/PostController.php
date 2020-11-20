@@ -107,7 +107,7 @@ class postController extends Controller
 
     public function listeNews()
     {
-        $posts = Post::with('user')->paginate(3);
+        $posts = Post::with('user')->paginate(10);
         return response()->json($posts, 200);
     }
 
@@ -203,12 +203,12 @@ class postController extends Controller
 
     public function travels()
     {
-        return Post::where('categorie_id', 2)->with('user')->paginate(3);
+        return Post::where('categorie_id', 2)->with('user')->paginate(10);
     }
 
     public function packs()
     {
-        return Post::where('categorie_id', 1)->with('user')->paginate(3);
+        return Post::where('categorie_id', 1)->with('user')->paginate(10);
     }
 }
 

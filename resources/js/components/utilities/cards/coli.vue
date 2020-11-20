@@ -20,7 +20,7 @@
             </ul>
             <hr>
             <div class="notice notice-warning">
-                <h6>Poids du Coli : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }} €</span></h6>
+                <h6>Poids du Coli : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
             </div>
             <div class="notice notice-warning border-4">
                 <strong>Message : </strong>
@@ -29,9 +29,20 @@
                 </div>
             </div>
             <div class="notice notice-success text-right">
-                <a :href="item.Path" class="btn btn-primary btn-lg btn-recherche contact-btn">
-                    Contactez l'expediteur
-                </a>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 col-lg-6">
+                        <h6 class="small text-left text-success">quelques photos de l'object</h6>
+                        <div class="row">
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'storage/colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'storage/colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'storage/colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'storage/colis/' + item.colisPhoto"></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-12 col-lg-6 pt-5">
+                        <a :href="item.Path" class="btn btn-primary w-100 btn-recherche contact-btn">Contactez l'expediteur</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -52,5 +63,11 @@ export default {
 </script>
 
 <style>
-
+.zoom {
+    transition: transform .2s; /* Animation */
+}
+.zoom:hover {
+  transform: scale(3.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  z-index: 1040;
+}
 </style>

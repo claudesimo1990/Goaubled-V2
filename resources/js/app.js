@@ -15,6 +15,7 @@ import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-datetime/dist/vue-datetime.css';
 import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
 import { required,integer,numeric } from 'vee-validate/dist/rules';
+import vueCountryRegionSelect from 'vue-country-region-select';
 
 extend('required', {
   ...required,
@@ -39,6 +40,7 @@ Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons)
 Vue.use(VueTyperPlugin);
 Vue.use(Vuex);
+Vue.use(vueCountryRegionSelect);
 
 window.Store = new Vuex.Store(module);
 
