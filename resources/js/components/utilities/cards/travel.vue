@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="notice notice-success text-right">
-                    <a :href="item.Path" class="btn btn-primary btn-lg btn-recherche contact-btn">
+                    <a :href="item.Path" class="btn btn-primary w-100 btn-recherche contact-btn">
                         Contactez le voyageur
                     </a>
                 </div>
