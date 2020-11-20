@@ -2,6 +2,6 @@
 
 @section('content')
 
-<news key-watch="{{ $key }}" asset="{{ asset('storage/Colis') }}"></news>
+<news key-watch="{{ $key }}" asset="{{ asset('storage') }}"></news>
 
 @endsection

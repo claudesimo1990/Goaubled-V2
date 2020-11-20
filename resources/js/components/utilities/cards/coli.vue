@@ -2,7 +2,7 @@
 <div class="card runde-ecke">
     <div class="row shadow">
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pb-5">
-            <user :user="item.user" :post-date="item.created_at"></user>
+            <user :user="item.user" :asset="asset" :post-date="item.created_at"></user>
             <div class="icon--card">
                 <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
             </div>
@@ -33,10 +33,10 @@
                     <div class="col-xs-12 col-md-12 col-lg-6">
                         <h6 class="small text-left text-success">quelques photos de l'object</h6>
                         <div class="row">
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/Colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/Colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/Colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/Colis/' + item.colisPhoto"></div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12 col-lg-6 pt-5">

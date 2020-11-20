@@ -2,7 +2,7 @@
 <div class="card runde-ecke">
         <div class="row shadow">
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pb-5">
-               <userProfile :user="item.user" :post-date="item.created_at"></userProfile>
+               <userProfile :user="item.user" :asset="asset" :post-date="item.created_at"></userProfile>
                 <div class="icon--card">
                     <img :src="item.categorie_id == 1 ? '/img/cube-outline.svg' : '/img/icons8-airport-100.png'" class="mt-2" alt="SVG mit img Tag laden" width="50" height="50" >
                 </div>
@@ -43,7 +43,7 @@
 import userProfile from './user'
 
 export default {
-    props: ['item'],
+    props: ['item','asset'],
     components: {
         userProfile
     }
