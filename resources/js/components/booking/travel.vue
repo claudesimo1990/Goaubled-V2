@@ -5,7 +5,7 @@
         <div class="container shadow">
             <div class="row">
                 <div class="col-lg-3 col-sm-12 justify-content-center">
-                    <userProfile :user="owner"></userProfile>
+                    <userProfile :user="owner" :asset="asset"></userProfile>
                 </div>
                 <div class="col-lg-9  col-sm-12 travel-detail">
                     <h3> Details du trajet</h3>
@@ -69,7 +69,7 @@ import userProfile from './../utilities/cards/user';
 
 export default {
 
-    props: ['post', 'owner', 'currentUser', 'path'],
+    props: ['post', 'owner', 'currentUser', 'path', 'asset'],
 
     components: {contactUser, userProfile},
 

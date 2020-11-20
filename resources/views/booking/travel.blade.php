@@ -6,5 +6,6 @@
         :owner="{{ $user }}"
         path="{{ route('accueil') }}" 
         :current-user="{{ auth()->user() }}"
+        asset="{{ asset('storage') }}"
     />
 @endsection
