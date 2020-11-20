@@ -1,7 +1,8 @@
 <template>
 <div class="border my-3 px-2 rounded">
     <div class="profile-block">
-        <vue-letter-avatar class="user-bild text-center" :name="user.name !== undefined ? user.name : 'Ramdom' " size='100' :rounded=true />
+        <img class="rounded-circle z-depth-2 mt-1 ml-1" alt="100x100" :src="user.avatar_original ? user.avatar_original : user.avatar"
+          data-holder-rendered="true">
         <h5 class="text-start mt-2"><b-badge variant="Light">{{ user.name }}</b-badge></h5>
         <div class="notice justify-center text-center notice-success stars">
             <div class="d-flex justify-content-between">
