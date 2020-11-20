@@ -3,7 +3,7 @@
         <div class="container py-4">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-                    <h2 class="quigo-title">{{title}}</h2>
+                    <h2 class="quigo-title">{{ title }}</h2>
                 </div>
             </div>
             <div class="row">
@@ -42,7 +42,7 @@
                     <div v-for="item in laravelData.data" :key="item.id">
                         <div v-show="travel.show">
                             <div class="container py-3" v-if="item.categorie_id == 2">
-                                <travel :item="item"></travel>
+                                <travel :item="item" :asset="asset"></travel>
                             </div>
                         </div>
                         <div v-show="pack.show">
