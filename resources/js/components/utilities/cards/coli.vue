@@ -33,10 +33,10 @@
                     <div class="col-xs-12 col-md-12 col-lg-6">
                         <h6 class="small text-left text-success">quelques photos de l'object</h6>
                         <div class="row">
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'/storage/colis/' + item.colisPhoto"></div>
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'/storage/colis/' + item.colisPhoto"></div>
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'/storage/colis/' + item.colisPhoto"></div>
-                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="'/storage/colis/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
+                            <div class="col-3 w-100 h-100 zoom"><img class="img-rounded img-responsive" width="100px" height="50px" :src="asset + '/' + item.colisPhoto"></div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-md-12 col-lg-6 pt-5">
@@ -54,7 +54,7 @@
 import user from './user'
 
 export default {
-    props: ['item'],
+    props: ['item','asset'],
     components: {
         user
     }
@@ -64,10 +64,10 @@ export default {
 
 <style>
 .zoom {
-    transition: transform .2s; /* Animation */
+    transition: transform .2s;
 }
 .zoom:hover {
-  transform: scale(3.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(3.5);
   z-index: 1040;
 }
 </style>

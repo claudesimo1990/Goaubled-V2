@@ -47,7 +47,7 @@
                         </div>
                         <div v-show="pack.show">
                             <div class="container py-3" v-if="item.categorie_id == 1">
-                                <coli :item="item"></coli>
+                                <coli :item="item" :asset="asset"></coli>
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ import travel from './utilities/cards/travel'
 import coli from './utilities/cards/coli'
 
 export default {
-    props: ["keyWatch"],
+    props: ["keyWatch",'asset'],
     components: {
         travel,
         coli
