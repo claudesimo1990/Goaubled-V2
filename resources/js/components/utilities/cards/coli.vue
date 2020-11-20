@@ -23,7 +23,8 @@
                 <h6>Poids du Coli : <b-badge variant="info" class="mx-2 si" v-html="item.kilo+ ' kg'"></b-badge><span class="float-right kilo-price">{{ item.prix }}€</span></h6>
             </div>
             <div class="notice notice-warning border-4">
-                <strong>Message : </strong>
+                <strong class="mr-5">Message : </strong> <strong>Nom de l'objet : </strong><b-badge class="ml-2" variant="info" v-html="item.colis_name"></b-badge>
+                <strong class="ml-2">Nombre: </strong><b-badge class="ml-2" variant="info" v-html="item.quantity ? '×'+item.quantity : '×1'"></b-badge>
                 <div class="text-break overflow-auto text-muted bg-white border rounded mb-4 mt-1 px-2">
                     {{ item.content }}
                 </div>
