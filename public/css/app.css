@@ -13135,6 +13135,13 @@ ul.timeline > li:before {
   margin-left: 5px;
 }
 
+.user__bild_post {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 .notiferror {
   background-color: red !important;
   border: red;
