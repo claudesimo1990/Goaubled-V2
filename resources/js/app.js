@@ -78,6 +78,7 @@ Vue.component('contact-us', require('./components/pages/contact.vue').default);
 Vue.component('datetime', Datetime);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('cookie-component', require('./components/utilities/cookie.vue').default);
 
 window.app = new Vue({
     el: '#app',

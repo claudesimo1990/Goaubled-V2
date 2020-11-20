@@ -91,5 +91,5 @@
         <a class="dark-grey-text" href="{{ route('impressum') }}">Impressum</a> | <a class="dark-grey-text" href="{{ route('AGB') }}">AGB</a>
     </div>
     <!-- Copyright -->
-  
+    <cookie-component></cookie-component>
   </footer>
