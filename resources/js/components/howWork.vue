@@ -5,22 +5,25 @@
             <h2 class="text-center title__annonce pt-2 text-white">{{ getTitle }}</h2>
         </div>
     </section>
-        <ul class="nav nav-pills nav-justified mt-1">
-            <li class="nav-item border border-bottom-4 m-1">
-                <a class="nav-link" v-bind:class="{ active: isActive_1, }" @click.prevent="changeImage(0)">Poster un voyage</a>
-            </li>
-            <li class="nav-item border border-bottom-4 m-1">
-                <a class="nav-link" v-bind:class="{ active: isActive_2, }" @click.prevent="changeImage(1)">Chercher un voyage</a>
-            </li>
-            <li class="nav-item border border-bottom-4 m-1">
-                <a class="nav-link" v-bind:class="{ active: isActive_3, }" @click.prevent="changeImage(2)">Envoyer un colis</a>
-            </li>
-        </ul>
-    <section style="min-height: 600px;">
-        <transition name="slide-fade">
-            <component :is="currentTabComponent"></component>
-        </transition>
-    </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <section>
+                    <transition name="slide-fade">
+                        <component :is="currentTabComponent"></component>
+                    </transition>
+                </section>
+            </div>
+            <div class="col-md-3 mt-5 py-5">
+                <b-list-group class="mt-5">
+                    <b-list-group-item v-bind:class="{ active: isActive_1, }" href="#" @click.prevent="changeImage(0)">Poster un voyage</b-list-group-item>
+                    <b-list-group-item v-bind:class="{ active: isActive_2, }" href="#"  @click.prevent="changeImage(1)">Chercher un voyage</b-list-group-item>
+                    <b-list-group-item v-bind:class="{ active: isActive_3, }" href="#" @click.prevent="changeImage(2)">Envoyer un colis</b-list-group-item>
+                </b-list-group>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -138,6 +141,10 @@ h1 {
 .nav-pills .show>.nav-link {
     color: #fff;
     background-color: #8bc73d;
+}
+.list-group-item.active {
+    background-color: $quigo;
+    border-color: $quigo;
 }
 
 .nav-item {

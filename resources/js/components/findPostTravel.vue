@@ -4,8 +4,6 @@
     <div class="container pb-5 pt-5">
         <div class="section-header">
             <h2 class="text-center title__annonce">Rechercher un Trajet un expedition</h2>
-         <p class="text-center mt-0">voir toutes les annonces de voyge et d'expedition</p>
-
         </div>
         <div class="row border my-3 py-3">
             <div class="col-md-2">    
@@ -38,6 +36,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "./../../sass/_variables.scss";
+.subtitle__annonce {
+    color: $quigo-second;
+}
 </style>

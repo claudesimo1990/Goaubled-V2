@@ -4,8 +4,6 @@
     <div class="container pb-5 pt-5">
         <div class="section-header">
             <h2 class="text-center title__annonce">Souhaitez vous envoyer un colis?</h2>
-         <p class="text-center mt-0">Envoye vos colis ou courriel de plus rapide possible et a moin cher</p>
-
         </div>
         <div class="row border my-3 py-3">
             <div class="col-md-2">    
@@ -59,6 +57,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+@import "./../../sass/_variables.scss";
+.subtitle__annonce {
+    color: $quigo-second;
+}
 </style>
