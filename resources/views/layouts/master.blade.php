@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="{{'/css/profile/style.css'}}" rel="stylesheet">
     <link href="{{'/css/app.css'}}" rel="stylesheet">
+    @yield('css')
 </head>
 <body id="body">
 
@@ -60,6 +61,7 @@
 <script defer src="{{ asset('./js/script.js') }}"></script>
 @stack('scripts')
 @include('flashy::message')
+@yield('js')
     
 </body>
 </html>
