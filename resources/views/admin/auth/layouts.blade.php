@@ -10,11 +10,11 @@
 <body>
     <div class="jumbotron jumbotron-fluid w-100 h-100">
         <div class="container text-center mt-4">
-          <h1 class="display-4"> @yield('titel') </h1>
-          <div class="mt-4">
-            @yield('content')
-          </div>
+        <h1 class="text-danger"> @yield('titel') </h1>
+        <div class="mt-4">
+          @yield('content')
         </div>
       </div>
+    </div>
 </body>
 </html>

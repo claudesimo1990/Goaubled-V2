@@ -57,3 +57,9 @@ Route::get('/google', 'Auth\LoginController@redirectToProvider')->name('google')
 Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
+
+// admin
+route::get('/admin/home','Admin\HomeController@home')->name('admin.home');
+route::get('/admin/login','Admin\AuthController@login')->name('admin.login');
+route::post('/admin/login','Admin\AuthController@attemptAdmin');
+route::get('/admin/register','Admin\AuthController@register')->name('admin.register');

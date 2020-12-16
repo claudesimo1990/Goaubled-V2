@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'avatar',
         'avatar_original',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -49,23 +50,8 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'id' => 'integer',
+        'email_verified_at' => 'datetime'
     ];
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */    
-    /**
-     * dates
-     *
-     * @var array
-     */
-    protected $dates = [
-        'email_verified_at',
-    ];
-
-    
     /**
      * profile
      *

@@ -6,10 +6,11 @@ use App\Admin;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
 
-$factory->define(Admin::class, function (Faker $faker) {
+$factory->define(user::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'email' => 'superadmin@admin.com',
+        'email' => 'admin@admin.com',
         'password' => '$2y$10$gBSyzwffVCN/nmls9eQZd.egmGQcFfv4hPGyqjeahUR7G5nqyt6ke', //password
+        'is_admin' > 1
     ];
 });
