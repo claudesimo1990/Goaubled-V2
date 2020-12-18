@@ -11,6 +11,6 @@ class TravelTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Travel::class,50)->create();
+        factory(\App\Post::class,10)->create();
     }
 }

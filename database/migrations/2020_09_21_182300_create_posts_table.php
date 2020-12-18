@@ -31,6 +31,7 @@ class CreatePostsTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('compagnie')->nullable();
             $table->string('photoBielletAvion')->nullable();
+            $table->boolean('publish')->default(false);
             $table->timestamps();
         });
     }

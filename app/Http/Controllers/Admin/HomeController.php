@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,18 +24,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('admin.home');
-    }
-  
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function home()
     {
-        return view('admin.home');
+        //stats
+        $travels = Post::where('categorie_id',2)->count();
+        $packs = Post::where('categorie_id',1)->count();
+        $users = User::all()->count();
+        
+        return view('admin.home', [
+
+            'travels_count' => $travels,
+            'packs_count' => $packs,
+            'users_count' => $users,
+            
+        ]);
     }
 }

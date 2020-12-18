@@ -30,8 +30,14 @@ class AuthController extends Controller
                 return redirect(route('admin.home'));
             }
         } else {
-            $request->session()->put('message','vous n avez pas d acces a page');
-            return back();
+            return back()->with('message','vous n avez pas d acces a page');
         }
+    }
+
+    public function deconnect()
+    {
+        Auth::logout();
+
+        return redirect(route('admin.login'));
     }
 }

@@ -25,14 +25,14 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav admin--bg-gradient-background sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Goaubled <sup>V1</sup></div>
+        <div class="sidebar-brand-text mx-3">Goaubled</div>
       </a>
 
       <!-- Divider -->
@@ -40,7 +40,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('admin.home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -49,14 +49,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Tables</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Nos Tables:</h6>
-            <a class="collapse-item" href="">Vovages</a>
-            <a class="collapse-item" href="register.html">Colis</a>
-            <a class="collapse-item" href="forgot-password.html">Utilisateurs</a>
+            <a class="collapse-item" href="{{ route('users.index') }}">Utilisateurs</a>
+            <a class="collapse-item" href="{{ route('admin.travels.index') }}">Travels</a>
+            <a class="collapse-item" href="forgot-password.html">Packs</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Admins</h6>
             <a class="collapse-item" href="404.html">Administrateurs</a>
@@ -242,7 +242,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -259,12 +259,10 @@
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
                 </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <a class="dropdown-item" href="{{ route('admin.deconnect') }}">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
-              </div>
             </li>
 
           </ul>
@@ -326,7 +324,9 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <form action="{{ route('logout') }}" method="post">
+            <input class="btn btn-primary" type="submit" value="Logout">
+          </form>
         </div>
       </div>
     </div>

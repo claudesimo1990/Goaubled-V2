@@ -58,8 +58,20 @@ Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 
 Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
 
-// admin
+ // admin
+
 route::get('/admin/home','Admin\HomeController@home')->name('admin.home');
 route::get('/admin/login','Admin\AuthController@login')->name('admin.login');
 route::post('/admin/login','Admin\AuthController@attemptAdmin');
-route::get('/admin/register','Admin\AuthController@register')->name('admin.register');
+
+Route::group(['middleware' => ['is_admin']], function () {
+
+    route::get('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect');
+
+    Route::resource('/admin/users', 'Admin\UsersController')->middleware('is_admin');
+
+    Route::get('/admin/travels', 'Admin\travelsController@index')->name('admin.travels.index');
+    Route::get('/admin/travels/accept/{travel}', 'Admin\travelsController@acceptPost')->name('admin.travel.validate');
+    Route::get('/admin/travels/reject/{travel}', 'Admin\travelsController@rejectPost')->name('admin.travel.reject');
+    
+});
