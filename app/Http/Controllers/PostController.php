@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\post;
+use App\Post;
 use App\User;
 use Carbon\Carbon;
 use \Datetime;
@@ -39,7 +39,7 @@ class postController extends Controller
         $img = ImageManagerStatic::make($request->colisPhoto)->encode('jpg');
         Storage::disk('public')->put('Colis/'.$filename, $img);
 
-        post::create([
+        Post::create([
             'user_id' => Auth::id(),
             'categorie_id' => 1, //ccoli
             'from' => $request->from,
@@ -79,7 +79,7 @@ class postController extends Controller
         $img = ImageManagerStatic::make($request->photoBielletAvion)->encode('jpg');
         Storage::disk('public')->put('FlysTicket/'.$filename, $img);
 
-        post::create([
+        Post::create([
             'user_id' => Auth::id(),
             'categorie_id' => 2, //travel
             'from' => $request->from,
