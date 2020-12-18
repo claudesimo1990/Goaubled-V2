@@ -22,26 +22,26 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+          <table class="table table-bordered table-striped admin__table" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th class="text-center">Name</th>
-                <th class="text-center">email</th>
-                <th class="text-center">verifier</th>
-                <th class="text-center">Membre depuis</th>
-                <th class="text-center">Posts</th>
-                <th class="text-center">actions</th>
+                <th class="text-center admin__table-th">Name</th>
+                <th class="text-center admin__table-th">email</th>
+                <th class="text-center admin__table-th">verifier</th>
+                <th class="text-center admin__table-th">Membre depuis</th>
+                <th class="text-center admin__table-th">Posts</th>
+                <th class="text-center admin__table-th">actions</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($users as $item)
                 <tr>
-                    <td class="text-center">{{ $item->name }}</td>
-                    <td class="text-center">{{ $item->email }}</td>
-                    <td class="text-center">{{ $item->email_verified_at ? 'OUI' : 'NON' }}</td>
-                    <td class="text-center">{{ $item->created_at }}</td>
-                    <td class="text-center">{{ $item->posts()->count() }}</td>
-                    <td class="text-center">
+                    <td class="text-center admin__table-td">{{ $item->name }}</td>
+                    <td class="text-center admin__table-td">{{ $item->email }}</td>
+                    <td class="text-center admin__table-td">{{ $item->email_verified_at ? 'OUI' : 'NON' }}</td>
+                    <td class="text-center admin__table-td">{{ $item->created_at }}</td>
+                    <td class="text-center admin__table-td">{{ $item->posts()->count() }}</td>
+                    <td class="text-center admin__table-td">
                         <button class="btn btn-info">edit</button>
                         <button class="btn btn-danger">delete</button>
                         <button class="btn btn-info">details</button>

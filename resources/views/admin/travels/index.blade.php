@@ -22,30 +22,30 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered table-striped admin__table" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr>
-                  <th class="text-center">N°</th>
-                  <th class="text-center">Depart</th>
-                  <th class="text-center">Arrivee</th>
-                  <th class="text-center">Depart le</th>
-                  <th class="text-center">Nombre de Kilos</th>
-                  <th class="text-center">Biellet d avion</th>
-                  <th class="text-center">valider?</th>
-                  <th class="text-center">Action</th>
+                <tr class="admin__table-tr">
+                  <th class="text-center admin__table-th">N°</th>
+                  <th class="text-center admin__table-th">Depart</th>
+                  <th class="text-center admin__table-th">Arrivee</th>
+                  <th class="text-center admin__table-th">Depart le</th>
+                  <th class="text-center admin__table-th">Nombre de Kilos</th>
+                  <th class="text-center admin__table-th">Biellet d avion</th>
+                  <th class="text-center admin__table-th">valider?</th>
+                  <th class="text-center admin__table-th">Action</th>
                 </tr>
               </thead>
               <tbody>
                   @foreach ($travels as $index => $travel)
-                    <tr>
-                      <td class="text-center">{{ $travel->id }}</td>
-                      <td class="text-center">{{ $travel->from }}</td>
-                      <td class="text-center">{{ $travel->to }}</td>
-                      <td class="text-center">{{ $travel->getDateToAttribute() }}</td>
-                      <td class="text-center">{{ $travel->kilo }}</td>
-                      <td class="text-center">{{ $travel->photoBielletAvion }}</td>
-                      <td class="text-center">{{ $travel->publish == 0 ? 'non':'oui' }}</td>
-                      <td class="text-center">
+                    <tr class="admin__table-tr">
+                      <td class="text-center admin__table-td">{{ $travel->id }}</td>
+                      <td class="text-center admin__table-td">{{ $travel->from }}</td>
+                      <td class="text-center admin__table-td">{{ $travel->to }}</td>
+                      <td class="text-center admin__table-td">{{ $travel->getDateToAttribute() }}</td>
+                      <td class="text-center admin__table-td">{{ $travel->kilo }}</td>
+                      <td class="text-center admin__table-td">{{ $travel->photoBielletAvion }}</td>
+                      <td class="text-center admin__table-td">{{ $travel->publish == 0 ? 'non':'oui' }}</td>
+                      <td class="text-center admin__table-td">
                         <a href="{{ route('admin.travel.validate',$travel->id) }}" class="btn btn-success">valider</a>
                         <a href="{{ route('admin.travel.reject',$travel->id) }}" class="btn btn-danger">retirer  </a>
                       </td>
