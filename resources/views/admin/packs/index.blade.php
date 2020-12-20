@@ -55,7 +55,7 @@
                   @endforeach
               </tbody>
             </table>
-            {{ $travels->links() }}
+            {{ $colis->links() }}
           </div>
         </div>
       </div>
