@@ -56,7 +56,7 @@
             <h6 class="collapse-header">Nos Tables:</h6>
             <a class="collapse-item" href="{{ route('users.index') }}">Utilisateurs</a>
             <a class="collapse-item" href="{{ route('admin.travels.index') }}">Travels</a>
-            <a class="collapse-item" href="forgot-password.html">Packs</a>
+            <a class="collapse-item" href="{{ route('admin.colis.index') }}">Packs</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Admins</h6>
             <a class="collapse-item" href="404.html">Administrateurs</a>
