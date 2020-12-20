@@ -58,18 +58,18 @@ Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
 
  // admin
 
-route::get('/admin/home','Admin\HomeController@home')->name('admin.home');
+route::get('/admin/home','Admin\HomeController@home')->name('admin.home')->middleware('is_admin');
 route::get('/admin/login','Admin\AuthController@login')->name('admin.login');
 route::post('/admin/login','Admin\AuthController@attemptAdmin');
 
 Route::group(['middleware' => ['is_admin']], function () {
 
-    route::get('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect');
+    route::get('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect')->middleware('is_admin');
 
     Route::resource('/admin/users', 'Admin\UsersController')->middleware('is_admin');
 
-    Route::get('/admin/travels', 'Admin\travelsController@index')->name('admin.travels.index');
-    Route::get('/admin/travels/accept/{travel}', 'Admin\travelsController@acceptPost')->name('admin.travel.validate');
-    Route::get('/admin/travels/reject/{travel}', 'Admin\travelsController@rejectPost')->name('admin.travel.reject');
+    Route::get('/admin/travels', 'Admin\travelsController@index')->name('admin.travels.index')->middleware('is_admin');
+    Route::get('/admin/travels/accept/{travel}', 'Admin\travelsController@acceptPost')->name('admin.travel.validate')->middleware('is_admin');
+    Route::get('/admin/travels/reject/{travel}', 'Admin\travelsController@rejectPost')->name('admin.travel.reject')->middleware('is_admin');
     
 });
