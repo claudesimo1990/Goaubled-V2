@@ -1,55 +1,211 @@
 <template>
-    <div id="contacts" class="mt-3">
-        <ul>
-            <li v-for="contact in sortedContacts" :key="contact.id" @click="selectContact(contact)" :class="{ 'active': contact == selected }" class="contact">
-                <div class="wrap">
-                    <span class="contact-status busy"></span>
-                    <span class="contact-status busy"></span>
-                    <img v-if="contact.avatar_original" :src="contact.avatar_original" :alt="contact.name">
-                    <img v-else :src="'storage/UsersAvatars/'+ contact.avatar" :alt="contact.name">
-                    <div class="meta">
-                        <p class="name">{{ contact.name }}</p>
-                        <p class="preview"><span v-if="contact.unread">{{ contact.unread }}</span></p>
-                    </div>
+    <div>
+        <div v-for="contact in contacts" class="contact" :id="contact.id" :key="contact.id" @click="selectContact(contact)" :class="{ 'active-contact': contact == selected }">
+            <img v-if="contact.avatar" :src="contact.avatar" :alt="contact.name">
+            <div class="contact-preview">
+                <div class="contact-text">
+                    <h1 class="font-name">{{ contact.name }}</h1>
+                    <p class="font-preview">
+                        Mmh, lecker :) Freu mich!
+                    </p>
                 </div>
-            </li>
-        </ul>
+            </div>
+            <div class="contact-time"><p>17:54</p></div>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-        props: {
-            contacts: {
-                type: Array,
-                default: []
-            }
-        },
-        data() {
-            return {
-                selected: this.contacts.length ? this.contacts[0] : null
-            };
-        },
-        methods: {
-            selectContact(contact) {
-                console.log(contact);
-                this.selected = contact;
-                Store.dispatch('selectContact', contact);
-                this.$emit('selected', contact);
-            }
-        },
-        computed: {
-            sortedContacts() {
-                return _.sortBy(this.contacts, [(contact) => {
-                    if (contact == this.selected) {
-                        return Infinity;
-                    }
-                    return contact.unread;
-                }]).reverse();
-            }
+    props: {
+        contacts: {
+            type: Array,
+            default: []
+        }
+    },
+    data() {
+        return {
+            selected: this.contacts.length ? this.contacts[0] : null
+        };
+    },
+    methods: {
+        selectContact(contact) {
+            this.selected = contact;
+            Store.dispatch('selectContact', contact);
+            this.$emit('selected', contact);
+        }
+    },
+    computed: {
+        sortedContacts() {
+            return _.sortBy(this.contacts, [(contact) => {
+                if (contact == this.selected) {
+                    return Infinity;
+                }
+                return contact.unread;
+            }]).reverse();
         }
     }
+}
 </script>
 
-<style>
+<style scoped>
+.font-name {
+    color: #000000;
+    font-size: 1em;
+    font-weight: inherit;
+    padding-bottom: 3px;
+}
+
+.wrap {
+    display: flex;
+    height: 100vh;
+    margin: auto;
+    box-shadow: 0 2px 2px #aaaaaa;
+}
+
+.left {
+    width: 400px;
+}
+
+.profile {
+    width: 100%;
+    height: 60px;
+    background: #eeeeee;
+    border-right: 1px solid #dbdbdb;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+    border-radius: 50%;
+}
+.contact-list {
+    background-color: #ffffff;
+    width: 100%;
+    height: calc(100% - 105px);
+    overflow-y: auto;
+}
+
+.contact,
+.active-contact,
+.new-message-contact {
+    height: 70px;
+    background-color: #ffffff;
+    display: flex;
+}
+
+.contact img,
+.active-contact img,
+.new-message-contact img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.active-contact {
+    background-color: #ebebeb;
+}
+
+.contact:hover,
+.new-message-contact:hover {
+    background-color: #f5f5f5;
+}
+
+.new-message-contact {
+    font-weight: bold;
+}
+
+.contact-preview {
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
+    overflow: hidden;
+}
+
+.contact-text {
+    height: 40px;
+    margin: auto 0;
+    overflow: hidden;
+}
+
+.contact-time {
+    width: 55px;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.new-message {
+    background: #09d261;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    color: white;
+}
+
+.new-message p {
+    margin: auto;
+}
+
+/* ------ RIGHT SIDE ------ */
+.right {
+    min-width: calc(100% - 400px);
+}
+.listGroups {
+    display: flex;
+    margin: 0px !important;
+}
+
+.listGroups img {
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px 0px 0px;
+}
+
+.listGroups p {
+    margin: auto 0px;
+}
+/* ------ SCROLLBAR ------ */
+
+body::-webkit-scrollbar,
+.contact-list::-webkit-scrollbar,
+.chat::-webkit-scrollbar,
+.information::-webkit-scrollbar {
+    width: 0.4em;
+    height: 0.4em;
+}
+
+body::-webkit-scrollbar-thumb,
+.contact-list::-webkit-scrollbar-thumb,
+.chat::-webkit-scrollbar-thumb,
+.information::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* ------ MEDIA QUERIES ------ */
+@media (min-width: 1200px) {
+    .wrap {
+        margin-bottom: 2vh;
+        margin-top: 25px;
+        height: calc(98vh - 25px);
+    }
+}
+
+@media (max-width: 600px) {
+    .wrap {
+        height: calc(100vh - 0.4em);
+    }
+}
 </style>

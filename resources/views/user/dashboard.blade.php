@@ -18,7 +18,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active mt-4">
-        <a class="nav-link" href="{{ route('admin.home') }}">
+        <a class="nav-link" href="{{ route('profile.show',auth()->id()) }}">
           <i class="fas fa-fw fa-home"></i>
           <span>Accueil</span></a>
       </li>
@@ -64,7 +64,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
           <i class="fas fa-fw fa-comments"></i>
           <span>Chat</span></a>
       </li>
@@ -90,7 +90,7 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between my-4">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h2 class="h3 mb-0 text-gray-800">@yield('dashboard_title')</h2>
           </div>
 

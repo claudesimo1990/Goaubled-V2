@@ -39,18 +39,16 @@ Route::get('/news','postController@index')->name('news.index');
 Route::get('/travels','postController@travels');
 Route::get('/packs','postController@packs');
 
-Route::get('/message', 'ContactController@getChat')->name('message')->middleware('auth');
-Route::get('/contacts', 'ContactController@get');
-Route::get('/conversation/{id}', 'ContactController@getMessagesFor');
-Route::post('/conversation/send', 'ContactController@send');
-
 Auth::routes(['verify' => true]);
 
 //notifications
 Route::post('resetAllunreadNotifications', 'NotificationsController@update')->middleware('auth');
-
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.show');
+//User Dashboard
+Route::get('/profile/{user}/chat', 'ContactController@getChat')->name('user.message')->middleware('auth');
+Route::get('/conversation/{id}', 'ContactController@getMessagesFor');
+Route::post('/conversation/send', 'ContactController@send');
 
 Route::get('/google', 'Auth\LoginController@redirectToProvider')->name('google');
 
@@ -74,8 +72,4 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/travels/accept/{travel}', 'Admin\travelsController@acceptPost')->name('admin.travel.validate');
     Route::get('/admin/travels/reject/{travel}', 'Admin\travelsController@rejectPost')->name('admin.travel.reject');
     
-});
-
-Route::get('test', function () {
-    return view('user.home');
 });

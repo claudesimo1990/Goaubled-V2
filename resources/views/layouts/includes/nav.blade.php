@@ -41,10 +41,6 @@
                             </a>
 
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('message') }}">Messages<i class="float-right fa fa-envelope" aria-hidden="true"></i></a>
-
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class='fas fa-logout-alt mr-1'></i>Deconnexion</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

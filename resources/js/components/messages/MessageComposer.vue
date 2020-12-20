@@ -1,7 +1,5 @@
 <template>
-    <div class="composer">
-        <textarea v-model="message" @keydown.enter="send" placeholder="Message..."></textarea>
-    </div>
+<input v-model="message" @keydown.enter="send" type="text" class="input-message" placeholder="Schreibe eine Nachricht"/>
 </template>
 
 <script>
@@ -28,13 +26,14 @@ export default {
     }
 </script>
 
-<style>
-.composer textarea {
+<style scoped>
+.input-message {
     width: 100%;
-    margin: 0px;
-    resize: none;
-    padding: 12px;
-    position: absolute;
-    bottom: 0;
+    margin: 0px 10px;
+    border: none;
+}
+
+.input-message:focus {
+    outline: none;
 }
 </style>

@@ -63,6 +63,7 @@ mounted() {
           })
           axios.get('/contacts')
               .then((response) => {
+                alert('hallo');
                   this.contacts = response.data;
               });
         
