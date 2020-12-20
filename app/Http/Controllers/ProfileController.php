@@ -47,7 +47,7 @@ class ProfileController extends Controller
      */
     public function show(User $user)
     {
-        return view('App.dashboard.home',compact('user'));
+        return view('user.home',compact('user'));
     }
 
     /**

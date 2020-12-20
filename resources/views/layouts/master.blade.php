@@ -19,9 +19,8 @@
     <link href="{{asset('/lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
     <link href="{{asset('/lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link href="{{'/css/profile/style.css'}}" rel="stylesheet">
-    <link href="{{'/css/app.css'}}" rel="stylesheet">
     @yield('css')
+    <link href="{{'/css/app.css'}}" rel="stylesheet">
 </head>
 <body id="body">
 
@@ -49,6 +48,7 @@
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
   crossorigin="anonymous">
 </script>
+@yield('js')
 <script src="{{ asset("/js/app.js") }}"></script>
 <script defer src="{{ asset('/lib/superfish/superfish.min.js') }}"></script>
 <script defer src="{{ asset('/lib/wow/wow.min.js') }}"></script>
@@ -61,7 +61,6 @@
 <script defer src="{{ asset('./js/script.js') }}"></script>
 @stack('scripts')
 @include('flashy::message')
-@yield('js')
     
 </body>
 </html>

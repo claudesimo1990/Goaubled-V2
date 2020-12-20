@@ -75,3 +75,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/travels/reject/{travel}', 'Admin\travelsController@rejectPost')->name('admin.travel.reject');
     
 });
+
+Route::get('test', function () {
+    return view('user.home');
+});
