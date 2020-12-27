@@ -87,7 +87,7 @@
 </template>
 <script>
 export default {
-  props: ['users']
+  props: ['users', 'asset']
 }
 </script>
 

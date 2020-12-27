@@ -12,7 +12,7 @@
 
     <destinations></destinations>
 
-    <testimonials :users="{{ $users }}"></testimonials>
+    <testimonials :users="{{ $users }}" asset={{ asset('') }}></testimonials>
 
 @endsection
 
