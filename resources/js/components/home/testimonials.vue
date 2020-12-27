@@ -16,10 +16,10 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img :src="users[0].avatar_original ? users[0].avatar_original : asset +'/UsersAvatars/'+ users[0].avatar" :alt="users[0].name" class="rounded-circle img-fluid">
+                                                <img :src="users[4].avatar_original ? users[4].avatar_original : asset +'/UsersAvatars/'+ users[4].avatar" :alt="users[4].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
-                                            <h2>{{ users[0].name }}</h2>
+                                            <h2>{{ users[4].name }}</h2>
                                                 <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
