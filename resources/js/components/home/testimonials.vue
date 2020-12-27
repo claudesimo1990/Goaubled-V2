@@ -16,7 +16,7 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img :src="users[0].avatar" :alt="users[0].name" class="rounded-circle img-fluid">
+                                                <img :src="users[0].avatar_original ? users[0].avatar_original : asset +'/UsersAvatars/'+ users[0].avatar" :alt="users[0].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                             <h2>{{ users[0].name }}</h2>
@@ -29,7 +29,7 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img :src="users[1].avatar" :alt="users[1].name" class="rounded-circle img-fluid">
+                                                <img :src="users[1].avatar_original ? users[1].avatar_original : asset +'/UsersAvatars/'+ users[1].avatar" :alt="users[1].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                                 <h2>{{ users[1].name }}</h2>
@@ -47,7 +47,7 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img :src="users[2].avatar" :alt="users[2].name" class="rounded-circle img-fluid">
+                                                <img :src="users[2].avatar_original ? users[2].avatar_original : asset +'/UsersAvatars/'+ users[2].avatar" :alt="users[2].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                             <h2>{{ users[2].name }}</h2>
@@ -60,7 +60,7 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img :src="users[3].avatar" :alt="users[3].name" class="rounded-circle img-fluid">
+                                                <img :src="users[3].avatar_original ? users[3].avatar_original : asset +'/UsersAvatars/'+ users[3].avatar" :alt="users[3].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
                                             <h2>{{ users[3].name }}</h2>

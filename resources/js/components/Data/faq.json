@@ -26,14 +26,6 @@
                 },
                 {
                     "frage": {
-                        "id": 3,
-                        "frage": "Wie funktioniert der Wechsel zu einem sauberen Energieanbieter über wechsel fair?",
-                        "array": false,
-                        "antwort": "Ganz einfach: Sie errechnen über unseren Stromtarifrechner oder unseren Gastarifrechner Ihren jeweiligen Preis und folgen dann dem Anmeldeprozess. Fast alle Daten, die Sie dafür benötigen, finden Sie auf der letzten Jahresrechnung Ihres aktuellen Energieversorgers. Wenn Sie dem Menü gefolgt sind, müssen Sie sich um nichts mehr kümmern. Ihr neuer Versorger kündigt für Sie Ihren alten Energieliefervertrag bei Ihrem bisherigen Energieversorger – zum nächstmöglichen Termin. Gleichzeitig meldet Sie der neue saubere Energieversorger beim örtlichen Netzbetreiber an. Nach der positiven Rückmeldung des Netzbetreibers steht Ihrer Energieversorgung durch den neuen sauberen Energieversorgers nichts mehr im Weg. Sie bekommen das Willkommensschreiben mit den ersten wichtigen Informationen vom sauberen Energieversorger. Der Wechselprozess dauert in der Regel zwischen zwei und sechs Wochen. Sollte es zu unerwarteten Verzögerungen kommen, meldet sich der neue saubere Energieversorger selbstverständlich bei Ihnen."
-                    }
-                },
-                {
-                    "frage": {
                         "id": 4,
                         "frage": "Comment créer un compte?",
                         "array": true,
