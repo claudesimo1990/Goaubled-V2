@@ -11,12 +11,9 @@
           <div class="col-md-3 col-lg-4 col-xl-3 mb-4 pt-3">
     
             <!-- Content -->
-            <h6 class="text-uppercase font-weight-bold">goaubled</h6>
-            <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-            <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-              consectetur
-              adipisicing elit.</p>
-    
+            <h6 class="text-uppercase font-weight-bold">Go Au Bled</h6>
+            <hr class="teal accent-3 mb-2 mt-0 d-inline-block mx-auto" style="width: 60px;">
+            <p>est une page mettant en relation les personnes de différentes communautés de l’Afrique comme de sa diaspora dans le but de transporter des colis et courriers destinés à leurs proches de partout dans le monde.</p>    
           </div>
           <!-- Grid column -->
     

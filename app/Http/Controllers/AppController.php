@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\post;
+use App\User;
 use App\Events\PresentEvent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -13,8 +14,9 @@ class AppController extends Controller
     public function index(){
     
         $latest_news = post::with('user')->latest()->limit(3)->get();
+        $users = User::all();
         
-        return view('App.accueil',compact('latest_news'));
+        return view('App.accueil',compact('latest_news','users'));
     }
     public function annonces() {
 

@@ -34,6 +34,10 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('travel-form','postController@travelForm')->name('travels.create')->middleware('auth');
 Route::post('travel-form','postController@createTravel')->name('post.travels.create');
 
+// api
+route::get('/posts','postController@news');
+route::get('/users','UsersController@users');
+
 //news page
 Route::get('/news','postController@index')->name('news.index');
 Route::get('/travels','postController@travels');

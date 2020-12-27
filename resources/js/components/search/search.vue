@@ -118,8 +118,10 @@ export default {
 
         const el = this;
 
-        axios.get('/api/posts')
+        axios.get('/posts')
         .then(function (response) {
+            console.log(response.data);
+            
             el.posts = response.data;
         })
         .catch(function (error) {

@@ -12,7 +12,7 @@
 
     <destinations></destinations>
 
-    <testimonials :news="{{ $latest_news }}"></testimonials>
+    <testimonials :users="{{ $users }}"></testimonials>
 
 @endsection
 

@@ -17,8 +17,8 @@
                   <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
                     necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
                   </div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/2.jpg" class="" alt="slide"></div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/2.jpg" class="" alt="slide"></div>
+                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/images/imgs/popularDestination/douala.png" class="" alt="slide"></div>
+                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/images/imgs/popularDestination/berlin.jpeg" class="" alt="slide"></div>
               </div>
             </div>
           </div>

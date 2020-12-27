@@ -16,5 +16,4 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-route::get('posts','postController@news');
 route::get('listeNews','postController@listeNews');

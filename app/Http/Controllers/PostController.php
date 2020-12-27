@@ -123,7 +123,7 @@ class postController extends Controller
 
     public function news()
     {
-        $posts = Post::where('publish',1);
+        $posts = Post::where('publish',1)->get();
         return response()->json($posts, 200);
     }
 

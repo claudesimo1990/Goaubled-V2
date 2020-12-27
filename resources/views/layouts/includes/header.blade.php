@@ -1,14 +1,12 @@
-<!--==========================
-  Intro Section
-============================-->
-<section id="intro">
-
-    <div class="intro-content mt-0">
-        <search-component></search-component>
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center border d-flex justify-content-center align-item-center shadow-none header-bg-light rounded">
+            <div class="intro-content my-4">
+                <search-component></search-component>
+            </div>
+        </div>
+      </div>
     </div>
-
-    <div class="owl-carousel" id="intro-carousel">
-        <div class="item" style="background-image: url('img/28892.jpg');"></div>
-    </div>
-
-</section><!-- #intro -->
+  </header>

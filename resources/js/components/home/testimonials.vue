@@ -16,10 +16,10 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="/img/25.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img :src="users[0].avatar" :alt="users[0].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
-                                            <h2>Micheal Smith</h2>
+                                            <h2>{{ users[0].name }}</h2>
                                                 <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
@@ -29,10 +29,10 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="/img/53.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img :src="users[1].avatar" :alt="users[1].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
-                                                <h2>Helena Doe</h2>
+                                                <h2>{{ users[1].name }}</h2>
                                                 <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
@@ -47,10 +47,10 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="/img/54.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img :src="users[2].avatar" :alt="users[2].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
-                                            <h2>John Doe</h2>
+                                            <h2>{{ users[2].name }}</h2>
                                                 <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
@@ -60,10 +60,10 @@
                                     <div class="carousel-caption bg-white">
                                         <div class="row">
                                             <div class="col-sm-3 col-4 align-items-start">
-                                                <img src="/img/55.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img :src="users[3].avatar" :alt="users[3].name" class="rounded-circle img-fluid">
                                             </div>
                                             <div class="col-sm-9 col-8">
-                                            <h2>Helena Doe</h2>
+                                            <h2>{{ users[3].name }}</h2>
                                                 <p>Well incremented. Comes with recommended workout. I'm using it to help with bladder leakage issues that I've been experiencing since a recent vasectomy.</p>
                                             </div>
                                         </div>
@@ -87,7 +87,7 @@
 </template>
 <script>
 export default {
-  props: ['news']
+  props: ['users']
 }
 </script>
 
