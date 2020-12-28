@@ -101,7 +101,7 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between">
-            <h4 class="mb-0 text-gray-800 my-4">@yield('dashboard_title')</h4>
+            <h4 class="mb-0 text-gray-800">@yield('dashboard_title')</h4>
           </div>
 
         <!-- Content Row -->
