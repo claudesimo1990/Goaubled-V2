@@ -6,7 +6,7 @@
 
 <div class="container">
     <!-- Content Row -->
-    <div class="row">
+    <div class="row mt-4">
 
         <caption>Liste de voyages</caption>
 
