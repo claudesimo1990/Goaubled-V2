@@ -1,5 +1,5 @@
 <template>
-<input v-model="message" @keydown.enter="send" type="text" class="input-message" placeholder="Schreibe eine Nachricht"/>
+<input v-model="message" @keydown.enter="send" type="text" class="input-message" placeholder="tapez votre message ici"/>
 </template>
 
 <script>

@@ -61,7 +61,7 @@
         <div class="wrap-message">
             <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i>
             <div class="message">
-                <message-composer/>
+                <message-composer @send="sendMessage"/>
             </div>
             <i class="fa fa-microphone fa-lg" aria-hidden="true"></i>
         </div>
