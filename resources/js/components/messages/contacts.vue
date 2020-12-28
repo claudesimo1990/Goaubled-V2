@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="contact in contacts" class="contact" :id="contact.id" :key="contact.id" @click="selectContact(contact)" :class="{ 'active-contact': contact == selected }">
-            <img v-if="contact.avatar" :src="contact.avatar" :alt="contact.name">
+            <img :src="contact.avatar_original ? contact.avatar_original : asset +'/UsersAvatars/'+ contact.avatar" :alt="contact.name">
             <div class="contact-preview">
                 <div class="contact-text">
                     <h1 class="font-name">{{ contact.name }}</h1>
