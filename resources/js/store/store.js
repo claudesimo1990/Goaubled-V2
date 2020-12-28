@@ -4,6 +4,7 @@ export default {
         OverlayShow: false,
         messages: {},
         contact: {},
+        contacts: [],
         postUser: {},
         isActiveChat: true,
         selectContact: {},
@@ -17,6 +18,9 @@ export default {
         },
         contact (state, payload) {
           state.contact = payload;
+        },
+        contacts (state, payload) {
+          state.contacts = payload;
         },
         selectContact (state, payload) {
           state.selectContact = payload;
@@ -55,6 +59,9 @@ export default {
         contact(context, payload) {
             context.commit('contact', payload);
         },
+        contacts(context, payload) {
+          context.commit('contacts', payload);
+        },
         setisActiveChat(context, payload) {
             context.commit('setisActiveChat', payload);
         },
@@ -92,6 +99,9 @@ export default {
           }, 
           contact(state) {
             return state.contact;
+          },
+          contacts(state) {
+            return state.contacts;
           }, 
           getisActiveChat(state) {
             return state.isActiveChat;

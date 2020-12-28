@@ -4,7 +4,7 @@
 
 <chat 
     :user="{{ auth()->user() }}" 
-    :contacts="{{ $contacts }}" 
+    :friends="{{ $contacts }}" 
     asset="{{ asset('storage') }}"
 />
 

@@ -115,11 +115,6 @@
             return Store.getters.selectContact;
         }
     },
-    mounted() {
-        if(this.contacts.length ) {
-            Store.dispatch('selectContact', this.contacts[0])
-        } else { Store.dispatch('selectContact', null) }
-    },
         components: {MessagesFeed, MessageComposer}
     }
 </script>

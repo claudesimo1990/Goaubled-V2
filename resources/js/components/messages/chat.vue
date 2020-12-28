@@ -4,7 +4,8 @@
         <div class="wrap">
             <section class="left">
                 <div class="profile">
-                    <img :src="user.avatar_original ? user.avatar_original : asset +'/UsersAvatars/'+ user.avatar" :alt="user.name">
+                    <img v-if="user" :src="user.avatar_original ? user.avatar_original : asset +'/UsersAvatars/'+ user.avatar" :alt="user.name">
+                    <div v-else class="alert alert-success">Selectioner un contact pour debuter une conversation</div>
                     <div class="icons">
                         <i
                             class="fa fa-commenting fa-lg"
@@ -48,7 +49,7 @@ export default {
             type: Object,
             required: true
         },
-        contacts: {
+        friends: {
             type: Array,
             required: true
         },
@@ -60,8 +61,38 @@ export default {
     data: function() {
         return {
             selectedContact: null,
+            contacts: [],
             messages: []
         };
+    },
+    mounted() {
+        Echo.private(`messages.${this.user.id}`)
+        .listen("NewMessage", e => {
+            this.hanleIncoming(e.message);
+        })
+
+        .notification(notification => {
+            Store.dispatch(
+                "addNotification",
+                notification.notifification
+            );
+
+            Notification.requestPermission(permission => {
+                if (!("Notification" in window)) {
+                    alert("Web Notification is not supported");
+                    return;
+                }
+                let notification = new Notification("New post alert!", {
+                    body: Notification.message
+                });
+            });
+        });
+        axios.get('/contacts')
+        .then((response) => {
+            Store.dispatch('contacts', response.data)
+            this.contacts = response.data;
+            this.selectedContact = response.data[0];
+        });
     },
     methods: {
         startConversationWith(contact) {
@@ -92,30 +123,6 @@ export default {
                 if (reset) single.unread = 0;
                 else single.unread += 1;
                 return single;
-            });
-        },
-        mounted() {
-            Store.dispatch("authUser", this.user);
-            Echo.private(`messages.${this.user.id}`)
-            .listen("NewMessage", e => {
-                this.hanleIncoming(e.message);
-            })
-
-            .notification(notification => {
-                Store.dispatch(
-                    "addNotification",
-                    notification.notifification
-                );
-
-                Notification.requestPermission(permission => {
-                    if (!("Notification" in window)) {
-                        alert("Web Notification is not supported");
-                        return;
-                    }
-                    let notification = new Notification("New post alert!", {
-                        body: Notification.message
-                    });
-                });
             });
         }
     }

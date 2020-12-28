@@ -37,6 +37,7 @@ Route::post('travel-form','postController@createTravel')->name('post.travels.cre
 // api
 route::get('/posts','postController@news');
 route::get('/users','UsersController@users');
+route::get('/contacts','ContactController@contacts');
 
 //news page
 Route::get('/news','postController@index')->name('news.index');

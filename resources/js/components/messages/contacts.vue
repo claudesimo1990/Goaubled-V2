@@ -10,7 +10,7 @@
                     </p>
                 </div>
             </div>
-            <div class="contact-time"><p>17:54</p></div>
+            <div class="contact-time"><p v-html="contact.unread > 0 ? contact.unread : ''"></p></div>
         </div>
     </div>
 </template>
