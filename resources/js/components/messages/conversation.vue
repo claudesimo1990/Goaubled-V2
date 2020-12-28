@@ -78,6 +78,10 @@
                 type: Object,
                 default: null
             },
+            contacts: {
+                type: Array,
+                default: null
+            },
             messages: {
                 type: Array,
                 default: []
@@ -89,7 +93,7 @@
         },
         data: function() {
             return {
-                selectedContact: null,
+                selectedContact: this.contacts.length ? this.contacts[0] : null,
                 show: 'none'
             };
         },
