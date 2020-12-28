@@ -100,12 +100,14 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between">
+          <div class="d-sm-flex align-items-center justify-content-between mt-4">
             <h4 class="mb-0 text-gray-800">@yield('dashboard_title')</h4>
           </div>
 
-        <!-- Content Row -->
-          @yield('dashbord_content')
+        <div class="mt-4">
+           <!-- Content Row -->
+           @yield('dashbord_content')
+        </div>
 
         </div>
         <!-- /.container-fluid -->
