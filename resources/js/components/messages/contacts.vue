@@ -23,7 +23,7 @@ export default {
             default: []
         },
         asset: {
-            type: Array,
+            type: String,
             default: ''
         }
     },

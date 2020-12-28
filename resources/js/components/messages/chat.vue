@@ -4,9 +4,7 @@
         <div class="wrap">
             <section class="left">
                 <div class="profile">
-                    <img
-                        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/user.jpg"
-                    />
+                    <img :src="user.avatar_original ? user.avatar_original : asset +'/UsersAvatars/'+ user.avatar" :alt="user.name">
                     <div class="icons">
                         <i
                             class="fa fa-commenting fa-lg"
@@ -35,14 +33,12 @@
 </template>
 
 <script>
-import user from "./user";
 import search from "./search";
 import contactList from "./contacts";
 import conversation from "./conversation";
 
 export default {
     components: {
-        user,
         search,
         contactList,
         conversation
@@ -57,7 +53,7 @@ export default {
             required: true
         },
         asset: {
-            type: Array,
+            type: String,
             required: true
         }
     },

@@ -1,13 +1,10 @@
 <template>
     <section class="right">
         <div class="chat-head">
-            <img
-                alt="profilepicture"
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/contact6.JPG"
-            />
+            <img :src="selectContact.avatar_original ? selectContact.avatar_original : asset +'/UsersAvatars/'+ selectContact.avatar" :alt="selectContact.name">
             <div class="chat-name">
-                <h1 class="font-name">Family</h1>
-                <p class="font-online">Linda Gahleitner, Mama, Papa</p>
+                <h1 class="font-name">{{ selectContact.name }}</h1>
+                <p class="font-online">{{ selectContact.email }}</p>
             </div>
             <i class="fa fa-search fa-lg" aria-hidden="true"></i>
             <i class="fa fa-paperclip fa-lg" aria-hidden="true"></i>
@@ -109,6 +106,10 @@
             selectContact: function() {
             return Store.getters.selectContact;
         }
+    },
+    mounted() {
+
+        //
     },
         components: {MessagesFeed, MessageComposer}
     }
