@@ -18,3 +18,28 @@
 
     padding: 0 !important;
 }
+
+.background-quigo--second{
+
+    background-color: $quigo;
+
+    .nav-item {
+
+      .nav-link {
+        color: $white;
+
+        i {
+            color: $white;
+        }
+      }
+
+      .nav-link:hover {
+        color: $quigo-second;
+
+        i {
+            color: $quigo-second
+        }
+      }
+
+    }
+  }

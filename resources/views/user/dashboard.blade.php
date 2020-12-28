@@ -11,7 +11,7 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav user--bg-gradient-background sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav background-quigo--second sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -23,24 +23,32 @@
           <span>Accueil</span></a>
       </li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
+       <!-- Nav Item - Tables -->
+       <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.travels',Auth()->id()) }}">
+          <i class="fas fa-fw fa-plane"></i>
+          <span>voyages</span></a>
+      </li>
+
+       <!-- Nav Item - Tables -->
+       <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.packs',Auth()->id()) }}">
+          <i class="fas fa-fw fa-suitcase-rolling"></i>
+          <span>Expeditions</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages_1" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Expéditions en cours</span>
-        </a>
-        <div id="collapsePages_1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Manage Tables</h6>
-            <a class="collapse-item" href="{{ route('users.index') }}">Utilisateurs</a>
-            <a class="collapse-item" href="{{ route('admin.travels.index') }}">Travels</a>
-            <a class="collapse-item" href="{{ route('admin.colis.index') }}">Packs</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Admins</h6>
-            <a class="collapse-item" href="404.html">Administrateurs</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
+        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
+          <i class="fas fa-fw fa-handshake"></i>
+          <span>demandes</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.reservations',Auth()->id()) }}">
+          <i class="fas fa-fw fa-edit"></i>
+          <span>reservations</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
@@ -48,6 +56,27 @@
         <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
           <i class="fas fa-fw fa-comments"></i>
           <span>Chat</span></a>
+      </li>
+
+       <!-- Nav Item - Tables -->
+       <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.profile',Auth()->id()) }}">
+          <i class="fas fa-fw fa-user"></i>
+          <span>profile</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
+          <i class="fas fa-fw fa-envelope"></i>
+          <span>facturations</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
+          <i class="far fa-smile"></i>
+          <span>Bewertung</span></a>
       </li>
 
       <!-- Divider -->
@@ -71,8 +100,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h2 class="h3 mb-0 text-gray-800">@yield('dashboard_title')</h2>
+          <div class="d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-0 text-gray-800 my-4">@yield('dashboard_title')</h4>
           </div>
 
         <!-- Content Row -->

@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\NewProfile;
-use App\Http\Requests\ProfileStoreRequest;
-use App\Jobs\SyncMedia;
-use App\Mail\ReviewNotification;
-use App\Profile;
 use App\User;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Profile;
+use App\Jobs\SyncMedia;
 use Illuminate\View\View;
+use App\Events\NewProfile;
+use Illuminate\Http\Request;
+use App\Mail\ReviewNotification;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\Factory;
+use App\Http\Requests\ProfileStoreRequest;
 
 /**
  * Class ProfileController
@@ -26,9 +28,9 @@ class ProfileController extends Controller
      */
     public function create(Request $request)
     {
-        $profiles = Profile::all();
+        $user = User::find(Auth::id());
 
-        return view('Profile.create');
+        return view('user.profile', compact('user'));
     }
 
     /**
