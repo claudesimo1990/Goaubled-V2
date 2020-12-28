@@ -71,7 +71,7 @@ class ContactController extends Controller
 
             $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
 
-            return $contact;
+            return $contact->where('is_admin',0)->get();
         });
 
         return view('user.chat', [
