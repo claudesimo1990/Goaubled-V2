@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class="contact-list">
-                    <contactList :contacts="contacts" @selected="startConversationWith"/>
+                    <contactList :contacts="contacts" @selected="startConversationWith" :asset="asset"/>
                 </div>
             </section>
             <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
@@ -53,6 +53,10 @@ export default {
             required: true
         },
         contacts: {
+            type: Array,
+            required: true
+        },
+        asset: {
             type: Array,
             required: true
         }

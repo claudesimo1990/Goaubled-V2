@@ -21,6 +21,10 @@ export default {
         contacts: {
             type: Array,
             default: []
+        },
+        asset: {
+            type: Array,
+            default: ''
         }
     },
     data() {
