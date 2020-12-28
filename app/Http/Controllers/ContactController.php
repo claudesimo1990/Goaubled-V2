@@ -55,7 +55,7 @@ class ContactController extends Controller
     public function getChat()
     {
         // get all users except the authenticated one
-        $contacts = User::where('id', '!=', auth()->id())->get();
+        $contacts = User::where('id', '!=', auth()->id())->where('is_admin',0)->get();
 
         // get a collection of items where sender_id is the user who sent us a message
         // and messages_count is the number of unread messages we have from him
@@ -71,7 +71,7 @@ class ContactController extends Controller
 
             $contact->unread = $contactUnread ? $contactUnread->messages_count : 0;
 
-            return $contact->where('is_admin',0)->get();
+            return $contact;
         });
 
         return view('user.chat', [
