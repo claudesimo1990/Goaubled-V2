@@ -93,7 +93,7 @@
         },
         data: function() {
             return {
-                selectedContact: this.contacts.length ? this.contacts[0] : null,
+                selectedContact: null,
                 show: 'none'
             };
         },
@@ -116,8 +116,9 @@
         }
     },
     mounted() {
-
-        //
+        if(this.contacts.length ) {
+            Store.dispatch('selectContact', this.contacts[0])
+        } else { Store.dispatch('selectContact', null) }
     },
         components: {MessagesFeed, MessageComposer}
     }
