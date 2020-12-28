@@ -81,6 +81,10 @@
             messages: {
                 type: Array,
                 default: []
+            },
+            asset: {
+                type: String,
+                default: ''
             }
         },
         data: function() {

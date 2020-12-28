@@ -27,7 +27,7 @@
                     <contactList :contacts="contacts" @selected="startConversationWith" :asset="asset"/>
                 </div>
             </section>
-            <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage"></conversation>
+            <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage" :asset="asset"></conversation>
         </div>
     </div>
 </template>
