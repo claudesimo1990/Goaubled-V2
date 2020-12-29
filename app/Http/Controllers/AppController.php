@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\post;
-use App\User;
-use App\Events\PresentEvent;
+use app\post;
+use app\User;
+use app\Events\PresentEvent;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
