@@ -52,6 +52,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{user}', 'ProfileController@show')->name('profile.show');
 //User Dashboard
 Route::get('/profile/{user}/chat', 'ContactController@getChat')->name('user.message')->middleware('auth');
+Route::get('/profile/{user}/notifications', 'ContactController@notifications')->name('user.notifications')->middleware('auth');
 Route::get('/profile/{user}/profile', 'ProfileController@create')->name('user.profile')->middleware('auth');
 Route::get('/profile/{user}/reservations', 'userActionController@reservations')->name('user.reservations')->middleware('auth');
 Route::get('/profile/{user}/travels', 'userActionController@travels')->name('user.travels')->middleware('auth');

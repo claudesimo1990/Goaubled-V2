@@ -74,6 +74,13 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.notifications',Auth()->id()) }}">
+          <i class="fa fa-bell icon-notif"></i>
+          <span>Notifications</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
         <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
           <i class="far fa-smile"></i>
           <span>Bewertung</span></a>
@@ -97,10 +104,9 @@
       <div id="content">
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-
+        <div class="container py-4">
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between pt-2">
+          <div class="d-sm-flex align-items-center justify-content-between pb-2">
             <h5 class="mb-0 text-gray-800">@yield('dashboard_title')</h5>
           </div>
            <!-- Content Row -->

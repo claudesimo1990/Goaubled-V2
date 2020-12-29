@@ -101,4 +101,9 @@ class ContactController extends Controller
 
         return response()->json($contacts, 200);
     }
+
+    public function notifications()
+    {
+        return view('user.notifications');
+    }
 }
