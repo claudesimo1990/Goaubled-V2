@@ -63,7 +63,7 @@ class newNotify extends Notification
         return [
             'user_id' => Auth::id(),
             'message' => "Nouveau message de " . Auth::user()->name ." "." .</br></br>
-            Le message vous a ete via notre syste de chat. pour repondre au message veuillez <a href=\"$route\">cliquer ici</a>"
+            Le message vous a ete via notre system de chat. pour repondre au message veuillez <a href=\"$route\">cliquer ici</a>"
         ];
     }
     /**

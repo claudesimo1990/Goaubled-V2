@@ -108,4 +108,9 @@ class ContactController extends Controller
 
         return view('user.notifications', compact('notifications'));
     }
+
+    public function DeleteNotification()
+    {
+        $notifications = Auth()->user()->unreadNotifications()->get();
+    }
 }

@@ -20,11 +20,11 @@
             ></i>
         </div>
         <div class="wrap-chat">
-            <div class="chat">
+            <div class="chat" ref="feed">
                 <div v-for="message in messages" :class="`chat-bubble ${message.to == contact.id ? ' me' : ' you'}`" :key="message.id">
                     <div class="my-mouth"></div>
                     <div class="content">{{ message.text }}</div>
-                    <div class="time">17:30</div>
+                    <div class="time">{{ message.createdAt }}</div>
                 </div>
             </div>
             <div class="information" v-bind:style="{ display: show }">
@@ -108,6 +108,11 @@
                 }).then((response) => {
                     this.$emit('new', response.data);
                 })
+            },
+            scrollToBottom() {
+                setTimeout(() => {
+                    this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight - this.$refs.feed.clientHeight;
+                }, 50);
             }
         },
         computed: {
@@ -115,6 +120,14 @@
             return Store.getters.selectContact;
         }
     },
+        watch: {
+            contact(contact) {
+                this.scrollToBottom();
+            },
+            messages(messages) {
+                this.scrollToBottom();
+            }
+        },
         components: {MessagesFeed, MessageComposer}
     }
 </script>
