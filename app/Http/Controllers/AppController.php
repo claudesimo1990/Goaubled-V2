@@ -13,7 +13,7 @@ class AppController extends Controller
 {
     public function index(){
     
-        $latest_news = post::where('publish',1)->with('user')->latest()->limit(3)->get();
+        $latest_news = Post::where('publish',1)->with('user')->latest()->limit(3)->get();
         $users = User::all();
         
         return view('App.accueil',compact('latest_news','users'));
