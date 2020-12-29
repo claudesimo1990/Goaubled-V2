@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use app\post;
+use app\Post;
 use app\User;
 use app\Events\PresentEvent;
 use Illuminate\Support\Facades\DB;
