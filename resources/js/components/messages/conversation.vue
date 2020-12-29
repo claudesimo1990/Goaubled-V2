@@ -28,33 +28,10 @@
                 </div>
             </div>
             <div class="information" v-bind:style="{ display: show }">
-                <img
-                    src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/contact7.JPG"
-                />
+                <img :src="selectContact.avatar_original ? selectContact.avatar_original : asset +'/UsersAvatars/'+ selectContact.avatar" :alt="selectContact.name">
                 <div>
                     <h1>Name:</h1>
-                    <p>Cool Kids</p>
-                </div>
-                <div id="listGroups">
-                    <h1>Mitglieder:</h1>
-                    <div class="listGroups">
-                        <img
-                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/contact4.jpg"
-                        />
-                        <p>Marina Pühringer</p>
-                    </div>
-                    <div class="listGroups">
-                        <img
-                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/contact5.jpg"
-                        />
-                        <p>Nicole Rammelmüller</p>
-                    </div>
-                    <div class="listGroups">
-                        <img
-                            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1089577/contact1.jpg"
-                        />
-                        <p>Linda Gahleitner</p>
-                    </div>
+                    <p>{{ selectContact.name }}</p>
                 </div>
             </div>
         </div>
@@ -113,7 +90,10 @@
                 setTimeout(() => {
                     this.$refs.feed.scrollTop = this.$refs.feed.scrollHeight - this.$refs.feed.clientHeight;
                 }, 50);
-            }
+            },
+            togglen(val) {
+                this.show = val;
+            },
         },
         computed: {
             selectContact: function() {
