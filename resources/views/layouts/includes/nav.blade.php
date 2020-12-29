@@ -19,7 +19,6 @@
                 <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}"><i class="fas fa-search mr-1"></i>Voir les annonces</a></li>
                 <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}"><i class="fas fa-road mr-1"></i>Proposer un trajet</a></li>
                 <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}"><i class="fas fa-people-carry mr-1"></i>Expedier un colis</a></li>
-                @if (Auth::user()->unreadNotifications->count() > 0) <notification :unreadnotifications="{{ auth()->user()->unreadNotifications }}"></notification> @endif
                 @if (Auth::user()->avatar_original)
                 <li class="ml-3 user__bild"><img src="{{Auth::user()->avatar_original}}" class="user__bild"></li>
                 @else
@@ -32,12 +31,22 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('profile.show',['user' =>Auth::id() ]) }}"> Profile <i class="fa fa-wrench float-right" aria-hidden="true"></i>
+                               href="{{ route('user.profile',Auth()->id()) }}"> Profile <i class="fa fa-wrench float-right" aria-hidden="true"></i>
                             </a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ url('/profile/'.Auth::user()->name) }}"> Notifications<i class="float-right fa fa-bell" aria-hidden="true"></i>
+                               href="{{ route('user.notifications',Auth()->id()) }}"> Notifications<span class="badge badge-info p-1 float-right">9</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
+                               href="{{ route('user.message',Auth()->id()) }}">Chat<i class="fas fa-fw fa-comments float-right" aria-hidden="true"></i>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
+                               href="{{ route('user.travels',Auth()->id()) }}"> Factures <i class="fas fa-fw fa-envelope float-right" aria-hidden="true"></i>
                             </a>
 
                             <div class="dropdown-divider"></div>
