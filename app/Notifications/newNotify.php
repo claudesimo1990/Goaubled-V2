@@ -5,6 +5,7 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 
@@ -57,12 +58,14 @@ class newNotify extends Notification
      */
     public function toArray($notifiable)
     {
+        $route = route('user.message', Auth::id());
+
         return [
-            'user_id' => $notifiable->id,
-            'message' => "nouveau message de " . $notifiable->name,
+            'user_id' => Auth::id(),
+            'message' => "Nouveau message de " . Auth::user()->name ." "." .</br></br>
+            Le message vous a ete via notre syste de chat. pour repondre au message veuillez <a href=\"$route\">cliquer ici</a>"
         ];
     }
-
     /**
      * Get the broadcastable representation of the notification.
      *

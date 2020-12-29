@@ -36,7 +36,7 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('user.notifications',Auth()->id()) }}"> Notifications<span class="badge badge-info p-1 float-right">9</span>
+                               href="{{ route('user.notifications',Auth()->id()) }}"> Notifications<span class="badge badge-info p-1 float-right">{{ auth()->user()->unreadNotifications->count() }}</span>
                             </a>
 
                             <div class="dropdown-divider"></div>

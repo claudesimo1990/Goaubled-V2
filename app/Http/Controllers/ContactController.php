@@ -104,6 +104,8 @@ class ContactController extends Controller
 
     public function notifications()
     {
-        return view('user.notifications');
+        $notifications = Auth()->user()->unreadNotifications()->get();
+
+        return view('user.notifications', compact('notifications'));
     }
 }
