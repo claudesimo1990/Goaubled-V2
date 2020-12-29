@@ -5,12 +5,12 @@
             <div class="contact-preview">
                 <div class="contact-text">
                     <h1 class="font-name">{{ contact.name }}</h1>
-                    <p class="font-preview">
+                    <p class="font-preview text-black-50">
                         Mmh, lecker :) Freu mich!
                     </p>
                 </div>
             </div>
-            <div class="contact-time"><p v-html="contact.unread > 0 ? contact.unread : ''"></p></div>
+            <div class="contact-time"><span class="badge badge-info p-1 rounded font-weight-bold count-unred-messages" v-html="contact.unread > 0 ? contact.unread : ''"></span></div>
         </div>
     </div>
 </template>
@@ -157,6 +157,10 @@ export default {
     margin: auto;
     flex-direction: column;
     color: white;
+}
+
+.count-unred-messages {
+    font-size: 16px;
 }
 
 .new-message p {
