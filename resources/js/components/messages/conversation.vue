@@ -6,8 +6,6 @@
                 <h1 class="font-name">{{ selectContact.name }}</h1>
                 <p class="font-online">{{ selectContact.email }}</p>
             </div>
-            <i class="fa fa-search fa-lg" aria-hidden="true"></i>
-            <i class="fa fa-paperclip fa-lg" aria-hidden="true"></i>
             <i
                 class="fa fa-bars fa-lg"
                 aria-hidden="true"
@@ -32,6 +30,12 @@
                 <div>
                     <h1>Name:</h1>
                     <p>{{ selectContact.name }}</p>
+
+                    <h1>Email:</h1>
+                    <p>{{ selectContact.email }}</p>
+
+                    <h1>Menbre depuis le :</h1>
+                    <p>{{ selectContact.createdAt }}</p>
                 </div>
             </div>
         </div>

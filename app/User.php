@@ -6,12 +6,13 @@ use App\Coli;
 use App\Travel;
 use App\Comment;
 use App\Profile;
+use Carbon\Carbon;
+use App\Notifications\VerifyEmail;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\VerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -52,6 +53,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'id' => 'integer',
         'email_verified_at' => 'datetime'
     ];
+
+    protected $appends = ['createdAt'];
+
     /**
      * profile
      *
@@ -125,5 +129,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail);
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d.m.Y');
     }
 }
