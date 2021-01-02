@@ -26,7 +26,7 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                               <label for="prenom">Prenom</label>
-                                <input type="text" class="form-control" name="prenom" value="{{ $user->profile->prenom }}" id="prenom">
+                                <input type="text" class="form-control" name="prenom" value="{{ $user->profile ? $user->profile->prenom : '' }}" id="prenom">
                                 @error('prenom')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                <label for="birthDay">Date de Naissance</label>
-                                <input type="date" class="form-control" name="birthDay" id="birthDay" value="{{ getDayFormat($user->profile->birthDay) }}">
+                                <input type="date" class="form-control" name="birthDay" id="birthDay" value="{{ $user->profile ? getDayFormat($user->profile->birthDay) : '' }}">
                                 @error('birthDay')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
@@ -55,28 +55,28 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="ville">ville</label>
-                                <input type="text" class="form-control" name="ville" id="ville" value="{{ $user->profile->ville }}">
+                                <input type="text" class="form-control" name="ville" id="ville" value="{{ $user->profile ? $user->profile->ville : '' }}">
                                 @error('ville')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="Pays">Pays</label>
-                                <input type="text" class="form-control" name="pays" id="Pays" value="{{ $user->profile->pays }}">
+                                <input type="text" class="form-control" name="pays" id="Pays" value="{{ $user->profile ? $user->profile->pays : '' }}">
                                 @error('pays')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="rue">Rue</label>
-                                <input type="text" class="form-control" name="rue" id="rue" value="{{ $user->profile->rue }}">
+                                <input type="text" class="form-control" name="rue" id="rue" value="{{ $user->profile ? $user->profile->rue : '' }}">
                                 @error('rue')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="phone">Telephone</label>
-                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->profile->phone }}">
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->profile ? $user->profile->phone : '' }}">
                                 @error('phone')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
