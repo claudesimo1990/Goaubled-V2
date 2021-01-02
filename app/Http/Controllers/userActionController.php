@@ -13,8 +13,6 @@ class userActionController extends Controller
     {
         $reservations = Auth::user()->reservations;
 
-        //dd($reservations);
-
         return view('user.reservations', compact('reservations'));
     }
 

@@ -131,12 +131,12 @@ class postController extends Controller
     public function booking(Request $request)
     {
         // save into database
-        Reservation::create([
+        $booking = Reservation::create([
             'user_id' => auth()->id(),
             'post_id' => $request->get('post'),
             'kilos'  =>  $request->get('kilos'),
-            'reservation_date' => now(),
-            'validation_date'  => now(),
+            'reservation_date' => Carbon::now(),
+            'validation_date'  => Carbon::now(),
             'object' => ''
         ]);
 
@@ -151,9 +151,13 @@ class postController extends Controller
 
                 route('confirm',[
                 'user' => auth()->id(),
-                'post' => $request->get('post')]),
+                'post' => $request->get('post'),
+                'reservation' => $booking->id
+                ]),
 
-                $request->get('kilos')
+                $request->get('kilos'),
+
+                $booking->id,
             )
         );
 
@@ -197,7 +201,8 @@ class postController extends Controller
 
     public function bookingConfirm(User $user, Post $post, Request $request)
     {
-        $k = $request->get('k');
+        if($request->get('action') == "true") {
+            $k = $request->get('k');
         
         if($k !== 'pack') {
             $post->kilo = ($post->kilo - $k) > 0 ? $post->kilo - $k : 0;
@@ -208,9 +213,22 @@ class postController extends Controller
              if($k !== 'pack') {
                 $post->kilo =- $request->get('k');
              }
+             // Update booking
+             Reservation::find($request->get('book_id'))->update([
+                'validation_date' => now(),
+                'status' => 'accepted'
+                ]);
             Mail::to($user->email)->send(new bookingValidate($user, route('accueil')));
         }
         return view('booking.confirmation');
+        } else {
+            // Update booking
+            Reservation::find($request->get('book_id'))->update([
+            'validation_date' => now(),
+            'status' => 'rejected'
+            ]);
+            return redirect(route('news.index'));
+        }
     }
 
     public function travels()

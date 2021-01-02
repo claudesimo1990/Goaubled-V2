@@ -26,21 +26,19 @@
               @foreach ($reservations as $index => $item)
                 <tr>
                   <th scope="row">{{ $index + 1 }}</th>
-                  <td>{{ findPostWithId($item->id)->from }}</td>
-                  <td>{{ findPostWithId($item->id)->dateFrom }}</td>
-                  <td>{{ findPostWithId($item->id)->kilos }}</td>
+                  <td>{{ findPostWithId($item->post_id)->from }}</td>
+                  <td>{{ findPostWithId($item->post_id)->dateFrom }}</td>
+                  <td>{{ $item->kilos }}</td>
                   <td>{{ $item->reservation_date }}</td>
-                  <td>{{ $item->reservation_date }}</td>
+                  <td>{{ $item->validation_date }}</td>
                   <td>
-                    @isset($var)
-                      @if ($item->status == "in_progress")
+                    @if ($item->status == "in_progress")
                       <span class="badge badge-info">en cours...</span>
-                      @else
-                      <span class="badge badge-danger">en cours...</span>
-                      @endif
-                      @else
-                      <span class="badge badge-info">en cours...</span>
-                    @endisset
+                    @elseif($item->status == "rejected")
+                      <span class="badge badge-danger">rejeter</span>
+                    @elseif($item->status == "accepted")
+                      <span class="badge badge-success">confirmer</span>
+                    @endif
                   </td>
                 </tr>    
               @endforeach

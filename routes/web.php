@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     //travel
     Route::get('post/{post}/{user}','postController@bookingPost')->name('post.booking')->middleware('verified');
     Route::post('booking/{post}/{user}','postController@booking');
-    Route::get('booking-confirmation/{user}/{post}','postController@bookingConfirm')->name('confirm');
+    Route::get('booking-confirmation/{user}/{post}/{reservation}','postController@bookingConfirm')->name('confirm');
     //coli
     Route::post('bookingPack/{post}/{user}','postController@bookingPack');
 });
