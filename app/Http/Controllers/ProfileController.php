@@ -85,7 +85,7 @@ class ProfileController extends Controller
         //update User
         Auth::user()->update($data);
 
-        if(!Auth::user()->profile->id) {
+        if(!isset(Auth::user()->profile->id)) {
             //update profile
             Profile::create([
                 'prenom' => $request->get('prenom'),
