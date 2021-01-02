@@ -39,7 +39,7 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
+        <a class="nav-link" href="{{ route('user.demandes',Auth()->id()) }}">
           <i class="fas fa-fw fa-handshake"></i>
           <span>demandes</span></a>
       </li>
@@ -67,9 +67,9 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
+        <a class="nav-link" href="{{ route('user.factures',Auth()->id()) }}">
           <i class="fas fa-fw fa-envelope"></i>
-          <span>facturations</span></a>
+          <span>factures</span></a>
       </li>
 
       <!-- Nav Item - Tables -->

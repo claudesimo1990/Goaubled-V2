@@ -19,8 +19,9 @@ class CreateReservationsTable extends Migration
             $table->integer('post_id')->unsigned();
             $table->integer('kilos');
             $table->dateTime('reservation_date');
-            $table->dateTime('validation_date');
+            $table->dateTime('validation_date')->nullable();
             $table->string('object');
+            $table->string('status')->default('in_progress')->nullable();
             $table->timestamps();
         });
     }

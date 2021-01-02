@@ -38,7 +38,6 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-        $rules = [];
         //rules
         $rules = [
             'name' => ['required'],
@@ -51,17 +50,7 @@ class ProfileController extends Controller
             'phone' => ['required']
         ];
         if($request->get('password')) {
-            $rules = [
-                'name' => ['required'],
-                'prenom' => ['required'],
-                'email' => ['required','email'],
-                'birthDay' => ['required'],
-                'ville' => ['required'],
-                'pays' => ['required'],
-                'rue' => ['required'],
-                'phone' => ['required'],
-                'password' => ['required', 'string', 'min:8', 'confirmed']
-            ];
+            $rules['password'] = ['required', 'string', 'min:8', 'confirmed'];
         }
 
         // validate
@@ -75,37 +64,28 @@ class ProfileController extends Controller
         ];
 
         if($request->get('password')) {
-            $data = [
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'password' => bcrypt($request->get('password'))
-            ];
+            $data['password'] = bcrypt($request->get('password'));
         }
 
         //update User
         Auth::user()->update($data);
 
+        $fiels = 
+        [
+            'prenom' => $request->get('prenom'),
+            'user_id' => Auth::user()->id,
+            'birthDay' => $request->get('birthDay'),
+            'ville' => $request->get('ville'),
+            'pays' => $request->get('pays'),
+            'rue' => $request->get('rue'),
+            'phone' => $request->get('phone'),
+        ];
+
         if(!isset(Auth::user()->profile->id)) {
             //update profile
-            Profile::create([
-                'prenom' => $request->get('prenom'),
-                'user_id' => Auth::user()->id,
-                'birthDay' => $request->get('birthDay'),
-                'ville' => $request->get('ville'),
-                'pays' => $request->get('pays'),
-                'rue' => $request->get('rue'),
-                'phone' => $request->get('phone'),
-            ]);
+            Profile::create($fiels);
         } else {
-            Auth::user()->profile->update([
-                'prenom' => $request->get('prenom'),
-                'user_id' => Auth::user()->id,
-                'birthDay' => $request->get('birthDay'),
-                'ville' => $request->get('ville'),
-                'pays' => $request->get('pays'),
-                'rue' => $request->get('rue'),
-                'phone' => $request->get('phone'),
-            ]);
+            Auth::user()->profile->update($fiels);
         }
 
         // flash message

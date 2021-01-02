@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
-use Carbon\Carbon;
 use \Datetime;
+use Carbon\Carbon;
+use App\Reservation;
 use App\Mail\BookingMail;
 use App\Mail\packBooking;
-use App\Mail\bookingValidate;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
+use App\Mail\bookingValidate;
+use MercurySeries\Flashy\Flashy;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use MercurySeries\Flashy\Flashy;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic;
 
@@ -129,6 +130,17 @@ class postController extends Controller
 
     public function booking(Request $request)
     {
+        // save into database
+        Reservation::create([
+            'user_id' => auth()->id(),
+            'post_id' => $request->get('post'),
+            'kilos'  =>  $request->get('kilos'),
+            'reservation_date' => now(),
+            'validation_date'  => now(),
+            'object' => ''
+        ]);
+
+
        Mail::to($request->get('owner')['email'])->send(
 
            new BookingMail

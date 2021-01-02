@@ -16,22 +16,34 @@
                   <th scope="col">#</th>
                   <th scope="col">Depart</th>
                   <th scope="col">Date</th>
-                  <th scope="col">Arrivee</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Kilos disponible</th>
+                  <th scope="col">Kilos</th>
+                  <th scope="col">Date de reservation</th>
+                  <th scope="col">Date de confirmation</th>
                   <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
+              @foreach ($reservations as $index => $item)
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>Otto</td>
-                  <td>Otto</td>
-                  <td>Otto</td>
-                  <td><span class="badge badge-info">en cours...</span></td>
-                </tr>
+                  <th scope="row">{{ $index + 1 }}</th>
+                  <td>{{ findPostWithId($item->id)->from }}</td>
+                  <td>{{ findPostWithId($item->id)->dateFrom }}</td>
+                  <td>{{ findPostWithId($item->id)->kilos }}</td>
+                  <td>{{ $item->reservation_date }}</td>
+                  <td>{{ $item->reservation_date }}</td>
+                  <td>
+                    @isset($var)
+                      @if ($item->status == "in_progress")
+                      <span class="badge badge-info">en cours...</span>
+                      @else
+                      <span class="badge badge-danger">en cours...</span>
+                      @endif
+                      @else
+                      <span class="badge badge-info">en cours...</span>
+                    @endisset
+                  </td>
+                </tr>    
+              @endforeach
               </tbody>
         </table>
 

@@ -55,8 +55,9 @@ Route::get('/profile/{user}/chat', 'ContactController@getChat')->name('user.mess
 Route::get('/profile/{user}/notifications', 'ContactController@notifications')->name('user.notifications')->middleware('auth');
 Route::get('/profile/{user}/profile', 'ProfileController@create')->name('user.profile')->middleware('auth');
 Route::post('/profile/{user}/profile', 'ProfileController@update');
-Route::get('/profile/{user}/reservations', 'userActionController@w')->name('user.reservations')->middleware('auth');
-Route::get('/profile/{user}/demandes', 'userActionController@reservations')->name('user.demandes')->middleware('auth');
+Route::get('/profile/{user}/reservations', 'userActionController@reservations')->name('user.reservations')->middleware('auth');
+Route::get('/profile/{user}/factures', 'userActionController@factures')->name('user.factures')->middleware('auth');
+Route::get('/profile/{user}/demandes', 'userActionController@demandes')->name('user.demandes')->middleware('auth');
 Route::get('/profile/{user}/travels', 'userActionController@travels')->name('user.travels')->middleware('auth');
 Route::get('/profile/{user}/packs', 'userActionController@packs')->name('user.packs')->middleware('auth');
 Route::get('/conversation/{id}', 'ContactController@getMessagesFor');

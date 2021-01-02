@@ -11,8 +11,11 @@ class userActionController extends Controller
 {
     public function reservations()
     {
-        //$reservations = Auth::reservations();
-        return view('user.reservations');
+        $reservations = Auth::user()->reservations;
+
+        //dd($reservations);
+
+        return view('user.reservations', compact('reservations'));
     }
 
     public function travels()
@@ -29,5 +32,15 @@ class userActionController extends Controller
 
 
         return view('user.packs', compact('packs'));
+    }
+
+    public function factures()
+    {
+        return view('user.factures');
+    }
+
+    public function demandes()
+    {
+        return view('user.demandes');
     }
 }
