@@ -15,6 +15,6 @@ $factory->define(User::class, function (Faker $faker) {
         'avatar' => $faker->imageUrl($width = 640, $height = 480),
         'avatar_original' => $faker->word,
         'password' => '$2y$10$gBSyzwffVCN/nmls9eQZd.egmGQcFfv4hPGyqjeahUR7G5nqyt6ke', //password
-        'is_admin' => 0
+        'is_admin' => 1
     ];
 });
