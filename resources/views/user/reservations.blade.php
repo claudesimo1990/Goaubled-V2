@@ -19,7 +19,7 @@
                   <th scope="col">Arrivee</th>
                   <th scope="col">Date</th>
                   <th scope="col">Kilos disponible</th>
-                  <th scope="col">valide ?</th>
+                  <th scope="col">Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
                   <td>Otto</td>
                   <td>Otto</td>
                   <td>Otto</td>
-                  <td>@mdo</td>
+                  <td><span class="badge badge-info">en cours...</span></td>
                 </tr>
               </tbody>
         </table>

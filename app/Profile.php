@@ -19,9 +19,7 @@ class Profile extends Model
         'pays',
         'rue',
         'phone',
-        'isVerified',
-        'avatar',
-        'avatar_original',
+        'user_id'
     ];
 
     /**

@@ -15,17 +15,14 @@ class CreateProfilesTable extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('prenom');
+            $table->string('prenom')->nullable();
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->dateTime('birthDay');
-            $table->string('ville');
-            $table->string('pays');
-            $table->string('rue');
-            $table->string('phone');
-            $table->boolean('isVerified');
-            $table->string('avatar');
-            $table->string('avatar_original')->nullable();
+            $table->dateTime('birthDay')->nullable();
+            $table->string('ville')->nullable();
+            $table->string('pays')->nullable();
+            $table->string('rue')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

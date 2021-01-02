@@ -1,7 +1,8 @@
 <template>
     <section class="right">
         <div class="chat-head">
-            <img :src="selectContact.avatar_original ? selectContact.avatar_original : asset +'/UsersAvatars/'+ selectContact.avatar" :alt="selectContact.name">
+            <img v-if="selectContact.avatar_original !== undefined" :src="selectContact.avatar_original ? selectContact.avatar_original : asset +'/UsersAvatars/'+ selectContact.avatar" :alt="selectContact.name">
+            <div v-else class="alert alert-info text-nowrap my-2 mx-2">Selectioner un contact pour debuter la conversation !</div>
             <div class="chat-name">
                 <h1 class="font-name">{{ selectContact.name }}</h1>
                 <p class="font-online">{{ selectContact.email }}</p>
@@ -40,21 +41,40 @@
             </div>
         </div>
         <div class="wrap-message">
-            <i class="fa fa-smile-o fa-lg" aria-hidden="true"></i>
-            <div class="message">
-                <message-composer @send="sendMessage"/>
+            <i :class="{ 'triggered': showEmojiPicker }" @mousedown.prevent="toggleEmojiPicker"  class="fa fa-smile-o fa-lg" aria-hidden="true"></i>
+            <div class="message position-relative">
+                <input v-model="message"
+                    @keydown.enter="send"
+                    class="input-message" 
+                    placeholder="tapez votre message ici"
+                />
+                <picker 
+                    set="emojione"
+                    v-show="showEmojiPicker" 
+                    :style="{ position: 'absolute', bottom: '50px', right: '350px' }"
+                    :i18n="{ search: 'Recherche', categories: { search: 'Résultats de recherche', recent: 'Récents' } }"
+                    title="choisissez un emoji..."
+                    emoji="point_up"
+                    @select="addEmoji($event)"
+                />
             </div>
             <i class="fa fa-microphone fa-lg" aria-hidden="true"></i>
         </div>
+        <div class="clearfix"></div>
     </section>
 </template>
 
 <script>
     import MessagesFeed from './MessagesFeed';
     import MessageComposer from './MessageComposer';
+    import { Picker } from 'emoji-mart-vue'
 
     export default {
         props: {
+            data: {
+                type: Object,
+                default: null
+            },
             contact: {
                 type: Object,
                 default: null
@@ -75,7 +95,9 @@
         data: function() {
             return {
                 selectedContact: null,
-                show: 'none'
+                show: 'none',
+                showEmojiPicker: false,
+                message: ''
             };
         },
         methods: {
@@ -98,9 +120,31 @@
             togglen(val) {
                 this.show = val;
             },
+            toggleEmoj(val) {
+                this.showEmojiPicker = val;
+            },
+            toggleEmojiPicker () {
+                this.showEmojiPicker = !this.showEmojiPicker
+            },
+            addEmoji ($event) {
+                this.message = String(this.message + $event.native);
+            },
+            send(e) {
+                e.preventDefault();
+                
+                if (this.message == '') {
+                    return;
+                }
+                this.sendMessage(this.message);
+                this.showEmojiPicker = false;
+                this.message = '';
+            }
         },
         computed: {
-            selectContact: function() {
+            newMessage: function() {
+            return this.message;
+        },
+        selectContact: function() {
             return Store.getters.selectContact;
         }
     },
@@ -112,7 +156,7 @@
                 this.scrollToBottom();
             }
         },
-        components: {MessagesFeed, MessageComposer}
+        components: {MessagesFeed, MessageComposer, Picker}
     }
 </script>
 

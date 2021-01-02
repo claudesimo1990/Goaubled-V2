@@ -16,7 +16,7 @@ if(!function_exists('getDayFormat')){
     
     function getDayFormat(Carbon $dateTime)
    {
-    return Carbon::parse($dateTime)->format('d.m.Y');
+        return Carbon::parse($dateTime)->format('yy-m-d');
    }
 
 }
@@ -25,7 +25,7 @@ if(!function_exists('getTimeFormat')){
     
     function getTimeFormat(Carbon $dateTime)
    {
-    return Carbon::parse($dateTime)->format('H:i');
+        return Carbon::parse($dateTime)->format('H:i');
    }
 
 }

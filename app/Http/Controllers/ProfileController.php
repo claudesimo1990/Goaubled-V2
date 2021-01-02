@@ -35,12 +35,83 @@ class ProfileController extends Controller
 
     /**
      * @param Request $request
-     * @param Profile $profile
-     * @return Factory|View
      */
-    public function update(Request $request, Profile $profile)
+    public function update(Request $request)
     {
-        return view('profile.create', compact('profile'));
+        $rules = [];
+        //rules
+        $rules = [
+            'name' => ['required'],
+            'prenom' => ['required'],
+            'email' => ['required','email'],
+            'birthDay' => ['required'],
+            'ville' => ['required'],
+            'pays' => ['required'],
+            'rue' => ['required'],
+            'phone' => ['required']
+        ];
+        if($request->get('password')) {
+            $rules = [
+                'name' => ['required'],
+                'prenom' => ['required'],
+                'email' => ['required','email'],
+                'birthDay' => ['required'],
+                'ville' => ['required'],
+                'pays' => ['required'],
+                'rue' => ['required'],
+                'phone' => ['required'],
+                'password' => ['required', 'string', 'min:8', 'confirmed']
+            ];
+        }
+
+        // validate
+        $request->validate($rules);
+
+        $data = [];
+
+        $data = [
+            'name' => $request->get('name'),
+            'email' => $request->get('email')
+        ];
+
+        if($request->get('password')) {
+            $data = [
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' => bcrypt($request->get('password'))
+            ];
+        }
+
+        //update User
+        Auth::user()->update($data);
+
+        if(!Auth::user()->profile->id) {
+            //update profile
+            Profile::create([
+                'prenom' => $request->get('prenom'),
+                'user_id' => Auth::user()->id,
+                'birthDay' => $request->get('birthDay'),
+                'ville' => $request->get('ville'),
+                'pays' => $request->get('pays'),
+                'rue' => $request->get('rue'),
+                'phone' => $request->get('phone'),
+            ]);
+        } else {
+            Auth::user()->profile->update([
+                'prenom' => $request->get('prenom'),
+                'user_id' => Auth::user()->id,
+                'birthDay' => $request->get('birthDay'),
+                'ville' => $request->get('ville'),
+                'pays' => $request->get('pays'),
+                'rue' => $request->get('rue'),
+                'phone' => $request->get('phone'),
+            ]);
+        }
+
+        // flash message
+        flashy()->success('operation reussite');
+
+        return back();
     }
 
     /**

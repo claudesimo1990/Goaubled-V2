@@ -10,7 +10,7 @@
                     </p>
                 </div>
             </div>
-            <div class="contact-time"><span class="badge badge-info p-1 rounded font-weight-bold count-unred-messages" v-html="contact.unread > 0 ? contact.unread : ''"></span></div>
+            <div class="contact-time"><span class="badge badge-secondary p-1 mt-2 rounded font-weight-bold count-unred-messages" v-html="contact.unread > 0 ? contact.unread : ''"></span></div>
         </div>
     </div>
 </template>

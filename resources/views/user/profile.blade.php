@@ -8,79 +8,92 @@
     <div class="row">
         <div class="col-md-2 border pt-2">
             <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                <h6>Upload a different photo...</h6>
-                <input type="file" class="text-center center-block file-upload">
+                <img src="{{asset('storage/UsersAvatars/'.$user->avatar)}}" class="avatar img-circle img-thumbnail" alt="{{ $user->name }}">
             </div></hr><br>
         </div>
         <div class="col-md-10 pt-2">
-            <form class="form" action="##" method="post" id="registrationForm">
+            <form class="form" action="{{ route('user.profile',$user->id) }}" method="post" id="registrationForm">
+                @csrf
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">      
                             <div class="col-xs-6">
-                                <label for="first_name">Nom</label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Nom" title="enter your first name if any.">
+                                <label for="name">Nom</label>
+                                <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}">
+                                @error('name')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
-                            
                             <div class="col-xs-6">
-                              <label for="last_name">Prenom</label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Prenom" title="enter your last name if any.">
+                              <label for="prenom">Prenom</label>
+                                <input type="text" class="form-control" name="prenom" value="{{ $user->profile->prenom }}" id="prenom">
+                                @error('prenom')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="">
+                                <input type="email" class="form-control" name="email" id="email" value="{{ $user->email }}">
+                                @error('email')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                               <label for="mobile">Ville</label>
-                                <input type="text" class="form-control" name="ville" id="Ville" placeholder="Ville" title="">
+                               <label for="birthDay">Date de Naissance</label>
+                                <input type="date" class="form-control" name="birthDay" id="birthDay" value="{{ getDayFormat($user->profile->birthDay) }}">
+                                @error('birthDay')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
+                        <div class="form-group mt-5">
+                            <div class="col-xs-12 pt-5">
+                                <br>
+                                <button class="btn btn-lg btn-success btn-recherche" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Enregistrer votre nouveau profile</button>
+                            </div>
+                       </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                        
                             <div class="col-xs-6">
-                                <label for="Adresse">Adresse</label>
-                                <input type="text" class="form-control" name="adresse" id="adresse" placeholder="adresse" title="">
+                                <label for="ville">ville</label>
+                                <input type="text" class="form-control" name="ville" id="ville" value="{{ $user->profile->ville }}">
+                                @error('ville')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
-                            
                             <div class="col-xs-6">
-                                <label for="email">Boite Postale</label>
-                                <input type="email" class="form-control" id="location" placeholder="Boite Postale" title="">
+                                <label for="Pays">Pays</label>
+                                <input type="text" class="form-control" name="pays" id="Pays" value="{{ $user->profile->pays }}">
+                                @error('pays')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
-                            
+                            <div class="col-xs-6">
+                                <label for="rue">Rue</label>
+                                <input type="text" class="form-control" name="rue" id="rue" value="{{ $user->profile->rue }}">
+                                @error('rue')<span class="text-danger ml-1">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="phone">Telephone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->profile->phone }}">
+                                @error('phone')<span class="text-danger ml-1">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="password">Mot de passe</label>
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe" title="Mot de passe">
+                                <input type="password" class="form-control" name="password" id="password">
+                                @error('password')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
                         <div class="form-group">
-                            
                             <div class="col-xs-6">
-                              <label for="password2">Verification</label>
-                                <input type="password" class="form-control" name="password2" id="password2" placeholder="Mot de passe de verification" title="">
+                              <label for="password2">Mot de passe de Verification</label>
+                                <input type="password" class="form-control" name="password_confirmation" id="password2">
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                             <br>
-                               <button class="btn btn-lg btn-success ml-3" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> enregistrer</button>
-                         </div>
-                   </div>
                 </div>
             </form>
         </div>
