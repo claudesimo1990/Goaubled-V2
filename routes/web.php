@@ -81,9 +81,9 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::resource('/admin/users', 'Admin\UsersController')->middleware('is_admin');
 
     // travels
-    Route::get('/admin/travels', 'Admin\travelsController@index')->name('admin.travels.index')->middleware('is_admin');
-    Route::get('/admin/travels/accept/{travel}', 'Admin\travelsController@acceptPost')->name('admin.travel.validate')->middleware('is_admin');
-    Route::get('/admin/travels/reject/{travel}', 'Admin\travelsController@rejectPost')->name('admin.travel.reject')->middleware('is_admin');
+    Route::get('/admin/travels', 'Admin\TravelsController@index')->name('admin.travels.index')->middleware('is_admin');
+    Route::get('/admin/travels/accept/{travel}', 'Admin\TravelsController@acceptPost')->name('admin.travel.validate')->middleware('is_admin');
+    Route::get('/admin/travels/reject/{travel}', 'Admin\TravelsController@rejectPost')->name('admin.travel.reject')->middleware('is_admin');
 
     // colis
     Route::get('/admin/colis', 'Admin\ColisController@index')->name('admin.colis.index')->middleware('is_admin');
