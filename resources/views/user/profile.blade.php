@@ -9,7 +9,7 @@
         <div class="col-md-2 border pt-2">
             <div class="text-center">
                 @if (Auth::user()->avatar_original)
-                    <img src="{{asset('storage/UsersAvatars/'.$user->avatar)}}" class="avatar img-circle img-thumbnail" alt="{{ $user->name }}">
+                    <img src="{{Auth::user()->avatar_original}}" class="avatar img-circle img-thumbnail" alt="{{ $user->name }}">
                 @else
                     <img src="{{Auth::user()->avatar ? asset('storage/UsersAvatars/'.Auth::user()->avatar) :  asset('/img/logo.png') }}" class="avatar img-circle img-thumbnail">
                 @endif
