@@ -83,9 +83,20 @@ Vue.component('cookie-component', require('./components/utilities/cookie.vue').d
 window.app = new Vue({
     el: '#app',
     router: Router,
+    showTop: true,
+
     computed: {
       getShow: function() {
         return Store.state.OverlayShow;
+      },
+      showTop: function() {
+        return Store.state.newMessageShow;
+      },
+      message: function() {
+        return Store.state.newMessage;
       }
+    },
+    methods: {
+
     }
 });

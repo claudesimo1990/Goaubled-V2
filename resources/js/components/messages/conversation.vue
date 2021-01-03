@@ -45,8 +45,9 @@
             <div class="message position-relative">
                 <input v-model="message"
                     @keydown.enter="send"
+                    @keydown="typingEvent"
                     class="input-message" 
-                    placeholder="tapez votre message ici"
+                    :placeholder="type ? 'Claude est entrain d\'ecrire' : 'Message...'"
                 />
                 <picker 
                     set="emojione"
@@ -97,7 +98,8 @@
                 selectedContact: null,
                 show: 'none',
                 showEmojiPicker: false,
-                message: ''
+                message: '',
+                type: true
             };
         },
         methods: {
@@ -138,11 +140,17 @@
                 this.sendMessage(this.message);
                 this.showEmojiPicker = false;
                 this.message = '';
+            },
+            typingEvent(event) {
+                this.$emit('typingEvent',event);
             }
         },
         computed: {
             newMessage: function() {
             return this.message;
+        },
+        getTyping: function() {
+            return Store.getters.typing
         },
         selectContact: function() {
             return Store.getters.selectContact;

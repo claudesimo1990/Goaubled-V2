@@ -26,6 +26,17 @@
 
     <div id="app">
 
+      <b-alert
+        v-model="showTop"
+        class="position-fixed fixed-top m-0 rounded-0"
+        style="z-index: 3000;"
+        variant="success"
+        v-html="message"
+        dismissible
+      >
+      
+    </b-alert>
+
       <b-overlay :show="getShow" rounded="sm">
 
         @include("layouts/includes/topbar")

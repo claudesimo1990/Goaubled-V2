@@ -28,7 +28,7 @@
                     <contactList :contacts="contacts" @selected="startConversationWith" :asset="asset"/>
                 </div>
             </section>
-            <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage" :asset="asset" :contacts="contacts"></conversation>
+            <conversation :contact="selectedContact" :messages="messages" @new="saveNewMessage" :asset="asset" :contacts="contacts" @typingEvent="onTyping"></conversation>
         </div>
     </div>
 </template>
@@ -65,35 +65,6 @@ export default {
             messages: []
         };
     },
-    mounted() {
-        Echo.private(`messages.${this.user.id}`)
-        .listen("NewMessage", e => {
-            this.hanleIncoming(e.message);
-        })
-
-        .notification(notification => {
-            Store.dispatch(
-                "addNotification",
-                notification.notifification
-            );
-
-            Notification.requestPermission(permission => {
-                if (!("Notification" in window)) {
-                    alert("Web Notification is not supported");
-                    return;
-                }
-                let notification = new Notification("New post alert!", {
-                    body: Notification.message
-                });
-            });
-        });
-        axios.get('/contacts')
-        .then((response) => {
-            Store.dispatch('contacts', response.data)
-            this.contacts = response.data;
-            this.selectedContact = response.data[0];
-        });
-    },
     methods: {
         startConversationWith(contact) {
             this.updateUnreadCount(contact, true);
@@ -111,6 +82,7 @@ export default {
                 message.from == this.selectedContact.id
             ) {
                 this.saveNewMessage(message);
+                Store.dispatch('newMessageShow',message);
                 return;
             }
             this.updateUnreadCount(message.from_contact, false);
@@ -124,8 +96,28 @@ export default {
                 else single.unread += 1;
                 return single;
             });
+        },
+        onTyping(e) {
+            Echo.private(`messages.${this.user.id}`)
+                .whisper("typing", this.selectedContact.name);          
         }
-    }
+    },
+    created() {
+        Echo.private(`messages.${this.user.id}`)
+        .listen("NewMessage", e => {
+            this.hanleIncoming(e.message);
+        })
+        .listenForWhisper("typing", response => {
+            console.log('typing');
+            console.log(response);
+        });
+        axios.get('/contacts')
+        .then((response) => {
+            Store.dispatch('contacts', response.data)
+            this.contacts = response.data;
+            this.selectedContact = response.data[0];
+        });
+    },
 };
 </script>
 
