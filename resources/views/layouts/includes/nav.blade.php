@@ -46,7 +46,7 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('user.travels',Auth()->id()) }}"> Factures <i class="fas fa-fw fa-envelope float-right" aria-hidden="true"></i>
+                               href="{{ route('user.factures',Auth()->id()) }}"> Factures <i class="fas fa-fw fa-envelope float-right" aria-hidden="true"></i>
                             </a>
 
                             <div class="dropdown-divider"></div>
