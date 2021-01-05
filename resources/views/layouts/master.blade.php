@@ -26,16 +26,7 @@
 
     <div id="app">
 
-      <b-alert
-        v-model="showTop"
-        class="position-fixed fixed-top m-0 rounded-0"
-        style="z-index: 3000;"
-        variant="success"
-        v-html="message"
-        dismissible
-      >
-      
-    </b-alert>
+      <alert-chat></alert-chat>
 
       <b-overlay :show="getShow" rounded="sm">
 

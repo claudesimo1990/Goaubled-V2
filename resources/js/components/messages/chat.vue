@@ -82,7 +82,7 @@ export default {
                 message.from == this.selectedContact.id
             ) {
                 this.saveNewMessage(message);
-                Store.dispatch('newMessageShow',message);
+
                 return;
             }
             this.updateUnreadCount(message.from_contact, false);
@@ -99,18 +99,21 @@ export default {
         },
         onTyping(e) {
             Echo.private(`messages.${this.user.id}`)
-                .whisper("typing", this.selectedContact.name);          
+            .whisper('typing', this.selectedContact.name);          
         }
     },
     created() {
         Echo.private(`messages.${this.user.id}`)
         .listen("NewMessage", e => {
             this.hanleIncoming(e.message);
-        })
-        .listenForWhisper("typing", response => {
-            console.log('typing');
-            console.log(response);
         });
+
+        Echo.join(`chat`)
+        .here((users) => {
+            console.log(users);
+            
+        }).joining(user => this.users.push(user))
+        
         axios.get('/contacts')
         .then((response) => {
             Store.dispatch('contacts', response.data)

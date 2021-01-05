@@ -47,7 +47,7 @@
                     @keydown.enter="send"
                     @keydown="typingEvent"
                     class="input-message" 
-                    :placeholder="type ? 'Claude est entrain d\'ecrire' : 'Message...'"
+                    :placeholder="type ? 'Claude est entrain d\'ecrire' : 'tapez votre message ici'"
                 />
                 <picker 
                     set="emojione"
@@ -112,6 +112,7 @@
                     text: text
                 }).then((response) => {
                     this.$emit('new', response.data);
+                    Store.dispatch('newMessageShow',response.data)
                 })
             },
             scrollToBottom() {

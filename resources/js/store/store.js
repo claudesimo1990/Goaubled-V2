@@ -10,7 +10,6 @@ export default {
         selectContact: {},
         authUser: {},
         notifications: [],
-        newMessageShow: false,
         newMessage: '',
         typing: false
         
@@ -51,13 +50,8 @@ export default {
           setOverlayShow (state, payload) {
             state.OverlayShow = payload;
           },
-          newMessageShow (state, payload) {
-            state.newMessage = 'nouveau message de' + '' + payload.from_contact.name;
-            state.newMessageShow = true;
-            setTimeout(function(){ 
-              state.newMessage = '';
-              state.newMessageShow = false;
-              }, 3000);
+          newMessageShow (state, payload) {            
+            state.newMessage = 'nouveau message de' + '' + payload.from;
           },
           typing (state, payload) {
             state.typing = payload;
@@ -131,9 +125,6 @@ export default {
           }, 
           getOverlayShow(state) {
             return state.OverlayShow;
-          },
-          newMessageShow(state) {
-            return state.newMessageShow;
           },
           typing(state) {
             return state.typing;

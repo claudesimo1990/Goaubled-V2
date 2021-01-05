@@ -79,24 +79,16 @@ Vue.component('datetime', Datetime);
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('cookie-component', require('./components/utilities/cookie.vue').default);
+Vue.component('alert-chat', require('./components/messages/alertChat.vue').default);
+Vue.component('activ-user', require('./components/stats/activUser.vue').default);
 
 window.app = new Vue({
     el: '#app',
     router: Router,
-    showTop: true,
 
     computed: {
       getShow: function() {
         return Store.state.OverlayShow;
-      },
-      showTop: function() {
-        return Store.state.newMessageShow;
-      },
-      message: function() {
-        return Store.state.newMessage;
-      }
-    },
-    methods: {
-
+      }  
     }
 });
