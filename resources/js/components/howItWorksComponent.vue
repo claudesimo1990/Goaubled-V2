@@ -11,13 +11,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="process-step">
-                                <p class="m-0 p-0">Step</p>
+                                <p class="m-0 p-0">N°</p>
                                 <h2 class="m-0 p-0">01</h2>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h5>What is Lorem Ipsum?</h5>
-                            <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
+                            <h5>Poster un trajet</h5>
+                            <p><small>{{ 'Inserez dans Formulaire les elements relatifs à votre voyge. C\'est à la date, lieu depart et d\'arrivve, le nombre de kilo a transporter et le prix par kilo. Ainsi que le prix du courrier. Ensuite telecharger votre billet d\'avion et donnez plus d\'information sur votre voyage sur le lieu de rencontre ou bien sur le type de colis à transporter'.substring(30) }}</small></p>
                         </div>
                     </div>
                     <div class="process-line-l"></div>
@@ -40,13 +40,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="process-step">
-                                <p class="m-0 p-0">Step</p>
+                                <p class="m-0 p-0">N°</p>
                                 <h2 class="m-0 p-0">02</h2>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h5>What is Lorem Ipsum?</h5>
-                            <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
+                            <h5>Confirmation de votre voyage</h5>
+                            <p><small>Votre voyage est ensuite confirmer, afin de valider la fiablite de votre voyage. </small></p>
                         </div>
                     </div>
                     <div class="process-line-r"></div>
@@ -61,13 +61,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="process-step">
-                                <p class="m-0 p-0">Step</p>
+                                <p class="m-0 p-0">N°</p>
                                 <h2 class="m-0 p-0">03</h2>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h5>What is Lorem Ipsum?</h5>
-                            <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
+                            <h5>Reservation</h5>
+                            <p><small>Lorsqu'un expediteur reserve vos colis. Nous vous transmettons par mail son numero de telefone. </small></p>
                         </div>
                     </div>
                     <div class="process-line-l"></div>
@@ -89,13 +89,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="process-step">
-                                <p class="m-0 p-0">Step</p>
+                                <p class="m-0 p-0">N°</p>
                                 <h2 class="m-0 p-0">04</h2>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h5>What is Lorem Ipsum?</h5>
-                            <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
+                            <h5>Reception du colis</h5>
+                            <p><small>{{ 'Lors de la rencontre, verifiez la nature des colis et faite une liste de tous les colis à transporter. Demande à l\'expediteur de vous faire un procuration, qui atteste que vous transportez les produits listes en son nom.'.substring(20) }} </small></p>
                         </div>
                     </div>
                     <div class="process-line-r"></div>
@@ -111,13 +111,13 @@
                     <div class="row">
                         <div class="col-md-5">
                             <div class="process-step">
-                                <p class="m-0 p-0">Step</p>
+                                <p class="m-0 p-0">N°</p>
                                 <h2 class="m-0 p-0">05</h2>
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h5>What is Lorem Ipsum?</h5>
-                            <p><small>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </small></p>
+                            <h5>Paiment</h5>
+                            <p><small>Après le trajet et la remise du colis, votre argent sera trafere sur votre compte PayPal. </small></p>
                         </div>
                     </div>
                     <div class="process-line-l"></div>
