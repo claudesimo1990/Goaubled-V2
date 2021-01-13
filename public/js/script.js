@@ -1,7 +1,5 @@
-Dropzone.autoDiscover = false;
-
 $(document).ready(function () {
-    
+
 const ratio = .1;
 const options = {
     root: null,
@@ -30,14 +28,14 @@ $(document).ready(function(){
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-    
+
             reader.onload = function (e) {
                 $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
             }
             reader.readAsDataURL(input.files[0]);
         }
     }
-    
+
     (function($) {
       $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
         template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'

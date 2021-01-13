@@ -38,7 +38,7 @@
                         <b-link :href="item.Path" class="btn btn-secondary btn-block">reserver</b-link>
                     </div>
                     <template v-slot:footer>
-                        <small class="text-muted">{{ item.created_at }}</small> 
+                        <small class="text-muted">{{ item.created_at }}</small>
                     </template>
                 </b-card>
             </b-card-group>
@@ -56,11 +56,6 @@ export default {
     },
     mounted() {
         this.lastNews = this.news;
-    },
-    methods: {
-        goToPath(path) {
-            console.log(path);
-        }
     }
 };
 </script>
@@ -74,7 +69,7 @@ export default {
         margin-bottom: 30px;
         padding: 30px;
     }
-    
+
     .card-user-logo {
         width: 90px;
         height: 90px;
