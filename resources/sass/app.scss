@@ -10,14 +10,14 @@
 
 @import "custom";
 
-.vue-typer 
+.vue-typer
 {
     font-size: 40px;
     text-transform: uppercase;
     font-weight: 700;
     padding-bottom: 20px;
 
-    .custom.char 
+    .custom.char
     {
         color: #0c2e8a;
         background-color: transparent;
@@ -92,7 +92,7 @@ input[type="file"] {
 
 .picture-src{
     width: 100%;
-    
+
 }
 .masthead {
     height: 100vh;
@@ -106,3 +106,8 @@ input[type="file"] {
   .header-bg-light {
     background-color: #f8f9fadb;
   }
+
+.howItWork__etape-number {
+    color: $quigo;
+    font-weight: 700;
+}

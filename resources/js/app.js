@@ -7,8 +7,6 @@ import { Datetime } from 'vue-datetime'
 import {BootstrapVue, BootstrapVueIcons}  from 'bootstrap-vue';
 import VueTyperPlugin from 'vue-typer'
 import VueLetterAvatar from 'vue-letter-avatar';
-import VueRouter from "vue-router";
-import routes from '../js/routes';
 import module from './store/store';
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-default.css';
@@ -20,37 +18,34 @@ import vueCountryRegionSelect from 'vue-country-region-select';
 extend('required', {
   ...required,
   message: 'ce champs est obligatoire'
-})
+});
 extend('integer', {
   ...integer,
   message: 'ce champs est un entier'
-})
+});
 extend('numeric', {
   ...numeric,
   message: 'ce champs est numeric'
-})
+});
 
-window.moment = require('moment'); 
- 
+window.moment = require('moment');
+
 Vue.use(VueToast);
-Vue.use(VueRouter);
 Vue.use(VueLetterAvatar);
 Vue.use(Notifications);
 Vue.use(BootstrapVue);
-Vue.use(BootstrapVueIcons)
+Vue.use(BootstrapVueIcons);
 Vue.use(VueTyperPlugin);
 Vue.use(Vuex);
 Vue.use(vueCountryRegionSelect);
 
 window.Store = new Vuex.Store(module);
 
-const Router = new VueRouter(routes);
-
 Vue.use(Datetime);
 
 $('#myCarousel').carousel({
   interval: 3000,
-})
+});
 
 // Global register
 Vue.component('news', require('./components/newsComponent.vue').default);
@@ -84,11 +79,10 @@ Vue.component('activ-user', require('./components/stats/activUser.vue').default)
 
 window.app = new Vue({
     el: '#app',
-    router: Router,
 
     computed: {
       getShow: function() {
         return Store.state.OverlayShow;
-      }  
+      }
     }
 });

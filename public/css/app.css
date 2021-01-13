@@ -13556,3 +13556,8 @@ input[type=file] {
   background-color: #f8f9fadb;
 }
 
+.howItWork__etape-number {
+  color: #8bc73d;
+  font-weight: 700;
+}
+

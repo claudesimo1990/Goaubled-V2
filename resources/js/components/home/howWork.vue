@@ -1,5 +1,5 @@
 <template>
-    <section id="services" class="how-it-work"> 
+    <section id="services" class="how-it-work">
         <div class="container">
             <div class="section-header">
                 <h2 class="text-center title__annonce">
@@ -7,31 +7,28 @@
                 </h2>
             </div>
             <div class="row mt-4 mb-4">
-                <div class="col-2">
-                    <div class="numberCircle">Step 1</div>
+                <div class="col-4 d-flex align-items-center justify-content-center">
+                    <h2 class="howItWork__etape-number">Etape 1</h2>
                 </div>
-                <div class="col-6">
+                <div class="col-8 p-2">
                     <h4 class="border-2">Rechercher un voyage</h4>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ipsa nobis atque doloribus voluptates asperiores cupiditate soluta aperiam laboriosam itaque reiciendis vitae, nesciunt ad dicta rerum magnam architecto laborum modi.
                 </div>
-                <div class="offset-4"></div>
             </div>
             <div class="row mt-4 mb-4">
-                <div class="offset-1"></div>
-                <div class="col-2">
-                    <div class="numberCircle">Step 2</div>
+                <div class="col-4 d-flex align-items-center justify-content-center">
+                    <h2 class="howItWork__etape-number">Etape 2</h2>
                 </div>
-                <div class="col-9">
+                <div class="col-8 p-2">
                     <h4 class="border-2">S'authentifier</h4>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ipsa nobis atque doloribus voluptates asperiores cupiditate soluta aperiam laboriosam itaque reiciendis vitae, nesciunt ad dicta rerum magnam architecto laborum modi.
                 </div>
             </div>
             <div class="row mt-4 mb-4">
-                <div class="offset-2"></div>
-                <div class="col-2">
-                    <div class="numberCircle">Step 3</div>
+                <div class="col-4 d-flex align-items-center justify-content-center">
+                    <h2 class="howItWork__etape-number">Etape 3</h2>
                 </div>
-                <div class="col-8">
+                <div class="col-8 p-2">
                     <h4 class="border-2">Contacter le voyageur</h4>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. In ipsa nobis atque doloribus voluptates asperiores cupiditate soluta aperiam laboriosam itaque reiciendis vitae, nesciunt ad dicta rerum magnam architecto laborum modi.
                 </div>
@@ -64,7 +61,7 @@ export default {
 
     .container {
         padding-top:20px;
-        padding-bottom: 20px; 
+        padding-bottom: 20px;
     }
 }
 
