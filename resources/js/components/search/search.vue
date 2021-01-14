@@ -1,6 +1,6 @@
 <template>
     <div>
-    <vue-typer text='Rechercher un Voyage'></vue-typer>
+    <vue-typer text='Rechercher un Voyage' caret-animation='smooth'></vue-typer>
     <section class="search-sec" style="padding: 0">
         <div class="container">
             <div class="row text-center">
@@ -30,7 +30,7 @@
                         auto
                         ></datetime>
                     </b-input-group>
-                    
+
                     <b-button class="btn-recherche" variant="primary" @click="search">rechercher</b-button>
                 </b-form>
                 </div>
@@ -121,7 +121,7 @@ export default {
         axios.get('/posts')
         .then(function (response) {
             console.log(response.data);
-            
+
             el.posts = response.data;
         })
         .catch(function (error) {
@@ -131,11 +131,18 @@ export default {
 
 }
 </script>
-<style>
+<style lang="scss">
 .item-search{
     font-weight: 900;
     font-size: 15px;
     color: black;
     float: left;
+}
+/* SCSS */
+@media (max-width: 576px) {
+    .vue-typer {
+        font-size: 20px;
+        @extends(.py-3);
+    }
 }
 </style>
