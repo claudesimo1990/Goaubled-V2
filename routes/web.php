@@ -13,7 +13,7 @@ Route::view('/impressum', '/pages/impressum')->name('impressum');
 Route::view('/principes', '/pages/principes')->name('principes');
 Route::view('/termsOfservice', '/pages/termsOfservice')->name('termsOfservice');
 
-Route::post('/getAllmessageWidth','MessageController@show')->name('messages.show');
+Route::post('/getAllmessageWidth','messageController@show')->name('messages.show');
 Route::post('/contact/user/{user}','ProfileController@contactUser')->name('Contact.user');
 
 Route::post('message/{to}/{from}','ContactController@sendMessage')->name('message.send')->middleware('auth');
@@ -72,15 +72,18 @@ Route::get('/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('/facebook', 'facebooklogController@redirect')->name('facebook');
 
  // admin
-Route::namespace('admin',function(){
-    route::get('/home','Admin\HomeController@home')->name('admin.home')->middleware('is_admin');
-    route::get('/login','Admin\AuthController@login')->name('admin.login');
-    route::post('/login','Admin\AuthController@attemptAdmin');
-});
+Route::get('admin/home','Admin\HomeController@home')->name('admin.home')->middleware('is_admin');
+Route::get('admin/login','Admin\AuthController@login')->name('admin.login');
+Route::post('admin/login','Admin\AuthController@attemptAdmin');
+
+// images
+Route::get('admin/images/index', 'Admin\ImagesController@index')->name('images.index');
+Route::get('admin/images/create', 'Admin\ImagesController@create')->name('images.create');
+Route::post('admin/images/store', 'Admin\ImagesController@store')->name('images.store');
 
 Route::group(['middleware' => ['is_admin']], function () {
 
-    route::get('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect')->middleware('is_admin');
+    Route::get('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect')->middleware('is_admin');
 
     Route::resource('/admin/users', 'Admin\UsersController')->middleware('is_admin');
 
