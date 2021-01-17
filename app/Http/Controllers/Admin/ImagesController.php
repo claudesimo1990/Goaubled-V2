@@ -39,7 +39,7 @@ class ImagesController extends Controller
 
             $fileName = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
 
-            $relPath = 'app/public/home/';
+            $relPath = 'Home/';
             if (!file_exists(storage_path($relPath))) {
                 mkdir(storage_path($relPath), 777, true);
             }
