@@ -1,5 +1,5 @@
 <template>
-<section id="services" class="my-5 py-4"> 
+<section id="services" class="my-5 py-4">
   <div class="container">
       <div class="section-header">
         <h2 class="text-center">
@@ -17,8 +17,8 @@
                   <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
                     necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
                   </div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/images/imgs/popularDestination/douala.png" class="" alt="slide"></div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/images/imgs/popularDestination/berlin.jpeg" class="" alt="slide"></div>
+                <div class="col-xs-12 col-md-12 col-lg-5 order-md-2 order-1"><img width="600" height="400" src="/images/imgs/popularDestination/douala.png" class="" alt="slide"></div>
+                <div class="col-xs-12 col-md-12 col-lg-5 order-md-2 order-1"><img width="600" height="400" src="/images/imgs/popularDestination/berlin.jpeg" class="" alt="slide"></div>
               </div>
             </div>
           </div>
@@ -30,10 +30,10 @@
                 <div class="col-md-7 col-12 order-md-1 order-2">
                   <h4>Paris<b-icon class="mx-1 icon-from-to-destination" icon="arrow-right-circle-fill" variant="info" aria-hidden="true"></b-icon>Douala</h4>
                   <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
-                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p> 
+                    necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
                   </div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/5.jpg" class="" alt="slide"></div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/5.jpg" class="" alt="slide"></div>
+                <div class="col-xs-12 col-md-12 col-lg-5 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/5.jpg" class="" alt="slide"></div>
+                <div class="col-xs-12 col-md-12 col-lg-5 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/5.jpg" class="" alt="slide"></div>
               </div>
             </div>
           </div>
@@ -47,15 +47,15 @@
                   <p>Lorem ipsum dolor sit amet. Reprehenderit, qui blanditiis quidem rerum <br>
                     necessitatibus praesentium voluptatum deleniti atque corrupti.</p>
                   </div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/1.jpg" class="" alt="slide"></div>
-                <div class="col-md-5 col-12 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/1.jpg" class="" alt="slide"></div>
+                <div class="col-xs-12 col-md-12 col-lg-5 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/1.jpg" class="" alt="slide"></div>
+                <div class="col-xs-12 col-md-12 col-lg-5 order-md-2 order-1"><img width="600" height="400" src="/img/intro-carousel/1.jpg" class="" alt="slide"></div>
               </div>
             </div>
           </div>
       </div>
   </div>
   </div>
-<!--slide end--> 
+<!--slide end-->
   </div>
 </section>
 </template>
@@ -93,8 +93,8 @@ export default {
 #myCarousel .carousel-item a{background:#F47735; font-size:14px; color:#FFF; padding:13px 32px; display:inline-block; }
 #myCarousel .carousel-item a:hover{background:#394fa2; text-decoration:none;  }
 
-#myCarousel .carousel-item h4{-webkit-animation-name:fadeInLeft; animation-name:fadeInLeft;} 
-#myCarousel .carousel-item p{-webkit-animation-name:slideInRight; animation-name:slideInRight;} 
+#myCarousel .carousel-item h4{-webkit-animation-name:fadeInLeft; animation-name:fadeInLeft;}
+#myCarousel .carousel-item p{-webkit-animation-name:slideInRight; animation-name:slideInRight;}
 #myCarousel .carousel-item a{-webkit-animation-name:fadeInUp; animation-name:fadeInUp;}
 #myCarousel .carousel-item .mask img{-webkit-animation-name:slideInRight; animation-name:slideInRight; display:block; height:auto; max-width:100%;}
 #myCarousel h4, #myCarousel p, #myCarousel a, #myCarousel .carousel-item .mask img{-webkit-animation-duration: 1s;
@@ -154,7 +154,7 @@ export default {
 }
 
 
- 
+
 @-webkit-keyframes fadeInLeft {
   from {
     opacity: 0;

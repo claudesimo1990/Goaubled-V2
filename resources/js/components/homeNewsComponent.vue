@@ -26,8 +26,8 @@
                     </b-card-text>
                     <div>
                         <h5 class="text-nowrap home-post-title"><b-badge variant="secondary">{{ item.from }}</b-badge><b-icon class="mx-1" icon="arrow-right-circle-fill" variant="info" aria-hidden="true"></b-icon><b-badge variant="secondary">{{ item.to }}</b-badge></h5>
-                        <p>Depart: <span class="float-right font-weight-bold">{{ item.dateFrom }}</span></p>
-                        <p>Arrivee: <span class="float-right font-weight-bold">{{ item.dateTo }}</span></p>
+                        <p>Depart: <span class="float-right font-weight-bold destination">{{ item.dateFrom }}</span></p>
+                        <p>Arrivee: <span class="float-right font-weight-bold destination">{{ item.dateTo }}</span></p>
                         <hr>
                         <p>Kilos Disponibles : <span class="float-right font-weight-bold"><h5><b-badge variant="secondary">{{ item.kilo }}</b-badge></h5></span></p>
                         <p>Prix du Kilo : <span class="float-right font-weight-bold"><h5><b-badge variant="secondary">{{ item.prix }}<i data-v-4e9a6efe="" class="fas fa-euro-sign pl-1"></i></b-badge></h5></span></p>
@@ -81,5 +81,8 @@ export default {
     }
     .home-post-title {
         text-align: center;
+    }
+    .badge {
+        font-size: 68% !important;
     }
 </style>

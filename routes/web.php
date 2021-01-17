@@ -77,9 +77,9 @@ Route::get('admin/login','Admin\AuthController@login')->name('admin.login');
 Route::post('admin/login','Admin\AuthController@attemptAdmin');
 
 // images
-Route::get('admin/images/index', 'Admin\ImagesController@index')->name('images.index');
-Route::get('admin/images/create', 'Admin\ImagesController@create')->name('images.create');
+Route::get('admin/images', 'Admin\ImagesController@index')->name('images.index');
 Route::post('admin/images/store', 'Admin\ImagesController@store')->name('images.store');
+Route::delete('admin/images/destroy/{id}', 'Admin\ImagesController@destroy')->name('images.destroy');
 
 Route::group(['middleware' => ['is_admin']], function () {
 

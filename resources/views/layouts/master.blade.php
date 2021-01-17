@@ -11,11 +11,10 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <link href="{{asset('/img/logo.png')}}" rel="icon">
-    <link href="{{asset('/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
     <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
-    <link href="{{asset('/lib/animate/animate.min.css')}}" rel="stylesheet">
+
     @yield('css')
+
     <link href="{{'/css/app.css'}}" rel="stylesheet">
 </head>
 <body id="body">
@@ -43,10 +42,6 @@
 <!-- JavaScript Libraries -->
 @yield('js')
 <script src="{{ asset("/js/app.js") }}"></script>
-<script defer src="{{ asset('/lib/wow/wow.min.js') }}"></script>
-<script defer src="{{ asset('/lib/sticky/sticky.js') }}"></script>
-<!-- Template Main Javascript File -->
-<script defer src="{{ asset("/js/main.js") }}"></script>
 <script defer src="{{ asset('./js/script.js') }}"></script>
 @stack('scripts')
 @include('flashy::message')

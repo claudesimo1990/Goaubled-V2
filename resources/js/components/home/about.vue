@@ -8,7 +8,7 @@
             </div>
         <div class="row align-items-center">
         <div class="col-12 col-md-6 mb-4 mb-md-0">
-            <img alt="image" width="728" height="400" class="img-fluid" src="/img/intro-carousel/2.jpg">
+            <img alt="image" width="728" height="400" class="img-fluid" :src="img">
         </div>
         <div class="col-12 col-md-6 col-lg-5 ml-md-auto text-left">
             <p class="lead text-justify">Plateforme de Transport de colis et de courriers entre particuliers à des tarifs au-dessus de toute concurrence.</p>
@@ -18,6 +18,17 @@
     </div>
 </section>
 </template>
+<script>
+    export default {
+        props: ['img'],
+        data: function () {
+            return {
+
+            }
+        }
+    }
+
+</script>
 <style lang="scss" scoped>
     @import "./../../../sass/_variables.scss";
 

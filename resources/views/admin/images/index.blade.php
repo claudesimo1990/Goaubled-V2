@@ -1,59 +1,64 @@
 @extends('admin.layout')
 
 @section('admin_content')
-
-    <div class="col-md-12">
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session('message') }}
-            </div>
-        @endif
-        @if (session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-    </div>
-
     <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <form action="{{route('images.store')}}" method="post" enctype="multipart/form-data">
+
+                    @csrf
+
+                    <div class="form-group">
+                        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer le nom de l'image " name="file">
+                        @error('file') <small id="emailHelp" class="form-text text-danger">l'image est obligatoire</small> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Nom de l'image</label>
+                        <input class="form-control" type="text" name="name" id="name">
+                        @error('name') <small id="emailHelp" class="form-text text-danger">le nom est obligatoire</small> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target">l'objectif de l'image</label>
+                        <input class="form-control" type="text" name="target" id="target" placeholder="Header">
+                        @error('target') <small id="emailHelp" class="form-text text-danger">l'objectif est obligatoire</small> @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">save</button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-center align-items-center bg-success p-3">
+                    <ol class="text-white">
+                        <li>Page d'accueil est : homepage.png</li>
+                        <li>a propos est : about.png</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary text-uppercase">Voyages</h6>
+                <h6 class="m-0 font-weight-bold text-primary text-uppercase">Images</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped admin__table" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                        <tr class="admin__table-tr">
-                            <th class="text-center admin__table-th">N°</th>
-                            <th class="text-center admin__table-th">Depart</th>
-                            <th class="text-center admin__table-th">Arrivee</th>
-                            <th class="text-center admin__table-th">Depart le</th>
-                            <th class="text-center admin__table-th">Nombre de Kilos</th>
-                            <th class="text-center admin__table-th">Biellet d avion</th>
-                            <th class="text-center admin__table-th">valider?</th>
-                            <th class="text-center admin__table-th">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($travels as $index => $travel)
-                            <tr class="admin__table-tr">
-                                <td class="text-center admin__table-td">{{ $travel->id }}</td>
-                                <td class="text-center admin__table-td">{{ $travel->from }}</td>
-                                <td class="text-center admin__table-td">{{ $travel->to }}</td>
-                                <td class="text-center admin__table-td">{{ $travel->getDateToAttribute() }}</td>
-                                <td class="text-center admin__table-td">{{ $travel->kilo }}</td>
-                                <td class="text-center admin__table-td">{{ substr($travel->photoBielletAvion,0,5) }}</td>
-                                <td class="text-center admin__table-td">{{ $travel->publish == 0 ? 'non':'oui' }}</td>
-                                <td class="text-center admin__table-td">
-                                    <a href="{{ route('admin.travel.validate',$travel->id) }}" class="btn btn-success">valider</a>
-                                    <a href="{{ route('admin.travel.reject',$travel->id) }}" class="btn btn-danger">retirer  </a>
-                                </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                    {{ $travels->links() }}
+                <div class="row">
+                    @foreach($imgs as $item)
+                        <div class="col-md-6">
+                            <p>{{$item->name}}</p>
+                            <img src="{{asset('storage/Home/'.$item->name)}}" alt="">
+                            <div class="text-center mt-3">
+                                <form action="{{route('images.destroy',$item->id)}}" method="POST">
+                                    {{ method_field('delete') }}
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">supprimer</button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>

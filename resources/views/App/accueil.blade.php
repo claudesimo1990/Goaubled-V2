@@ -6,7 +6,7 @@
 
     <home-news-component :news="{{ $latest_news }}"></home-news-component>
 
-    <about></about>
+    <about img="{{ asset('storage/Home/about.png') }}"></about>
 
     <how-work how-it-work="{{ route('howItWork') }}"></how-work>
 

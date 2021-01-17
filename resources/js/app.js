@@ -76,6 +76,7 @@ Vue.component('ValidationObserver', ValidationObserver);
 Vue.component('cookie-component', require('./components/utilities/cookie.vue').default);
 Vue.component('alert-chat', require('./components/messages/alertChat.vue').default);
 Vue.component('activ-user', require('./components/stats/activUser.vue').default);
+Vue.component('home-header-component', require('./components/utilities/Homeheader').default);
 
 window.app = new Vue({
     el: '#app',

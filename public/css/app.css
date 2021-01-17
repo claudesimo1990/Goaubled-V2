@@ -12235,7 +12235,6 @@ img {
 .card-signin .card-img-left {
   width: 45%;
   /* Link to your background image using in the property below! */
-  background: scroll center url(/images/25926.jpg?23701de86aca3be39abdf761e0df6af9);
   background-size: cover;
 }
 
@@ -13541,15 +13540,6 @@ input[type=file] {
 
 .picture-src {
   width: 100%;
-}
-
-.masthead {
-  height: 100vh;
-  min-height: 500px;
-  background-image: url("/images/imgs/womanAndMen2.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .header-bg-light {
