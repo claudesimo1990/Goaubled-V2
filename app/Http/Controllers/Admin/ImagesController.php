@@ -8,6 +8,7 @@ use Illuminate\Contracts\Filesystem\FileExistsException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Intervention\Image\ImageManagerStatic;
 
 class ImagesController extends Controller
 {
@@ -35,21 +36,18 @@ class ImagesController extends Controller
 
             $image = $request->file('file');
 
+            $fileName = $request->get('name');
+
             // open an image file
+            if ($request->get('target') == 'Header') {
 
-            $fileName = date('Y-m-d-H:i:s')."-".$image->getClientOriginalName();
-
-            $relPath = 'Home/';
-            if (!file_exists(storage_path($relPath))) {
-                mkdir(storage_path($relPath), 777, true);
+                $img = ImageManagerStatic::make($request->file('file'))->resize(600, 400)->encode('png');
             }
-            if ($target == 'Header' || $target == 'About') {
 
-                Image::make($image->getRealPath())->resize(600, 400)->save(storage_path($relPath.$request->get('name')),60);
-            }
+            Storage::disk('public')->put('Home/'.$fileName, $img);
 
             Images::create([
-                'name' => $request->get('name'),
+                'name' => $fileName,
                 'target' => $target,
             ]);
 
