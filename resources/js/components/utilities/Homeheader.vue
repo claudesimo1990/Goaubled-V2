@@ -1,5 +1,5 @@
 <template>
-    <header class="masthead" :style="{ backgroundImage: `url('${backgroundImage}')` }">
+    <header class="masthead" :style="{ backgroundImage: `url('${backgroundImage}')`,  'height':  '800px' }">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12 text-center border d-flex justify-content-center align-item-center shadow-none header-bg-light rounded">

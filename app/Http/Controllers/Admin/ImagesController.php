@@ -42,9 +42,9 @@ class ImagesController extends Controller
             if ($request->get('target') == 'Header') {
 
                 $img = ImageManagerStatic::make($request->file('file'))->resize(600, 400)->encode('png');
+                Storage::disk('public')->put('Home/'.$fileName, $img);
             }
 
-            Storage::disk('public')->put('Home/'.$fileName, $img);
 
             Images::create([
                 'name' => $fileName,
@@ -53,7 +53,6 @@ class ImagesController extends Controller
 
             return back();
         }
-        return 'c est bon';
     }
 
     public function destroy($images)

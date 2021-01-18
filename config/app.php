@@ -229,7 +229,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Flashy' => MercurySeries\Flashy\Flashy::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        
+
     ],
 
 ];
