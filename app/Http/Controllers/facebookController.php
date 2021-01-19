@@ -3,15 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Laravel\Socialite\Facades\Socialite;
 
-class facebooklogController extends Controller
+class facebookController extends Controller
 {
     /**
      * Create a redirect method to facebook api.
      *
-     * @return void
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function redirect()
     {
@@ -20,9 +22,9 @@ class facebooklogController extends Controller
     /**
      * Return a callback method from facebook api.
      *
-     * @return callback URL from facebook
+     * @return RedirectResponse|Redirector
      */
-    public function callback()
+    public function facebookCallback()
     {
         try {
             $user = Socialite::driver('facebook')->user();
@@ -45,6 +47,6 @@ class facebooklogController extends Controller
             $newUser->save();
             auth()->login($newUser, true);
         }
-        return redirect()->to('/home');
+        return redirect()->to(route('news.index'));
     }
 }

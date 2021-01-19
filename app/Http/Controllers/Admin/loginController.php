@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\View\View;
 
 class loginController extends Controller
 {
@@ -34,7 +36,7 @@ class loginController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @return Factory|View
      */
 
     public function dashboard(){
