@@ -27,7 +27,7 @@
                 @csrf
 
                 <input type="hidden" name="token" value="{{ $token }}">
-                
+
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email">
                 <label for="inputEmail">Email</label>
@@ -39,9 +39,9 @@
                 @error('password')<span class="error small">{{ $message }}</span>@enderror
               </div>
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password_confirmation">
                 <label for="inputPassword">Mot de passe de confirmation</label>
-            </div>
+              </div>
 
               <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">modifier le mot de passe</button>
             </form>
@@ -49,5 +49,4 @@
         </div>
       </div>
     </div>
-  </div>
 @endsection

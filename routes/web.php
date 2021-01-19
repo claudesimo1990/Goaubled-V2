@@ -76,6 +76,10 @@ Route::get('admin/home','Admin\HomeController@home')->name('admin.home')->middle
 Route::get('admin/login','Admin\AuthController@login')->name('admin.login');
 Route::post('admin/login','Admin\AuthController@attemptAdmin');
 
+// password
+
+Route::get('/auth/showform', 'Auth\password\resetPasswordController@showform')->name('resetPassForm');
+
 // images
 Route::get('admin/images', 'Admin\ImagesController@index')->name('images.index');
 Route::post('admin/images/store', 'Admin\ImagesController@store')->name('images.store');
