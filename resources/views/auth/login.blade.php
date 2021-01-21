@@ -1,62 +1,60 @@
 @extends('layouts.master')
 
+@section('css')
+    <link rel="stylesheet" href="{{asset('/css/login.css')}}">
+    @stop
+
 @section('content')
 
-<div class="">
-    <div class="row mt-4">
-      <div class="col-md-12">
-          @if (session()->has('message'))
-              <div class="alert alert-success">
-                  {{ session('message') }}
-              </div>
-          @endif
-          @if (session()->has('error'))
-              <div class="alert alert-danger">
-                  {{ session('error') }}
-              </div>
-          @endif
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6 col-xl-6 mx-auto">
-        <div class="card card-signin flex-row my-5">
-          <div class="card-body">
-            <h5 class="text-center quigo-title">Connexion</h5>
-            <form class="form-signin" method="POST" action="{{ route('login') }}">
-              @csrf
-              <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="email" value="{{ old('email') ? old('email') : '' }}">
-                <label for="inputEmail">Email</label>
-                @error('email')<span class="error small">{{ $message }}</span>@enderror
-              </div>
-              <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" value="{{ old('password') ? old('password') : '' }}">
-                <label for="inputPassword">Password</label>
-                @error('password')<span class="error small">{{ $message }}</span>@enderror
-              </div>
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">se connecter</button>
-              <div class="row">
-                <div class="col-6 ml-0 pl-0 mt-3">
-                  <h5><a class="d-block text-center mt-2" data-toggle="modal" data-target="#exampleModalCenter" type="submit">Mot de passe oublier ?</a></h5>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="{{asset('/images/imgs/login.jpg')}}" alt="login" class="login-card-img">
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <h4><a href="{{route('accueil')}}" class="scrollto">Go<span>AuBled</span></a> - Connexion</h4>
+                            </div>
+                            <div class="login-card-footer-nav block-media-login my-4">
+                                <a href="{{ route('facebook') }}" class="btn btn-block btn-social btn-facebook text-white">
+                                    <span class="fa fa-facebook"></span> Continuer avec facebook
+                                </a>
+                                <a href="{{ route('google') }}" class="btn btn-block btn-social btn-google text-white">
+                                    <span class="fa fa-google"></span> Continuer avec google
+                                </a>
+                            </div>
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="email" class="sr-only">{{ __('E-Mail Address') }}</label>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email address">
+                                    @error('email')<span class="error small">{{ $message }}</span>@enderror
+                                </div>
+                                <div class="form-group mb-4">
+                                    <label for="password" class="sr-only">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
+                                    @error('password')<span class="error small">{{ $message }}</span>@enderror
+                                </div>
+                                <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                            </form>
+                            <a href="#!" class="forgot-password-link" data-toggle="modal" data-target="#exampleModalCenter">Mot de passe oublier ?</a>
+                            <p class="login-card-footer-text">pas encore de compte? <a href="{{ route('register') }}" class="text-reset">creer un compte</a></p>
+                            <nav class="login-card-footer-nav">
+                                <a href="#!">Terms of use.</a>
+                                <a href="#!">Privacy policy</a>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-6 ml-0 pl-0 mt-3">
-                  <h5><a class="d-block text-center mt-2" href="{{ route('register') }}">S'inscrire</a></h5>
-                </div>
-              </div>
-              <hr class="my-4">
-              <div class="row">
-                <div class="col-md-6"><a class="btn btn-lg btn-google btn-block text-uppercase" href="{{route('google')}}"><i class="fab fa-google mr-2"></i>S'inscrire avec Google</a></div>
-                <div class="col-md-6"><a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{ route('facebook') }}"><i class="fab fa-facebook-f mr-2"></i>S'inscrire avec Facebook</a></div>
-              </div>
-            </form>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </main>
 
-  <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <!-- Modal -->
+   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header bg-success text-white">

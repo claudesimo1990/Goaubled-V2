@@ -8,12 +8,12 @@
         <nav id="nav-menu-container">
             <ul class="nav-menu">
                 @guest
-                    <li class="{{ (request()->is('/')) ? 'menu-active' : '' }}"><a href="{{route('accueil')}}"><i class='fas fa-home mr-1'></i>Accueil</a></li>
-                    <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}"><i class="fas fa-search mr-1"></i>Voir les annonces</a></li>
-                    <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}"><i class="fas fa-road mr-1"></i>Proposer un trajet</a></li>
-                    <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}"><i class="fas fa-people-carry mr-1"></i>Expedier un colis</a></li>
-                    <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{route('register')}}"><i class='fas fa-sign-in-alt mr-1'></i>Inscription</a></li>
-                    <li class="{{ (request()->is('login')) ? 'menu-active' : '' }}"><a href="{{route('login')}}"><i class='fas fa-sign-in-alt mr-1'></i>Connexion</a></li>
+                    <li class="{{ (request()->is('/')) ? 'menu-active' : '' }}"><a href="{{route('accueil')}}"><span class="fa fa-home mr-1"></span>Accueil</a></li>
+                    <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}"><span class="fa fa-search mr-1"></span>Voir les annonces</a></li>
+                    <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}"><span class="fa fa-road mr-1"></span>Proposer un trajet</a></li>
+                    <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}"><span class="fa fa-bank mr-1"></span>Expedier un colis</a></li>
+                    <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{route('register')}}"><span class='fa fa-sign-language mr-1'></span>Inscription</a></li>
+                    <li class="{{ (request()->is('login')) ? 'menu-active' : '' }}"><a href="{{route('login')}}"><span class='fa fa-sign-in mr-1'></span>Connexion</a></li>
                 @else
                 <li class="{{ (request()->is('/')) ? 'menu-active' : '' }}"><a href="{{route('accueil')}}"><i class='fas fa-home mr-1'></i>Accueil</a></li>
                 <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}"><i class="fas fa-search mr-1"></i>Voir les annonces</a></li>
@@ -27,7 +27,7 @@
                 <li class="nav-item dropdown {{ (request()->is('home')) ? 'menu-active' : '' }}">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ substr(Auth::user()->name,0,10). '...' }} <span class="caret"></span>
+                            {{ substr(Auth::user()->name,0,20). '...' }} <span class="caret"></span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
