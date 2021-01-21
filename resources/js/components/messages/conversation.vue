@@ -46,12 +46,12 @@
                 <input v-model="message"
                     @keydown.enter="send"
                     @keydown="typingEvent"
-                    class="input-message" 
-                    :placeholder="type ? 'Claude est entrain d\'ecrire' : 'tapez votre message ici'"
+                    class="input-message"
+                    placeholder='Tapez votre message ici'
                 />
-                <picker 
+                <picker
                     set="emojione"
-                    v-show="showEmojiPicker" 
+                    v-show="showEmojiPicker"
                     :style="{ position: 'absolute', bottom: '50px', right: '350px' }"
                     :i18n="{ search: 'Recherche', categories: { search: 'Résultats de recherche', recent: 'Récents' } }"
                     title="choisissez un emoji..."
@@ -134,7 +134,7 @@
             },
             send(e) {
                 e.preventDefault();
-                
+
                 if (this.message == '') {
                     return;
                 }

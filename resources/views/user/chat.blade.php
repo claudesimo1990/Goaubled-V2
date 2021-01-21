@@ -1,10 +1,10 @@
-@extends('user.dashboard')
+@extends('layouts.master')
 
-@section('dashbord_content')
+@section('content')
 
-<chat 
-    :user="{{ auth()->user() }}" 
-    :friends="{{ $contacts }}" 
+<chat
+    :user="{{ auth()->user() }}"
+    :friends="{{ $contacts }}"
     asset="{{ asset('storage') }}"
 />
 

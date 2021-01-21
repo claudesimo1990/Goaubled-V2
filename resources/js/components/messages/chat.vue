@@ -99,7 +99,7 @@ export default {
         },
         onTyping(e) {
             Echo.private(`messages.${this.user.id}`)
-            .whisper('typing', this.selectedContact.name);          
+            .whisper('typing', this.selectedContact.name);
         }
     },
     created() {
@@ -111,9 +111,9 @@ export default {
         Echo.join(`chat`)
         .here((users) => {
             console.log(users);
-            
+
         }).joining(user => this.users.push(user))
-        
+
         axios.get('/contacts')
         .then((response) => {
             Store.dispatch('contacts', response.data)
@@ -157,7 +157,6 @@ i {
 
 .green-background {
     background: #009688;
-    height: 130px;
     width: 100%;
     position: fixed;
     top: 0;
@@ -518,8 +517,6 @@ body::-webkit-scrollbar-thumb,
 /* ------ MEDIA QUERIES ------ */
 @media (min-width: 1200px) {
     .wrap {
-        margin-bottom: 2vh;
-        margin-top: 25px;
         height: calc(98vh - 25px);
     }
 }

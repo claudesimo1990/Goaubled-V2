@@ -51,13 +51,6 @@
           <span>reservations</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
-          <i class="fas fa-fw fa-comments"></i>
-          <span>Chat</span></a>
-      </li>
-
        <!-- Nav Item - Tables -->
        <li class="nav-item">
         <a class="nav-link" href="{{ route('user.profile',Auth()->id()) }}">
