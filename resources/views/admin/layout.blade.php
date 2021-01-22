@@ -99,13 +99,19 @@
 
             <div class="topbar-divider d-none d-sm-block"></div>
 
-            <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user() ? auth()->user()->name : ''  }}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-            </li>
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-5 d-none d-lg-inline text-gray-600 small">{{ auth()->user() ? auth()->user()->name : ''  }}</span>
+                    <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class='fa fa-sign-out mr-1'></span>Deconnexion</a>
+                      <form id="logout-form" action="{{ route('admin.deconnect') }}" method="POST" style="display: none;">
+                          @csrf
+                      </form>
+                  </div>
+              </li>
 
           </ul>
 

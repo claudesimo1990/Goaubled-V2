@@ -2,7 +2,9 @@
     <div class="container">
 
         <div id="logo" class="pull-left">
-            <h1><a href="{{route('accueil')}}" class="scrollto">Go<span>AuBled</span></a></h1>
+            <h1>
+                <a href="{{route('accueil')}}" class="scrollto">Go<span>AuBled</span></a>
+            </h1>
         </div>
 
         <nav id="nav-menu-container">
@@ -12,7 +14,7 @@
                     <li class="{{ (request()->is('news')) ? 'menu-active' : '' }}"><a href="{{route('news.index')}}"><span class="fa fa-search mr-1"></span>Voir les annonces</a></li>
                     <li class="{{ (request()->is('travel')) ? 'menu-active' : '' }}"><a href="{{route('travels.create')}}"><span class="fa fa-road mr-1"></span>Proposer un trajet</a></li>
                     <li class="{{ (request()->is('coli')) ? 'menu-active' : '' }}"><a href="{{route('packs.create')}}"><span class="fa fa-bank mr-1"></span>Expedier un colis</a></li>
-                    <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{route('register')}}"><span class='fa fa-sign-language mr-1'></span>Inscription</a></li>
+                    <li class="{{ (request()->is('register')) ? 'menu-active' : '' }}"><a href="{{route('register')}}"><span class='fa fa-user mr-1'></span>Inscription</a></li>
                     <li class="{{ (request()->is('login')) ? 'menu-active' : '' }}"><a href="{{route('login')}}"><span class='fa fa-sign-in mr-1'></span>Connexion</a></li>
                 @else
                     <li class="{{ (request()->is('/')) ? 'menu-active' : '' }}"><a href="{{route('accueil')}}"><span class="fa fa-home mr-1"></span>Accueil</a></li>
@@ -37,17 +39,17 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('user.notifications',Auth()->id()) }}"> Notifications<span class="badge badge-info p-1 float-right">{{ auth()->user()->unreadNotifications->count() }}</span>
+                               href="{{ route('user.notifications',Auth()->id()) }}"> Notifications<span class="fa fa-info p-1 float-right">{{ auth()->user()->unreadNotifications->count() }}</span>
                             </a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item {{ Request::is('profile/'.Auth::user()->name, 'profile/'.Auth::user()->name . '/edit') ? 'active' : null }}"
-                               href="{{ route('user.factures',Auth()->id()) }}"> Factures <i class="fas fa-fw fa-envelope float-right" aria-hidden="true"></i>
+                               href="{{ route('user.factures',Auth()->id()) }}"> Factures <span class="fa fa-envelope float-right" aria-hidden="true"></span>
                             </a>
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class='fas fa-logout-alt mr-1'></i>Deconnexion</a>
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><span class='fa fa-sign-out mr-1'></span>Deconnexion</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

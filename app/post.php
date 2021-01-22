@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $guarded = [];
+    protected $fill = [];
 
     protected $appends = ['dateFrom','dateTo','Path','createdAt'];
 
@@ -18,7 +18,7 @@ class Post extends Model
         return Carbon::parse($this->attributes['dateTo'])->format('d.m.Y H:i');
     }
     public function getPathAttribute () {
-    
+
         return route('post.booking',['post' => $this->attributes['id'], 'user' => $this->attributes['user_id'] ]);
     }
 

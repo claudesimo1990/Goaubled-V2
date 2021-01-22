@@ -23,6 +23,8 @@
 
       <alert-chat></alert-chat>
 
+        <card-user></card-user>
+
       <b-overlay :show="getShow" rounded="sm">
 
         @include("layouts/includes/topbar")

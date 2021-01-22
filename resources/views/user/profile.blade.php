@@ -13,14 +13,14 @@
                 @else
                     <img src="{{Auth::user()->avatar ? asset('storage/UsersAvatars/'.Auth::user()->avatar) :  asset('/img/logo.png') }}" class="avatar img-circle img-thumbnail">
                 @endif
-            </div></hr><br>
+            </div><br>
         </div>
         <div class="col-md-10 pt-2">
             <form class="form" action="{{ route('user.profile',$user->id) }}" method="post" id="registrationForm">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">      
+                        <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="name">Nom</label>
                                 <input type="text" class="form-control" name="name" id="name" value="{{ $user->name }}">
@@ -48,12 +48,6 @@
                                 @error('birthDay')<span class="text-danger ml-1">{{ $message }}</span>@enderror
                             </div>
                         </div>
-                        <div class="form-group mt-5">
-                            <div class="col-xs-12 pt-5">
-                                <br>
-                                <button class="btn btn-lg btn-success btn-recherche" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Enregistrer votre nouveau profile</button>
-                            </div>
-                       </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -99,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="btn btn-lg btn-success btn-recherche text-center" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Enregistrer votre nouveau profile</button>
             </form>
         </div>
     </div>

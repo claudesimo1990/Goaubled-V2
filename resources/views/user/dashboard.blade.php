@@ -19,63 +19,63 @@
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active mt-4">
         <a class="nav-link" href="{{ route('profile.show',auth()->id()) }}">
-          <i class="fas fa-fw fa-home"></i>
+          <span class="fa fa-home"></span>
           <span>Accueil</span></a>
       </li>
 
        <!-- Nav Item - Tables -->
        <li class="nav-item">
         <a class="nav-link" href="{{ route('user.travels',Auth()->id()) }}">
-          <i class="fas fa-fw fa-plane"></i>
+          <span class="fa fa-plane"></span>
           <span>voyages</span></a>
       </li>
 
        <!-- Nav Item - Tables -->
        <li class="nav-item">
         <a class="nav-link" href="{{ route('user.packs',Auth()->id()) }}">
-          <i class="fas fa-fw fa-suitcase-rolling"></i>
+          <span class="fa fa-suitcase"></span>
           <span>Expeditions</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('user.demandes',Auth()->id()) }}">
-          <i class="fas fa-fw fa-handshake"></i>
+          <span class="fa fa-handshake"></span>
           <span>demandes</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('user.reservations',Auth()->id()) }}">
-          <i class="fas fa-fw fa-edit"></i>
+          <span class="fa fa-edit"></span>
           <span>reservations</span></a>
       </li>
 
        <!-- Nav Item - Tables -->
        <li class="nav-item">
         <a class="nav-link" href="{{ route('user.profile',Auth()->id()) }}">
-          <i class="fas fa-fw fa-user"></i>
+          <span class="fa fa-user"></span>
           <span>profile</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('user.factures',Auth()->id()) }}">
-          <i class="fas fa-fw fa-envelope"></i>
+          <span class="fa fa-envelope"></span>
           <span>factures</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('user.notifications',Auth()->id()) }}">
-          <i class="fa fa-bell icon-notif"></i>
+          <span class="fa icon-notif"></span>
           <span>Notifications</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="{{ route('user.message',Auth()->id()) }}">
-          <i class="far fa-smile"></i>
+          <span class="fa fa-smile"></span>
           <span>Bewertung</span></a>
       </li>
 
@@ -114,7 +114,4 @@
 
     </div>
     <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
 @endsection

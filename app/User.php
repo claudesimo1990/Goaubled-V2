@@ -70,7 +70,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Reservation','user_id');
     }
-    
+
     /**
      * colis
      *
@@ -80,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(\App\Coli::class);
     }
-    
+
     /**
      * travels
      *
@@ -90,7 +90,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(\App\Travel::class);
     }
-    
+
     /**
      * comments
      *
@@ -100,7 +100,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(\App\Comment::class);
     }
-    
+
     /**
      * getAvatarAttribute
      *

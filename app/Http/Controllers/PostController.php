@@ -37,7 +37,9 @@ class postController extends Controller
         ]);
 
         $filename = md5($request->from . $request->to).'.jpg';
+
         $img = ImageManagerStatic::make($request->colisPhoto)->encode('jpg');
+
         Storage::disk('public')->put('Colis/'.$filename, $img);
 
         Post::create([
@@ -55,6 +57,7 @@ class postController extends Controller
         ]);
 
         flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');
+
         return ['redirect' => route('news.index')];
     }
 
@@ -77,7 +80,9 @@ class postController extends Controller
         ]);
 
         $filename = md5($request->from . $request->to).'.jpg';
+
         $img = ImageManagerStatic::make($request->photoBielletAvion)->encode('jpg');
+
         Storage::disk('public')->put('FlysTicket/'.$filename, $img);
 
         Post::create([
@@ -96,6 +101,7 @@ class postController extends Controller
         ]);
 
         flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');
+
         return ['redirect' => route('news.index')];
     }
 
@@ -109,22 +115,27 @@ class postController extends Controller
     public function listeNews()
     {
         $posts = Post::where('publish',1)->with('user')->paginate(10);
+
         return response()->json($posts, 200);
     }
 
     public function bookingPost(Post $post, User $user)
     {
         if($post->categorie_id == 2) {
+
             return view('booking.travel', ['post' => $post, 'user' => $user]);
+
         }else if($post->categorie_id == 1) {
+
             // posts for current user
-            return view('booking.coli', ['post' => $post, 'user' => $user]);  
+            return view('booking.coli', ['post' => $post, 'user' => $user]);
         }
     }
 
     public function news()
     {
         $posts = Post::where('publish',1)->get();
+
         return response()->json($posts, 200);
     }
 
@@ -157,7 +168,7 @@ class postController extends Controller
 
                 $request->get('kilos'),
 
-                $booking->id,
+                $booking->id
             )
         );
 
@@ -178,23 +189,23 @@ class postController extends Controller
             new packBooking
             (
                  auth()->user(),
- 
+
                  $request->get('owner'),
 
                  $request->get('post')[0],
- 
+
                  route('confirm',[
                     'user' => auth()->id(),
                     'post' => $request->get('post')[0]['id']])
              )
          );
- 
+
          if (Mail::failures()) {
- 
+
              return response('error', 500);
- 
+
          } else {
- 
+
              return response('success', 200);
          }
     }
@@ -203,7 +214,7 @@ class postController extends Controller
     {
         if($request->get('action') == "true") {
             $k = $request->get('k');
-        
+
         if($k !== 'pack') {
             $post->kilo = ($post->kilo - $k) > 0 ? $post->kilo - $k : 0;
             $post->save();

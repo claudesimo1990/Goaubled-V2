@@ -89,7 +89,7 @@ Route::delete('admin/images/destroy/{id}', 'Admin\ImagesController@destroy')->na
 
 Route::group(['middleware' => ['is_admin']], function () {
 
-    Route::get('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect')->middleware('is_admin');
+    Route::post('/admin/deconnect','Admin\AuthController@deconnect')->name('admin.deconnect')->middleware('is_admin');
 
     Route::resource('/admin/users', 'Admin\UsersController')->middleware('is_admin');
 

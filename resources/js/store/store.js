@@ -11,8 +11,10 @@ export default {
         authUser: {},
         notifications: [],
         newMessage: '',
-        typing: false
-        
+        typing: false,
+        modalShow: false,
+        profileUser: {}
+
       },
       mutations: {
         setKilos (state, payload) {
@@ -29,6 +31,12 @@ export default {
         },
         setisActiveChat (state, payload) {
           state.isActiveChat = payload;
+        },
+        modalShow (state, payload) {
+            state.modalShow = payload;
+          },
+        profileUser (state, payload) {
+            state.profileUser = payload;
         },
         bookKilo (state, payload) {
             if(payload <= state.kilos) {
@@ -50,7 +58,7 @@ export default {
           setOverlayShow (state, payload) {
             state.OverlayShow = payload;
           },
-          newMessageShow (state, payload) {            
+          newMessageShow (state, payload) {
             state.newMessage = 'nouveau message de' + '' + payload.from;
           },
           typing (state, payload) {
@@ -96,6 +104,12 @@ export default {
         },
         typing(context, payload) {
           context.commit('typing', payload);
+        },
+        modalShow(context, payload) {
+          context.commit('modalShow', payload);
+        },
+        profileUser(context, payload) {
+          context.commit('profileUser', payload);
         }
       },
       getters: {
@@ -107,27 +121,33 @@ export default {
           },
           authUser(state) {
             return state.authUser;
-          }, 
+          },
           selectContact(state) {
             return state.selectContact;
-          }, 
+          },
           contact(state) {
             return state.contact;
           },
           contacts(state) {
             return state.contacts;
-          }, 
+          },
           getisActiveChat(state) {
             return state.isActiveChat;
           },
           getNotifications(state) {
             return state.notifications;
-          }, 
+          },
           getOverlayShow(state) {
             return state.OverlayShow;
           },
           typing(state) {
             return state.typing;
-          } 
+          } ,
+          modalShow(state) {
+              return state.modalShow;
+          },
+          profileUser(state) {
+              return state.profileUser;
+          }
       }
 }
