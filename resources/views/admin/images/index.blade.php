@@ -10,19 +10,19 @@
 
                     <div class="form-group">
                         <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer le nom de l'image " name="file">
-                        @error('file') <small id="emailHelp" class="form-text text-danger">l'image est obligatoire</small> @enderror
+                        @error('file') <small class="form-text text-danger">l'image est obligatoire</small> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="name">Nom de l'image</label>
                         <input class="form-control" type="text" name="name" id="name">
-                        @error('name') <small id="emailHelp" class="form-text text-danger">le nom est obligatoire</small> @enderror
+                        @error('name') <small class="form-text text-danger">le nom est obligatoire</small> @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="target">l'objectif de l'image</label>
                         <input class="form-control" type="text" name="target" id="target" placeholder="Header">
-                        @error('target') <small id="emailHelp" class="form-text text-danger">l'objectif est obligatoire</small> @enderror
+                        @error('target') <small class="form-text text-danger">l'objectif est obligatoire</small> @enderror
                     </div>
 
                     <div class="form-group">
