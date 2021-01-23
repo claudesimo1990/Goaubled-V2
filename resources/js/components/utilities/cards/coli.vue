@@ -34,6 +34,9 @@
                 <showImages :colis-name="item.colis_name" :images="item.images"></showImages>
 
                 <a :href="item.Path" class="btn btn-primary w-100 btn-recherche contact-btn">Contactez l'expediteur</a>
+
+                <div class="float-right"><h6><i class="el-icon-share font-weight-bold"></i></h6></div>
+
             </div>
         </div>
     </div>

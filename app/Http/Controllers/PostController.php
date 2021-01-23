@@ -56,11 +56,11 @@ class postController extends Controller
 
         foreach ($images as $image) {
 
-            $imagePath = Storage::disk('uploads')->put($email . '/posts/' . $post->id, $image);
+            $imagePath = Storage::disk('uploads')->put($email . '/packs/' . $post->id, $image);
 
             PostImage::create([
                 'post_image_path' => 'uploads/' . $imagePath,
-                'post_image_caption' =>  $request->colis_name,
+                'post_image_caption' =>  $post->from . 'To' . $post->to,
                 'post_id' =>  $post->id
             ]);
         }
@@ -84,17 +84,10 @@ class postController extends Controller
             'dateTo' => 'required',
             'kilo' => 'required',
             'prix' => 'required',
-            'compagnie' => 'required',
-            'photoBielletAvion' => 'required',
+            'compagnie' => 'required'
         ]);
 
-        $filename = md5($request->from . $request->to).'.jpg';
-
-        $img = ImageManagerStatic::make($request->photoBielletAvion)->encode('jpg');
-
-        Storage::disk('public')->put('FlysTicket/'.$filename, $img);
-
-        Post::create([
+        $post = Post::create([
             'user_id' => Auth::id(),
             'categorie_id' => 2, //travel
             'from' => $request->from,
@@ -106,12 +99,26 @@ class postController extends Controller
             'prix' => $request->get('prix'),
             'slug' => '',
             'compagnie' => $request->get('compagnie'),
-            'photoBielletAvion' => $filename,
+            'photoBielletAvion' => '',
         ]);
 
-        flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');
+        $images = $request->all()['images'];
+        $email = Auth::user()->email;
 
-        return ['redirect' => route('news.index')];
+        foreach ($images as $image) {
+
+            $imagePath = Storage::disk('uploads')->put($email . '/Travels/' . $post->id, $image);
+
+            PostImage::create([
+                'post_image_path' => 'uploads/' . $imagePath,
+                'post_image_caption' => $post->from . 'To' . $post->to,
+                'post_id' => $post->id
+            ]);
+
+            flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');
+
+            return response(route('news.index'), 200);
+        }
     }
 
     public function index(Request $request)

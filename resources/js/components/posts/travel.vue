@@ -1,5 +1,5 @@
 <template>
-    <div id="about" class="container-fluid">
+    <div id="about" class="p-4">
         <div class="row">
             <div class="col-lg-12 text-center mb-2">
                 <h2 class="quigo-title">Publiez votre Voyage</h2>
@@ -21,7 +21,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="dateFrom">Date (Date et Heure)</label>
+                                    <label class="font-weight-bold">Date (Date et Heure)</label>
                                         <validation-provider rules="required" v-slot="{ errors }">
                                         <datetime
                                         type="datetime"
@@ -80,32 +80,43 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="font-weight-bold" for="photoBielletAvion">Inserer votre billet d'Avion</label>
-                                    <validation-provider rules="required" v-slot="{ errors }">
-                                        <b-form-file id="photoBielletAvion" class="form-control" v-model="travel.photoBielletAvion" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
-                                        <small class="form--error">{{ errors[0] }}</small>
-                                    </validation-provider>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Nombre de Kilo disponibble</label>
+                                            <validation-provider rules="required|integer" v-slot="{ errors }">
+                                                <input type="text" v-model="travel.kilo" id="kilo" name="kilo" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                                <small class="form--error">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Prix/Kg</label>
+                                            <validation-provider rules="required|numeric" v-slot="{ errors }">
+                                                <input type="text" v-model="travel.prix" id="prix" name="prix" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                                <small class="form--error">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="compagnie">Nombre de Kilo disponibble</label>
-                                    <validation-provider rules="required|integer" v-slot="{ errors }">
-                                        <input type="text" v-model="travel.kilo" id="kilo" name="kilo" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
-                                        <small class="form--error">{{ errors[0] }}</small>
-                                    </validation-provider>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="font-weight-bold" for="photoBielletAvion">Prix/Kg</label>
-                                    <validation-provider rules="required|numeric" v-slot="{ errors }">
-                                        <input type="text" v-model="travel.prix" id="prix" name="prix" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
-                                        <small class="form--error">{{ errors[0] }}</small>
-                                    </validation-provider>
+                                    <label class="font-weight-bold">Photos du billet d'avion</label>
+                                    <el-upload
+                                        action="/coli-form"
+                                        list-type="picture-card"
+                                        :on-preview="handlePreview"
+                                        :on-change="updateImageList"
+                                        :auto-upload="false">
+                                        <i class="el-icon-plus"></i>
+                                    </el-upload>
+                                    <el-dialog :visible.sync="dialogVisible">
+                                        <img width="100%" :src="imgUrl" alt="">
+                                    </el-dialog>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +156,10 @@
         },
         aktDate: '',
         minDate: '',
-        file:  ''
+        file:  '',
+        dialogVisible: false,
+        imgUrl: '',
+        imagesList: []
       }
     },
     watch: {
@@ -160,7 +174,7 @@
     },
     methods: {
       onSubmit(evt) {
-          
+
           let config = {
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
@@ -173,7 +187,6 @@
 
              let formData = new FormData();
 
-              formData.append('photoBielletAvion',  this.file);
               formData.append('compagnie',  this.travel.compagnie);
               formData.append('from',  this.travel.from);
               formData.append('to',  this.travel.to);
@@ -182,10 +195,15 @@
               formData.append('kilo',  this.travel.kilo);
               formData.append('prix',  this.travel.prix);
               formData.append('content',  this.travel.content);
+              formData.append('photoBielletAvion',  this.file);
+
+              $.each(this.imagesList, function(key, image){
+                  formData.append(`images[${key}]`, image);
+              });
 
             axios.post('/travel-form', formData , config)
             .then(function (response) {
-                window.location = response.data.redirect;
+                window.open(response.data);
             })
             .catch(function (error) {
                 if(error.response.data){
@@ -193,10 +211,13 @@
                 }
             });
         },
-        onImageChange(e){
-            this.file = e.target.files[0];
+        updateImageList(file) {
+            this.imagesList.push(file.raw)
+        },
+        handlePreview(file) {
+            this.imageUrl = file.url;
+            this.dialogVisible = true;
         }
-    
     },
     mounted() {
         this.aktDate = moment(new Date).format('DD.MM.YYYY' + ' à ' +  'HH:mm:ss');

@@ -1,5 +1,5 @@
 <template>
-    <div id="about" class="container-fluid">
+    <div id="about" class="p-4">
         <div class="row">
             <div class="col-lg-12 text-center mb-2">
                 <h2 class="quigo-title">Que souhaitez-vous envoyer ?</h2>
@@ -60,10 +60,16 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="font-weight-bold" for="form.coliName">Nom de l'Objet à envoyer</label>
+                                    <label class="font-weight-bold">Que voulez-vous envoyer ?</label>
                                     <validation-provider rules="required" v-slot="{ errors }">
-                                        <input type="text" v-model="coli.coliName" id="form.coliName" name="form.coliName" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
-                                        <small class="form--error">{{ errors[0] }}</small>
+                                        <el-select v-model="coli.coliName" filterable placeholder="Nom de l'Objet">
+                                            <el-option
+                                                v-for="item in options"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                            </el-option>
+                                        </el-select>
                                     </validation-provider>
                                 </div>
                             </div>
@@ -90,20 +96,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <el-upload
-                                    action="/coli-form"
-                                    list-type="picture-card"
-                                    :on-preview="handlePreview"
-                                    :on-change="updateImageList"
-                                    :auto-upload="false">
-                                    <i class="el-icon-plus"></i>
-                                </el-upload>
-                                <el-dialog :visible.sync="dialogVisible">
-                                    <img width="100%" :src="imgUrl" alt="">
-                                </el-dialog>
-                            </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Ajoutez des images sur botre post</label>
+                            <el-upload
+                                action="/coli-form"
+                                list-type="picture-card"
+                                :on-preview="handlePreview"
+                                :on-change="updateImageList"
+                                :auto-upload="false">
+                                <i class="el-icon-plus"></i>
+                            </el-upload>
+                            <el-dialog :visible.sync="dialogVisible">
+                                <img width="100%" :src="imgUrl" alt="">
+                            </el-dialog>
                         </div>
                         <div class="form-group my-2">
                             <label class="font-weight-bold" for="form.content">Voulez vous ecrire autre chose sur votre voyage?</label>
@@ -142,6 +147,16 @@
                 content: ''
             },
         aktDate: '',
+          options: [{
+              value: 'Option1',
+              label: 'Electronique'
+          }, {
+              value: 'Option2',
+              label: 'Enveloppe'
+          }, {
+              value: 'Option3',
+              label: 'Valises'
+          }],
         minDate: '',
         file:  '',
         dialogVisible: false,
@@ -188,7 +203,7 @@
 
             axios.post('/coli-form', formData , config)
             .then(function (response) {
-                window.location = response.data;
+                window.open(response.data);
             })
             .catch(function (error) {
                 if(error.response.data){

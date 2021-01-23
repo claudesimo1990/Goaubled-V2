@@ -33,6 +33,11 @@
                         Contactez le voyageur
                     </a>
                 </div>
+                <div class="float-right"><h6>
+                    <el-tooltip content="Partager le Post" placement="top">
+                        <el-button><i class="el-icon-share font-weight-bold"></i></el-button>
+                    </el-tooltip>
+                </h6></div>
             </div>
         </div>
     </div>
