@@ -68,33 +68,41 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="font-weight-bold" for="form.kilo">Poids de l'objet</label>
-                                    <validation-provider rules="required|integer" v-slot="{ errors }">
-                                        <input type="text" v-model="coli.kilo" id="form.kilo" name="form.kilo" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
-                                        <small class="form--error">{{ errors[0] }}</small>
-                                    </validation-provider>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="form.kilo">Poids de l'objet</label>
+                                            <validation-provider rules="required|integer" v-slot="{ errors }">
+                                                <input type="text" v-model="coli.kilo" id="form.kilo" name="form.kilo" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                                <small class="form--error">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="form.prix">Prix/Kg</label>
+                                            <validation-provider rules="required|numeric" v-slot="{ errors }">
+                                                <input type="text" v-model="coli.prix" id="form.prix" name="form.prix" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
+                                                <small class="form--error">{{ errors[0] }}</small>
+                                            </validation-provider>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="font-weight-bold" for="form.prix">Prix/Kg</label>
-                                    <validation-provider rules="required|numeric" v-slot="{ errors }">
-                                        <input type="text" v-model="coli.prix" id="form.prix" name="form.prix" class="form-control" :class="{ 'is-invalid': errors[0] !== undefined }" />
-                                        <small class="form--error">{{ errors[0] }}</small>
-                                    </validation-provider>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="font-weight-bold" for="coli.colisPhoto">Une photo de l'objet</label>
-                                    <validation-provider rules="required" v-slot="{ errors }">
-                                        <b-form-file v-model="coli.colisPhoto" class="form-control" @change="onImageChange" :class="{ 'is-invalid': errors[0] !== undefined }" placeholder="IMG, JPG, PNG, PDF"></b-form-file>
-                                        <small class="form--error">{{ errors[0] }}</small>
-                                    </validation-provider>
-                                </div>
+                            <div class="col-md-12">
+                                <el-upload
+                                    action="/coli-form"
+                                    list-type="picture-card"
+                                    :on-preview="handlePreview"
+                                    :on-change="updateImageList"
+                                    :auto-upload="false">
+                                    <i class="el-icon-plus"></i>
+                                </el-upload>
+                                <el-dialog :visible.sync="dialogVisible">
+                                    <img width="100%" :src="imgUrl" alt="">
+                                </el-dialog>
                             </div>
                         </div>
                         <div class="form-group my-2">
@@ -119,7 +127,7 @@
   export default {
     data() {
       return {
-        coli: 
+        coli:
             {
                 from: '',
                 to: '',
@@ -135,7 +143,10 @@
             },
         aktDate: '',
         minDate: '',
-        file:  ''
+        file:  '',
+        dialogVisible: false,
+        imgUrl: '',
+        imagesList: []
       }
     },
     watch: {
@@ -150,7 +161,6 @@
     },
     methods: {
       onSubmit(evt) {
-          
           let config = {
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
@@ -172,9 +182,13 @@
               formData.append('prix',  this.coli.prix);
               formData.append('content',  this.coli.content);
 
+              $.each(this.imagesList, function(key, image){
+                  formData.append(`images[${key}]`, image);
+              });
+
             axios.post('/coli-form', formData , config)
             .then(function (response) {
-                window.location = response.data.redirect;
+                window.location = response.data;
             })
             .catch(function (error) {
                 if(error.response.data){
@@ -182,10 +196,14 @@
                 }
             });
         },
-        onImageChange(e){
-            this.file = e.target.files[0];
-      }
-    
+        updateImageList(file) {
+            this.imagesList.push(file.raw)
+        },
+        handlePreview(file) {
+            this.imageUrl = file.url;
+            this.dialogVisible = true;
+        }
+
     },
     mounted() {
         this.aktDate = moment(new Date).format('DD.MM.YYYY' + ' à ' +  'HH:mm:ss');

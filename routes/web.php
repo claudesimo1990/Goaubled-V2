@@ -104,3 +104,7 @@ Route::group(['middleware' => ['is_admin']], function () {
     Route::get('/admin/colis/reject/{travel}', 'Admin\ColisController@rejectPost')->name('admin.coli.reject')->middleware('is_admin');
 
 });
+
+Route::get('medias',function (){
+    return true;
+});

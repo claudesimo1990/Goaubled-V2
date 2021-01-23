@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $fill = [];
+    protected $guarded;
 
     protected $appends = ['dateFrom','dateTo','Path','createdAt'];
 
@@ -25,6 +25,11 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\postImage');
     }
 
     public function getCreatedAtAttribute () {

@@ -14,6 +14,8 @@ import 'vue-datetime/dist/vue-datetime.css';
 import { ValidationProvider,ValidationObserver, extend } from 'vee-validate';
 import { required,integer,numeric } from 'vee-validate/dist/rules';
 import vueCountryRegionSelect from 'vue-country-region-select';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 extend('required', {
   ...required,
@@ -42,6 +44,7 @@ Vue.use(vueCountryRegionSelect);
 window.Store = new Vuex.Store(module);
 
 Vue.use(Datetime);
+Vue.use(ElementUI);
 
 $('#myCarousel').carousel({
   interval: 3000,
@@ -62,7 +65,7 @@ Vue.component('how-work', require('./components/home/howWork.vue').default);
 Vue.component('how-it-work', require('./components/howWork.vue').default);
 Vue.component('about', require('./components/home/about.vue').default);
 Vue.component('teams', require('./components/home/teams.vue').default);
-Vue.component('destinations', require('./components/home/destinations.vue').default);
+Vue.component('destinations', require('./components/home/bestDestinations.vue').default);
 Vue.component('profile-component', require('./components/profile/profile.vue').default);
 Vue.component('chat', require('./components/messages/chat.vue').default);
 Vue.component('notification', require('./components/home/notifications.vue').default);

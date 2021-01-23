@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\postImage;
 use App\User;
 use \Datetime;
 use Carbon\Carbon;
@@ -36,13 +37,7 @@ class postController extends Controller
             'prix' => 'required',
         ]);
 
-        $filename = md5($request->from . $request->to).'.jpg';
-
-        $img = ImageManagerStatic::make($request->colisPhoto)->encode('jpg');
-
-        Storage::disk('public')->put('Colis/'.$filename, $img);
-
-        Post::create([
+    $post =  Post::create([
             'user_id' => Auth::id(),
             'categorie_id' => 1, //ccoli
             'from' => $request->from,
@@ -50,15 +45,29 @@ class postController extends Controller
             'colis_name' => $request->colis_name,
             'dateFrom' => Carbon::parse($request->dateFrom)->format('Y-m-d H:i:s'),
             'dateTo' => Carbon::parse($request->dateFrom)->format('Y-m-d H:i:s'),
-            'content' => $request->content,
-            'kilo' => $request->kilo,
-            'prix' => $request->prix,
-            'colisPhoto' => $filename,
+            'content' => $request->get('content'),
+            'kilo' => $request->get('kilo'),
+            'prix' => $request->get('prix'),
+            'colisPhoto' => '',
         ]);
+
+        $images = $request->all()['images'];
+        $email = Auth::user()->email;
+
+        foreach ($images as $image) {
+
+            $imagePath = Storage::disk('uploads')->put($email . '/posts/' . $post->id, $image);
+
+            PostImage::create([
+                'post_image_path' => 'uploads/' . $imagePath,
+                'post_image_caption' =>  $request->colis_name,
+                'post_id' =>  $post->id
+            ]);
+        }
 
         flashy::success('votre post à bien enregistrer. merci de continuer a nous faire confiance');
 
-        return ['redirect' => route('news.index')];
+        return response(route('news.index'), 200);
     }
 
     public function travelForm()
@@ -92,11 +101,11 @@ class postController extends Controller
             'to' => $request->to,
             'dateFrom' => Carbon::parse($request->dateFrom)->format('Y-m-d H:i:s'),
             'dateTo' => Carbon::parse($request->dateTo)->format('Y-m-d H:i:s'),
-            'content' => $request->content,
-            'kilo' => $request->kilo,
-            'prix' => $request->prix,
+            'content' => $request->get('content'),
+            'kilo' => $request->get('kilo'),
+            'prix' => $request->get('prix'),
             'slug' => '',
-            'compagnie' => $request->compagnie,
+            'compagnie' => $request->get('compagnie'),
             'photoBielletAvion' => $filename,
         ]);
 
@@ -114,7 +123,7 @@ class postController extends Controller
 
     public function listeNews()
     {
-        $posts = Post::where('publish',1)->with('user')->paginate(10);
+        $posts = Post::where('publish',1)->with('user','images')->paginate(10);
 
         return response()->json($posts, 200);
     }
@@ -134,7 +143,7 @@ class postController extends Controller
 
     public function news()
     {
-        $posts = Post::where('publish',1)->get();
+        $posts = Post::where('publish',1)->with('images')->get();
 
         return response()->json($posts, 200);
     }

@@ -11,7 +11,7 @@
                     <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active text-center p-4">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img :src="users[0].avatar_original ? users[0].avatar_original : asset +'/UsersAvatars/'+ users[0].avatar" :alt="users[0].name" class="avatar">
+                            <img v-if="users[0] !== undefined" :src="users[0].avatar_original ? users[0].avatar_original : asset +'/UsersAvatars/'+ users[0].avatar" :alt="users[0].name" class="avatar">
                         </div>
                         <blockquote class="blockquote text-center mb-4">
                             <p class="mb-0"><i class="fa fa-quote-left">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="carousel-item text-center p-4">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img :src="users[1].avatar_original ? users[1].avatar_original : asset +'/UsersAvatars/'+ users[1].avatar" :alt="users[1].name" class="avatar">
+                            <img v-if="users[0]" :src="users[1].avatar_original ? users[1].avatar_original : asset +'/UsersAvatars/'+ users[1].avatar" :alt="users[1].name" class="avatar">
                         </div>
                         <blockquote class="blockquote text-center mb-4">
                             <p class="mb-0"><i class="fa fa-quote-left"></i> Ma premiere experience utilisateur etait vraiment top.</p>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="carousel-item text-center p-4 position-relative">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img :src="users[2].avatar_original ? users[2].avatar_original : asset +'/UsersAvatars/'+ users[2].avatar" :alt="users[2].name" class="avatar">
+                            <img v-if="users[0]" :src="users[2].avatar_original ? users[2].avatar_original : asset +'/UsersAvatars/'+ users[2].avatar" :alt="users[2].name" class="avatar">
                         </div>
                         <blockquote class="blockquote text-center mb-4">
                             <p class="mb-0"><i class="fa fa-quote-left"></i> le system de chat est vraiment top. on dirait un mini Whatsapp.

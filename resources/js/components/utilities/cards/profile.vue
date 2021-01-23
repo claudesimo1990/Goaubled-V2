@@ -23,7 +23,7 @@
                 <b-row class="mb-2">
                     <b-col cols="5">Email</b-col>
                     <b-col>
-                        {{ user.email.toUpperCase() }}
+                        {{ user.email !== undefined ? user.email.toUpperCase() : '' }}
                     </b-col>
                 </b-row>
 
