@@ -203,7 +203,7 @@
 
             axios.post('/coli-form', formData , config)
             .then(function (response) {
-                window.open(response.data);
+                window.location = response.data;
             })
             .catch(function (error) {
                 if(error.response.data){
