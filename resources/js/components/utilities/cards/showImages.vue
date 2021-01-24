@@ -8,7 +8,7 @@
 
         <b-modal id="modal-multi-1"  size="lg" v-model="modalShow"  :title="colisName" ok-only no-stacking>
             <el-carousel indicator-position="outside" height="800">
-                <el-carousel-item v-for="item in images" :key="item">
+                <el-carousel-item v-for="item in images" :key="item.id">
                     <img :src="item.post_image_path" :alt="item.post_image_caption">
                 </el-carousel-item>
             </el-carousel>
