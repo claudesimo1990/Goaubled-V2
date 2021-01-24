@@ -189,7 +189,7 @@
              let formData = new FormData();
 
               formData.append('colisPhoto',  this.file);
-              formData.append('colis_name',  this.coli.coliName);
+              formData.append('colis_name',  this.options[this.coli.coliName]);
               formData.append('from',  this.coli.from);
               formData.append('to',  this.coli.to);
               formData.append('dateFrom',  this.coli.dateFrom);

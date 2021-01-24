@@ -42,14 +42,12 @@
                 from: [
                     {name: 'Douala', img: '/images/imgs/popularDestination/douala.png'},
                     {name: 'Yaounde', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'},
-                    {name: 'Paris', img: '/images/imgs/popularDestination/paris.jpeg'},
-                    {name: 'Bruxelle', img: '/images/imgs/popularDestination/paris.jpeg'}
+                    {name: 'Paris', img: '/images/imgs/popularDestination/paris.jpeg'}
                 ],
                 to: [
                     {name: 'Paris', img: '/images/imgs/popularDestination/paris.jpeg'},
                     {name: 'Berlin', img: '/images/imgs/popularDestination/berlin.jpeg'},
-                    {name: 'Yaounde', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'},
-                    {name: 'Berlin', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'}
+                    {name: 'Yaounde', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'}
                 ]
             }
         }
