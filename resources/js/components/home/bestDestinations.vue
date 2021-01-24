@@ -11,7 +11,7 @@
                     <div class="block">
                         <span class="demonstration"></span>
                         <el-carousel height="400px">
-                            <el-carousel-item v-for="item in from" :key="item">
+                            <el-carousel-item v-for="item in from" :key="item.img">
                                 <h2 class="text-item-color font-weight-bold text-center">{{ item.name }}</h2>
                                 <el-image :src="item.img"></el-image>
                             </el-carousel-item>
@@ -22,7 +22,7 @@
                     <div class="block">
                         <span class="demonstration"></span>
                         <el-carousel trigger="click" height="400px">
-                            <el-carousel-item v-for="item in to" :key="item">
+                            <el-carousel-item v-for="item in to" :key="item.img">
                                 <h2 class="text-item-color font-weight-bold text-center">{{ item.name }}</h2>
                                 <el-image :src="item.img"></el-image>
                             </el-carousel-item>
@@ -35,7 +35,6 @@
 </template>
 
 <script>
-    import {shuffle} from "lodash";
 
     export default {
         data: function () {
@@ -50,12 +49,6 @@
                     {name: 'Berlin', img: '/images/imgs/popularDestination/berlin.jpeg'},
                     {name: 'Yaounde', img: '/images/imgs/popularDestination/Yaounde_2.jpeg'}
                 ]
-            }
-        },
-        computed: {
-            shuffleArray: function () {
-
-               return  shuffle(this.infos)
             }
         }
     }
@@ -81,5 +74,9 @@
 
     .el-carousel__item:nth-child(2n+1) {
         background-color: transparent;
+    }
+
+    .el-image__error {
+        display: none;
     }
 </style>
