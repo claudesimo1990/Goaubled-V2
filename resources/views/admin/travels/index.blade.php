@@ -43,7 +43,7 @@
                       <td class="text-center admin__table-td">{{ $travel->to }}</td>
                       <td class="text-center admin__table-td">{{ $travel->getDateToAttribute() }}</td>
                       <td class="text-center admin__table-td">{{ $travel->kilo }}</td>
-                      <td class="text-center admin__table-td">{{ substr($travel->photoBielletAvion,0,5) }}</td>
+                      <td class="text-center admin__table-td"><show-images colis-name="{{ $travel->from }}" :images="{{ $travel->images }}"></show-images></td>
                       <td class="text-center admin__table-td">{{ $travel->publish == 0 ? 'non':'oui' }}</td>
                       <td class="text-center admin__table-td">
                         <a href="{{ route('admin.travel.validate',$travel->id) }}" class="btn btn-success">valider</a>
@@ -61,3 +61,9 @@
     </div>
 
 @endsection
+<script>
+    import ShowImages from "../../../js/components/utilities/cards/showImages";
+    export default {
+        components: {ShowImages}
+    }
+</script>

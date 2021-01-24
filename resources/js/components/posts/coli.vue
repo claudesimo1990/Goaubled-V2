@@ -148,14 +148,14 @@
             },
         aktDate: '',
           options: [{
-              value: 'Option1',
-              label: 'Electronique'
+              value: 'Electronique(s)',
+              label: 'Electronique(s)'
           }, {
-              value: 'Option2',
-              label: 'Enveloppe'
+              value: 'Enveloppe(s)',
+              label: 'Enveloppe(s)'
           }, {
-              value: 'Option3',
-              label: 'Valises'
+              value: 'Valise(s)',
+              label: 'Valise(s)'
           }],
         minDate: '',
         file:  '',
@@ -189,7 +189,7 @@
              let formData = new FormData();
 
               formData.append('colisPhoto',  this.file);
-              formData.append('colis_name',  this.options[this.coli.coliName]);
+              formData.append('colis_name',  this.coli.coliName);
               formData.append('from',  this.coli.from);
               formData.append('to',  this.coli.to);
               formData.append('dateFrom',  this.coli.dateFrom);
@@ -203,7 +203,7 @@
 
             axios.post('/coli-form', formData , config)
             .then(function (response) {
-                window.location = response.data;
+                //window.location = response.data;
             })
             .catch(function (error) {
                 if(error.response.data){

@@ -81,6 +81,7 @@ Vue.component('alert-chat', require('./components/messages/alertChat.vue').defau
 Vue.component('activ-user', require('./components/stats/activUser.vue').default);
 Vue.component('home-header-component', require('./components/utilities/Homeheader').default);
 Vue.component('card-user', require('./components/utilities/cards/profile.vue').default);
+Vue.component('show-images', require('./components/utilities/cards/showImages').default);
 
 window.app = new Vue({
     el: '#app',
