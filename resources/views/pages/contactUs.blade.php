@@ -2,9 +2,9 @@
 
 @section('content')
 
-<header-component background-image="/images/pack-bild-3.jpg" title="Contactez nous"></header-component>
-
 <div class="container mt-5">
+
+    <h2 class="text-center">Contactez nous ici</h2>
 
    <contact-us></contact-us>
 

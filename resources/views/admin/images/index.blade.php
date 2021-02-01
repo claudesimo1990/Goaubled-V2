@@ -4,10 +4,8 @@
     <div class="container-fluid">
         <div class="row mt-4">
             <div class="col-md-6">
-                <form action="{{route('images.store')}}" method="post" enctype="multipart/form-data">
-
+                <form method="post" action="{{ route('images.store') }}" enctype="multipart/form-data">
                     @csrf
-
                     <div class="form-group">
                         <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Entrer le nom de l'image " name="file">
                         @error('file') <small class="form-text text-danger">l'image est obligatoire</small> @enderror

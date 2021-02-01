@@ -2,7 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    @env('production')
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    @endenv
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,6 +12,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
+    <link rel="icon" type="image/png" href="{{ asset('/img/cube-outline.svg') }}"/>
 
     <link href="{{asset('/lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 

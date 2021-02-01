@@ -21,8 +21,7 @@
         "laravel/ui": "^2.0",
         "livewire/livewire": "^1.2",
         "mercuryseries/flashy": "^1.0",
-        "pusher/pusher-php-server": "~3.0",
-        "srmklive/paypal": "^3.0"
+        "pusher/pusher-php-server": "~3.0"
     },
     "require-dev": {
         "exolnet/laravel-envoy": "^1.0",

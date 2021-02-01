@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-<header-component background-image="/images/pack-bild-3.jpg" title="conditions generales d'utilisation"></header-component>
 <div class="container my-5">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, molestiae! Beatae voluptates quis quod numquam hic aperiam facere eius ullam, minima omnis optio, et recusandae ipsa suscipit modi iste inventore?
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque corporis asperiores quam animi vel repellat mollitia eius incidunt quae tenetur temporibus ipsam maxime aperiam quo, obcaecati voluptates deleniti sapiente quidem!

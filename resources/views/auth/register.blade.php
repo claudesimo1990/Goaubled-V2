@@ -14,41 +14,13 @@
                     </div>
                     <div class="col-md-7">
                         <div class="card-body">
+
                             <div class="brand-wrapper">
                                 <h4><a href="{{route('accueil')}}" class="scrollto">Go<span>AuBled</span></a> - Inscription</h4>
                             </div>
-                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="picture-container">
-                                    <div class="picture @error('avatar') picture-error @enderror my-4">
-                                        <img src="{{ asset('/img/avatar.jpg') }}" class="picture-src" id="wizardPicturePreview" title="" alt="">
-                                        <input type="file" name="avatar" id="wizard-picture">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="name" class="sr-only">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Nom">
-                                    @error('name')<span class="error small">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="email" class="sr-only">{{ __('E-Mail Address') }}</label>
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="Email">
-                                    @error('email')<span class="error small">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="password" class="sr-only">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
-                                    @error('password')<span class="error small">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label for="password" class="sr-only">Password confirmation</label>
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirmation du mot de passe">
-                                    @error('password_confirmation')<span class="error small">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-block login-btn mb-4" type="submit">S'inscrire</button>
-                                </div>
-                            </form>
+
+                            <register-form></register-form>
+
                             <p class="login-card-footer-text">deja un compte? <a href="{{ route('login') }}" class="text-reset">Login</a></p>
                             <div class="login-card-footer-nav block-media-login my-4">
                                 <a href="{{ route('facebook') }}" class="btn btn-block btn-social btn-facebook text-white">

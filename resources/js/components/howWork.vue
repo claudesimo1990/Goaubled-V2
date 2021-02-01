@@ -1,12 +1,6 @@
 <template>
 <div>
-    <section id="intro" :style="{ backgroundImage: `url('${getImg}')`,  'height':  '400px' }">
-        <div class="intro-content mt-0">
-            <h2 class="text-center title__annonce pt-2 text-white">{{ getTitle }}</h2>
-        </div>
-    </section>
-
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
             <div class="col-md-9">
                 <section>

@@ -65,16 +65,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $filename = md5($data['email']).'.jpg';
-
-        $img = ImageManagerStatic::make($data['avatar'])->encode('jpg');
-
-        Storage::disk('public')->put('UsersAvatars/'.$filename, $img);
+        $imagePath = Storage::disk('uploads')->put($data['email'] . '/avatar/', $data['avatar']);
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'avatar' => $filename,
+            'avatar' => 'uploads/' . $imagePath,
             'password' => Hash::make($data['password'])
         ]);
 

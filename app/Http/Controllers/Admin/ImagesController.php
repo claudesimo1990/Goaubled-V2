@@ -42,17 +42,23 @@ class ImagesController extends Controller
             if ($request->get('target') == 'Header') {
 
                 $img = ImageManagerStatic::make($request->file('file'))->resize(600, 400)->encode('png');
+
                 Storage::disk('public')->put('Home/'.$fileName, $img);
             }
-
 
             Images::create([
                 'name' => $fileName,
                 'target' => $target,
             ]);
 
-            return back();
+            flashy()->success('success');
+
+        } else {
+
+            flashy()->error('qualite d\'image pas acceptée');
         }
+
+        return back();
     }
 
     public function destroy($images)

@@ -1,8 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-<header-component background-image="/images/pack-bild-3.jpg" title="Qui Somme Nous?"></header-component>
+
 <div class="container my-5">
+
+    <h2 class="text-center">Qui sommes nous</h2>
+
     <div class="block my-2">
         <h2>Historique et création</h2>
         <p>L’expression Go Au Bled, au Cameroun signifie en langue courante Voyager pour le pays. Notre petite idée est de créer un lien d’entraide visant dans le transport de colis entre différentes personnes effectuant un voyage vers l’étranger et ceux désirant envoyer un colis à des proches. Nous sommes une jeune Startup basée en Europe, dont le but est de mettre en contact toute personne voulant offrir ses services pour aider sa communauté dans l’optique de faciliter les transactions de colis entre toutes destinations de partout dans le monde.</p>
@@ -22,7 +25,7 @@
     <div class="block">
         <h2>Notre devise</h2>
         <p>Rapidité, sécurité, assurance et garantie
-            Rapidité: Les colis se font envoyer en général par voie aérienne, nécessitant donc 2 à 3 jours maximum pour l'acheminement jusqu'à la destination. 
+            Rapidité: Les colis se font envoyer en général par voie aérienne, nécessitant donc 2 à 3 jours maximum pour l'acheminement jusqu'à la destination.
             Sécurité: Les voyageurs prennent soin de vos colis comme les leurs.
             Assurance et Garantie: Notre service se base en principe sur la confiance entre les utilisateurs et nous travaillons pour mettre sur pied un service permettant d’assurer vos colis en cas de perte ou de vol.
         </p>
