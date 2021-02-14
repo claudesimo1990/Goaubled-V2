@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
     return view('Maintenance');
-})->name('Maintenance');
+})->name('maintenance');
 
 Route::get('/howItWork','AppController@howItWork')->name('howItWork');
 Route::view('/whoAreWe', '/pages/whoAreWe')->name('whoAreWe');
