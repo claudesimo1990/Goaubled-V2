@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
-    return view('Maintenance');
+    return view('maintenance');
 })->name('maintenance');
 
 Route::get('/howItWork','AppController@howItWork')->name('howItWork');
