@@ -2,10 +2,6 @@
 
 namespace App;
 
-use App\Coli;
-use App\Travel;
-use App\Comment;
-use App\Profile;
 use Carbon\Carbon;
 use App\Notifications\VerifyEmail;
 use Illuminate\Database\Eloquent\Model;

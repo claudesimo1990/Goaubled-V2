@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Models\Post;
 use App\User;
 use App\Events\PresentEvent;
 use Illuminate\Support\Facades\DB;
@@ -18,12 +18,7 @@ class AppController extends Controller
 
         return view('App.accueil',compact('latest_news','users'));
     }
-    public function annonces() {
 
-        $all_news = travel::paginate(5);
-
-        return view('App.annonces',compact('all_news'));
-    }
     public function howItWork(){
 
         return view('pages.howItWork');

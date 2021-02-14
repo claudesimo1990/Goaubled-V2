@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class TravelsController extends Controller
@@ -27,7 +27,7 @@ class TravelsController extends Controller
 
             $post->update(['publish' => 1]);
 
-            //notify user  that post was validate 
+            //notify user  that post was validate
 
             return back()->with('message','le voyage á ete publié');
 

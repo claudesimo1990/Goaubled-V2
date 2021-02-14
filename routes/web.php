@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/','AppController@index')->name('accueil');
+Route::get('/',function(){
+    return view('Maintenance');
+})->name('Maintenance');
+
 Route::get('/howItWork','AppController@howItWork')->name('howItWork');
 Route::view('/whoAreWe', '/pages/whoAreWe')->name('whoAreWe');
 Route::view('/AGB', '/pages/agb')->name('AGB');
@@ -75,7 +79,7 @@ Route::get('/facebook/callback', 'facebookController@facebookCallback');
 Route::get('/facebook', 'facebookController@redirect')->name('facebook');
 
  // admin
-Route::get('admin/home','Admin\HomeController@home')->name('admin.home')->middleware('is_admin');
+Route::get('/admin','Admin\HomeController@home')->name('admin.home')->middleware('is_admin');
 Route::get('admin/login','Admin\AuthController@login')->name('admin.login');
 Route::post('admin/login','Admin\AuthController@attemptAdmin');
 

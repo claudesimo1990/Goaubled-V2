@@ -19,5 +19,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'quantity' => $faker->numberBetween(10,50),
         'compagnie' => $faker->name,
         'photoBielletAvion' => $faker->name,
+        'publish' => true
     ];
 });
